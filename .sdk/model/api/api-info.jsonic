@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Nathan Dierickx"
+      }
+      description: "Access information about the One Piece manga, including sagas, fruits, chapters, volumes, episodes, and more. Explore details about characters, crews, locations, and various elements from the One Piece world."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api-onepiece.com"
+        }
+      ]
+      termsOfService: "https://api-onepiece.com/en/terms-of-use"
+      title: "One Piece API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

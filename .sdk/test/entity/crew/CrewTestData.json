@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "crew": {
+      "CREW00": {
+        "captain": "s3c",
+        "description": "s3d",
+        "id": "CREW00",
+        "member": [],
+        "name": "s40",
+        "ship": "s41"
+      },
+      "CREW01": {
+        "captain": "s78",
+        "description": "s79",
+        "id": "CREW01",
+        "member": [],
+        "name": "s7c",
+        "ship": "s7d"
+      },
+      "CREW02": {
+        "captain": "sb4",
+        "description": "sb5",
+        "id": "CREW02",
+        "member": [],
+        "name": "sb8",
+        "ship": "sb9"
+      }
+    }
+  },
+  "new": {
+    "crew": {
+      "crew_ref01": {
+        "captain": "sf0",
+        "description": "sf1",
+        "member": [],
+        "name": "sf4",
+        "ship": "sf5"
+      }
+    }
+  }
+}

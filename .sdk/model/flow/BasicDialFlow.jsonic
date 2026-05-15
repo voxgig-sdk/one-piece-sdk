@@ -1,0 +1,44 @@
+# BasicDialFlow
+
+main: kit: flow: BasicDialFlow:
+{
+  entity: "dial",
+  kind: "basic",
+  name: "BasicDialFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dial_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "dial_ref01",
+        srcdatavar: "dial_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "dial01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dial_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDialFlow"
+}

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "bow": {
+      "BOW00": {
+        "description": "s28",
+        "id": "BOW00",
+        "name": "s2a",
+        "owner": "s2b"
+      },
+      "BOW01": {
+        "description": "s50",
+        "id": "BOW01",
+        "name": "s52",
+        "owner": "s53"
+      },
+      "BOW02": {
+        "description": "s78",
+        "id": "BOW02",
+        "name": "s7a",
+        "owner": "s7b"
+      }
+    }
+  },
+  "new": {
+    "bow": {
+      "bow_ref01": {
+        "description": "sa0",
+        "name": "sa2",
+        "owner": "sa3"
+      }
+    }
+  }
+}

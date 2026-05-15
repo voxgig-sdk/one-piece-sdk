@@ -1,0 +1,44 @@
+# BasicSwordFlow
+
+main: kit: flow: BasicSwordFlow:
+{
+  entity: "sword",
+  kind: "basic",
+  name: "BasicSwordFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "sword_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "sword_ref01",
+        srcdatavar: "sword_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "sword01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-sword_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSwordFlow"
+}

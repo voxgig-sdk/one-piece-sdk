@@ -1,0 +1,44 @@
+# BasicChapterFlow
+
+main: kit: flow: BasicChapterFlow:
+{
+  entity: "chapter",
+  kind: "basic",
+  name: "BasicChapterFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "chapter_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "chapter_ref01",
+        srcdatavar: "chapter_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "chapter01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-chapter_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChapterFlow"
+}

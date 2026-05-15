@@ -1,0 +1,44 @@
+# BasicVolumeFlow
+
+main: kit: flow: BasicVolumeFlow:
+{
+  entity: "volume",
+  kind: "basic",
+  name: "BasicVolumeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "volume_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "volume_ref01",
+        srcdatavar: "volume_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "volume01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-volume_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVolumeFlow"
+}

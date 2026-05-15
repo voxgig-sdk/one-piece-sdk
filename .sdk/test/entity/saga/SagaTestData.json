@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "saga": {
+      "SAGA00": {
+        "chapter": [],
+        "description": "s33",
+        "episode": [],
+        "id": "SAGA00",
+        "name": "s36"
+      },
+      "SAGA01": {
+        "chapter": [],
+        "description": "s65",
+        "episode": [],
+        "id": "SAGA01",
+        "name": "s68"
+      },
+      "SAGA02": {
+        "chapter": [],
+        "description": "s97",
+        "episode": [],
+        "id": "SAGA02",
+        "name": "s9a"
+      }
+    }
+  },
+  "new": {
+    "saga": {
+      "saga_ref01": {
+        "chapter": [],
+        "description": "sc9",
+        "episode": [],
+        "name": "scc"
+      }
+    }
+  }
+}

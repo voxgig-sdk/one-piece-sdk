@@ -1,0 +1,44 @@
+# BasicCrewFlow
+
+main: kit: flow: BasicCrewFlow:
+{
+  entity: "crew",
+  kind: "basic",
+  name: "BasicCrewFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "crew_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "crew_ref01",
+        srcdatavar: "crew_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "crew01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-crew_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCrewFlow"
+}

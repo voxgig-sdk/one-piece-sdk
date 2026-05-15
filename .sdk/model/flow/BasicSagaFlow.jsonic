@@ -1,0 +1,44 @@
+# BasicSagaFlow
+
+main: kit: flow: BasicSagaFlow:
+{
+  entity: "saga",
+  kind: "basic",
+  name: "BasicSagaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "saga_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "saga_ref01",
+        srcdatavar: "saga_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "saga01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-saga_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSagaFlow"
+}

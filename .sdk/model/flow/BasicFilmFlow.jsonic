@@ -1,0 +1,44 @@
+# BasicFilmFlow
+
+main: kit: flow: BasicFilmFlow:
+{
+  entity: "film",
+  kind: "basic",
+  name: "BasicFilmFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "film_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "film_ref01",
+        srcdatavar: "film_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "film01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-film_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFilmFlow"
+}

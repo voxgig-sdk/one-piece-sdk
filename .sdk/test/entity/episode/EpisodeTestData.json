@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "episode": {
+      "EPISODE00": {
+        "air_date": "s32",
+        "id": "EPISODE00",
+        "number": "s34",
+        "saga": "s35",
+        "title": "s36"
+      },
+      "EPISODE01": {
+        "air_date": "s64",
+        "id": "EPISODE01",
+        "number": "s66",
+        "saga": "s67",
+        "title": "s68"
+      },
+      "EPISODE02": {
+        "air_date": "s96",
+        "id": "EPISODE02",
+        "number": "s98",
+        "saga": "s99",
+        "title": "s9a"
+      }
+    }
+  },
+  "new": {
+    "episode": {
+      "episode_ref01": {
+        "air_date": "sc8",
+        "number": "sca",
+        "saga": "scb",
+        "title": "scc"
+      }
+    }
+  }
+}

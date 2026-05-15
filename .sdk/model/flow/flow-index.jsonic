@@ -1,0 +1,18 @@
+# Flows
+
+@"BasicBoatFlow.jsonic"
+@"BasicBowFlow.jsonic"
+@"BasicChapterFlow.jsonic"
+@"BasicCharacterFlow.jsonic"
+@"BasicCrewFlow.jsonic"
+@"BasicDialFlow.jsonic"
+@"BasicEpisodeFlow.jsonic"
+@"BasicFilmFlow.jsonic"
+@"BasicFruitFlow.jsonic"
+@"BasicGearFlow.jsonic"
+@"BasicHakiFlow.jsonic"
+@"BasicLocationFlow.jsonic"
+@"BasicSagaFlow.jsonic"
+@"BasicSwordFlow.jsonic"
+@"BasicTechniqueFlow.jsonic"
+@"BasicVolumeFlow.jsonic"

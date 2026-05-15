@@ -1,0 +1,152 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 16
+  metrics: count: path: 32
+  metrics: count: method: 32
+
+  entity: boat: {
+    path: "/boats": {
+      op: list: method: *GET
+    }
+    path: "/boats/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: bow: {
+    path: "/bows": {
+      op: list: method: *GET
+    }
+    path: "/bows/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: chapter: {
+    path: "/chapters": {
+      op: list: method: *GET
+    }
+    path: "/chapters/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: character: {
+    path: "/characters": {
+      op: list: method: *GET
+    }
+    path: "/characters/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: crew: {
+    path: "/crews": {
+      op: list: method: *GET
+    }
+    path: "/crews/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: dial: {
+    path: "/dials": {
+      op: list: method: *GET
+    }
+    path: "/dials/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: episode: {
+    path: "/episodes": {
+      op: list: method: *GET
+    }
+    path: "/episodes/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: film: {
+    path: "/films": {
+      op: list: method: *GET
+    }
+    path: "/films/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: fruit: {
+    path: "/fruits": {
+      op: list: method: *GET
+    }
+    path: "/fruits/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gear: {
+    path: "/gears": {
+      op: list: method: *GET
+    }
+    path: "/gears/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: haki: {
+    path: "/hakis": {
+      op: list: method: *GET
+    }
+    path: "/hakis/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: location: {
+    path: "/locations": {
+      op: list: method: *GET
+    }
+    path: "/locations/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: saga: {
+    path: "/sagas": {
+      op: list: method: *GET
+    }
+    path: "/sagas/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: sword: {
+    path: "/swords": {
+      op: list: method: *GET
+    }
+    path: "/swords/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: technique: {
+    path: "/techniques": {
+      op: list: method: *GET
+    }
+    path: "/techniques/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: volume: {
+    path: "/volumes": {
+      op: list: method: *GET
+    }
+    path: "/volumes/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

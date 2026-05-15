@@ -1,0 +1,44 @@
+# BasicEpisodeFlow
+
+main: kit: flow: BasicEpisodeFlow:
+{
+  entity: "episode",
+  kind: "basic",
+  name: "BasicEpisodeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "episode_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "episode_ref01",
+        srcdatavar: "episode_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "episode01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-episode_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEpisodeFlow"
+}

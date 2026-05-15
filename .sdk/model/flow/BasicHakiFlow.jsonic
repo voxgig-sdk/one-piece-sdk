@@ -1,0 +1,44 @@
+# BasicHakiFlow
+
+main: kit: flow: BasicHakiFlow:
+{
+  entity: "haki",
+  kind: "basic",
+  name: "BasicHakiFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "haki_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "haki_ref01",
+        srcdatavar: "haki_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "haki01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-haki_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHakiFlow"
+}

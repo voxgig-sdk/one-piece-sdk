@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "technique": {
+      "TECHNIQUE00": {
+        "description": "s28",
+        "gear": "s29",
+        "id": "TECHNIQUE00",
+        "name": "s2b"
+      },
+      "TECHNIQUE01": {
+        "description": "s50",
+        "gear": "s51",
+        "id": "TECHNIQUE01",
+        "name": "s53"
+      },
+      "TECHNIQUE02": {
+        "description": "s78",
+        "gear": "s79",
+        "id": "TECHNIQUE02",
+        "name": "s7b"
+      }
+    }
+  },
+  "new": {
+    "technique": {
+      "technique_ref01": {
+        "description": "sa0",
+        "gear": "sa1",
+        "name": "sa3"
+      }
+    }
+  }
+}

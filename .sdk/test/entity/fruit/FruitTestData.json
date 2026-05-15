@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "fruit": {
+      "FRUIT00": {
+        "description": "s32",
+        "id": "FRUIT00",
+        "name": "s34",
+        "type": "s35",
+        "user": "s36"
+      },
+      "FRUIT01": {
+        "description": "s64",
+        "id": "FRUIT01",
+        "name": "s66",
+        "type": "s67",
+        "user": "s68"
+      },
+      "FRUIT02": {
+        "description": "s96",
+        "id": "FRUIT02",
+        "name": "s98",
+        "type": "s99",
+        "user": "s9a"
+      }
+    }
+  },
+  "new": {
+    "fruit": {
+      "fruit_ref01": {
+        "description": "sc8",
+        "name": "sca",
+        "type": "scb",
+        "user": "scc"
+      }
+    }
+  }
+}

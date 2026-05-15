@@ -1,0 +1,44 @@
+# BasicTechniqueFlow
+
+main: kit: flow: BasicTechniqueFlow:
+{
+  entity: "technique",
+  kind: "basic",
+  name: "BasicTechniqueFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "technique_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "technique_ref01",
+        srcdatavar: "technique_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "technique01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-technique_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTechniqueFlow"
+}

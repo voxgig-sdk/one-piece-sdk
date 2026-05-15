@@ -1,0 +1,44 @@
+# BasicBoatFlow
+
+main: kit: flow: BasicBoatFlow:
+{
+  entity: "boat",
+  kind: "basic",
+  name: "BasicBoatFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "boat_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "boat_ref01",
+        srcdatavar: "boat_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "boat01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-boat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBoatFlow"
+}

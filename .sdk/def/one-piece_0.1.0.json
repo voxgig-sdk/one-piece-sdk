@@ -1,0 +1,1469 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "One Piece API",
+    "description": "Access information about the One Piece manga, including sagas, fruits, chapters, volumes, episodes, and more. Explore details about characters, crews, locations, and various elements from the One Piece world.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Nathan Dierickx"
+    },
+    "termsOfService": "https://api-onepiece.com/en/terms-of-use"
+  },
+  "servers": [
+    {
+      "url": "https://api-onepiece.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/sagas": {
+      "get": {
+        "summary": "Get all sagas",
+        "description": "Retrieve a list of all One Piece sagas",
+        "operationId": "getSagas",
+        "tags": [
+          "Sagas"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Saga"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sagas/{id}": {
+      "get": {
+        "summary": "Get saga by ID",
+        "description": "Retrieve detailed information about a specific saga",
+        "operationId": "getSagaById",
+        "tags": [
+          "Sagas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the saga"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Saga"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Saga not found"
+          }
+        }
+      }
+    },
+    "/fruits": {
+      "get": {
+        "summary": "Get all Devil Fruits",
+        "description": "Retrieve a list of all Devil Fruits from One Piece",
+        "operationId": "getFruits",
+        "tags": [
+          "Devil Fruits"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Fruit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fruits/{id}": {
+      "get": {
+        "summary": "Get fruit by ID",
+        "description": "Retrieve detailed information about a specific Devil Fruit",
+        "operationId": "getFruitById",
+        "tags": [
+          "Devil Fruits"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the Devil Fruit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fruit"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fruit not found"
+          }
+        }
+      }
+    },
+    "/chapters": {
+      "get": {
+        "summary": "Get all chapters",
+        "description": "Retrieve a list of all One Piece manga chapters",
+        "operationId": "getChapters",
+        "tags": [
+          "Chapters"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Chapter"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chapters/{id}": {
+      "get": {
+        "summary": "Get chapter by ID",
+        "description": "Retrieve detailed information about a specific chapter",
+        "operationId": "getChapterById",
+        "tags": [
+          "Chapters"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the chapter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Chapter"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Chapter not found"
+          }
+        }
+      }
+    },
+    "/volumes": {
+      "get": {
+        "summary": "Get all volumes",
+        "description": "Retrieve a list of all One Piece manga volumes",
+        "operationId": "getVolumes",
+        "tags": [
+          "Volumes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Volume"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/volumes/{id}": {
+      "get": {
+        "summary": "Get volume by ID",
+        "description": "Retrieve detailed information about a specific volume",
+        "operationId": "getVolumeById",
+        "tags": [
+          "Volumes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the volume"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Volume"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Volume not found"
+          }
+        }
+      }
+    },
+    "/episodes": {
+      "get": {
+        "summary": "Get all episodes",
+        "description": "Retrieve a list of all One Piece anime episodes",
+        "operationId": "getEpisodes",
+        "tags": [
+          "Episodes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Episode"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodes/{id}": {
+      "get": {
+        "summary": "Get episode by ID",
+        "description": "Retrieve detailed information about a specific episode",
+        "operationId": "getEpisodeById",
+        "tags": [
+          "Episodes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the episode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Episode"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode not found"
+          }
+        }
+      }
+    },
+    "/dials": {
+      "get": {
+        "summary": "Get all dials",
+        "description": "Retrieve a list of all dials from One Piece",
+        "operationId": "getDials",
+        "tags": [
+          "Dials"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Dial"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dials/{id}": {
+      "get": {
+        "summary": "Get dial by ID",
+        "description": "Retrieve detailed information about a specific dial",
+        "operationId": "getDialById",
+        "tags": [
+          "Dials"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the dial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dial"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dial not found"
+          }
+        }
+      }
+    },
+    "/films": {
+      "get": {
+        "summary": "Get all films",
+        "description": "Retrieve a list of all One Piece films",
+        "operationId": "getFilms",
+        "tags": [
+          "Films"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Film"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/films/{id}": {
+      "get": {
+        "summary": "Get film by ID",
+        "description": "Retrieve detailed information about a specific film",
+        "operationId": "getFilmById",
+        "tags": [
+          "Films"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the film"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Film"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Film not found"
+          }
+        }
+      }
+    },
+    "/swords": {
+      "get": {
+        "summary": "Get all swords",
+        "description": "Retrieve a list of all swords from One Piece",
+        "operationId": "getSwords",
+        "tags": [
+          "Swords"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Sword"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/swords/{id}": {
+      "get": {
+        "summary": "Get sword by ID",
+        "description": "Retrieve detailed information about a specific sword",
+        "operationId": "getSwordById",
+        "tags": [
+          "Swords"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the sword"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sword"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Sword not found"
+          }
+        }
+      }
+    },
+    "/hakis": {
+      "get": {
+        "summary": "Get all Hakis",
+        "description": "Retrieve a list of all Haki types from One Piece",
+        "operationId": "getHakis",
+        "tags": [
+          "Hakis"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Haki"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hakis/{id}": {
+      "get": {
+        "summary": "Get Haki by ID",
+        "description": "Retrieve detailed information about a specific Haki type",
+        "operationId": "getHakiById",
+        "tags": [
+          "Hakis"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the Haki"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Haki"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Haki not found"
+          }
+        }
+      }
+    },
+    "/gears": {
+      "get": {
+        "summary": "Get all Luffy's gears",
+        "description": "Retrieve a list of all of Luffy's gear forms",
+        "operationId": "getGears",
+        "tags": [
+          "Luffy"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Gear"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gears/{id}": {
+      "get": {
+        "summary": "Get gear by ID",
+        "description": "Retrieve detailed information about a specific Luffy gear",
+        "operationId": "getGearById",
+        "tags": [
+          "Luffy"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the gear"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Gear"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Gear not found"
+          }
+        }
+      }
+    },
+    "/techniques": {
+      "get": {
+        "summary": "Get all Luffy's techniques",
+        "description": "Retrieve a list of all of Luffy's techniques",
+        "operationId": "getTechniques",
+        "tags": [
+          "Luffy"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Technique"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/techniques/{id}": {
+      "get": {
+        "summary": "Get technique by ID",
+        "description": "Retrieve detailed information about a specific Luffy technique",
+        "operationId": "getTechniqueById",
+        "tags": [
+          "Luffy"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the technique"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Technique"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Technique not found"
+          }
+        }
+      }
+    },
+    "/crews": {
+      "get": {
+        "summary": "Get all crews",
+        "description": "Retrieve a list of all pirate crews from One Piece",
+        "operationId": "getCrews",
+        "tags": [
+          "Crews"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Crew"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/crews/{id}": {
+      "get": {
+        "summary": "Get crew by ID",
+        "description": "Retrieve detailed information about a specific crew",
+        "operationId": "getCrewById",
+        "tags": [
+          "Crews"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the crew"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Crew"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Crew not found"
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "summary": "Get all characters",
+        "description": "Retrieve a list of all One Piece characters",
+        "operationId": "getCharacters",
+        "tags": [
+          "Characters"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/{id}": {
+      "get": {
+        "summary": "Get character by ID",
+        "description": "Retrieve detailed information about a specific character",
+        "operationId": "getCharacterById",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the character"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Character not found"
+          }
+        }
+      }
+    },
+    "/boats": {
+      "get": {
+        "summary": "Get all boats",
+        "description": "Retrieve a list of all boats/ships from One Piece",
+        "operationId": "getBoats",
+        "tags": [
+          "Boats"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Boat"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boats/{id}": {
+      "get": {
+        "summary": "Get boat by ID",
+        "description": "Retrieve detailed information about a specific boat/ship",
+        "operationId": "getBoatById",
+        "tags": [
+          "Boats"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the boat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Boat"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Boat not found"
+          }
+        }
+      }
+    },
+    "/bows": {
+      "get": {
+        "summary": "Get all bows",
+        "description": "Retrieve a list of all bows from One Piece",
+        "operationId": "getBows",
+        "tags": [
+          "Bows"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Bow"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bows/{id}": {
+      "get": {
+        "summary": "Get bow by ID",
+        "description": "Retrieve detailed information about a specific bow",
+        "operationId": "getBowById",
+        "tags": [
+          "Bows"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the bow"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bow"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bow not found"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "summary": "Get all locations",
+        "description": "Retrieve a list of all locations from One Piece",
+        "operationId": "getLocations",
+        "tags": [
+          "Locations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Location"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/{id}": {
+      "get": {
+        "summary": "Get location by ID",
+        "description": "Retrieve detailed information about a specific location",
+        "operationId": "getLocationById",
+        "tags": [
+          "Locations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the location"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Saga": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the saga"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the saga"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the saga"
+          },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Chapter IDs included in this saga"
+          },
+          "episodes": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Episode IDs included in this saga"
+          }
+        }
+      },
+      "Fruit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the Devil Fruit"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the Devil Fruit"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of Devil Fruit (Paramecia, Zoan, Logia)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Devil Fruit's powers"
+          },
+          "user": {
+            "type": "string",
+            "description": "Current or known user of the fruit"
+          }
+        }
+      },
+      "Chapter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the chapter"
+          },
+          "number": {
+            "type": "integer",
+            "description": "Chapter number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the chapter"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Release date of the chapter"
+          },
+          "saga": {
+            "type": "string",
+            "description": "Saga this chapter belongs to"
+          }
+        }
+      },
+      "Volume": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the volume"
+          },
+          "number": {
+            "type": "integer",
+            "description": "Volume number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the volume"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Release date of the volume"
+          },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Chapter IDs included in this volume"
+          }
+        }
+      },
+      "Episode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the episode"
+          },
+          "number": {
+            "type": "integer",
+            "description": "Episode number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the episode"
+          },
+          "airDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Air date of the episode"
+          },
+          "saga": {
+            "type": "string",
+            "description": "Saga this episode belongs to"
+          }
+        }
+      },
+      "Dial": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the dial"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the dial"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of dial"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the dial's function"
+          }
+        }
+      },
+      "Film": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the film"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the film"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Release date of the film"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the film"
+          }
+        }
+      },
+      "Sword": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the sword"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the sword"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade of the sword"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Current owner of the sword"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the sword"
+          }
+        }
+      },
+      "Haki": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the Haki type"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the Haki type"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Haki type"
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Known users of this Haki type"
+          }
+        }
+      },
+      "Gear": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the gear"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the gear form"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the gear's abilities"
+          },
+          "firstAppearance": {
+            "type": "string",
+            "description": "First appearance of this gear"
+          }
+        }
+      },
+      "Technique": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the technique"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the technique"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the technique"
+          },
+          "gear": {
+            "type": "string",
+            "description": "Associated gear form if applicable"
+          }
+        }
+      },
+      "Crew": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the crew"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the crew"
+          },
+          "captain": {
+            "type": "string",
+            "description": "Captain of the crew"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Members of the crew"
+          },
+          "ship": {
+            "type": "string",
+            "description": "Name of the crew's ship"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the crew"
+          }
+        }
+      },
+      "Character": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the character"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the character"
+          },
+          "age": {
+            "type": "integer",
+            "description": "Age of the character"
+          },
+          "bounty": {
+            "type": "integer",
+            "description": "Bounty of the character"
+          },
+          "crew": {
+            "type": "string",
+            "description": "Crew affiliation"
+          },
+          "devilFruit": {
+            "type": "string",
+            "description": "Devil Fruit ability if applicable"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the character"
+          }
+        }
+      },
+      "Boat": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the boat"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the boat/ship"
+          },
+          "crew": {
+            "type": "string",
+            "description": "Crew that owns the boat"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of vessel"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the boat"
+          }
+        }
+      },
+      "Bow": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the bow"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the bow"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Owner of the bow"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the bow"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the location"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the location"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of location (island, sea, etc.)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the location"
+          },
+          "firstAppearance": {
+            "type": "string",
+            "description": "First appearance of this location"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Sagas",
+      "description": "Operations related to One Piece sagas"
+    },
+    {
+      "name": "Devil Fruits",
+      "description": "Operations related to Devil Fruits"
+    },
+    {
+      "name": "Chapters",
+      "description": "Operations related to manga chapters"
+    },
+    {
+      "name": "Volumes",
+      "description": "Operations related to manga volumes"
+    },
+    {
+      "name": "Episodes",
+      "description": "Operations related to anime episodes"
+    },
+    {
+      "name": "Dials",
+      "description": "Operations related to dials"
+    },
+    {
+      "name": "Films",
+      "description": "Operations related to One Piece films"
+    },
+    {
+      "name": "Swords",
+      "description": "Operations related to swords"
+    },
+    {
+      "name": "Hakis",
+      "description": "Operations related to Haki types"
+    },
+    {
+      "name": "Luffy",
+      "description": "Operations related to Luffy's abilities"
+    },
+    {
+      "name": "Crews",
+      "description": "Operations related to pirate crews"
+    },
+    {
+      "name": "Characters",
+      "description": "Operations related to One Piece characters"
+    },
+    {
+      "name": "Boats",
+      "description": "Operations related to boats and ships"
+    },
+    {
+      "name": "Bows",
+      "description": "Operations related to bows"
+    },
+    {
+      "name": "Locations",
+      "description": "Operations related to locations"
+    }
+  ]
+}

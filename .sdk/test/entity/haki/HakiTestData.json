@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "haki": {
+      "HAKI00": {
+        "description": "s28",
+        "id": "HAKI00",
+        "name": "s2a",
+        "user": []
+      },
+      "HAKI01": {
+        "description": "s50",
+        "id": "HAKI01",
+        "name": "s52",
+        "user": []
+      },
+      "HAKI02": {
+        "description": "s78",
+        "id": "HAKI02",
+        "name": "s7a",
+        "user": []
+      }
+    }
+  },
+  "new": {
+    "haki": {
+      "haki_ref01": {
+        "description": "sa0",
+        "name": "sa2",
+        "user": []
+      }
+    }
+  }
+}

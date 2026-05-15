@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "volume": {
+      "VOLUME00": {
+        "chapter": [],
+        "id": "VOLUME00",
+        "number": "s34",
+        "release_date": "s35",
+        "title": "s36"
+      },
+      "VOLUME01": {
+        "chapter": [],
+        "id": "VOLUME01",
+        "number": "s66",
+        "release_date": "s67",
+        "title": "s68"
+      },
+      "VOLUME02": {
+        "chapter": [],
+        "id": "VOLUME02",
+        "number": "s98",
+        "release_date": "s99",
+        "title": "s9a"
+      }
+    }
+  },
+  "new": {
+    "volume": {
+      "volume_ref01": {
+        "chapter": [],
+        "number": "sca",
+        "release_date": "scb",
+        "title": "scc"
+      }
+    }
+  }
+}

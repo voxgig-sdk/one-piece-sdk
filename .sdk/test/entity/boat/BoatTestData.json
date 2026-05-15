@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "boat": {
+      "BOAT00": {
+        "crew": "s32",
+        "description": "s33",
+        "id": "BOAT00",
+        "name": "s35",
+        "type": "s36"
+      },
+      "BOAT01": {
+        "crew": "s64",
+        "description": "s65",
+        "id": "BOAT01",
+        "name": "s67",
+        "type": "s68"
+      },
+      "BOAT02": {
+        "crew": "s96",
+        "description": "s97",
+        "id": "BOAT02",
+        "name": "s99",
+        "type": "s9a"
+      }
+    }
+  },
+  "new": {
+    "boat": {
+      "boat_ref01": {
+        "crew": "sc8",
+        "description": "sc9",
+        "name": "scb",
+        "type": "scc"
+      }
+    }
+  }
+}

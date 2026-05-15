@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "sword": {
+      "SWORD00": {
+        "description": "s32",
+        "grade": "s33",
+        "id": "SWORD00",
+        "name": "s35",
+        "owner": "s36"
+      },
+      "SWORD01": {
+        "description": "s64",
+        "grade": "s65",
+        "id": "SWORD01",
+        "name": "s67",
+        "owner": "s68"
+      },
+      "SWORD02": {
+        "description": "s96",
+        "grade": "s97",
+        "id": "SWORD02",
+        "name": "s99",
+        "owner": "s9a"
+      }
+    }
+  },
+  "new": {
+    "sword": {
+      "sword_ref01": {
+        "description": "sc8",
+        "grade": "sc9",
+        "name": "scb",
+        "owner": "scc"
+      }
+    }
+  }
+}
