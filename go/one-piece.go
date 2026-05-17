@@ -1,10 +1,10 @@
 package voxgigonepiecesdk
 
 import (
-	"github.com/voxgig-sdk/one-piece-sdk/core"
-	"github.com/voxgig-sdk/one-piece-sdk/entity"
-	"github.com/voxgig-sdk/one-piece-sdk/feature"
-	_ "github.com/voxgig-sdk/one-piece-sdk/utility"
+	"github.com/voxgig-sdk/one-piece-sdk/go/core"
+	"github.com/voxgig-sdk/one-piece-sdk/go/entity"
+	"github.com/voxgig-sdk/one-piece-sdk/go/feature"
+	_ "github.com/voxgig-sdk/one-piece-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

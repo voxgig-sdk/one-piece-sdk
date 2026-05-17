@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/one-piece-sdk"
-	"github.com/voxgig-sdk/one-piece-sdk/core"
+	sdk "github.com/voxgig-sdk/one-piece-sdk/go"
+	"github.com/voxgig-sdk/one-piece-sdk/go/core"
 )
 
 func TestCrewDirect(t *testing.T) {
