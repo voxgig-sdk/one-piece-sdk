@@ -102,7 +102,6 @@ function film_basic_setup(extra)
     ["ONEPIECE_TEST_FILM_ENTID"] = idmap,
     ["ONEPIECE_TEST_LIVE"] = "FALSE",
     ["ONEPIECE_TEST_EXPLAIN"] = "FALSE",
-    ["ONEPIECE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -114,7 +113,6 @@ function film_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["ONEPIECE_APIKEY"],
       },
       extra or {},
     })

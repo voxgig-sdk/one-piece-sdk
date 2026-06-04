@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from onepiece_sdk import OnePieceSDK
 
-client = OnePieceSDK({
-    "apikey": os.environ.get("ONE-PIECE_APIKEY"),
-})
+client = OnePieceSDK({})
 ```
 
 ### 2. List boats
@@ -130,7 +127,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ONE-PIECE_TEST_LIVE=TRUE
-ONE-PIECE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

@@ -109,14 +109,12 @@ def _film_direct_setup(mockres):
     env = runner.env_override({
         "ONEPIECE_TEST_FILM_ENTID": {},
         "ONEPIECE_TEST_LIVE": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     live = env.get("ONEPIECE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ONEPIECE_APIKEY"),
         }
         client = OnePieceSDK(merged_opts)
         return {

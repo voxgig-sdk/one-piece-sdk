@@ -20,9 +20,6 @@ class OnePieceConfig
             ],
             "options" => [
                 "base" => "https://api-onepiece.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

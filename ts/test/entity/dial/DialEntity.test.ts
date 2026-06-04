@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'ONE_PIECE_TEST_DIAL_ENTID': idmap,
     'ONE_PIECE_TEST_LIVE': 'FALSE',
     'ONE_PIECE_TEST_EXPLAIN': 'FALSE',
-    'ONE_PIECE_APIKEY': 'NONE',
   })
 
   idmap = env['ONE_PIECE_TEST_DIAL_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new OnePieceSDK(merge([
       {
-        apikey: env.ONE_PIECE_APIKEY,
       },
       extra
     ]))
