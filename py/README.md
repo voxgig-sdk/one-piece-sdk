@@ -10,7 +10,7 @@ The Python SDK for the OnePiece API — an entity-oriented client following Pyth
 
 ## Install
 ```bash
-pip install one-piece-sdk
+pip install voxgig-sdk-one-piece
 ```
 
 Or install from source:

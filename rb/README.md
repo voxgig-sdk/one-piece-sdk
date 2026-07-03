@@ -10,13 +10,13 @@ The Ruby SDK for the OnePiece API — an entity-oriented client using idiomatic 
 
 ## Install
 ```bash
-gem install one-piece-sdk
+gem install voxgig-sdk-one-piece
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "one-piece-sdk"
+gem "voxgig-sdk-one-piece"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The TypeScript SDK for the OnePiece API — a type-safe, entity-oriented client 
 
 ## Install
 ```bash
-npm install one-piece
+npm install @voxgig-sdk/one-piece
 ```
 ## Tutorial: your first API call
 

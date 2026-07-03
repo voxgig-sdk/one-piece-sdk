@@ -10,7 +10,7 @@ The PHP SDK for the OnePiece API — an entity-oriented client using PHP convent
 
 ## Install
 ```bash
-composer require voxgig/one-piece-sdk
+composer require voxgig-sdk/one-piece
 ```
 
 

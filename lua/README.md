@@ -10,7 +10,7 @@ The Lua SDK for the OnePiece API — an entity-oriented client using Lua convent
 
 ## Install
 ```bash
-luarocks install one-piece-sdk
+luarocks install voxgig-sdk-one-piece
 ```
 
 If the module is not yet published, add the source directory to
