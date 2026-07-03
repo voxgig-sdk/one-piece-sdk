@@ -1,21 +1,8 @@
 # OnePiece SDK
 
-Query One Piece manga and anime data — sagas, chapters, volumes, episodes, characters, crews, fruits, hakis, and more
+One Piece API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About One Piece API
-
-The One Piece API is a community-run JSON API published at [api-onepiece.com](https://api-onepiece.com) that exposes structured data about the One Piece manga and anime. The site is bilingual (English and French) and the current major version is `v2`, served from `https://api.api-onepiece.com/v2/...`.
-
-What you get from the API:
-
-- Story structure: sagas, chapters, volumes (tomes), episodes, films, and story arcs (bows).
-- People and groups: characters and crews.
-- World and lore: devil fruits, hakis, dials, locations.
-- Combat and gear: swords, boats, Luffy's gears, and Luffy's techniques.
-
-The API is read-only and does not document an authentication scheme or rate limits. CORS is reported as disabled across endpoints by the freepublicapis catalogue, so browser-side calls may need a proxy. Localised responses are selected via a language segment in the path (for example `/v2/characters/en` or `/v2/characters/fr`).
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install one-piece-sdk
 luarocks install one-piece-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { OnePieceSDK } from 'one-piece'
 
-const client = new OnePieceSDK({})
+const client = new OnePieceSDK({
+  apikey: process.env.ONE-PIECE_APIKEY,
+})
 
 // List all boats
 const boats = await client.Boat().list()
+console.log(boats.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,22 +90,22 @@ The API exposes 16 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Boat** | Ships and vessels that appear in the series, documented under `/en/documentation/14-boat`. | `/boats` |
-| **Bow** | Story arcs ("arcs") that group chapters and episodes, documented under `/en/documentation/15-arc`. | `/bows` |
-| **Chapter** | Individual manga chapters, documented under `/en/documentation/3-chapter`. | `/chapters` |
-| **Character** | People and creatures in the One Piece world, served from `/v2/characters/{lang}` and documented under `/en/documentation/13-character`. | `/characters` |
-| **Crew** | Pirate, marine, and revolutionary crews, documented under `/en/documentation/12-crew`. | `/crews` |
-| **Dial** | Skypiean dials and their varieties, documented under `/en/documentation/6-dial`. | `/dials` |
-| **Episode** | Anime episodes from the One Piece series, documented under `/en/documentation/5-episode`. | `/episodes` |
-| **Film** | One Piece feature films, documented under `/en/documentation/7-movie`. | `/films` |
-| **Fruit** | Devil fruits with their types and powers, served from `/v2/fruits/{lang}` and documented under `/en/documentation/2-fruit`. | `/fruits` |
-| **Gear** | Luffy's gears (transformations / power-ups), documented under `/en/documentation/10-luffy-gear`. | `/gears` |
-| **Haki** | Forms of haki (Observation, Armament, Conqueror's), documented under `/en/documentation/9-haki`. | `/hakis` |
-| **Location** | Places, islands, and regions in the One Piece world, documented under `/en/documentation/16-locate`. | `/locations` |
-| **Saga** | Major story sagas grouping multiple arcs, served from `/v2/sagas/{lang}` and documented under `/en/documentation/1-saga`. | `/sagas` |
-| **Sword** | Notable swords and blades, documented under `/en/documentation/8-sword`. | `/swords` |
-| **Technique** | Luffy's named techniques and attacks, documented under `/en/documentation/11-luffy-technique`. | `/techniques` |
-| **Volume** | Collected manga volumes (tomes), documented under `/en/documentation/4-tome`. | `/volumes` |
+| **Boat** |  | `/boats` |
+| **Bow** |  | `/bows` |
+| **Chapter** |  | `/chapters` |
+| **Character** |  | `/characters` |
+| **Crew** |  | `/crews` |
+| **Dial** |  | `/dials` |
+| **Episode** |  | `/episodes` |
+| **Film** |  | `/films` |
+| **Fruit** |  | `/fruits` |
+| **Gear** |  | `/gears` |
+| **Haki** |  | `/hakis` |
+| **Location** |  | `/locations` |
+| **Saga** |  | `/sagas` |
+| **Sword** |  | `/swords` |
+| **Technique** |  | `/techniques` |
+| **Volume** |  | `/volumes` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -126,17 +115,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from onepiece_sdk import OnePieceSDK
 
-client = OnePieceSDK({})
+client = OnePieceSDK({
+    "apikey": os.environ.get("ONE-PIECE_APIKEY"),
+})
 
 # List all boats
-boats, err = client.Boat(None).list(None, None)
+boats, err = client.Boat().list()
+print(boats)
 
 # Load a specific boat
-boat, err = client.Boat(None).load(
-    {"id": "example_id"}, None
-)
+boat, err = client.Boat().load({"id": "example_id"})
+print(boat)
 ```
 
 ### PHP
@@ -145,15 +137,17 @@ boat, err = client.Boat(None).load(
 <?php
 require_once 'onepiece_sdk.php';
 
-$client = new OnePieceSDK([]);
+$client = new OnePieceSDK([
+    "apikey" => getenv("ONE-PIECE_APIKEY"),
+]);
 
 // List all boats
-[$boats, $err] = $client->Boat(null)->list(null, null);
+[$boats, $err] = $client->Boat()->list();
+print_r($boats);
 
 // Load a specific boat
-[$boat, $err] = $client->Boat(null)->load(
-    ["id" => "example_id"], null
-);
+[$boat, $err] = $client->Boat()->load(["id" => "example_id"]);
+print_r($boat);
 ```
 
 ### Golang
@@ -161,10 +155,13 @@ $client = new OnePieceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/one-piece-sdk/go"
 
-client := sdk.NewOnePieceSDK(map[string]any{})
+client := sdk.NewOnePieceSDK(map[string]any{
+    "apikey": os.Getenv("ONE-PIECE_APIKEY"),
+})
 
 // List all boats
 boats, err := client.Boat(nil).List(nil, nil)
+fmt.Println(boats)
 ```
 
 ### Ruby
@@ -172,15 +169,17 @@ boats, err := client.Boat(nil).List(nil, nil)
 ```ruby
 require_relative "OnePiece_sdk"
 
-client = OnePieceSDK.new({})
+client = OnePieceSDK.new({
+  "apikey" => ENV["ONE-PIECE_APIKEY"],
+})
 
 # List all boats
-boats, err = client.Boat(nil).list(nil, nil)
+boats, err = client.Boat().list
+puts boats
 
 # Load a specific boat
-boat, err = client.Boat(nil).load(
-  { "id" => "example_id" }, nil
-)
+boat, err = client.Boat().load({ "id" => "example_id" })
+puts boat
 ```
 
 ### Lua
@@ -188,15 +187,17 @@ boat, err = client.Boat(nil).load(
 ```lua
 local sdk = require("one-piece_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ONE-PIECE_APIKEY"),
+})
 
 -- List all boats
-local boats, err = client:Boat(nil):list(nil, nil)
+local boats, err = client:Boat():list()
+print(boats)
 
 -- Load a specific boat
-local boat, err = client:Boat(nil):load(
-  { id = "example_id" }, nil
-)
+local boat, err = client:Boat():load({ id = "example_id" })
+print(boat)
 ```
 
 ## Unit testing in offline mode
@@ -215,25 +216,21 @@ const result = await client.Boat().load({ id: 'test01' })
 ### Python
 
 ```python
-client = OnePieceSDK.test(None, None)
-result, err = client.Boat(None).load(
-    {"id": "test01"}, None
-)
+client = OnePieceSDK.test()
+result, err = client.Boat().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = OnePieceSDK::test(null, null);
-[$result, $err] = $client->Boat(null)->load(
-    ["id" => "test01"], null
-);
+$client = OnePieceSDK::test();
+[$result, $err] = $client->Boat()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Boat(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -242,19 +239,15 @@ result, err := client.Boat(nil).Load(
 ### Ruby
 
 ```ruby
-client = OnePieceSDK.test(nil, nil)
-result, err = client.Boat(nil).load(
-  { "id" => "test01" }, nil
-)
+client = OnePieceSDK.test
+result, err = client.Boat().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Boat(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Boat():load({ id = "test01" })
 ```
 
 ## How it works
@@ -358,15 +351,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the One Piece API
-
-- Upstream: [https://api-onepiece.com](https://api-onepiece.com)
-- API docs: [https://api-onepiece.com/en/documentation](https://api-onepiece.com/en/documentation)
-
-- The provider does not publish an explicit licence on its homepage or documentation.
-- Underlying One Piece names, artwork, and lore are trademarks of Eiichiro Oda and Shueisha — this SDK only wraps the public JSON endpoints.
-- Attribute the source (`api-onepiece.com`) when redistributing data and check the provider's site for any updated terms before commercial use.
 
 ---
 

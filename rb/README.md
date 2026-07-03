@@ -1,6 +1,11 @@
 # OnePiece Ruby SDK
 
-The Ruby SDK for the OnePiece API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the OnePiece API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,13 +36,15 @@ loading a specific record.
 ```ruby
 require_relative "OnePiece_sdk"
 
-client = OnePieceSDK.new({})
+client = OnePieceSDK.new({
+  "apikey" => ENV["ONE-PIECE_APIKEY"],
+})
 ```
 
 ### 2. List boats
 
 ```ruby
-result, err = client.Boat(nil).list(nil, nil)
+result, err = client.Boat().list
 raise err if err
 
 if result.is_a?(Array)
@@ -51,7 +58,7 @@ end
 ### 3. Load a boat
 
 ```ruby
-result, err = client.Boat(nil).load({ "id" => "example_id" }, nil)
+result, err = client.Boat().load({ "id" => "example_id" })
 raise err if err
 puts result
 ```
@@ -97,11 +104,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = OnePieceSDK.test(nil, nil)
+client = OnePieceSDK.test
 
-result, err = client.OnePiece(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.OnePiece().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -133,6 +138,7 @@ Create a `.env.local` file at the project root:
 
 ```
 ONE-PIECE_TEST_LIVE=TRUE
+ONE-PIECE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -155,6 +161,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

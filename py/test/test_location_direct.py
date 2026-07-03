@@ -109,12 +109,14 @@ def _location_direct_setup(mockres):
     env = runner.env_override({
         "ONEPIECE_TEST_LOCATION_ENTID": {},
         "ONEPIECE_TEST_LIVE": "FALSE",
+        "ONEPIECE_APIKEY": "NONE",
     })
 
     live = env.get("ONEPIECE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("ONEPIECE_APIKEY"),
         }
         client = OnePieceSDK(merged_opts)
         return {

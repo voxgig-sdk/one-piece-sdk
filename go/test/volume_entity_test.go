@@ -135,6 +135,7 @@ func volumeBasicSetup(extra map[string]any) *entityTestSetup {
 		"ONEPIECE_TEST_VOLUME_ENTID": idmap,
 		"ONEPIECE_TEST_LIVE":      "FALSE",
 		"ONEPIECE_TEST_EXPLAIN":   "FALSE",
+		"ONEPIECE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ONEPIECE_TEST_VOLUME_ENTID"])
@@ -145,6 +146,7 @@ func volumeBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ONEPIECE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ONEPIECE_APIKEY"],
 			},
 			extra,
 		})

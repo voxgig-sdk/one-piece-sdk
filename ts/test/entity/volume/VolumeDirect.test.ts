@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ONEPIECE_TEST_VOLUME_ENTID': {},
     'ONEPIECE_TEST_LIVE': 'FALSE',
+    'ONEPIECE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ONEPIECE_TEST_LIVE
 
   if (live) {
     const client = new OnePieceSDK({
+      apikey: env.ONEPIECE_APIKEY,
     })
 
     let idmap: any = env['ONEPIECE_TEST_VOLUME_ENTID']

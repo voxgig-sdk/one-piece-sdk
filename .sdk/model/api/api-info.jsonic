@@ -17,42 +17,7 @@ main: {
       termsOfService: "https://api-onepiece.com/en/terms-of-use"
       title: "One Piece API"
       version: "1.0.0"
-      tagline: "Query One Piece manga and anime data — sagas, chapters, volumes, episodes, characters, crews, fruits, hakis, and more"
-      homepage: "https://api-onepiece.com"
-      docs_url: "https://api-onepiece.com/en/documentation"
-      license_short: "Licence not stated by the provider; treat data as fan-curated and verify before reuse"
-      license_md: `- The provider does not publish an explicit licence on its homepage or documentation.
-- Underlying One Piece names, artwork, and lore are trademarks of Eiichiro Oda and Shueisha — this SDK only wraps the public JSON endpoints.
-- Attribute the source (\`api-onepiece.com\`) when redistributing data and check the provider's site for any updated terms before commercial use.`
-      about_md: `The One Piece API is a community-run JSON API published at [api-onepiece.com](https://api-onepiece.com) that exposes structured data about the One Piece manga and anime. The site is bilingual (English and French) and the current major version is \`v2\`, served from \`https://api.api-onepiece.com/v2/...\`.
-
-What you get from the API:
-
-- Story structure: sagas, chapters, volumes (tomes), episodes, films, and story arcs (bows).
-- People and groups: characters and crews.
-- World and lore: devil fruits, hakis, dials, locations.
-- Combat and gear: swords, boats, Luffy's gears, and Luffy's techniques.
-
-The API is read-only and does not document an authentication scheme or rate limits. CORS is reported as disabled across endpoints by the freepublicapis catalogue, so browser-side calls may need a proxy. Localised responses are selected via a language segment in the path (for example \`/v2/characters/en\` or \`/v2/characters/fr\`).`
-      entity_desc: {
-        boat: "Ships and vessels that appear in the series, documented under `/en/documentation/14-boat`."
-        bow: "Story arcs (\"arcs\") that group chapters and episodes, documented under `/en/documentation/15-arc`."
-        chapter: "Individual manga chapters, documented under `/en/documentation/3-chapter`."
-        character: "People and creatures in the One Piece world, served from `/v2/characters/{lang}` and documented under `/en/documentation/13-character`."
-        crew: "Pirate, marine, and revolutionary crews, documented under `/en/documentation/12-crew`."
-        dial: "Skypiean dials and their varieties, documented under `/en/documentation/6-dial`."
-        episode: "Anime episodes from the One Piece series, documented under `/en/documentation/5-episode`."
-        film: "One Piece feature films, documented under `/en/documentation/7-movie`."
-        fruit: "Devil fruits with their types and powers, served from `/v2/fruits/{lang}` and documented under `/en/documentation/2-fruit`."
-        gear: "Luffy's gears (transformations / power-ups), documented under `/en/documentation/10-luffy-gear`."
-        haki: "Forms of haki (Observation, Armament, Conqueror's), documented under `/en/documentation/9-haki`."
-        location: "Places, islands, and regions in the One Piece world, documented under `/en/documentation/16-locate`."
-        saga: "Major story sagas grouping multiple arcs, served from `/v2/sagas/{lang}` and documented under `/en/documentation/1-saga`."
-        sword: "Notable swords and blades, documented under `/en/documentation/8-sword`."
-        technique: "Luffy's named techniques and attacks, documented under `/en/documentation/11-luffy-technique`."
-        volume: "Collected manga volumes (tomes), documented under `/en/documentation/4-tome`."
-      }
-      auth: false
     }
   }
 }
+
