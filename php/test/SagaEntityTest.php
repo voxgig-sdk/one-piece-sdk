@@ -50,16 +50,14 @@ class SagaEntityTest extends TestCase
         $saga_ref01_ent = $client->Saga(null);
         $saga_ref01_match = [];
 
-        [$saga_ref01_list_result, $err] = $saga_ref01_ent->list($saga_ref01_match, null);
-        $this->assertNull($err);
+        $saga_ref01_list_result = $saga_ref01_ent->list($saga_ref01_match, null);
         $this->assertIsArray($saga_ref01_list_result);
 
         // LOAD
         $saga_ref01_match_dt0 = [
             "id" => $saga_ref01_data["id"],
         ];
-        [$saga_ref01_data_dt0_loaded, $err] = $saga_ref01_ent->load($saga_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $saga_ref01_data_dt0_loaded = $saga_ref01_ent->load($saga_ref01_match_dt0, null);
         $saga_ref01_data_dt0_load_result = Helpers::to_map($saga_ref01_data_dt0_loaded);
         $this->assertNotNull($saga_ref01_data_dt0_load_result);
         $this->assertEquals($saga_ref01_data_dt0_load_result["id"], $saga_ref01_data["id"]);
@@ -96,7 +94,6 @@ function saga_basic_setup($extra)
         "ONEPIECE_TEST_SAGA_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function saga_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

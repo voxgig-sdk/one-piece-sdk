@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch FruitLoadMatch
+---@param ctrl? table
+---@return Fruit
+---@return string? err
 function FruitEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch FruitListMatch
+---@param ctrl? table
+---@return Fruit[]
+---@return string? err
 function FruitEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

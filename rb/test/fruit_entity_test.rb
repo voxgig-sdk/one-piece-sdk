@@ -43,16 +43,14 @@ class FruitEntityTest < Minitest::Test
     fruit_ref01_ent = client.Fruit(nil)
     fruit_ref01_match = {}
 
-    fruit_ref01_list_result, err = fruit_ref01_ent.list(fruit_ref01_match, nil)
-    assert_nil err
+    fruit_ref01_list_result = fruit_ref01_ent.list(fruit_ref01_match, nil)
     assert fruit_ref01_list_result.is_a?(Array)
 
     # LOAD
     fruit_ref01_match_dt0 = {
       "id" => fruit_ref01_data["id"],
     }
-    fruit_ref01_data_dt0_loaded, err = fruit_ref01_ent.load(fruit_ref01_match_dt0, nil)
-    assert_nil err
+    fruit_ref01_data_dt0_loaded = fruit_ref01_ent.load(fruit_ref01_match_dt0, nil)
     fruit_ref01_data_dt0_load_result = Helpers.to_map(fruit_ref01_data_dt0_loaded)
     assert !fruit_ref01_data_dt0_load_result.nil?
     assert_equal fruit_ref01_data_dt0_load_result["id"], fruit_ref01_data["id"]
@@ -93,7 +91,6 @@ def fruit_basic_setup(extra)
     "ONEPIECE_TEST_FRUIT_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def fruit_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

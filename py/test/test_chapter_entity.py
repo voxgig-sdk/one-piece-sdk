@@ -50,16 +50,14 @@ class TestChapterEntity:
         chapter_ref01_ent = client.Chapter(None)
         chapter_ref01_match = {}
 
-        chapter_ref01_list_result, err = chapter_ref01_ent.list(chapter_ref01_match, None)
-        assert err is None
+        chapter_ref01_list_result = chapter_ref01_ent.list(chapter_ref01_match, None)
         assert isinstance(chapter_ref01_list_result, list)
 
         # LOAD
         chapter_ref01_match_dt0 = {
             "id": chapter_ref01_data["id"],
         }
-        chapter_ref01_data_dt0_loaded, err = chapter_ref01_ent.load(chapter_ref01_match_dt0, None)
-        assert err is None
+        chapter_ref01_data_dt0_loaded = chapter_ref01_ent.load(chapter_ref01_match_dt0, None)
         chapter_ref01_data_dt0_load_result = helpers.to_map(chapter_ref01_data_dt0_loaded)
         assert chapter_ref01_data_dt0_load_result is not None
         assert chapter_ref01_data_dt0_load_result["id"] == chapter_ref01_data["id"]
@@ -102,7 +100,6 @@ def _chapter_basic_setup(extra):
         "ONEPIECE_TEST_CHAPTER_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _chapter_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

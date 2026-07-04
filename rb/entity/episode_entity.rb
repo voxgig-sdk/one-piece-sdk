@@ -45,6 +45,7 @@ class EpisodeEntity
     end
   end
 
+  # @return [Episode, Hash] the current Episode data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class EpisodeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Episode fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Episode.
+  #
+  # @param reqmatch [EpisodeLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Episode, Hash] the loaded Episode; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class EpisodeEntity
 
 
   
+  # List Episode items matching the given filter.
+  #
+  # @param reqmatch [EpisodeListMatch, Hash, nil] match filter (any subset of Episode fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Episode>, Array] the matching Episode items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

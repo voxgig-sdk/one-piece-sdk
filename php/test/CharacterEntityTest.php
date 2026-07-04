@@ -50,16 +50,14 @@ class CharacterEntityTest extends TestCase
         $character_ref01_ent = $client->Character(null);
         $character_ref01_match = [];
 
-        [$character_ref01_list_result, $err] = $character_ref01_ent->list($character_ref01_match, null);
-        $this->assertNull($err);
+        $character_ref01_list_result = $character_ref01_ent->list($character_ref01_match, null);
         $this->assertIsArray($character_ref01_list_result);
 
         // LOAD
         $character_ref01_match_dt0 = [
             "id" => $character_ref01_data["id"],
         ];
-        [$character_ref01_data_dt0_loaded, $err] = $character_ref01_ent->load($character_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $character_ref01_data_dt0_loaded = $character_ref01_ent->load($character_ref01_match_dt0, null);
         $character_ref01_data_dt0_load_result = Helpers::to_map($character_ref01_data_dt0_loaded);
         $this->assertNotNull($character_ref01_data_dt0_load_result);
         $this->assertEquals($character_ref01_data_dt0_load_result["id"], $character_ref01_data["id"]);
@@ -96,7 +94,6 @@ function character_basic_setup($extra)
         "ONEPIECE_TEST_CHARACTER_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function character_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

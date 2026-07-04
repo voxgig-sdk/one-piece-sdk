@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch TechniqueLoadMatch
+---@param ctrl? table
+---@return Technique
+---@return string? err
 function TechniqueEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch TechniqueListMatch
+---@param ctrl? table
+---@return Technique[]
+---@return string? err
 function TechniqueEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

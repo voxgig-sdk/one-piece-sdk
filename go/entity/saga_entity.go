@@ -85,6 +85,27 @@ func (e *SagaEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Saga; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *SagaEntity) DataTyped(data ...Saga) Saga {
+	if len(data) > 0 {
+		return typedFrom[Saga](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Saga](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Saga (all fields
+// optional at the wire level).
+func (e *SagaEntity) MatchTyped(match ...Saga) Saga {
+	if len(match) > 0 {
+		return typedFrom[Saga](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Saga](e.Match())
+}
+
 
 func (e *SagaEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *SagaEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, er
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// SagaLoadMatch and returns an Saga. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *SagaEntity) LoadTyped(reqmatch SagaLoadMatch, ctrl map[string]any) (Saga, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Saga{}, err
+	}
+	return typedFrom[Saga](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *SagaEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// SagaListMatch and returns []Saga. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *SagaEntity) ListTyped(reqmatch SagaListMatch, ctrl map[string]any) ([]Saga, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Saga](res), nil
 }
 
 

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Film,
+  FilmLoadMatch,
+  FilmListMatch,
+} from '../OnePieceTypes'
 
 // TODO: needs Entity superclass
-class FilmEntity extends OnePieceEntityBase {
+class FilmEntity extends OnePieceEntityBase<Film> {
 
   constructor(client: OnePieceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class FilmEntity extends OnePieceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: FilmLoadMatch, ctrl?: Control): Promise<Film> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class FilmEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Film> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: FilmListMatch, ctrl?: Control): Promise<Film[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class FilmEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Film[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

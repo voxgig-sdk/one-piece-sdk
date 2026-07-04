@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Chapter,
+  ChapterLoadMatch,
+  ChapterListMatch,
+} from '../OnePieceTypes'
 
 // TODO: needs Entity superclass
-class ChapterEntity extends OnePieceEntityBase {
+class ChapterEntity extends OnePieceEntityBase<Chapter> {
 
   constructor(client: OnePieceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ChapterEntity extends OnePieceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ChapterLoadMatch, ctrl?: Control): Promise<Chapter> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ChapterEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Chapter> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ChapterListMatch, ctrl?: Control): Promise<Chapter[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ChapterEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Chapter[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

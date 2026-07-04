@@ -45,6 +45,7 @@ class LocationEntity
     end
   end
 
+  # @return [Location, Hash] the current Location data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class LocationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Location fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Location.
+  #
+  # @param reqmatch [LocationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Location, Hash] the loaded Location; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class LocationEntity
 
 
   
+  # List Location items matching the given filter.
+  #
+  # @param reqmatch [LocationListMatch, Hash, nil] match filter (any subset of Location fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Location>, Array] the matching Location items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

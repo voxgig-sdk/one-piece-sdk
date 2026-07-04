@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch SagaLoadMatch
+---@param ctrl? table
+---@return Saga
+---@return string? err
 function SagaEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch SagaListMatch
+---@param ctrl? table
+---@return Saga[]
+---@return string? err
 function SagaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

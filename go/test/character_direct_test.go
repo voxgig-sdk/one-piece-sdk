@@ -194,14 +194,12 @@ func characterDirectSetup(mockres any) *characterDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ONEPIECE_TEST_CHARACTER_ENTID": map[string]any{},
 		"ONEPIECE_TEST_LIVE":    "FALSE",
-		"ONEPIECE_APIKEY":       "NONE",
 	})
 
 	live := env["ONEPIECE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ONEPIECE_APIKEY"],
 		}
 		client := sdk.NewOnePieceSDK(mergedOpts)
 

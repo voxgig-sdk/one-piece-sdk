@@ -50,16 +50,14 @@ class FilmEntityTest extends TestCase
         $film_ref01_ent = $client->Film(null);
         $film_ref01_match = [];
 
-        [$film_ref01_list_result, $err] = $film_ref01_ent->list($film_ref01_match, null);
-        $this->assertNull($err);
+        $film_ref01_list_result = $film_ref01_ent->list($film_ref01_match, null);
         $this->assertIsArray($film_ref01_list_result);
 
         // LOAD
         $film_ref01_match_dt0 = [
             "id" => $film_ref01_data["id"],
         ];
-        [$film_ref01_data_dt0_loaded, $err] = $film_ref01_ent->load($film_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $film_ref01_data_dt0_loaded = $film_ref01_ent->load($film_ref01_match_dt0, null);
         $film_ref01_data_dt0_load_result = Helpers::to_map($film_ref01_data_dt0_loaded);
         $this->assertNotNull($film_ref01_data_dt0_load_result);
         $this->assertEquals($film_ref01_data_dt0_load_result["id"], $film_ref01_data["id"]);
@@ -96,7 +94,6 @@ function film_basic_setup($extra)
         "ONEPIECE_TEST_FILM_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function film_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

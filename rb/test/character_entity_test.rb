@@ -43,16 +43,14 @@ class CharacterEntityTest < Minitest::Test
     character_ref01_ent = client.Character(nil)
     character_ref01_match = {}
 
-    character_ref01_list_result, err = character_ref01_ent.list(character_ref01_match, nil)
-    assert_nil err
+    character_ref01_list_result = character_ref01_ent.list(character_ref01_match, nil)
     assert character_ref01_list_result.is_a?(Array)
 
     # LOAD
     character_ref01_match_dt0 = {
       "id" => character_ref01_data["id"],
     }
-    character_ref01_data_dt0_loaded, err = character_ref01_ent.load(character_ref01_match_dt0, nil)
-    assert_nil err
+    character_ref01_data_dt0_loaded = character_ref01_ent.load(character_ref01_match_dt0, nil)
     character_ref01_data_dt0_load_result = Helpers.to_map(character_ref01_data_dt0_loaded)
     assert !character_ref01_data_dt0_load_result.nil?
     assert_equal character_ref01_data_dt0_load_result["id"], character_ref01_data["id"]
@@ -93,7 +91,6 @@ def character_basic_setup(extra)
     "ONEPIECE_TEST_CHARACTER_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def character_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

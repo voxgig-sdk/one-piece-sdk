@@ -50,16 +50,14 @@ class SwordEntityTest extends TestCase
         $sword_ref01_ent = $client->Sword(null);
         $sword_ref01_match = [];
 
-        [$sword_ref01_list_result, $err] = $sword_ref01_ent->list($sword_ref01_match, null);
-        $this->assertNull($err);
+        $sword_ref01_list_result = $sword_ref01_ent->list($sword_ref01_match, null);
         $this->assertIsArray($sword_ref01_list_result);
 
         // LOAD
         $sword_ref01_match_dt0 = [
             "id" => $sword_ref01_data["id"],
         ];
-        [$sword_ref01_data_dt0_loaded, $err] = $sword_ref01_ent->load($sword_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $sword_ref01_data_dt0_loaded = $sword_ref01_ent->load($sword_ref01_match_dt0, null);
         $sword_ref01_data_dt0_load_result = Helpers::to_map($sword_ref01_data_dt0_loaded);
         $this->assertNotNull($sword_ref01_data_dt0_load_result);
         $this->assertEquals($sword_ref01_data_dt0_load_result["id"], $sword_ref01_data["id"]);
@@ -96,7 +94,6 @@ function sword_basic_setup($extra)
         "ONEPIECE_TEST_SWORD_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function sword_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch FilmLoadMatch
+---@param ctrl? table
+---@return Film
+---@return string? err
 function FilmEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch FilmListMatch
+---@param ctrl? table
+---@return Film[]
+---@return string? err
 function FilmEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

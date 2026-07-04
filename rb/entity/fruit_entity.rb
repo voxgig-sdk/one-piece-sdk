@@ -45,6 +45,7 @@ class FruitEntity
     end
   end
 
+  # @return [Fruit, Hash] the current Fruit data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class FruitEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Fruit fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Fruit.
+  #
+  # @param reqmatch [FruitLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Fruit, Hash] the loaded Fruit; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class FruitEntity
 
 
   
+  # List Fruit items matching the given filter.
+  #
+  # @param reqmatch [FruitListMatch, Hash, nil] match filter (any subset of Fruit fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Fruit>, Array] the matching Fruit items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

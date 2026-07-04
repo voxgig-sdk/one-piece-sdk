@@ -50,16 +50,14 @@ class BoatEntityTest extends TestCase
         $boat_ref01_ent = $client->Boat(null);
         $boat_ref01_match = [];
 
-        [$boat_ref01_list_result, $err] = $boat_ref01_ent->list($boat_ref01_match, null);
-        $this->assertNull($err);
+        $boat_ref01_list_result = $boat_ref01_ent->list($boat_ref01_match, null);
         $this->assertIsArray($boat_ref01_list_result);
 
         // LOAD
         $boat_ref01_match_dt0 = [
             "id" => $boat_ref01_data["id"],
         ];
-        [$boat_ref01_data_dt0_loaded, $err] = $boat_ref01_ent->load($boat_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $boat_ref01_data_dt0_loaded = $boat_ref01_ent->load($boat_ref01_match_dt0, null);
         $boat_ref01_data_dt0_load_result = Helpers::to_map($boat_ref01_data_dt0_loaded);
         $this->assertNotNull($boat_ref01_data_dt0_load_result);
         $this->assertEquals($boat_ref01_data_dt0_load_result["id"], $boat_ref01_data["id"]);
@@ -96,7 +94,6 @@ function boat_basic_setup($extra)
         "ONEPIECE_TEST_BOAT_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function boat_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

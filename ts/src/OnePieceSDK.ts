@@ -17,6 +17,8 @@ import { SwordEntity } from './entity/SwordEntity'
 import { TechniqueEntity } from './entity/TechniqueEntity'
 import { VolumeEntity } from './entity/VolumeEntity'
 
+export type * from './OnePieceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -217,96 +219,224 @@ class OnePieceSDK {
 
 
 
+  _boat?: BoatEntity
+
+  // Idiomatic facade: `client.boat.list()` / `client.boat.load({ id })`.
+  get boat(): BoatEntity {
+    return (this._boat ??= new BoatEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.boat` instead. */
   Boat(data?: any) {
     const self = this
     return new BoatEntity(self,data)
   }
 
 
+  _bow?: BowEntity
+
+  // Idiomatic facade: `client.bow.list()` / `client.bow.load({ id })`.
+  get bow(): BowEntity {
+    return (this._bow ??= new BowEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.bow` instead. */
   Bow(data?: any) {
     const self = this
     return new BowEntity(self,data)
   }
 
 
+  _chapter?: ChapterEntity
+
+  // Idiomatic facade: `client.chapter.list()` / `client.chapter.load({ id })`.
+  get chapter(): ChapterEntity {
+    return (this._chapter ??= new ChapterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.chapter` instead. */
   Chapter(data?: any) {
     const self = this
     return new ChapterEntity(self,data)
   }
 
 
+  _character?: CharacterEntity
+
+  // Idiomatic facade: `client.character.list()` / `client.character.load({ id })`.
+  get character(): CharacterEntity {
+    return (this._character ??= new CharacterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.character` instead. */
   Character(data?: any) {
     const self = this
     return new CharacterEntity(self,data)
   }
 
 
+  _crew?: CrewEntity
+
+  // Idiomatic facade: `client.crew.list()` / `client.crew.load({ id })`.
+  get crew(): CrewEntity {
+    return (this._crew ??= new CrewEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.crew` instead. */
   Crew(data?: any) {
     const self = this
     return new CrewEntity(self,data)
   }
 
 
+  _dial?: DialEntity
+
+  // Idiomatic facade: `client.dial.list()` / `client.dial.load({ id })`.
+  get dial(): DialEntity {
+    return (this._dial ??= new DialEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.dial` instead. */
   Dial(data?: any) {
     const self = this
     return new DialEntity(self,data)
   }
 
 
+  _episode?: EpisodeEntity
+
+  // Idiomatic facade: `client.episode.list()` / `client.episode.load({ id })`.
+  get episode(): EpisodeEntity {
+    return (this._episode ??= new EpisodeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.episode` instead. */
   Episode(data?: any) {
     const self = this
     return new EpisodeEntity(self,data)
   }
 
 
+  _film?: FilmEntity
+
+  // Idiomatic facade: `client.film.list()` / `client.film.load({ id })`.
+  get film(): FilmEntity {
+    return (this._film ??= new FilmEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.film` instead. */
   Film(data?: any) {
     const self = this
     return new FilmEntity(self,data)
   }
 
 
+  _fruit?: FruitEntity
+
+  // Idiomatic facade: `client.fruit.list()` / `client.fruit.load({ id })`.
+  get fruit(): FruitEntity {
+    return (this._fruit ??= new FruitEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.fruit` instead. */
   Fruit(data?: any) {
     const self = this
     return new FruitEntity(self,data)
   }
 
 
+  _gear?: GearEntity
+
+  // Idiomatic facade: `client.gear.list()` / `client.gear.load({ id })`.
+  get gear(): GearEntity {
+    return (this._gear ??= new GearEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gear` instead. */
   Gear(data?: any) {
     const self = this
     return new GearEntity(self,data)
   }
 
 
+  _haki?: HakiEntity
+
+  // Idiomatic facade: `client.haki.list()` / `client.haki.load({ id })`.
+  get haki(): HakiEntity {
+    return (this._haki ??= new HakiEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.haki` instead. */
   Haki(data?: any) {
     const self = this
     return new HakiEntity(self,data)
   }
 
 
+  _location?: LocationEntity
+
+  // Idiomatic facade: `client.location.list()` / `client.location.load({ id })`.
+  get location(): LocationEntity {
+    return (this._location ??= new LocationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.location` instead. */
   Location(data?: any) {
     const self = this
     return new LocationEntity(self,data)
   }
 
 
+  _saga?: SagaEntity
+
+  // Idiomatic facade: `client.saga.list()` / `client.saga.load({ id })`.
+  get saga(): SagaEntity {
+    return (this._saga ??= new SagaEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.saga` instead. */
   Saga(data?: any) {
     const self = this
     return new SagaEntity(self,data)
   }
 
 
+  _sword?: SwordEntity
+
+  // Idiomatic facade: `client.sword.list()` / `client.sword.load({ id })`.
+  get sword(): SwordEntity {
+    return (this._sword ??= new SwordEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.sword` instead. */
   Sword(data?: any) {
     const self = this
     return new SwordEntity(self,data)
   }
 
 
+  _technique?: TechniqueEntity
+
+  // Idiomatic facade: `client.technique.list()` / `client.technique.load({ id })`.
+  get technique(): TechniqueEntity {
+    return (this._technique ??= new TechniqueEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.technique` instead. */
   Technique(data?: any) {
     const self = this
     return new TechniqueEntity(self,data)
   }
 
 
+  _volume?: VolumeEntity
+
+  // Idiomatic facade: `client.volume.list()` / `client.volume.load({ id })`.
+  get volume(): VolumeEntity {
+    return (this._volume ??= new VolumeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.volume` instead. */
   Volume(data?: any) {
     const self = this
     return new VolumeEntity(self,data)

@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'OnePiece_types'
+
 
 class OnePieceSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class OnePieceSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class OnePieceSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue OnePieceError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = OnePieceHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class OnePieceSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,106 +198,218 @@ class OnePieceSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.boat.list / client.boat.load({ "id" => ... })
+  def boat
+    require_relative 'entity/boat_entity'
+    @boat ||= BoatEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.boat instead.
   def Boat(data = nil)
     require_relative 'entity/boat_entity'
     BoatEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.bow.list / client.bow.load({ "id" => ... })
+  def bow
+    require_relative 'entity/bow_entity'
+    @bow ||= BowEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.bow instead.
   def Bow(data = nil)
     require_relative 'entity/bow_entity'
     BowEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.chapter.list / client.chapter.load({ "id" => ... })
+  def chapter
+    require_relative 'entity/chapter_entity'
+    @chapter ||= ChapterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.chapter instead.
   def Chapter(data = nil)
     require_relative 'entity/chapter_entity'
     ChapterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.character.list / client.character.load({ "id" => ... })
+  def character
+    require_relative 'entity/character_entity'
+    @character ||= CharacterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.character instead.
   def Character(data = nil)
     require_relative 'entity/character_entity'
     CharacterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.crew.list / client.crew.load({ "id" => ... })
+  def crew
+    require_relative 'entity/crew_entity'
+    @crew ||= CrewEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.crew instead.
   def Crew(data = nil)
     require_relative 'entity/crew_entity'
     CrewEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.dial.list / client.dial.load({ "id" => ... })
+  def dial
+    require_relative 'entity/dial_entity'
+    @dial ||= DialEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.dial instead.
   def Dial(data = nil)
     require_relative 'entity/dial_entity'
     DialEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.episode.list / client.episode.load({ "id" => ... })
+  def episode
+    require_relative 'entity/episode_entity'
+    @episode ||= EpisodeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.episode instead.
   def Episode(data = nil)
     require_relative 'entity/episode_entity'
     EpisodeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.film.list / client.film.load({ "id" => ... })
+  def film
+    require_relative 'entity/film_entity'
+    @film ||= FilmEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.film instead.
   def Film(data = nil)
     require_relative 'entity/film_entity'
     FilmEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.fruit.list / client.fruit.load({ "id" => ... })
+  def fruit
+    require_relative 'entity/fruit_entity'
+    @fruit ||= FruitEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.fruit instead.
   def Fruit(data = nil)
     require_relative 'entity/fruit_entity'
     FruitEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.gear.list / client.gear.load({ "id" => ... })
+  def gear
+    require_relative 'entity/gear_entity'
+    @gear ||= GearEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.gear instead.
   def Gear(data = nil)
     require_relative 'entity/gear_entity'
     GearEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.haki.list / client.haki.load({ "id" => ... })
+  def haki
+    require_relative 'entity/haki_entity'
+    @haki ||= HakiEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.haki instead.
   def Haki(data = nil)
     require_relative 'entity/haki_entity'
     HakiEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.location.list / client.location.load({ "id" => ... })
+  def location
+    require_relative 'entity/location_entity'
+    @location ||= LocationEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.location instead.
   def Location(data = nil)
     require_relative 'entity/location_entity'
     LocationEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.saga.list / client.saga.load({ "id" => ... })
+  def saga
+    require_relative 'entity/saga_entity'
+    @saga ||= SagaEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.saga instead.
   def Saga(data = nil)
     require_relative 'entity/saga_entity'
     SagaEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.sword.list / client.sword.load({ "id" => ... })
+  def sword
+    require_relative 'entity/sword_entity'
+    @sword ||= SwordEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.sword instead.
   def Sword(data = nil)
     require_relative 'entity/sword_entity'
     SwordEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.technique.list / client.technique.load({ "id" => ... })
+  def technique
+    require_relative 'entity/technique_entity'
+    @technique ||= TechniqueEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.technique instead.
   def Technique(data = nil)
     require_relative 'entity/technique_entity'
     TechniqueEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.volume.list / client.volume.load({ "id" => ... })
+  def volume
+    require_relative 'entity/volume_entity'
+    @volume ||= VolumeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.volume instead.
   def Volume(data = nil)
     require_relative 'entity/volume_entity'
     VolumeEntity.new(self, data)

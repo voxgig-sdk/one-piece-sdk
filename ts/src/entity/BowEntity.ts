@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Bow,
+  BowLoadMatch,
+  BowListMatch,
+} from '../OnePieceTypes'
 
 // TODO: needs Entity superclass
-class BowEntity extends OnePieceEntityBase {
+class BowEntity extends OnePieceEntityBase<Bow> {
 
   constructor(client: OnePieceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class BowEntity extends OnePieceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: BowLoadMatch, ctrl?: Control): Promise<Bow> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class BowEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Bow> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: BowListMatch, ctrl?: Control): Promise<Bow[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class BowEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Bow[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

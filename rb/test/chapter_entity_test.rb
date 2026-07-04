@@ -43,16 +43,14 @@ class ChapterEntityTest < Minitest::Test
     chapter_ref01_ent = client.Chapter(nil)
     chapter_ref01_match = {}
 
-    chapter_ref01_list_result, err = chapter_ref01_ent.list(chapter_ref01_match, nil)
-    assert_nil err
+    chapter_ref01_list_result = chapter_ref01_ent.list(chapter_ref01_match, nil)
     assert chapter_ref01_list_result.is_a?(Array)
 
     # LOAD
     chapter_ref01_match_dt0 = {
       "id" => chapter_ref01_data["id"],
     }
-    chapter_ref01_data_dt0_loaded, err = chapter_ref01_ent.load(chapter_ref01_match_dt0, nil)
-    assert_nil err
+    chapter_ref01_data_dt0_loaded = chapter_ref01_ent.load(chapter_ref01_match_dt0, nil)
     chapter_ref01_data_dt0_load_result = Helpers.to_map(chapter_ref01_data_dt0_loaded)
     assert !chapter_ref01_data_dt0_load_result.nil?
     assert_equal chapter_ref01_data_dt0_load_result["id"], chapter_ref01_data["id"]
@@ -93,7 +91,6 @@ def chapter_basic_setup(extra)
     "ONEPIECE_TEST_CHAPTER_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def chapter_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

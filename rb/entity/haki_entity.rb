@@ -45,6 +45,7 @@ class HakiEntity
     end
   end
 
+  # @return [Haki, Hash] the current Haki data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class HakiEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Haki fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Haki.
+  #
+  # @param reqmatch [HakiLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Haki, Hash] the loaded Haki; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class HakiEntity
 
 
   
+  # List Haki items matching the given filter.
+  #
+  # @param reqmatch [HakiListMatch, Hash, nil] match filter (any subset of Haki fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Haki>, Array] the matching Haki items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

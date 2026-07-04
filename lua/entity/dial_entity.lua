@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DialLoadMatch
+---@param ctrl? table
+---@return Dial
+---@return string? err
 function DialEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch DialListMatch
+---@param ctrl? table
+---@return Dial[]
+---@return string? err
 function DialEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

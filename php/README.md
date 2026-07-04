@@ -9,9 +9,10 @@ The PHP SDK for the OnePiece API — an entity-oriented client using PHP convent
 
 
 ## Install
-```bash
-composer require voxgig-sdk/one-piece
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/one-piece-sdk/releases](https://github.com/voxgig-sdk/one-piece-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'onepiece_sdk.php';
 
-$client = new OnePieceSDK([
-    "apikey" => getenv("ONE-PIECE_APIKEY"),
-]);
+$client = new OnePieceSDK();
 ```
 
 ### 2. List boats
 
 ```php
-[$result, $err] = $client->Boat()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->boat()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a boat
 
 ```php
-[$result, $err] = $client->Boat()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->boat()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = OnePieceSDK::test();
 
-[$result, $err] = $client->OnePiece()->load(["id" => "test01"]);
+$result = $client->boat()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new OnePieceSDK([
 Create a `.env.local` file at the project root:
 
 ```
-ONE-PIECE_TEST_LIVE=TRUE
-ONE-PIECE_APIKEY=<your-key>
+ONE_PIECE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -214,8 +219,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -456,7 +465,7 @@ API path: `/volumes`
 
 ### Boat
 
-Create an instance: `const boat = client.Boat()`
+Create an instance: `const boat = client.boat`
 
 #### Operations
 
@@ -478,19 +487,19 @@ Create an instance: `const boat = client.Boat()`
 #### Example: Load
 
 ```ts
-const boat = await client.Boat().load({ id: 'boat_id' })
+const boat = await client.boat.load({ id: 'boat_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boats = await client.Boat().list()
+const boats = await client.boat.list()
 ```
 
 
 ### Bow
 
-Create an instance: `const bow = client.Bow()`
+Create an instance: `const bow = client.bow`
 
 #### Operations
 
@@ -511,19 +520,19 @@ Create an instance: `const bow = client.Bow()`
 #### Example: Load
 
 ```ts
-const bow = await client.Bow().load({ id: 'bow_id' })
+const bow = await client.bow.load({ id: 'bow_id' })
 ```
 
 #### Example: List
 
 ```ts
-const bows = await client.Bow().list()
+const bows = await client.bow.list()
 ```
 
 
 ### Chapter
 
-Create an instance: `const chapter = client.Chapter()`
+Create an instance: `const chapter = client.chapter`
 
 #### Operations
 
@@ -545,19 +554,19 @@ Create an instance: `const chapter = client.Chapter()`
 #### Example: Load
 
 ```ts
-const chapter = await client.Chapter().load({ id: 'chapter_id' })
+const chapter = await client.chapter.load({ id: 'chapter_id' })
 ```
 
 #### Example: List
 
 ```ts
-const chapters = await client.Chapter().list()
+const chapters = await client.chapter.list()
 ```
 
 
 ### Character
 
-Create an instance: `const character = client.Character()`
+Create an instance: `const character = client.character`
 
 #### Operations
 
@@ -581,19 +590,19 @@ Create an instance: `const character = client.Character()`
 #### Example: Load
 
 ```ts
-const character = await client.Character().load({ id: 'character_id' })
+const character = await client.character.load({ id: 'character_id' })
 ```
 
 #### Example: List
 
 ```ts
-const characters = await client.Character().list()
+const characters = await client.character.list()
 ```
 
 
 ### Crew
 
-Create an instance: `const crew = client.Crew()`
+Create an instance: `const crew = client.crew`
 
 #### Operations
 
@@ -616,19 +625,19 @@ Create an instance: `const crew = client.Crew()`
 #### Example: Load
 
 ```ts
-const crew = await client.Crew().load({ id: 'crew_id' })
+const crew = await client.crew.load({ id: 'crew_id' })
 ```
 
 #### Example: List
 
 ```ts
-const crews = await client.Crew().list()
+const crews = await client.crew.list()
 ```
 
 
 ### Dial
 
-Create an instance: `const dial = client.Dial()`
+Create an instance: `const dial = client.dial`
 
 #### Operations
 
@@ -649,19 +658,19 @@ Create an instance: `const dial = client.Dial()`
 #### Example: Load
 
 ```ts
-const dial = await client.Dial().load({ id: 'dial_id' })
+const dial = await client.dial.load({ id: 'dial_id' })
 ```
 
 #### Example: List
 
 ```ts
-const dials = await client.Dial().list()
+const dials = await client.dial.list()
 ```
 
 
 ### Episode
 
-Create an instance: `const episode = client.Episode()`
+Create an instance: `const episode = client.episode`
 
 #### Operations
 
@@ -683,19 +692,19 @@ Create an instance: `const episode = client.Episode()`
 #### Example: Load
 
 ```ts
-const episode = await client.Episode().load({ id: 'episode_id' })
+const episode = await client.episode.load({ id: 'episode_id' })
 ```
 
 #### Example: List
 
 ```ts
-const episodes = await client.Episode().list()
+const episodes = await client.episode.list()
 ```
 
 
 ### Film
 
-Create an instance: `const film = client.Film()`
+Create an instance: `const film = client.film`
 
 #### Operations
 
@@ -716,19 +725,19 @@ Create an instance: `const film = client.Film()`
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.film.load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.Film().list()
+const films = await client.film.list()
 ```
 
 
 ### Fruit
 
-Create an instance: `const fruit = client.Fruit()`
+Create an instance: `const fruit = client.fruit`
 
 #### Operations
 
@@ -750,19 +759,19 @@ Create an instance: `const fruit = client.Fruit()`
 #### Example: Load
 
 ```ts
-const fruit = await client.Fruit().load({ id: 'fruit_id' })
+const fruit = await client.fruit.load({ id: 'fruit_id' })
 ```
 
 #### Example: List
 
 ```ts
-const fruits = await client.Fruit().list()
+const fruits = await client.fruit.list()
 ```
 
 
 ### Gear
 
-Create an instance: `const gear = client.Gear()`
+Create an instance: `const gear = client.gear`
 
 #### Operations
 
@@ -783,19 +792,19 @@ Create an instance: `const gear = client.Gear()`
 #### Example: Load
 
 ```ts
-const gear = await client.Gear().load({ id: 'gear_id' })
+const gear = await client.gear.load({ id: 'gear_id' })
 ```
 
 #### Example: List
 
 ```ts
-const gears = await client.Gear().list()
+const gears = await client.gear.list()
 ```
 
 
 ### Haki
 
-Create an instance: `const haki = client.Haki()`
+Create an instance: `const haki = client.haki`
 
 #### Operations
 
@@ -816,19 +825,19 @@ Create an instance: `const haki = client.Haki()`
 #### Example: Load
 
 ```ts
-const haki = await client.Haki().load({ id: 'haki_id' })
+const haki = await client.haki.load({ id: 'haki_id' })
 ```
 
 #### Example: List
 
 ```ts
-const hakis = await client.Haki().list()
+const hakis = await client.haki.list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -850,19 +859,19 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.Location().list()
+const locations = await client.location.list()
 ```
 
 
 ### Saga
 
-Create an instance: `const saga = client.Saga()`
+Create an instance: `const saga = client.saga`
 
 #### Operations
 
@@ -884,19 +893,19 @@ Create an instance: `const saga = client.Saga()`
 #### Example: Load
 
 ```ts
-const saga = await client.Saga().load({ id: 'saga_id' })
+const saga = await client.saga.load({ id: 'saga_id' })
 ```
 
 #### Example: List
 
 ```ts
-const sagas = await client.Saga().list()
+const sagas = await client.saga.list()
 ```
 
 
 ### Sword
 
-Create an instance: `const sword = client.Sword()`
+Create an instance: `const sword = client.sword`
 
 #### Operations
 
@@ -918,19 +927,19 @@ Create an instance: `const sword = client.Sword()`
 #### Example: Load
 
 ```ts
-const sword = await client.Sword().load({ id: 'sword_id' })
+const sword = await client.sword.load({ id: 'sword_id' })
 ```
 
 #### Example: List
 
 ```ts
-const swords = await client.Sword().list()
+const swords = await client.sword.list()
 ```
 
 
 ### Technique
 
-Create an instance: `const technique = client.Technique()`
+Create an instance: `const technique = client.technique`
 
 #### Operations
 
@@ -951,19 +960,19 @@ Create an instance: `const technique = client.Technique()`
 #### Example: Load
 
 ```ts
-const technique = await client.Technique().load({ id: 'technique_id' })
+const technique = await client.technique.load({ id: 'technique_id' })
 ```
 
 #### Example: List
 
 ```ts
-const techniques = await client.Technique().list()
+const techniques = await client.technique.list()
 ```
 
 
 ### Volume
 
-Create an instance: `const volume = client.Volume()`
+Create an instance: `const volume = client.volume`
 
 #### Operations
 
@@ -985,13 +994,13 @@ Create an instance: `const volume = client.Volume()`
 #### Example: Load
 
 ```ts
-const volume = await client.Volume().load({ id: 'volume_id' })
+const volume = await client.volume.load({ id: 'volume_id' })
 ```
 
 #### Example: List
 
 ```ts
-const volumes = await client.Volume().list()
+const volumes = await client.volume.list()
 ```
 
 
@@ -1066,11 +1075,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$boat = $client->boat();
+$boat->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $boat->dataGet() now returns the loaded boat data
+// $boat->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

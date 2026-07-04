@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Episode,
+  EpisodeLoadMatch,
+  EpisodeListMatch,
+} from '../OnePieceTypes'
 
 // TODO: needs Entity superclass
-class EpisodeEntity extends OnePieceEntityBase {
+class EpisodeEntity extends OnePieceEntityBase<Episode> {
 
   constructor(client: OnePieceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class EpisodeEntity extends OnePieceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: EpisodeLoadMatch, ctrl?: Control): Promise<Episode> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class EpisodeEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Episode> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: EpisodeListMatch, ctrl?: Control): Promise<Episode[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class EpisodeEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Episode[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

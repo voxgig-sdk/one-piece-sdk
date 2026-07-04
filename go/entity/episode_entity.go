@@ -85,6 +85,27 @@ func (e *EpisodeEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Episode; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *EpisodeEntity) DataTyped(data ...Episode) Episode {
+	if len(data) > 0 {
+		return typedFrom[Episode](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Episode](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Episode (all fields
+// optional at the wire level).
+func (e *EpisodeEntity) MatchTyped(match ...Episode) Episode {
+	if len(match) > 0 {
+		return typedFrom[Episode](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Episode](e.Match())
+}
+
 
 func (e *EpisodeEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *EpisodeEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any,
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// EpisodeLoadMatch and returns an Episode. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *EpisodeEntity) LoadTyped(reqmatch EpisodeLoadMatch, ctrl map[string]any) (Episode, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Episode{}, err
+	}
+	return typedFrom[Episode](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *EpisodeEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// EpisodeListMatch and returns []Episode. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *EpisodeEntity) ListTyped(reqmatch EpisodeListMatch, ctrl map[string]any) ([]Episode, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Episode](res), nil
 }
 
 

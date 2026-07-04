@@ -50,16 +50,14 @@ class TestVolumeEntity:
         volume_ref01_ent = client.Volume(None)
         volume_ref01_match = {}
 
-        volume_ref01_list_result, err = volume_ref01_ent.list(volume_ref01_match, None)
-        assert err is None
+        volume_ref01_list_result = volume_ref01_ent.list(volume_ref01_match, None)
         assert isinstance(volume_ref01_list_result, list)
 
         # LOAD
         volume_ref01_match_dt0 = {
             "id": volume_ref01_data["id"],
         }
-        volume_ref01_data_dt0_loaded, err = volume_ref01_ent.load(volume_ref01_match_dt0, None)
-        assert err is None
+        volume_ref01_data_dt0_loaded = volume_ref01_ent.load(volume_ref01_match_dt0, None)
         volume_ref01_data_dt0_load_result = helpers.to_map(volume_ref01_data_dt0_loaded)
         assert volume_ref01_data_dt0_load_result is not None
         assert volume_ref01_data_dt0_load_result["id"] == volume_ref01_data["id"]
@@ -102,7 +100,6 @@ def _volume_basic_setup(extra):
         "ONEPIECE_TEST_VOLUME_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _volume_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

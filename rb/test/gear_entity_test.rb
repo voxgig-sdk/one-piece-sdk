@@ -43,16 +43,14 @@ class GearEntityTest < Minitest::Test
     gear_ref01_ent = client.Gear(nil)
     gear_ref01_match = {}
 
-    gear_ref01_list_result, err = gear_ref01_ent.list(gear_ref01_match, nil)
-    assert_nil err
+    gear_ref01_list_result = gear_ref01_ent.list(gear_ref01_match, nil)
     assert gear_ref01_list_result.is_a?(Array)
 
     # LOAD
     gear_ref01_match_dt0 = {
       "id" => gear_ref01_data["id"],
     }
-    gear_ref01_data_dt0_loaded, err = gear_ref01_ent.load(gear_ref01_match_dt0, nil)
-    assert_nil err
+    gear_ref01_data_dt0_loaded = gear_ref01_ent.load(gear_ref01_match_dt0, nil)
     gear_ref01_data_dt0_load_result = Helpers.to_map(gear_ref01_data_dt0_loaded)
     assert !gear_ref01_data_dt0_load_result.nil?
     assert_equal gear_ref01_data_dt0_load_result["id"], gear_ref01_data["id"]
@@ -93,7 +91,6 @@ def gear_basic_setup(extra)
     "ONEPIECE_TEST_GEAR_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def gear_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

@@ -50,16 +50,14 @@ class TestFilmEntity:
         film_ref01_ent = client.Film(None)
         film_ref01_match = {}
 
-        film_ref01_list_result, err = film_ref01_ent.list(film_ref01_match, None)
-        assert err is None
+        film_ref01_list_result = film_ref01_ent.list(film_ref01_match, None)
         assert isinstance(film_ref01_list_result, list)
 
         # LOAD
         film_ref01_match_dt0 = {
             "id": film_ref01_data["id"],
         }
-        film_ref01_data_dt0_loaded, err = film_ref01_ent.load(film_ref01_match_dt0, None)
-        assert err is None
+        film_ref01_data_dt0_loaded = film_ref01_ent.load(film_ref01_match_dt0, None)
         film_ref01_data_dt0_load_result = helpers.to_map(film_ref01_data_dt0_loaded)
         assert film_ref01_data_dt0_load_result is not None
         assert film_ref01_data_dt0_load_result["id"] == film_ref01_data["id"]
@@ -102,7 +100,6 @@ def _film_basic_setup(extra):
         "ONEPIECE_TEST_FILM_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _film_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

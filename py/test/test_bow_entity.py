@@ -50,16 +50,14 @@ class TestBowEntity:
         bow_ref01_ent = client.Bow(None)
         bow_ref01_match = {}
 
-        bow_ref01_list_result, err = bow_ref01_ent.list(bow_ref01_match, None)
-        assert err is None
+        bow_ref01_list_result = bow_ref01_ent.list(bow_ref01_match, None)
         assert isinstance(bow_ref01_list_result, list)
 
         # LOAD
         bow_ref01_match_dt0 = {
             "id": bow_ref01_data["id"],
         }
-        bow_ref01_data_dt0_loaded, err = bow_ref01_ent.load(bow_ref01_match_dt0, None)
-        assert err is None
+        bow_ref01_data_dt0_loaded = bow_ref01_ent.load(bow_ref01_match_dt0, None)
         bow_ref01_data_dt0_load_result = helpers.to_map(bow_ref01_data_dt0_loaded)
         assert bow_ref01_data_dt0_load_result is not None
         assert bow_ref01_data_dt0_load_result["id"] == bow_ref01_data["id"]
@@ -102,7 +100,6 @@ def _bow_basic_setup(extra):
         "ONEPIECE_TEST_BOW_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _bow_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

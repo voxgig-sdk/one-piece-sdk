@@ -50,16 +50,14 @@ class CrewEntityTest extends TestCase
         $crew_ref01_ent = $client->Crew(null);
         $crew_ref01_match = [];
 
-        [$crew_ref01_list_result, $err] = $crew_ref01_ent->list($crew_ref01_match, null);
-        $this->assertNull($err);
+        $crew_ref01_list_result = $crew_ref01_ent->list($crew_ref01_match, null);
         $this->assertIsArray($crew_ref01_list_result);
 
         // LOAD
         $crew_ref01_match_dt0 = [
             "id" => $crew_ref01_data["id"],
         ];
-        [$crew_ref01_data_dt0_loaded, $err] = $crew_ref01_ent->load($crew_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $crew_ref01_data_dt0_loaded = $crew_ref01_ent->load($crew_ref01_match_dt0, null);
         $crew_ref01_data_dt0_load_result = Helpers::to_map($crew_ref01_data_dt0_loaded);
         $this->assertNotNull($crew_ref01_data_dt0_load_result);
         $this->assertEquals($crew_ref01_data_dt0_load_result["id"], $crew_ref01_data["id"]);
@@ -96,7 +94,6 @@ function crew_basic_setup($extra)
         "ONEPIECE_TEST_CREW_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function crew_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

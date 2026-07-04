@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch HakiLoadMatch
+---@param ctrl? table
+---@return Haki
+---@return string? err
 function HakiEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch HakiListMatch
+---@param ctrl? table
+---@return Haki[]
+---@return string? err
 function HakiEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

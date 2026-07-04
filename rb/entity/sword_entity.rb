@@ -45,6 +45,7 @@ class SwordEntity
     end
   end
 
+  # @return [Sword, Hash] the current Sword data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class SwordEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Sword fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Sword.
+  #
+  # @param reqmatch [SwordLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Sword, Hash] the loaded Sword; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class SwordEntity
 
 
   
+  # List Sword items matching the given filter.
+  #
+  # @param reqmatch [SwordListMatch, Hash, nil] match filter (any subset of Sword fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Sword>, Array] the matching Sword items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

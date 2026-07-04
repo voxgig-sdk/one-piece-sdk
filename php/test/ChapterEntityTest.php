@@ -50,16 +50,14 @@ class ChapterEntityTest extends TestCase
         $chapter_ref01_ent = $client->Chapter(null);
         $chapter_ref01_match = [];
 
-        [$chapter_ref01_list_result, $err] = $chapter_ref01_ent->list($chapter_ref01_match, null);
-        $this->assertNull($err);
+        $chapter_ref01_list_result = $chapter_ref01_ent->list($chapter_ref01_match, null);
         $this->assertIsArray($chapter_ref01_list_result);
 
         // LOAD
         $chapter_ref01_match_dt0 = [
             "id" => $chapter_ref01_data["id"],
         ];
-        [$chapter_ref01_data_dt0_loaded, $err] = $chapter_ref01_ent->load($chapter_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $chapter_ref01_data_dt0_loaded = $chapter_ref01_ent->load($chapter_ref01_match_dt0, null);
         $chapter_ref01_data_dt0_load_result = Helpers::to_map($chapter_ref01_data_dt0_loaded);
         $this->assertNotNull($chapter_ref01_data_dt0_load_result);
         $this->assertEquals($chapter_ref01_data_dt0_load_result["id"], $chapter_ref01_data["id"]);
@@ -96,7 +94,6 @@ function chapter_basic_setup($extra)
         "ONEPIECE_TEST_CHAPTER_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function chapter_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

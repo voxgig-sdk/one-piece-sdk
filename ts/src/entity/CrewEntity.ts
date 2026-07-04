@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Crew,
+  CrewLoadMatch,
+  CrewListMatch,
+} from '../OnePieceTypes'
 
 // TODO: needs Entity superclass
-class CrewEntity extends OnePieceEntityBase {
+class CrewEntity extends OnePieceEntityBase<Crew> {
 
   constructor(client: OnePieceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class CrewEntity extends OnePieceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CrewLoadMatch, ctrl?: Control): Promise<Crew> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class CrewEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Crew> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CrewListMatch, ctrl?: Control): Promise<Crew[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class CrewEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Crew[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

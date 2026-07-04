@@ -45,6 +45,7 @@ class VolumeEntity
     end
   end
 
+  # @return [Volume, Hash] the current Volume data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class VolumeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Volume fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Volume.
+  #
+  # @param reqmatch [VolumeLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Volume, Hash] the loaded Volume; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class VolumeEntity
 
 
   
+  # List Volume items matching the given filter.
+  #
+  # @param reqmatch [VolumeListMatch, Hash, nil] match filter (any subset of Volume fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Volume>, Array] the matching Volume items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

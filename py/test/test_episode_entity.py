@@ -50,16 +50,14 @@ class TestEpisodeEntity:
         episode_ref01_ent = client.Episode(None)
         episode_ref01_match = {}
 
-        episode_ref01_list_result, err = episode_ref01_ent.list(episode_ref01_match, None)
-        assert err is None
+        episode_ref01_list_result = episode_ref01_ent.list(episode_ref01_match, None)
         assert isinstance(episode_ref01_list_result, list)
 
         # LOAD
         episode_ref01_match_dt0 = {
             "id": episode_ref01_data["id"],
         }
-        episode_ref01_data_dt0_loaded, err = episode_ref01_ent.load(episode_ref01_match_dt0, None)
-        assert err is None
+        episode_ref01_data_dt0_loaded = episode_ref01_ent.load(episode_ref01_match_dt0, None)
         episode_ref01_data_dt0_load_result = helpers.to_map(episode_ref01_data_dt0_loaded)
         assert episode_ref01_data_dt0_load_result is not None
         assert episode_ref01_data_dt0_load_result["id"] == episode_ref01_data["id"]
@@ -102,7 +100,6 @@ def _episode_basic_setup(extra):
         "ONEPIECE_TEST_EPISODE_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _episode_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

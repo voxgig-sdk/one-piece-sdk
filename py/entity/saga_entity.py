@@ -1,7 +1,14 @@
 # OnePiece SDK Saga entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from onepiece_types import (
+    Saga,
+    SagaLoadMatch,
+    SagaListMatch,
+)
 
 
 class SagaEntity:
@@ -44,7 +51,7 @@ class SagaEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Saga:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +60,12 @@ class SagaEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Saga:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: SagaLoadMatch, ctrl=None) -> Saga:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",
@@ -80,7 +87,7 @@ class SagaEntity:
 
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: SagaListMatch, ctrl=None) -> list[Saga]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",

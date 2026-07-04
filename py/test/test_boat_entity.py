@@ -50,16 +50,14 @@ class TestBoatEntity:
         boat_ref01_ent = client.Boat(None)
         boat_ref01_match = {}
 
-        boat_ref01_list_result, err = boat_ref01_ent.list(boat_ref01_match, None)
-        assert err is None
+        boat_ref01_list_result = boat_ref01_ent.list(boat_ref01_match, None)
         assert isinstance(boat_ref01_list_result, list)
 
         # LOAD
         boat_ref01_match_dt0 = {
             "id": boat_ref01_data["id"],
         }
-        boat_ref01_data_dt0_loaded, err = boat_ref01_ent.load(boat_ref01_match_dt0, None)
-        assert err is None
+        boat_ref01_data_dt0_loaded = boat_ref01_ent.load(boat_ref01_match_dt0, None)
         boat_ref01_data_dt0_load_result = helpers.to_map(boat_ref01_data_dt0_loaded)
         assert boat_ref01_data_dt0_load_result is not None
         assert boat_ref01_data_dt0_load_result["id"] == boat_ref01_data["id"]
@@ -102,7 +100,6 @@ def _boat_basic_setup(extra):
         "ONEPIECE_TEST_BOAT_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _boat_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

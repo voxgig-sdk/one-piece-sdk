@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Saga,
+  SagaLoadMatch,
+  SagaListMatch,
+} from '../OnePieceTypes'
 
 // TODO: needs Entity superclass
-class SagaEntity extends OnePieceEntityBase {
+class SagaEntity extends OnePieceEntityBase<Saga> {
 
   constructor(client: OnePieceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class SagaEntity extends OnePieceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: SagaLoadMatch, ctrl?: Control): Promise<Saga> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class SagaEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Saga> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: SagaListMatch, ctrl?: Control): Promise<Saga[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class SagaEntity extends OnePieceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Saga[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

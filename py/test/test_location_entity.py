@@ -50,16 +50,14 @@ class TestLocationEntity:
         location_ref01_ent = client.Location(None)
         location_ref01_match = {}
 
-        location_ref01_list_result, err = location_ref01_ent.list(location_ref01_match, None)
-        assert err is None
+        location_ref01_list_result = location_ref01_ent.list(location_ref01_match, None)
         assert isinstance(location_ref01_list_result, list)
 
         # LOAD
         location_ref01_match_dt0 = {
             "id": location_ref01_data["id"],
         }
-        location_ref01_data_dt0_loaded, err = location_ref01_ent.load(location_ref01_match_dt0, None)
-        assert err is None
+        location_ref01_data_dt0_loaded = location_ref01_ent.load(location_ref01_match_dt0, None)
         location_ref01_data_dt0_load_result = helpers.to_map(location_ref01_data_dt0_loaded)
         assert location_ref01_data_dt0_load_result is not None
         assert location_ref01_data_dt0_load_result["id"] == location_ref01_data["id"]
@@ -102,7 +100,6 @@ def _location_basic_setup(extra):
         "ONEPIECE_TEST_LOCATION_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _location_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

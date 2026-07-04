@@ -55,6 +55,9 @@ class HakiEntity
         return new HakiEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Haki|array $args Haki data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class HakiEntity
         }
     }
 
+    /**
+     * @return Haki|array The current Haki data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Haki fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class HakiEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Haki fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class HakiEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Haki.
+     *
+     * @param HakiLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed HakiLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Haki|array The loaded Haki as an assoc-array at the
+     *   SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class HakiEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Haki items matching the given filter.
+     *
+     * @param HakiListMatch|array|null $reqmatch Match filter (any subset
+     *   of Haki fields) as an assoc-array; HakiListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Haki[]|array A list of Haki items as assoc-arrays at
+     *   the SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class HakiEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

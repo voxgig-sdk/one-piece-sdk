@@ -45,6 +45,7 @@ class BowEntity
     end
   end
 
+  # @return [Bow, Hash] the current Bow data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class BowEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Bow fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Bow.
+  #
+  # @param reqmatch [BowLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Bow, Hash] the loaded Bow; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class BowEntity
 
 
   
+  # List Bow items matching the given filter.
+  #
+  # @param reqmatch [BowListMatch, Hash, nil] match filter (any subset of Bow fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Bow>, Array] the matching Bow items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -50,16 +50,14 @@ class TestSwordEntity:
         sword_ref01_ent = client.Sword(None)
         sword_ref01_match = {}
 
-        sword_ref01_list_result, err = sword_ref01_ent.list(sword_ref01_match, None)
-        assert err is None
+        sword_ref01_list_result = sword_ref01_ent.list(sword_ref01_match, None)
         assert isinstance(sword_ref01_list_result, list)
 
         # LOAD
         sword_ref01_match_dt0 = {
             "id": sword_ref01_data["id"],
         }
-        sword_ref01_data_dt0_loaded, err = sword_ref01_ent.load(sword_ref01_match_dt0, None)
-        assert err is None
+        sword_ref01_data_dt0_loaded = sword_ref01_ent.load(sword_ref01_match_dt0, None)
         sword_ref01_data_dt0_load_result = helpers.to_map(sword_ref01_data_dt0_loaded)
         assert sword_ref01_data_dt0_load_result is not None
         assert sword_ref01_data_dt0_load_result["id"] == sword_ref01_data["id"]
@@ -102,7 +100,6 @@ def _sword_basic_setup(extra):
         "ONEPIECE_TEST_SWORD_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _sword_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

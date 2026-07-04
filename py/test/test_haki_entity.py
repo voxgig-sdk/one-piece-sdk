@@ -50,16 +50,14 @@ class TestHakiEntity:
         haki_ref01_ent = client.Haki(None)
         haki_ref01_match = {}
 
-        haki_ref01_list_result, err = haki_ref01_ent.list(haki_ref01_match, None)
-        assert err is None
+        haki_ref01_list_result = haki_ref01_ent.list(haki_ref01_match, None)
         assert isinstance(haki_ref01_list_result, list)
 
         # LOAD
         haki_ref01_match_dt0 = {
             "id": haki_ref01_data["id"],
         }
-        haki_ref01_data_dt0_loaded, err = haki_ref01_ent.load(haki_ref01_match_dt0, None)
-        assert err is None
+        haki_ref01_data_dt0_loaded = haki_ref01_ent.load(haki_ref01_match_dt0, None)
         haki_ref01_data_dt0_load_result = helpers.to_map(haki_ref01_data_dt0_loaded)
         assert haki_ref01_data_dt0_load_result is not None
         assert haki_ref01_data_dt0_load_result["id"] == haki_ref01_data["id"]
@@ -102,7 +100,6 @@ def _haki_basic_setup(extra):
         "ONEPIECE_TEST_HAKI_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _haki_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

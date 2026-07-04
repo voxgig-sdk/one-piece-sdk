@@ -50,16 +50,14 @@ class BowEntityTest extends TestCase
         $bow_ref01_ent = $client->Bow(null);
         $bow_ref01_match = [];
 
-        [$bow_ref01_list_result, $err] = $bow_ref01_ent->list($bow_ref01_match, null);
-        $this->assertNull($err);
+        $bow_ref01_list_result = $bow_ref01_ent->list($bow_ref01_match, null);
         $this->assertIsArray($bow_ref01_list_result);
 
         // LOAD
         $bow_ref01_match_dt0 = [
             "id" => $bow_ref01_data["id"],
         ];
-        [$bow_ref01_data_dt0_loaded, $err] = $bow_ref01_ent->load($bow_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $bow_ref01_data_dt0_loaded = $bow_ref01_ent->load($bow_ref01_match_dt0, null);
         $bow_ref01_data_dt0_load_result = Helpers::to_map($bow_ref01_data_dt0_loaded);
         $this->assertNotNull($bow_ref01_data_dt0_load_result);
         $this->assertEquals($bow_ref01_data_dt0_load_result["id"], $bow_ref01_data["id"]);
@@ -96,7 +94,6 @@ function bow_basic_setup($extra)
         "ONEPIECE_TEST_BOW_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function bow_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

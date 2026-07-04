@@ -45,6 +45,7 @@ class ChapterEntity
     end
   end
 
+  # @return [Chapter, Hash] the current Chapter data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ChapterEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Chapter fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Chapter.
+  #
+  # @param reqmatch [ChapterLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Chapter, Hash] the loaded Chapter; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ChapterEntity
 
 
   
+  # List Chapter items matching the given filter.
+  #
+  # @param reqmatch [ChapterListMatch, Hash, nil] match filter (any subset of Chapter fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Chapter>, Array] the matching Chapter items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

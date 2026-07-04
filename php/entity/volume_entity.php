@@ -55,6 +55,9 @@ class VolumeEntity
         return new VolumeEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Volume|array $args Volume data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class VolumeEntity
         }
     }
 
+    /**
+     * @return Volume|array The current Volume data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Volume fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class VolumeEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Volume fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class VolumeEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Volume.
+     *
+     * @param VolumeLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed VolumeLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Volume|array The loaded Volume as an assoc-array at the
+     *   SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class VolumeEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Volume items matching the given filter.
+     *
+     * @param VolumeListMatch|array|null $reqmatch Match filter (any subset
+     *   of Volume fields) as an assoc-array; VolumeListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Volume[]|array A list of Volume items as assoc-arrays at
+     *   the SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class VolumeEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

@@ -50,16 +50,14 @@ class TestDialEntity:
         dial_ref01_ent = client.Dial(None)
         dial_ref01_match = {}
 
-        dial_ref01_list_result, err = dial_ref01_ent.list(dial_ref01_match, None)
-        assert err is None
+        dial_ref01_list_result = dial_ref01_ent.list(dial_ref01_match, None)
         assert isinstance(dial_ref01_list_result, list)
 
         # LOAD
         dial_ref01_match_dt0 = {
             "id": dial_ref01_data["id"],
         }
-        dial_ref01_data_dt0_loaded, err = dial_ref01_ent.load(dial_ref01_match_dt0, None)
-        assert err is None
+        dial_ref01_data_dt0_loaded = dial_ref01_ent.load(dial_ref01_match_dt0, None)
         dial_ref01_data_dt0_load_result = helpers.to_map(dial_ref01_data_dt0_loaded)
         assert dial_ref01_data_dt0_load_result is not None
         assert dial_ref01_data_dt0_load_result["id"] == dial_ref01_data["id"]
@@ -102,7 +100,6 @@ def _dial_basic_setup(extra):
         "ONEPIECE_TEST_DIAL_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _dial_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

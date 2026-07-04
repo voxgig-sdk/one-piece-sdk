@@ -9,9 +9,12 @@ The TypeScript SDK for the OnePiece API — a type-safe, entity-oriented client 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/one-piece
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/one-piece-sdk/releases](https://github.com/voxgig-sdk/one-piece-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OnePieceSDK } from 'one-piece'
+import { OnePieceSDK } from '@voxgig-sdk/one-piece'
 
-const client = new OnePieceSDK({
-  apikey: process.env.ONE-PIECE_APIKEY,
-})
+const client = new OnePieceSDK()
 ```
 
 ### 2. List boats
 
 ```ts
-const result = await client.Boat().list()
+const result = await client.boat.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a boat
 
 ```ts
-const result = await client.Boat().load({ id: 'example_id' })
+const result = await client.boat.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OnePieceSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.boat.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new OnePieceSDK({ apikey: '...' })
+const client = new OnePieceSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.boat
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new OnePieceSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new OnePieceSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ONE-PIECE_TEST_LIVE=TRUE
-ONE-PIECE_APIKEY=<your-key>
+ONE_PIECE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new OnePieceSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new OnePieceSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -504,7 +501,7 @@ API path: `/volumes`
 
 ### Boat
 
-Create an instance: `const boat = client.Boat()`
+Create an instance: `const boat = client.boat`
 
 #### Operations
 
@@ -526,19 +523,19 @@ Create an instance: `const boat = client.Boat()`
 #### Example: Load
 
 ```ts
-const boat = await client.Boat().load({ id: 'boat_id' })
+const boat = await client.boat.load({ id: 'boat_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boats = await client.Boat().list()
+const boats = await client.boat.list()
 ```
 
 
 ### Bow
 
-Create an instance: `const bow = client.Bow()`
+Create an instance: `const bow = client.bow`
 
 #### Operations
 
@@ -559,19 +556,19 @@ Create an instance: `const bow = client.Bow()`
 #### Example: Load
 
 ```ts
-const bow = await client.Bow().load({ id: 'bow_id' })
+const bow = await client.bow.load({ id: 'bow_id' })
 ```
 
 #### Example: List
 
 ```ts
-const bows = await client.Bow().list()
+const bows = await client.bow.list()
 ```
 
 
 ### Chapter
 
-Create an instance: `const chapter = client.Chapter()`
+Create an instance: `const chapter = client.chapter`
 
 #### Operations
 
@@ -593,19 +590,19 @@ Create an instance: `const chapter = client.Chapter()`
 #### Example: Load
 
 ```ts
-const chapter = await client.Chapter().load({ id: 'chapter_id' })
+const chapter = await client.chapter.load({ id: 'chapter_id' })
 ```
 
 #### Example: List
 
 ```ts
-const chapters = await client.Chapter().list()
+const chapters = await client.chapter.list()
 ```
 
 
 ### Character
 
-Create an instance: `const character = client.Character()`
+Create an instance: `const character = client.character`
 
 #### Operations
 
@@ -629,19 +626,19 @@ Create an instance: `const character = client.Character()`
 #### Example: Load
 
 ```ts
-const character = await client.Character().load({ id: 'character_id' })
+const character = await client.character.load({ id: 'character_id' })
 ```
 
 #### Example: List
 
 ```ts
-const characters = await client.Character().list()
+const characters = await client.character.list()
 ```
 
 
 ### Crew
 
-Create an instance: `const crew = client.Crew()`
+Create an instance: `const crew = client.crew`
 
 #### Operations
 
@@ -664,19 +661,19 @@ Create an instance: `const crew = client.Crew()`
 #### Example: Load
 
 ```ts
-const crew = await client.Crew().load({ id: 'crew_id' })
+const crew = await client.crew.load({ id: 'crew_id' })
 ```
 
 #### Example: List
 
 ```ts
-const crews = await client.Crew().list()
+const crews = await client.crew.list()
 ```
 
 
 ### Dial
 
-Create an instance: `const dial = client.Dial()`
+Create an instance: `const dial = client.dial`
 
 #### Operations
 
@@ -697,19 +694,19 @@ Create an instance: `const dial = client.Dial()`
 #### Example: Load
 
 ```ts
-const dial = await client.Dial().load({ id: 'dial_id' })
+const dial = await client.dial.load({ id: 'dial_id' })
 ```
 
 #### Example: List
 
 ```ts
-const dials = await client.Dial().list()
+const dials = await client.dial.list()
 ```
 
 
 ### Episode
 
-Create an instance: `const episode = client.Episode()`
+Create an instance: `const episode = client.episode`
 
 #### Operations
 
@@ -731,19 +728,19 @@ Create an instance: `const episode = client.Episode()`
 #### Example: Load
 
 ```ts
-const episode = await client.Episode().load({ id: 'episode_id' })
+const episode = await client.episode.load({ id: 'episode_id' })
 ```
 
 #### Example: List
 
 ```ts
-const episodes = await client.Episode().list()
+const episodes = await client.episode.list()
 ```
 
 
 ### Film
 
-Create an instance: `const film = client.Film()`
+Create an instance: `const film = client.film`
 
 #### Operations
 
@@ -764,19 +761,19 @@ Create an instance: `const film = client.Film()`
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.film.load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.Film().list()
+const films = await client.film.list()
 ```
 
 
 ### Fruit
 
-Create an instance: `const fruit = client.Fruit()`
+Create an instance: `const fruit = client.fruit`
 
 #### Operations
 
@@ -798,19 +795,19 @@ Create an instance: `const fruit = client.Fruit()`
 #### Example: Load
 
 ```ts
-const fruit = await client.Fruit().load({ id: 'fruit_id' })
+const fruit = await client.fruit.load({ id: 'fruit_id' })
 ```
 
 #### Example: List
 
 ```ts
-const fruits = await client.Fruit().list()
+const fruits = await client.fruit.list()
 ```
 
 
 ### Gear
 
-Create an instance: `const gear = client.Gear()`
+Create an instance: `const gear = client.gear`
 
 #### Operations
 
@@ -831,19 +828,19 @@ Create an instance: `const gear = client.Gear()`
 #### Example: Load
 
 ```ts
-const gear = await client.Gear().load({ id: 'gear_id' })
+const gear = await client.gear.load({ id: 'gear_id' })
 ```
 
 #### Example: List
 
 ```ts
-const gears = await client.Gear().list()
+const gears = await client.gear.list()
 ```
 
 
 ### Haki
 
-Create an instance: `const haki = client.Haki()`
+Create an instance: `const haki = client.haki`
 
 #### Operations
 
@@ -864,19 +861,19 @@ Create an instance: `const haki = client.Haki()`
 #### Example: Load
 
 ```ts
-const haki = await client.Haki().load({ id: 'haki_id' })
+const haki = await client.haki.load({ id: 'haki_id' })
 ```
 
 #### Example: List
 
 ```ts
-const hakis = await client.Haki().list()
+const hakis = await client.haki.list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -898,19 +895,19 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.Location().list()
+const locations = await client.location.list()
 ```
 
 
 ### Saga
 
-Create an instance: `const saga = client.Saga()`
+Create an instance: `const saga = client.saga`
 
 #### Operations
 
@@ -932,19 +929,19 @@ Create an instance: `const saga = client.Saga()`
 #### Example: Load
 
 ```ts
-const saga = await client.Saga().load({ id: 'saga_id' })
+const saga = await client.saga.load({ id: 'saga_id' })
 ```
 
 #### Example: List
 
 ```ts
-const sagas = await client.Saga().list()
+const sagas = await client.saga.list()
 ```
 
 
 ### Sword
 
-Create an instance: `const sword = client.Sword()`
+Create an instance: `const sword = client.sword`
 
 #### Operations
 
@@ -966,19 +963,19 @@ Create an instance: `const sword = client.Sword()`
 #### Example: Load
 
 ```ts
-const sword = await client.Sword().load({ id: 'sword_id' })
+const sword = await client.sword.load({ id: 'sword_id' })
 ```
 
 #### Example: List
 
 ```ts
-const swords = await client.Sword().list()
+const swords = await client.sword.list()
 ```
 
 
 ### Technique
 
-Create an instance: `const technique = client.Technique()`
+Create an instance: `const technique = client.technique`
 
 #### Operations
 
@@ -999,19 +996,19 @@ Create an instance: `const technique = client.Technique()`
 #### Example: Load
 
 ```ts
-const technique = await client.Technique().load({ id: 'technique_id' })
+const technique = await client.technique.load({ id: 'technique_id' })
 ```
 
 #### Example: List
 
 ```ts
-const techniques = await client.Technique().list()
+const techniques = await client.technique.list()
 ```
 
 
 ### Volume
 
-Create an instance: `const volume = client.Volume()`
+Create an instance: `const volume = client.volume`
 
 #### Operations
 
@@ -1033,13 +1030,13 @@ Create an instance: `const volume = client.Volume()`
 #### Example: Load
 
 ```ts
-const volume = await client.Volume().load({ id: 'volume_id' })
+const volume = await client.volume.load({ id: 'volume_id' })
 ```
 
 #### Example: List
 
 ```ts
-const volumes = await client.Volume().list()
+const volumes = await client.volume.list()
 ```
 
 
@@ -1100,7 +1097,7 @@ one-piece/
 Import the SDK from the package root:
 
 ```ts
-import { OnePieceSDK } from 'one-piece'
+import { OnePieceSDK } from '@voxgig-sdk/one-piece'
 ```
 
 ### Entity state
@@ -1110,11 +1107,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const boat = client.boat
+await boat.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// boat.data() now returns the loaded boat data
+// boat.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

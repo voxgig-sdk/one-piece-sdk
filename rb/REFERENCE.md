@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -114,9 +113,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -130,14 +131,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -145,7 +146,7 @@ same parameters as `direct()`.
 ## BoatEntity
 
 ```ruby
-boat = client.Boat
+boat = client.boat
 ```
 
 ### Fields
@@ -160,20 +161,20 @@ boat = client.Boat
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Boat.list(nil)
+results = client.boat.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Boat.load({ "id" => "boat_id" })
+result = client.boat.load({ "id" => "boat_id" })
 ```
 
 ### Common Methods
@@ -209,7 +210,7 @@ Return the entity name.
 ## BowEntity
 
 ```ruby
-bow = client.Bow
+bow = client.bow
 ```
 
 ### Fields
@@ -223,20 +224,20 @@ bow = client.Bow
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Bow.list(nil)
+results = client.bow.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Bow.load({ "id" => "bow_id" })
+result = client.bow.load({ "id" => "bow_id" })
 ```
 
 ### Common Methods
@@ -272,7 +273,7 @@ Return the entity name.
 ## ChapterEntity
 
 ```ruby
-chapter = client.Chapter
+chapter = client.chapter
 ```
 
 ### Fields
@@ -287,20 +288,20 @@ chapter = client.Chapter
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Chapter.list(nil)
+results = client.chapter.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Chapter.load({ "id" => "chapter_id" })
+result = client.chapter.load({ "id" => "chapter_id" })
 ```
 
 ### Common Methods
@@ -336,7 +337,7 @@ Return the entity name.
 ## CharacterEntity
 
 ```ruby
-character = client.Character
+character = client.character
 ```
 
 ### Fields
@@ -353,20 +354,20 @@ character = client.Character
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Character.list(nil)
+results = client.character.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Character.load({ "id" => "character_id" })
+result = client.character.load({ "id" => "character_id" })
 ```
 
 ### Common Methods
@@ -402,7 +403,7 @@ Return the entity name.
 ## CrewEntity
 
 ```ruby
-crew = client.Crew
+crew = client.crew
 ```
 
 ### Fields
@@ -418,20 +419,20 @@ crew = client.Crew
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Crew.list(nil)
+results = client.crew.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Crew.load({ "id" => "crew_id" })
+result = client.crew.load({ "id" => "crew_id" })
 ```
 
 ### Common Methods
@@ -467,7 +468,7 @@ Return the entity name.
 ## DialEntity
 
 ```ruby
-dial = client.Dial
+dial = client.dial
 ```
 
 ### Fields
@@ -481,20 +482,20 @@ dial = client.Dial
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Dial.list(nil)
+results = client.dial.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Dial.load({ "id" => "dial_id" })
+result = client.dial.load({ "id" => "dial_id" })
 ```
 
 ### Common Methods
@@ -530,7 +531,7 @@ Return the entity name.
 ## EpisodeEntity
 
 ```ruby
-episode = client.Episode
+episode = client.episode
 ```
 
 ### Fields
@@ -545,20 +546,20 @@ episode = client.Episode
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Episode.list(nil)
+results = client.episode.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Episode.load({ "id" => "episode_id" })
+result = client.episode.load({ "id" => "episode_id" })
 ```
 
 ### Common Methods
@@ -594,7 +595,7 @@ Return the entity name.
 ## FilmEntity
 
 ```ruby
-film = client.Film
+film = client.film
 ```
 
 ### Fields
@@ -608,20 +609,20 @@ film = client.Film
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Film.list(nil)
+results = client.film.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Film.load({ "id" => "film_id" })
+result = client.film.load({ "id" => "film_id" })
 ```
 
 ### Common Methods
@@ -657,7 +658,7 @@ Return the entity name.
 ## FruitEntity
 
 ```ruby
-fruit = client.Fruit
+fruit = client.fruit
 ```
 
 ### Fields
@@ -672,20 +673,20 @@ fruit = client.Fruit
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Fruit.list(nil)
+results = client.fruit.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Fruit.load({ "id" => "fruit_id" })
+result = client.fruit.load({ "id" => "fruit_id" })
 ```
 
 ### Common Methods
@@ -721,7 +722,7 @@ Return the entity name.
 ## GearEntity
 
 ```ruby
-gear = client.Gear
+gear = client.gear
 ```
 
 ### Fields
@@ -735,20 +736,20 @@ gear = client.Gear
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Gear.list(nil)
+results = client.gear.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Gear.load({ "id" => "gear_id" })
+result = client.gear.load({ "id" => "gear_id" })
 ```
 
 ### Common Methods
@@ -784,7 +785,7 @@ Return the entity name.
 ## HakiEntity
 
 ```ruby
-haki = client.Haki
+haki = client.haki
 ```
 
 ### Fields
@@ -798,20 +799,20 @@ haki = client.Haki
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Haki.list(nil)
+results = client.haki.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Haki.load({ "id" => "haki_id" })
+result = client.haki.load({ "id" => "haki_id" })
 ```
 
 ### Common Methods
@@ -847,7 +848,7 @@ Return the entity name.
 ## LocationEntity
 
 ```ruby
-location = client.Location
+location = client.location
 ```
 
 ### Fields
@@ -862,20 +863,20 @@ location = client.Location
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Location.list(nil)
+results = client.location.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Location.load({ "id" => "location_id" })
+result = client.location.load({ "id" => "location_id" })
 ```
 
 ### Common Methods
@@ -911,7 +912,7 @@ Return the entity name.
 ## SagaEntity
 
 ```ruby
-saga = client.Saga
+saga = client.saga
 ```
 
 ### Fields
@@ -926,20 +927,20 @@ saga = client.Saga
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Saga.list(nil)
+results = client.saga.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Saga.load({ "id" => "saga_id" })
+result = client.saga.load({ "id" => "saga_id" })
 ```
 
 ### Common Methods
@@ -975,7 +976,7 @@ Return the entity name.
 ## SwordEntity
 
 ```ruby
-sword = client.Sword
+sword = client.sword
 ```
 
 ### Fields
@@ -990,20 +991,20 @@ sword = client.Sword
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Sword.list(nil)
+results = client.sword.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Sword.load({ "id" => "sword_id" })
+result = client.sword.load({ "id" => "sword_id" })
 ```
 
 ### Common Methods
@@ -1039,7 +1040,7 @@ Return the entity name.
 ## TechniqueEntity
 
 ```ruby
-technique = client.Technique
+technique = client.technique
 ```
 
 ### Fields
@@ -1053,20 +1054,20 @@ technique = client.Technique
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Technique.list(nil)
+results = client.technique.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Technique.load({ "id" => "technique_id" })
+result = client.technique.load({ "id" => "technique_id" })
 ```
 
 ### Common Methods
@@ -1102,7 +1103,7 @@ Return the entity name.
 ## VolumeEntity
 
 ```ruby
-volume = client.Volume
+volume = client.volume
 ```
 
 ### Fields
@@ -1117,20 +1118,20 @@ volume = client.Volume
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Volume.list(nil)
+results = client.volume.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Volume.load({ "id" => "volume_id" })
+result = client.volume.load({ "id" => "volume_id" })
 ```
 
 ### Common Methods

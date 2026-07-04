@@ -85,6 +85,27 @@ func (e *HakiEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Haki; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *HakiEntity) DataTyped(data ...Haki) Haki {
+	if len(data) > 0 {
+		return typedFrom[Haki](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Haki](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Haki (all fields
+// optional at the wire level).
+func (e *HakiEntity) MatchTyped(match ...Haki) Haki {
+	if len(match) > 0 {
+		return typedFrom[Haki](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Haki](e.Match())
+}
+
 
 func (e *HakiEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *HakiEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, er
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// HakiLoadMatch and returns an Haki. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *HakiEntity) LoadTyped(reqmatch HakiLoadMatch, ctrl map[string]any) (Haki, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Haki{}, err
+	}
+	return typedFrom[Haki](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *HakiEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// HakiListMatch and returns []Haki. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *HakiEntity) ListTyped(reqmatch HakiListMatch, ctrl map[string]any) ([]Haki, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Haki](res), nil
 }
 
 

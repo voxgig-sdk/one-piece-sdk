@@ -50,16 +50,14 @@ class GearEntityTest extends TestCase
         $gear_ref01_ent = $client->Gear(null);
         $gear_ref01_match = [];
 
-        [$gear_ref01_list_result, $err] = $gear_ref01_ent->list($gear_ref01_match, null);
-        $this->assertNull($err);
+        $gear_ref01_list_result = $gear_ref01_ent->list($gear_ref01_match, null);
         $this->assertIsArray($gear_ref01_list_result);
 
         // LOAD
         $gear_ref01_match_dt0 = [
             "id" => $gear_ref01_data["id"],
         ];
-        [$gear_ref01_data_dt0_loaded, $err] = $gear_ref01_ent->load($gear_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $gear_ref01_data_dt0_loaded = $gear_ref01_ent->load($gear_ref01_match_dt0, null);
         $gear_ref01_data_dt0_load_result = Helpers::to_map($gear_ref01_data_dt0_loaded);
         $this->assertNotNull($gear_ref01_data_dt0_load_result);
         $this->assertEquals($gear_ref01_data_dt0_load_result["id"], $gear_ref01_data["id"]);
@@ -96,7 +94,6 @@ function gear_basic_setup($extra)
         "ONEPIECE_TEST_GEAR_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function gear_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

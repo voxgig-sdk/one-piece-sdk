@@ -50,16 +50,14 @@ class TestTechniqueEntity:
         technique_ref01_ent = client.Technique(None)
         technique_ref01_match = {}
 
-        technique_ref01_list_result, err = technique_ref01_ent.list(technique_ref01_match, None)
-        assert err is None
+        technique_ref01_list_result = technique_ref01_ent.list(technique_ref01_match, None)
         assert isinstance(technique_ref01_list_result, list)
 
         # LOAD
         technique_ref01_match_dt0 = {
             "id": technique_ref01_data["id"],
         }
-        technique_ref01_data_dt0_loaded, err = technique_ref01_ent.load(technique_ref01_match_dt0, None)
-        assert err is None
+        technique_ref01_data_dt0_loaded = technique_ref01_ent.load(technique_ref01_match_dt0, None)
         technique_ref01_data_dt0_load_result = helpers.to_map(technique_ref01_data_dt0_loaded)
         assert technique_ref01_data_dt0_load_result is not None
         assert technique_ref01_data_dt0_load_result["id"] == technique_ref01_data["id"]
@@ -102,7 +100,6 @@ def _technique_basic_setup(extra):
         "ONEPIECE_TEST_TECHNIQUE_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _technique_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

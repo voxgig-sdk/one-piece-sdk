@@ -85,6 +85,27 @@ func (e *TechniqueEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Technique; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *TechniqueEntity) DataTyped(data ...Technique) Technique {
+	if len(data) > 0 {
+		return typedFrom[Technique](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Technique](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Technique (all fields
+// optional at the wire level).
+func (e *TechniqueEntity) MatchTyped(match ...Technique) Technique {
+	if len(match) > 0 {
+		return typedFrom[Technique](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Technique](e.Match())
+}
+
 
 func (e *TechniqueEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *TechniqueEntity) Load(reqmatch map[string]any, ctrl map[string]any) (an
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// TechniqueLoadMatch and returns an Technique. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *TechniqueEntity) LoadTyped(reqmatch TechniqueLoadMatch, ctrl map[string]any) (Technique, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Technique{}, err
+	}
+	return typedFrom[Technique](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *TechniqueEntity) List(reqmatch map[string]any, ctrl map[string]any) (an
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// TechniqueListMatch and returns []Technique. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *TechniqueEntity) ListTyped(reqmatch TechniqueListMatch, ctrl map[string]any) ([]Technique, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Technique](res), nil
 }
 
 

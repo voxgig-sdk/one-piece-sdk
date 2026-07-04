@@ -55,6 +55,9 @@ class SagaEntity
         return new SagaEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Saga|array $args Saga data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class SagaEntity
         }
     }
 
+    /**
+     * @return Saga|array The current Saga data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Saga fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class SagaEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Saga fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class SagaEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Saga.
+     *
+     * @param SagaLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed SagaLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Saga|array The loaded Saga as an assoc-array at the
+     *   SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class SagaEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Saga items matching the given filter.
+     *
+     * @param SagaListMatch|array|null $reqmatch Match filter (any subset
+     *   of Saga fields) as an assoc-array; SagaListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Saga[]|array A list of Saga items as assoc-arrays at
+     *   the SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class SagaEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

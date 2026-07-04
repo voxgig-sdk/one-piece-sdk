@@ -55,6 +55,9 @@ class BoatEntity
         return new BoatEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Boat|array $args Boat data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class BoatEntity
         }
     }
 
+    /**
+     * @return Boat|array The current Boat data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Boat fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class BoatEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Boat fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class BoatEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Boat.
+     *
+     * @param BoatLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed BoatLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Boat|array The loaded Boat as an assoc-array at the
+     *   SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class BoatEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Boat items matching the given filter.
+     *
+     * @param BoatListMatch|array|null $reqmatch Match filter (any subset
+     *   of Boat fields) as an assoc-array; BoatListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Boat[]|array A list of Boat items as assoc-arrays at
+     *   the SDK boundary; throws OnePieceError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class BoatEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

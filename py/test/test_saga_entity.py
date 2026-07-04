@@ -50,16 +50,14 @@ class TestSagaEntity:
         saga_ref01_ent = client.Saga(None)
         saga_ref01_match = {}
 
-        saga_ref01_list_result, err = saga_ref01_ent.list(saga_ref01_match, None)
-        assert err is None
+        saga_ref01_list_result = saga_ref01_ent.list(saga_ref01_match, None)
         assert isinstance(saga_ref01_list_result, list)
 
         # LOAD
         saga_ref01_match_dt0 = {
             "id": saga_ref01_data["id"],
         }
-        saga_ref01_data_dt0_loaded, err = saga_ref01_ent.load(saga_ref01_match_dt0, None)
-        assert err is None
+        saga_ref01_data_dt0_loaded = saga_ref01_ent.load(saga_ref01_match_dt0, None)
         saga_ref01_data_dt0_load_result = helpers.to_map(saga_ref01_data_dt0_loaded)
         assert saga_ref01_data_dt0_load_result is not None
         assert saga_ref01_data_dt0_load_result["id"] == saga_ref01_data["id"]
@@ -102,7 +100,6 @@ def _saga_basic_setup(extra):
         "ONEPIECE_TEST_SAGA_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _saga_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

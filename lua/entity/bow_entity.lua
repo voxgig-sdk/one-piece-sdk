@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BowLoadMatch
+---@param ctrl? table
+---@return Bow
+---@return string? err
 function BowEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch BowListMatch
+---@param ctrl? table
+---@return Bow[]
+---@return string? err
 function BowEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

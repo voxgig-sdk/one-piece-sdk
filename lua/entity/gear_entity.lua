@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GearLoadMatch
+---@param ctrl? table
+---@return Gear
+---@return string? err
 function GearEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch GearListMatch
+---@param ctrl? table
+---@return Gear[]
+---@return string? err
 function GearEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

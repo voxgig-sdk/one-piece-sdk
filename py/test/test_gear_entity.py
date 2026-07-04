@@ -50,16 +50,14 @@ class TestGearEntity:
         gear_ref01_ent = client.Gear(None)
         gear_ref01_match = {}
 
-        gear_ref01_list_result, err = gear_ref01_ent.list(gear_ref01_match, None)
-        assert err is None
+        gear_ref01_list_result = gear_ref01_ent.list(gear_ref01_match, None)
         assert isinstance(gear_ref01_list_result, list)
 
         # LOAD
         gear_ref01_match_dt0 = {
             "id": gear_ref01_data["id"],
         }
-        gear_ref01_data_dt0_loaded, err = gear_ref01_ent.load(gear_ref01_match_dt0, None)
-        assert err is None
+        gear_ref01_data_dt0_loaded = gear_ref01_ent.load(gear_ref01_match_dt0, None)
         gear_ref01_data_dt0_load_result = helpers.to_map(gear_ref01_data_dt0_loaded)
         assert gear_ref01_data_dt0_load_result is not None
         assert gear_ref01_data_dt0_load_result["id"] == gear_ref01_data["id"]
@@ -102,7 +100,6 @@ def _gear_basic_setup(extra):
         "ONEPIECE_TEST_GEAR_ENTID": idmap,
         "ONEPIECE_TEST_LIVE": "FALSE",
         "ONEPIECE_TEST_EXPLAIN": "FALSE",
-        "ONEPIECE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _gear_basic_setup(extra):
     if env.get("ONEPIECE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ONEPIECE_APIKEY"),
             },
             extra or {},
         ])

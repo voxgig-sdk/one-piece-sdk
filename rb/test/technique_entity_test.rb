@@ -43,16 +43,14 @@ class TechniqueEntityTest < Minitest::Test
     technique_ref01_ent = client.Technique(nil)
     technique_ref01_match = {}
 
-    technique_ref01_list_result, err = technique_ref01_ent.list(technique_ref01_match, nil)
-    assert_nil err
+    technique_ref01_list_result = technique_ref01_ent.list(technique_ref01_match, nil)
     assert technique_ref01_list_result.is_a?(Array)
 
     # LOAD
     technique_ref01_match_dt0 = {
       "id" => technique_ref01_data["id"],
     }
-    technique_ref01_data_dt0_loaded, err = technique_ref01_ent.load(technique_ref01_match_dt0, nil)
-    assert_nil err
+    technique_ref01_data_dt0_loaded = technique_ref01_ent.load(technique_ref01_match_dt0, nil)
     technique_ref01_data_dt0_load_result = Helpers.to_map(technique_ref01_data_dt0_loaded)
     assert !technique_ref01_data_dt0_load_result.nil?
     assert_equal technique_ref01_data_dt0_load_result["id"], technique_ref01_data["id"]
@@ -93,7 +91,6 @@ def technique_basic_setup(extra)
     "ONEPIECE_TEST_TECHNIQUE_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def technique_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

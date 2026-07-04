@@ -244,96 +244,304 @@ end
 
 
 
+-- Idiomatic facade: client:boat():list() / client:boat():load({ id = ... })
+function OnePieceSDK:boat(data)
+  local EntityMod = require("entity.boat_entity")
+  if data == nil then
+    if self._boat == nil then
+      self._boat = EntityMod.new(self, nil)
+    end
+    return self._boat
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:boat() instead.
 function OnePieceSDK:Boat(data)
   local EntityMod = require("entity.boat_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:bow():list() / client:bow():load({ id = ... })
+function OnePieceSDK:bow(data)
+  local EntityMod = require("entity.bow_entity")
+  if data == nil then
+    if self._bow == nil then
+      self._bow = EntityMod.new(self, nil)
+    end
+    return self._bow
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:bow() instead.
 function OnePieceSDK:Bow(data)
   local EntityMod = require("entity.bow_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:chapter():list() / client:chapter():load({ id = ... })
+function OnePieceSDK:chapter(data)
+  local EntityMod = require("entity.chapter_entity")
+  if data == nil then
+    if self._chapter == nil then
+      self._chapter = EntityMod.new(self, nil)
+    end
+    return self._chapter
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:chapter() instead.
 function OnePieceSDK:Chapter(data)
   local EntityMod = require("entity.chapter_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:character():list() / client:character():load({ id = ... })
+function OnePieceSDK:character(data)
+  local EntityMod = require("entity.character_entity")
+  if data == nil then
+    if self._character == nil then
+      self._character = EntityMod.new(self, nil)
+    end
+    return self._character
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:character() instead.
 function OnePieceSDK:Character(data)
   local EntityMod = require("entity.character_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:crew():list() / client:crew():load({ id = ... })
+function OnePieceSDK:crew(data)
+  local EntityMod = require("entity.crew_entity")
+  if data == nil then
+    if self._crew == nil then
+      self._crew = EntityMod.new(self, nil)
+    end
+    return self._crew
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:crew() instead.
 function OnePieceSDK:Crew(data)
   local EntityMod = require("entity.crew_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:dial():list() / client:dial():load({ id = ... })
+function OnePieceSDK:dial(data)
+  local EntityMod = require("entity.dial_entity")
+  if data == nil then
+    if self._dial == nil then
+      self._dial = EntityMod.new(self, nil)
+    end
+    return self._dial
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:dial() instead.
 function OnePieceSDK:Dial(data)
   local EntityMod = require("entity.dial_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:episode():list() / client:episode():load({ id = ... })
+function OnePieceSDK:episode(data)
+  local EntityMod = require("entity.episode_entity")
+  if data == nil then
+    if self._episode == nil then
+      self._episode = EntityMod.new(self, nil)
+    end
+    return self._episode
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:episode() instead.
 function OnePieceSDK:Episode(data)
   local EntityMod = require("entity.episode_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:film():list() / client:film():load({ id = ... })
+function OnePieceSDK:film(data)
+  local EntityMod = require("entity.film_entity")
+  if data == nil then
+    if self._film == nil then
+      self._film = EntityMod.new(self, nil)
+    end
+    return self._film
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:film() instead.
 function OnePieceSDK:Film(data)
   local EntityMod = require("entity.film_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:fruit():list() / client:fruit():load({ id = ... })
+function OnePieceSDK:fruit(data)
+  local EntityMod = require("entity.fruit_entity")
+  if data == nil then
+    if self._fruit == nil then
+      self._fruit = EntityMod.new(self, nil)
+    end
+    return self._fruit
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:fruit() instead.
 function OnePieceSDK:Fruit(data)
   local EntityMod = require("entity.fruit_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gear():list() / client:gear():load({ id = ... })
+function OnePieceSDK:gear(data)
+  local EntityMod = require("entity.gear_entity")
+  if data == nil then
+    if self._gear == nil then
+      self._gear = EntityMod.new(self, nil)
+    end
+    return self._gear
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gear() instead.
 function OnePieceSDK:Gear(data)
   local EntityMod = require("entity.gear_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:haki():list() / client:haki():load({ id = ... })
+function OnePieceSDK:haki(data)
+  local EntityMod = require("entity.haki_entity")
+  if data == nil then
+    if self._haki == nil then
+      self._haki = EntityMod.new(self, nil)
+    end
+    return self._haki
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:haki() instead.
 function OnePieceSDK:Haki(data)
   local EntityMod = require("entity.haki_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
+function OnePieceSDK:location(data)
+  local EntityMod = require("entity.location_entity")
+  if data == nil then
+    if self._location == nil then
+      self._location = EntityMod.new(self, nil)
+    end
+    return self._location
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:location() instead.
 function OnePieceSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:saga():list() / client:saga():load({ id = ... })
+function OnePieceSDK:saga(data)
+  local EntityMod = require("entity.saga_entity")
+  if data == nil then
+    if self._saga == nil then
+      self._saga = EntityMod.new(self, nil)
+    end
+    return self._saga
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:saga() instead.
 function OnePieceSDK:Saga(data)
   local EntityMod = require("entity.saga_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:sword():list() / client:sword():load({ id = ... })
+function OnePieceSDK:sword(data)
+  local EntityMod = require("entity.sword_entity")
+  if data == nil then
+    if self._sword == nil then
+      self._sword = EntityMod.new(self, nil)
+    end
+    return self._sword
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:sword() instead.
 function OnePieceSDK:Sword(data)
   local EntityMod = require("entity.sword_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:technique():list() / client:technique():load({ id = ... })
+function OnePieceSDK:technique(data)
+  local EntityMod = require("entity.technique_entity")
+  if data == nil then
+    if self._technique == nil then
+      self._technique = EntityMod.new(self, nil)
+    end
+    return self._technique
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:technique() instead.
 function OnePieceSDK:Technique(data)
   local EntityMod = require("entity.technique_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:volume():list() / client:volume():load({ id = ... })
+function OnePieceSDK:volume(data)
+  local EntityMod = require("entity.volume_entity")
+  if data == nil then
+    if self._volume == nil then
+      self._volume = EntityMod.new(self, nil)
+    end
+    return self._volume
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:volume() instead.
 function OnePieceSDK:Volume(data)
   local EntityMod = require("entity.volume_entity")
   return EntityMod.new(self, data)

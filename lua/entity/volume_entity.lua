@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch VolumeLoadMatch
+---@param ctrl? table
+---@return Volume
+---@return string? err
 function VolumeEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch VolumeListMatch
+---@param ctrl? table
+---@return Volume[]
+---@return string? err
 function VolumeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

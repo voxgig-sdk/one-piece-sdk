@@ -50,16 +50,14 @@ class DialEntityTest extends TestCase
         $dial_ref01_ent = $client->Dial(null);
         $dial_ref01_match = [];
 
-        [$dial_ref01_list_result, $err] = $dial_ref01_ent->list($dial_ref01_match, null);
-        $this->assertNull($err);
+        $dial_ref01_list_result = $dial_ref01_ent->list($dial_ref01_match, null);
         $this->assertIsArray($dial_ref01_list_result);
 
         // LOAD
         $dial_ref01_match_dt0 = [
             "id" => $dial_ref01_data["id"],
         ];
-        [$dial_ref01_data_dt0_loaded, $err] = $dial_ref01_ent->load($dial_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $dial_ref01_data_dt0_loaded = $dial_ref01_ent->load($dial_ref01_match_dt0, null);
         $dial_ref01_data_dt0_load_result = Helpers::to_map($dial_ref01_data_dt0_loaded);
         $this->assertNotNull($dial_ref01_data_dt0_load_result);
         $this->assertEquals($dial_ref01_data_dt0_load_result["id"], $dial_ref01_data["id"]);
@@ -96,7 +94,6 @@ function dial_basic_setup($extra)
         "ONEPIECE_TEST_DIAL_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function dial_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -43,16 +43,14 @@ class DialEntityTest < Minitest::Test
     dial_ref01_ent = client.Dial(nil)
     dial_ref01_match = {}
 
-    dial_ref01_list_result, err = dial_ref01_ent.list(dial_ref01_match, nil)
-    assert_nil err
+    dial_ref01_list_result = dial_ref01_ent.list(dial_ref01_match, nil)
     assert dial_ref01_list_result.is_a?(Array)
 
     # LOAD
     dial_ref01_match_dt0 = {
       "id" => dial_ref01_data["id"],
     }
-    dial_ref01_data_dt0_loaded, err = dial_ref01_ent.load(dial_ref01_match_dt0, nil)
-    assert_nil err
+    dial_ref01_data_dt0_loaded = dial_ref01_ent.load(dial_ref01_match_dt0, nil)
     dial_ref01_data_dt0_load_result = Helpers.to_map(dial_ref01_data_dt0_loaded)
     assert !dial_ref01_data_dt0_load_result.nil?
     assert_equal dial_ref01_data_dt0_load_result["id"], dial_ref01_data["id"]
@@ -93,7 +91,6 @@ def dial_basic_setup(extra)
     "ONEPIECE_TEST_DIAL_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def dial_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

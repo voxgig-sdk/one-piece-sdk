@@ -43,16 +43,14 @@ class FilmEntityTest < Minitest::Test
     film_ref01_ent = client.Film(nil)
     film_ref01_match = {}
 
-    film_ref01_list_result, err = film_ref01_ent.list(film_ref01_match, nil)
-    assert_nil err
+    film_ref01_list_result = film_ref01_ent.list(film_ref01_match, nil)
     assert film_ref01_list_result.is_a?(Array)
 
     # LOAD
     film_ref01_match_dt0 = {
       "id" => film_ref01_data["id"],
     }
-    film_ref01_data_dt0_loaded, err = film_ref01_ent.load(film_ref01_match_dt0, nil)
-    assert_nil err
+    film_ref01_data_dt0_loaded = film_ref01_ent.load(film_ref01_match_dt0, nil)
     film_ref01_data_dt0_load_result = Helpers.to_map(film_ref01_data_dt0_loaded)
     assert !film_ref01_data_dt0_load_result.nil?
     assert_equal film_ref01_data_dt0_load_result["id"], film_ref01_data["id"]
@@ -93,7 +91,6 @@ def film_basic_setup(extra)
     "ONEPIECE_TEST_FILM_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def film_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

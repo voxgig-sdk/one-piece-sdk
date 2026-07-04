@@ -50,16 +50,14 @@ class HakiEntityTest extends TestCase
         $haki_ref01_ent = $client->Haki(null);
         $haki_ref01_match = [];
 
-        [$haki_ref01_list_result, $err] = $haki_ref01_ent->list($haki_ref01_match, null);
-        $this->assertNull($err);
+        $haki_ref01_list_result = $haki_ref01_ent->list($haki_ref01_match, null);
         $this->assertIsArray($haki_ref01_list_result);
 
         // LOAD
         $haki_ref01_match_dt0 = [
             "id" => $haki_ref01_data["id"],
         ];
-        [$haki_ref01_data_dt0_loaded, $err] = $haki_ref01_ent->load($haki_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $haki_ref01_data_dt0_loaded = $haki_ref01_ent->load($haki_ref01_match_dt0, null);
         $haki_ref01_data_dt0_load_result = Helpers::to_map($haki_ref01_data_dt0_loaded);
         $this->assertNotNull($haki_ref01_data_dt0_load_result);
         $this->assertEquals($haki_ref01_data_dt0_load_result["id"], $haki_ref01_data["id"]);
@@ -96,7 +94,6 @@ function haki_basic_setup($extra)
         "ONEPIECE_TEST_HAKI_ENTID" => $idmap,
         "ONEPIECE_TEST_LIVE" => "FALSE",
         "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-        "ONEPIECE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function haki_basic_setup($extra)
     if ($env["ONEPIECE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ONEPIECE_APIKEY"],
             ],
             $extra ?? [],
         ]);

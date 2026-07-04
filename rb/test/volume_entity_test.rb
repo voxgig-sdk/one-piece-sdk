@@ -43,16 +43,14 @@ class VolumeEntityTest < Minitest::Test
     volume_ref01_ent = client.Volume(nil)
     volume_ref01_match = {}
 
-    volume_ref01_list_result, err = volume_ref01_ent.list(volume_ref01_match, nil)
-    assert_nil err
+    volume_ref01_list_result = volume_ref01_ent.list(volume_ref01_match, nil)
     assert volume_ref01_list_result.is_a?(Array)
 
     # LOAD
     volume_ref01_match_dt0 = {
       "id" => volume_ref01_data["id"],
     }
-    volume_ref01_data_dt0_loaded, err = volume_ref01_ent.load(volume_ref01_match_dt0, nil)
-    assert_nil err
+    volume_ref01_data_dt0_loaded = volume_ref01_ent.load(volume_ref01_match_dt0, nil)
     volume_ref01_data_dt0_load_result = Helpers.to_map(volume_ref01_data_dt0_loaded)
     assert !volume_ref01_data_dt0_load_result.nil?
     assert_equal volume_ref01_data_dt0_load_result["id"], volume_ref01_data["id"]
@@ -93,7 +91,6 @@ def volume_basic_setup(extra)
     "ONEPIECE_TEST_VOLUME_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def volume_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

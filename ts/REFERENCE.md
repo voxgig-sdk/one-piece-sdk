@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -290,7 +289,7 @@ Alias for `OnePieceSDK.test()`.
 ## BoatEntity
 
 ```ts
-const boat = client.Boat()
+const boat = client.boat
 ```
 
 ### Fields
@@ -310,7 +309,7 @@ const boat = client.Boat()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Boat().list()
+const results = await client.boat.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -318,7 +317,7 @@ const results = await client.Boat().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Boat().load({ id: 'boat_id' })
+const result = await client.boat.load({ id: 'boat_id' })
 ```
 
 ### Common Methods
@@ -352,7 +351,7 @@ Return a copy of the entity options.
 ## BowEntity
 
 ```ts
-const bow = client.Bow()
+const bow = client.bow
 ```
 
 ### Fields
@@ -371,7 +370,7 @@ const bow = client.Bow()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Bow().list()
+const results = await client.bow.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -379,7 +378,7 @@ const results = await client.Bow().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Bow().load({ id: 'bow_id' })
+const result = await client.bow.load({ id: 'bow_id' })
 ```
 
 ### Common Methods
@@ -413,7 +412,7 @@ Return a copy of the entity options.
 ## ChapterEntity
 
 ```ts
-const chapter = client.Chapter()
+const chapter = client.chapter
 ```
 
 ### Fields
@@ -433,7 +432,7 @@ const chapter = client.Chapter()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Chapter().list()
+const results = await client.chapter.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -441,7 +440,7 @@ const results = await client.Chapter().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Chapter().load({ id: 'chapter_id' })
+const result = await client.chapter.load({ id: 'chapter_id' })
 ```
 
 ### Common Methods
@@ -475,7 +474,7 @@ Return a copy of the entity options.
 ## CharacterEntity
 
 ```ts
-const character = client.Character()
+const character = client.character
 ```
 
 ### Fields
@@ -497,7 +496,7 @@ const character = client.Character()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Character().list()
+const results = await client.character.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -505,7 +504,7 @@ const results = await client.Character().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Character().load({ id: 'character_id' })
+const result = await client.character.load({ id: 'character_id' })
 ```
 
 ### Common Methods
@@ -539,7 +538,7 @@ Return a copy of the entity options.
 ## CrewEntity
 
 ```ts
-const crew = client.Crew()
+const crew = client.crew
 ```
 
 ### Fields
@@ -560,7 +559,7 @@ const crew = client.Crew()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Crew().list()
+const results = await client.crew.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -568,7 +567,7 @@ const results = await client.Crew().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Crew().load({ id: 'crew_id' })
+const result = await client.crew.load({ id: 'crew_id' })
 ```
 
 ### Common Methods
@@ -602,7 +601,7 @@ Return a copy of the entity options.
 ## DialEntity
 
 ```ts
-const dial = client.Dial()
+const dial = client.dial
 ```
 
 ### Fields
@@ -621,7 +620,7 @@ const dial = client.Dial()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Dial().list()
+const results = await client.dial.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -629,7 +628,7 @@ const results = await client.Dial().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Dial().load({ id: 'dial_id' })
+const result = await client.dial.load({ id: 'dial_id' })
 ```
 
 ### Common Methods
@@ -663,7 +662,7 @@ Return a copy of the entity options.
 ## EpisodeEntity
 
 ```ts
-const episode = client.Episode()
+const episode = client.episode
 ```
 
 ### Fields
@@ -683,7 +682,7 @@ const episode = client.Episode()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Episode().list()
+const results = await client.episode.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -691,7 +690,7 @@ const results = await client.Episode().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Episode().load({ id: 'episode_id' })
+const result = await client.episode.load({ id: 'episode_id' })
 ```
 
 ### Common Methods
@@ -725,7 +724,7 @@ Return a copy of the entity options.
 ## FilmEntity
 
 ```ts
-const film = client.Film()
+const film = client.film
 ```
 
 ### Fields
@@ -744,7 +743,7 @@ const film = client.Film()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Film().list()
+const results = await client.film.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -752,7 +751,7 @@ const results = await client.Film().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Film().load({ id: 'film_id' })
+const result = await client.film.load({ id: 'film_id' })
 ```
 
 ### Common Methods
@@ -786,7 +785,7 @@ Return a copy of the entity options.
 ## FruitEntity
 
 ```ts
-const fruit = client.Fruit()
+const fruit = client.fruit
 ```
 
 ### Fields
@@ -806,7 +805,7 @@ const fruit = client.Fruit()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Fruit().list()
+const results = await client.fruit.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -814,7 +813,7 @@ const results = await client.Fruit().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Fruit().load({ id: 'fruit_id' })
+const result = await client.fruit.load({ id: 'fruit_id' })
 ```
 
 ### Common Methods
@@ -848,7 +847,7 @@ Return a copy of the entity options.
 ## GearEntity
 
 ```ts
-const gear = client.Gear()
+const gear = client.gear
 ```
 
 ### Fields
@@ -867,7 +866,7 @@ const gear = client.Gear()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Gear().list()
+const results = await client.gear.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -875,7 +874,7 @@ const results = await client.Gear().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Gear().load({ id: 'gear_id' })
+const result = await client.gear.load({ id: 'gear_id' })
 ```
 
 ### Common Methods
@@ -909,7 +908,7 @@ Return a copy of the entity options.
 ## HakiEntity
 
 ```ts
-const haki = client.Haki()
+const haki = client.haki
 ```
 
 ### Fields
@@ -928,7 +927,7 @@ const haki = client.Haki()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Haki().list()
+const results = await client.haki.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -936,7 +935,7 @@ const results = await client.Haki().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Haki().load({ id: 'haki_id' })
+const result = await client.haki.load({ id: 'haki_id' })
 ```
 
 ### Common Methods
@@ -970,7 +969,7 @@ Return a copy of the entity options.
 ## LocationEntity
 
 ```ts
-const location = client.Location()
+const location = client.location
 ```
 
 ### Fields
@@ -990,7 +989,7 @@ const location = client.Location()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Location().list()
+const results = await client.location.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -998,7 +997,7 @@ const results = await client.Location().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Location().load({ id: 'location_id' })
+const result = await client.location.load({ id: 'location_id' })
 ```
 
 ### Common Methods
@@ -1032,7 +1031,7 @@ Return a copy of the entity options.
 ## SagaEntity
 
 ```ts
-const saga = client.Saga()
+const saga = client.saga
 ```
 
 ### Fields
@@ -1052,7 +1051,7 @@ const saga = client.Saga()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Saga().list()
+const results = await client.saga.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1060,7 +1059,7 @@ const results = await client.Saga().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Saga().load({ id: 'saga_id' })
+const result = await client.saga.load({ id: 'saga_id' })
 ```
 
 ### Common Methods
@@ -1094,7 +1093,7 @@ Return a copy of the entity options.
 ## SwordEntity
 
 ```ts
-const sword = client.Sword()
+const sword = client.sword
 ```
 
 ### Fields
@@ -1114,7 +1113,7 @@ const sword = client.Sword()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Sword().list()
+const results = await client.sword.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1122,7 +1121,7 @@ const results = await client.Sword().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Sword().load({ id: 'sword_id' })
+const result = await client.sword.load({ id: 'sword_id' })
 ```
 
 ### Common Methods
@@ -1156,7 +1155,7 @@ Return a copy of the entity options.
 ## TechniqueEntity
 
 ```ts
-const technique = client.Technique()
+const technique = client.technique
 ```
 
 ### Fields
@@ -1175,7 +1174,7 @@ const technique = client.Technique()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Technique().list()
+const results = await client.technique.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1183,7 +1182,7 @@ const results = await client.Technique().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Technique().load({ id: 'technique_id' })
+const result = await client.technique.load({ id: 'technique_id' })
 ```
 
 ### Common Methods
@@ -1217,7 +1216,7 @@ Return a copy of the entity options.
 ## VolumeEntity
 
 ```ts
-const volume = client.Volume()
+const volume = client.volume
 ```
 
 ### Fields
@@ -1237,7 +1236,7 @@ const volume = client.Volume()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Volume().list()
+const results = await client.volume.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1245,7 +1244,7 @@ const results = await client.Volume().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Volume().load({ id: 'volume_id' })
+const result = await client.volume.load({ id: 'volume_id' })
 ```
 
 ### Common Methods

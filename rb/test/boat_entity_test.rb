@@ -43,16 +43,14 @@ class BoatEntityTest < Minitest::Test
     boat_ref01_ent = client.Boat(nil)
     boat_ref01_match = {}
 
-    boat_ref01_list_result, err = boat_ref01_ent.list(boat_ref01_match, nil)
-    assert_nil err
+    boat_ref01_list_result = boat_ref01_ent.list(boat_ref01_match, nil)
     assert boat_ref01_list_result.is_a?(Array)
 
     # LOAD
     boat_ref01_match_dt0 = {
       "id" => boat_ref01_data["id"],
     }
-    boat_ref01_data_dt0_loaded, err = boat_ref01_ent.load(boat_ref01_match_dt0, nil)
-    assert_nil err
+    boat_ref01_data_dt0_loaded = boat_ref01_ent.load(boat_ref01_match_dt0, nil)
     boat_ref01_data_dt0_load_result = Helpers.to_map(boat_ref01_data_dt0_loaded)
     assert !boat_ref01_data_dt0_load_result.nil?
     assert_equal boat_ref01_data_dt0_load_result["id"], boat_ref01_data["id"]
@@ -93,7 +91,6 @@ def boat_basic_setup(extra)
     "ONEPIECE_TEST_BOAT_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def boat_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

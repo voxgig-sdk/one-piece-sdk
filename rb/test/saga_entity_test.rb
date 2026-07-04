@@ -43,16 +43,14 @@ class SagaEntityTest < Minitest::Test
     saga_ref01_ent = client.Saga(nil)
     saga_ref01_match = {}
 
-    saga_ref01_list_result, err = saga_ref01_ent.list(saga_ref01_match, nil)
-    assert_nil err
+    saga_ref01_list_result = saga_ref01_ent.list(saga_ref01_match, nil)
     assert saga_ref01_list_result.is_a?(Array)
 
     # LOAD
     saga_ref01_match_dt0 = {
       "id" => saga_ref01_data["id"],
     }
-    saga_ref01_data_dt0_loaded, err = saga_ref01_ent.load(saga_ref01_match_dt0, nil)
-    assert_nil err
+    saga_ref01_data_dt0_loaded = saga_ref01_ent.load(saga_ref01_match_dt0, nil)
     saga_ref01_data_dt0_load_result = Helpers.to_map(saga_ref01_data_dt0_loaded)
     assert !saga_ref01_data_dt0_load_result.nil?
     assert_equal saga_ref01_data_dt0_load_result["id"], saga_ref01_data["id"]
@@ -93,7 +91,6 @@ def saga_basic_setup(extra)
     "ONEPIECE_TEST_SAGA_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def saga_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

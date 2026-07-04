@@ -43,16 +43,14 @@ class SwordEntityTest < Minitest::Test
     sword_ref01_ent = client.Sword(nil)
     sword_ref01_match = {}
 
-    sword_ref01_list_result, err = sword_ref01_ent.list(sword_ref01_match, nil)
-    assert_nil err
+    sword_ref01_list_result = sword_ref01_ent.list(sword_ref01_match, nil)
     assert sword_ref01_list_result.is_a?(Array)
 
     # LOAD
     sword_ref01_match_dt0 = {
       "id" => sword_ref01_data["id"],
     }
-    sword_ref01_data_dt0_loaded, err = sword_ref01_ent.load(sword_ref01_match_dt0, nil)
-    assert_nil err
+    sword_ref01_data_dt0_loaded = sword_ref01_ent.load(sword_ref01_match_dt0, nil)
     sword_ref01_data_dt0_load_result = Helpers.to_map(sword_ref01_data_dt0_loaded)
     assert !sword_ref01_data_dt0_load_result.nil?
     assert_equal sword_ref01_data_dt0_load_result["id"], sword_ref01_data["id"]
@@ -93,7 +91,6 @@ def sword_basic_setup(extra)
     "ONEPIECE_TEST_SWORD_ENTID" => idmap,
     "ONEPIECE_TEST_LIVE" => "FALSE",
     "ONEPIECE_TEST_EXPLAIN" => "FALSE",
-    "ONEPIECE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def sword_basic_setup(extra)
   if env["ONEPIECE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ONEPIECE_APIKEY"],
       },
       extra || {},
     ])

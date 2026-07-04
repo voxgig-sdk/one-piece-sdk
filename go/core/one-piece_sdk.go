@@ -245,81 +245,129 @@ func (sdk *OnePieceSDK) Direct(fetchargs map[string]any) (map[string]any, error)
 }
 
 
+// Boat returns a Boat entity bound to this client.
+// Idiomatic usage: client.Boat(nil).List(nil, nil) or
+// client.Boat(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Boat(data map[string]any) OnePieceEntity {
 	return NewBoatEntityFunc(sdk, data)
 }
 
 
+// Bow returns a Bow entity bound to this client.
+// Idiomatic usage: client.Bow(nil).List(nil, nil) or
+// client.Bow(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Bow(data map[string]any) OnePieceEntity {
 	return NewBowEntityFunc(sdk, data)
 }
 
 
+// Chapter returns a Chapter entity bound to this client.
+// Idiomatic usage: client.Chapter(nil).List(nil, nil) or
+// client.Chapter(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Chapter(data map[string]any) OnePieceEntity {
 	return NewChapterEntityFunc(sdk, data)
 }
 
 
+// Character returns a Character entity bound to this client.
+// Idiomatic usage: client.Character(nil).List(nil, nil) or
+// client.Character(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Character(data map[string]any) OnePieceEntity {
 	return NewCharacterEntityFunc(sdk, data)
 }
 
 
+// Crew returns a Crew entity bound to this client.
+// Idiomatic usage: client.Crew(nil).List(nil, nil) or
+// client.Crew(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Crew(data map[string]any) OnePieceEntity {
 	return NewCrewEntityFunc(sdk, data)
 }
 
 
+// Dial returns a Dial entity bound to this client.
+// Idiomatic usage: client.Dial(nil).List(nil, nil) or
+// client.Dial(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Dial(data map[string]any) OnePieceEntity {
 	return NewDialEntityFunc(sdk, data)
 }
 
 
+// Episode returns a Episode entity bound to this client.
+// Idiomatic usage: client.Episode(nil).List(nil, nil) or
+// client.Episode(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Episode(data map[string]any) OnePieceEntity {
 	return NewEpisodeEntityFunc(sdk, data)
 }
 
 
+// Film returns a Film entity bound to this client.
+// Idiomatic usage: client.Film(nil).List(nil, nil) or
+// client.Film(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Film(data map[string]any) OnePieceEntity {
 	return NewFilmEntityFunc(sdk, data)
 }
 
 
+// Fruit returns a Fruit entity bound to this client.
+// Idiomatic usage: client.Fruit(nil).List(nil, nil) or
+// client.Fruit(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Fruit(data map[string]any) OnePieceEntity {
 	return NewFruitEntityFunc(sdk, data)
 }
 
 
+// Gear returns a Gear entity bound to this client.
+// Idiomatic usage: client.Gear(nil).List(nil, nil) or
+// client.Gear(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Gear(data map[string]any) OnePieceEntity {
 	return NewGearEntityFunc(sdk, data)
 }
 
 
+// Haki returns a Haki entity bound to this client.
+// Idiomatic usage: client.Haki(nil).List(nil, nil) or
+// client.Haki(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Haki(data map[string]any) OnePieceEntity {
 	return NewHakiEntityFunc(sdk, data)
 }
 
 
+// Location returns a Location entity bound to this client.
+// Idiomatic usage: client.Location(nil).List(nil, nil) or
+// client.Location(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Location(data map[string]any) OnePieceEntity {
 	return NewLocationEntityFunc(sdk, data)
 }
 
 
+// Saga returns a Saga entity bound to this client.
+// Idiomatic usage: client.Saga(nil).List(nil, nil) or
+// client.Saga(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Saga(data map[string]any) OnePieceEntity {
 	return NewSagaEntityFunc(sdk, data)
 }
 
 
+// Sword returns a Sword entity bound to this client.
+// Idiomatic usage: client.Sword(nil).List(nil, nil) or
+// client.Sword(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Sword(data map[string]any) OnePieceEntity {
 	return NewSwordEntityFunc(sdk, data)
 }
 
 
+// Technique returns a Technique entity bound to this client.
+// Idiomatic usage: client.Technique(nil).List(nil, nil) or
+// client.Technique(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Technique(data map[string]any) OnePieceEntity {
 	return NewTechniqueEntityFunc(sdk, data)
 }
 
 
+// Volume returns a Volume entity bound to this client.
+// Idiomatic usage: client.Volume(nil).List(nil, nil) or
+// client.Volume(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OnePieceSDK) Volume(data map[string]any) OnePieceEntity {
 	return NewVolumeEntityFunc(sdk, data)
 }

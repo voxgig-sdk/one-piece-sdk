@@ -45,6 +45,7 @@ class TechniqueEntity
     end
   end
 
+  # @return [Technique, Hash] the current Technique data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class TechniqueEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Technique fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Technique.
+  #
+  # @param reqmatch [TechniqueLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Technique, Hash] the loaded Technique; raises OnePieceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class TechniqueEntity
 
 
   
+  # List Technique items matching the given filter.
+  #
+  # @param reqmatch [TechniqueListMatch, Hash, nil] match filter (any subset of Technique fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Technique>, Array] the matching Technique items; raises OnePieceError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
