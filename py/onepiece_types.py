@@ -4,371 +4,327 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Boat:
-    crew: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class Boat(TypedDict, total=False):
+    crew: str
+    description: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class BoatLoadMatch:
+class BoatLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class BoatListMatch:
-    crew: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class BoatListMatch(TypedDict, total=False):
+    crew: str
+    description: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class Bow:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    owner: Optional[str] = None
+class Bow(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    owner: str
 
 
-@dataclass
-class BowLoadMatch:
+class BowLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class BowListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    owner: Optional[str] = None
+class BowListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    owner: str
 
 
-@dataclass
-class Chapter:
-    id: Optional[int] = None
-    number: Optional[int] = None
-    release_date: Optional[str] = None
-    saga: Optional[str] = None
-    title: Optional[str] = None
+class Chapter(TypedDict, total=False):
+    id: int
+    number: int
+    release_date: str
+    saga: str
+    title: str
 
 
-@dataclass
-class ChapterLoadMatch:
+class ChapterLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ChapterListMatch:
-    id: Optional[int] = None
-    number: Optional[int] = None
-    release_date: Optional[str] = None
-    saga: Optional[str] = None
-    title: Optional[str] = None
+class ChapterListMatch(TypedDict, total=False):
+    id: int
+    number: int
+    release_date: str
+    saga: str
+    title: str
 
 
-@dataclass
-class Character:
-    age: Optional[int] = None
-    bounty: Optional[int] = None
-    crew: Optional[str] = None
-    description: Optional[str] = None
-    devil_fruit: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class Character(TypedDict, total=False):
+    age: int
+    bounty: int
+    crew: str
+    description: str
+    devil_fruit: str
+    id: int
+    name: str
 
 
-@dataclass
-class CharacterLoadMatch:
+class CharacterLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class CharacterListMatch:
-    age: Optional[int] = None
-    bounty: Optional[int] = None
-    crew: Optional[str] = None
-    description: Optional[str] = None
-    devil_fruit: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class CharacterListMatch(TypedDict, total=False):
+    age: int
+    bounty: int
+    crew: str
+    description: str
+    devil_fruit: str
+    id: int
+    name: str
 
 
-@dataclass
-class Crew:
-    captain: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    member: Optional[list] = None
-    name: Optional[str] = None
-    ship: Optional[str] = None
+class Crew(TypedDict, total=False):
+    captain: str
+    description: str
+    id: int
+    member: list
+    name: str
+    ship: str
 
 
-@dataclass
-class CrewLoadMatch:
+class CrewLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class CrewListMatch:
-    captain: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    member: Optional[list] = None
-    name: Optional[str] = None
-    ship: Optional[str] = None
+class CrewListMatch(TypedDict, total=False):
+    captain: str
+    description: str
+    id: int
+    member: list
+    name: str
+    ship: str
 
 
-@dataclass
-class Dial:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class Dial(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class DialLoadMatch:
+class DialLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class DialListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class DialListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class Episode:
-    air_date: Optional[str] = None
-    id: Optional[int] = None
-    number: Optional[int] = None
-    saga: Optional[str] = None
-    title: Optional[str] = None
+class Episode(TypedDict, total=False):
+    air_date: str
+    id: int
+    number: int
+    saga: str
+    title: str
 
 
-@dataclass
-class EpisodeLoadMatch:
+class EpisodeLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class EpisodeListMatch:
-    air_date: Optional[str] = None
-    id: Optional[int] = None
-    number: Optional[int] = None
-    saga: Optional[str] = None
-    title: Optional[str] = None
+class EpisodeListMatch(TypedDict, total=False):
+    air_date: str
+    id: int
+    number: int
+    saga: str
+    title: str
 
 
-@dataclass
-class Film:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    release_date: Optional[str] = None
-    title: Optional[str] = None
+class Film(TypedDict, total=False):
+    description: str
+    id: int
+    release_date: str
+    title: str
 
 
-@dataclass
-class FilmLoadMatch:
+class FilmLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class FilmListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    release_date: Optional[str] = None
-    title: Optional[str] = None
+class FilmListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    release_date: str
+    title: str
 
 
-@dataclass
-class Fruit:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    user: Optional[str] = None
+class Fruit(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    type: str
+    user: str
 
 
-@dataclass
-class FruitLoadMatch:
+class FruitLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class FruitListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    user: Optional[str] = None
+class FruitListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    type: str
+    user: str
 
 
-@dataclass
-class Gear:
-    description: Optional[str] = None
-    first_appearance: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class Gear(TypedDict, total=False):
+    description: str
+    first_appearance: str
+    id: int
+    name: str
 
 
-@dataclass
-class GearLoadMatch:
+class GearLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class GearListMatch:
-    description: Optional[str] = None
-    first_appearance: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class GearListMatch(TypedDict, total=False):
+    description: str
+    first_appearance: str
+    id: int
+    name: str
 
 
-@dataclass
-class Haki:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    user: Optional[list] = None
+class Haki(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    user: list
 
 
-@dataclass
-class HakiLoadMatch:
+class HakiLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class HakiListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    user: Optional[list] = None
+class HakiListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    user: list
 
 
-@dataclass
-class Location:
-    description: Optional[str] = None
-    first_appearance: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class Location(TypedDict, total=False):
+    description: str
+    first_appearance: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class LocationLoadMatch:
+class LocationLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class LocationListMatch:
-    description: Optional[str] = None
-    first_appearance: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class LocationListMatch(TypedDict, total=False):
+    description: str
+    first_appearance: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class Saga:
-    chapter: Optional[list] = None
-    description: Optional[str] = None
-    episode: Optional[list] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class Saga(TypedDict, total=False):
+    chapter: list
+    description: str
+    episode: list
+    id: int
+    name: str
 
 
-@dataclass
-class SagaLoadMatch:
+class SagaLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class SagaListMatch:
-    chapter: Optional[list] = None
-    description: Optional[str] = None
-    episode: Optional[list] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class SagaListMatch(TypedDict, total=False):
+    chapter: list
+    description: str
+    episode: list
+    id: int
+    name: str
 
 
-@dataclass
-class Sword:
-    description: Optional[str] = None
-    grade: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    owner: Optional[str] = None
+class Sword(TypedDict, total=False):
+    description: str
+    grade: str
+    id: int
+    name: str
+    owner: str
 
 
-@dataclass
-class SwordLoadMatch:
+class SwordLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class SwordListMatch:
-    description: Optional[str] = None
-    grade: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    owner: Optional[str] = None
+class SwordListMatch(TypedDict, total=False):
+    description: str
+    grade: str
+    id: int
+    name: str
+    owner: str
 
 
-@dataclass
-class Technique:
-    description: Optional[str] = None
-    gear: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class Technique(TypedDict, total=False):
+    description: str
+    gear: str
+    id: int
+    name: str
 
 
-@dataclass
-class TechniqueLoadMatch:
+class TechniqueLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class TechniqueListMatch:
-    description: Optional[str] = None
-    gear: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class TechniqueListMatch(TypedDict, total=False):
+    description: str
+    gear: str
+    id: int
+    name: str
 
 
-@dataclass
-class Volume:
-    chapter: Optional[list] = None
-    id: Optional[int] = None
-    number: Optional[int] = None
-    release_date: Optional[str] = None
-    title: Optional[str] = None
+class Volume(TypedDict, total=False):
+    chapter: list
+    id: int
+    number: int
+    release_date: str
+    title: str
 
 
-@dataclass
-class VolumeLoadMatch:
+class VolumeLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class VolumeListMatch:
-    chapter: Optional[list] = None
-    id: Optional[int] = None
-    number: Optional[int] = None
-    release_date: Optional[str] = None
-    title: Optional[str] = None
-
+class VolumeListMatch(TypedDict, total=False):
+    chapter: list
+    id: int
+    number: int
+    release_date: str
+    title: str

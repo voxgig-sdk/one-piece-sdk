@@ -29,18 +29,16 @@ require_once 'onepiece_sdk.php';
 $client = new OnePieceSDK();
 ```
 
-### 2. List boats
+### 2. List boat records
 
 ```php
 try {
-    $result = $client->boat()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Boat records — iterate directly.
+    $boats = $client->Boat()->list();
+    foreach ($boats as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->boat()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Boat record (throws on error).
+    $boat = $client->Boat()->load(["id" => "example_id"]);
+    print_r($boat);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = OnePieceSDK::test();
+$client = OnePieceSDK::test([
+    "entity" => ["boat" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->boat()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$boat = $client->Boat()->load(["id" => "test01"]);
+print_r($boat);
 ```
 
 ### Use a custom fetch function
@@ -188,7 +191,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Character` | `($data): CharacterEntity` | Create a Character entity instance. |
 | `Crew` | `($data): CrewEntity` | Create a Crew entity instance. |
 | `Dial` | `($data): DialEntity` | Create a Dial entity instance. |
-| `Episode` | `($data): EpisodeEntity` | Create a Episode entity instance. |
+| `Episode` | `($data): EpisodeEntity` | Create an Episode entity instance. |
 | `Film` | `($data): FilmEntity` | Create a Film entity instance. |
 | `Fruit` | `($data): FruitEntity` | Create a Fruit entity instance. |
 | `Gear` | `($data): GearEntity` | Create a Gear entity instance. |
@@ -465,7 +468,7 @@ API path: `/volumes`
 
 ### Boat
 
-Create an instance: `const boat = client.boat`
+Create an instance: `$boat = $client->Boat();`
 
 #### Operations
 
@@ -486,20 +489,22 @@ Create an instance: `const boat = client.boat`
 
 #### Example: Load
 
-```ts
-const boat = await client.boat.load({ id: 'boat_id' })
+```php
+// load() returns the bare Boat record (throws on error).
+$boat = $client->Boat()->load(["id" => "boat_id"]);
 ```
 
 #### Example: List
 
-```ts
-const boats = await client.boat.list()
+```php
+// list() returns an array of Boat records (throws on error).
+$boats = $client->Boat()->list();
 ```
 
 
 ### Bow
 
-Create an instance: `const bow = client.bow`
+Create an instance: `$bow = $client->Bow();`
 
 #### Operations
 
@@ -519,20 +524,22 @@ Create an instance: `const bow = client.bow`
 
 #### Example: Load
 
-```ts
-const bow = await client.bow.load({ id: 'bow_id' })
+```php
+// load() returns the bare Bow record (throws on error).
+$bow = $client->Bow()->load(["id" => "bow_id"]);
 ```
 
 #### Example: List
 
-```ts
-const bows = await client.bow.list()
+```php
+// list() returns an array of Bow records (throws on error).
+$bows = $client->Bow()->list();
 ```
 
 
 ### Chapter
 
-Create an instance: `const chapter = client.chapter`
+Create an instance: `$chapter = $client->Chapter();`
 
 #### Operations
 
@@ -553,20 +560,22 @@ Create an instance: `const chapter = client.chapter`
 
 #### Example: Load
 
-```ts
-const chapter = await client.chapter.load({ id: 'chapter_id' })
+```php
+// load() returns the bare Chapter record (throws on error).
+$chapter = $client->Chapter()->load(["id" => "chapter_id"]);
 ```
 
 #### Example: List
 
-```ts
-const chapters = await client.chapter.list()
+```php
+// list() returns an array of Chapter records (throws on error).
+$chapters = $client->Chapter()->list();
 ```
 
 
 ### Character
 
-Create an instance: `const character = client.character`
+Create an instance: `$character = $client->Character();`
 
 #### Operations
 
@@ -589,20 +598,22 @@ Create an instance: `const character = client.character`
 
 #### Example: Load
 
-```ts
-const character = await client.character.load({ id: 'character_id' })
+```php
+// load() returns the bare Character record (throws on error).
+$character = $client->Character()->load(["id" => "character_id"]);
 ```
 
 #### Example: List
 
-```ts
-const characters = await client.character.list()
+```php
+// list() returns an array of Character records (throws on error).
+$characters = $client->Character()->list();
 ```
 
 
 ### Crew
 
-Create an instance: `const crew = client.crew`
+Create an instance: `$crew = $client->Crew();`
 
 #### Operations
 
@@ -624,20 +635,22 @@ Create an instance: `const crew = client.crew`
 
 #### Example: Load
 
-```ts
-const crew = await client.crew.load({ id: 'crew_id' })
+```php
+// load() returns the bare Crew record (throws on error).
+$crew = $client->Crew()->load(["id" => "crew_id"]);
 ```
 
 #### Example: List
 
-```ts
-const crews = await client.crew.list()
+```php
+// list() returns an array of Crew records (throws on error).
+$crews = $client->Crew()->list();
 ```
 
 
 ### Dial
 
-Create an instance: `const dial = client.dial`
+Create an instance: `$dial = $client->Dial();`
 
 #### Operations
 
@@ -657,20 +670,22 @@ Create an instance: `const dial = client.dial`
 
 #### Example: Load
 
-```ts
-const dial = await client.dial.load({ id: 'dial_id' })
+```php
+// load() returns the bare Dial record (throws on error).
+$dial = $client->Dial()->load(["id" => "dial_id"]);
 ```
 
 #### Example: List
 
-```ts
-const dials = await client.dial.list()
+```php
+// list() returns an array of Dial records (throws on error).
+$dials = $client->Dial()->list();
 ```
 
 
 ### Episode
 
-Create an instance: `const episode = client.episode`
+Create an instance: `$episode = $client->Episode();`
 
 #### Operations
 
@@ -691,20 +706,22 @@ Create an instance: `const episode = client.episode`
 
 #### Example: Load
 
-```ts
-const episode = await client.episode.load({ id: 'episode_id' })
+```php
+// load() returns the bare Episode record (throws on error).
+$episode = $client->Episode()->load(["id" => "episode_id"]);
 ```
 
 #### Example: List
 
-```ts
-const episodes = await client.episode.list()
+```php
+// list() returns an array of Episode records (throws on error).
+$episodes = $client->Episode()->list();
 ```
 
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `$film = $client->Film();`
 
 #### Operations
 
@@ -724,20 +741,22 @@ Create an instance: `const film = client.film`
 
 #### Example: Load
 
-```ts
-const film = await client.film.load({ id: 'film_id' })
+```php
+// load() returns the bare Film record (throws on error).
+$film = $client->Film()->load(["id" => "film_id"]);
 ```
 
 #### Example: List
 
-```ts
-const films = await client.film.list()
+```php
+// list() returns an array of Film records (throws on error).
+$films = $client->Film()->list();
 ```
 
 
 ### Fruit
 
-Create an instance: `const fruit = client.fruit`
+Create an instance: `$fruit = $client->Fruit();`
 
 #### Operations
 
@@ -758,20 +777,22 @@ Create an instance: `const fruit = client.fruit`
 
 #### Example: Load
 
-```ts
-const fruit = await client.fruit.load({ id: 'fruit_id' })
+```php
+// load() returns the bare Fruit record (throws on error).
+$fruit = $client->Fruit()->load(["id" => "fruit_id"]);
 ```
 
 #### Example: List
 
-```ts
-const fruits = await client.fruit.list()
+```php
+// list() returns an array of Fruit records (throws on error).
+$fruits = $client->Fruit()->list();
 ```
 
 
 ### Gear
 
-Create an instance: `const gear = client.gear`
+Create an instance: `$gear = $client->Gear();`
 
 #### Operations
 
@@ -791,20 +812,22 @@ Create an instance: `const gear = client.gear`
 
 #### Example: Load
 
-```ts
-const gear = await client.gear.load({ id: 'gear_id' })
+```php
+// load() returns the bare Gear record (throws on error).
+$gear = $client->Gear()->load(["id" => "gear_id"]);
 ```
 
 #### Example: List
 
-```ts
-const gears = await client.gear.list()
+```php
+// list() returns an array of Gear records (throws on error).
+$gears = $client->Gear()->list();
 ```
 
 
 ### Haki
 
-Create an instance: `const haki = client.haki`
+Create an instance: `$haki = $client->Haki();`
 
 #### Operations
 
@@ -824,20 +847,22 @@ Create an instance: `const haki = client.haki`
 
 #### Example: Load
 
-```ts
-const haki = await client.haki.load({ id: 'haki_id' })
+```php
+// load() returns the bare Haki record (throws on error).
+$haki = $client->Haki()->load(["id" => "haki_id"]);
 ```
 
 #### Example: List
 
-```ts
-const hakis = await client.haki.list()
+```php
+// list() returns an array of Haki records (throws on error).
+$hakis = $client->Haki()->list();
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `$location = $client->Location();`
 
 #### Operations
 
@@ -858,20 +883,22 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```php
+// load() returns the bare Location record (throws on error).
+$location = $client->Location()->load(["id" => "location_id"]);
 ```
 
 #### Example: List
 
-```ts
-const locations = await client.location.list()
+```php
+// list() returns an array of Location records (throws on error).
+$locations = $client->Location()->list();
 ```
 
 
 ### Saga
 
-Create an instance: `const saga = client.saga`
+Create an instance: `$saga = $client->Saga();`
 
 #### Operations
 
@@ -892,20 +919,22 @@ Create an instance: `const saga = client.saga`
 
 #### Example: Load
 
-```ts
-const saga = await client.saga.load({ id: 'saga_id' })
+```php
+// load() returns the bare Saga record (throws on error).
+$saga = $client->Saga()->load(["id" => "saga_id"]);
 ```
 
 #### Example: List
 
-```ts
-const sagas = await client.saga.list()
+```php
+// list() returns an array of Saga records (throws on error).
+$sagas = $client->Saga()->list();
 ```
 
 
 ### Sword
 
-Create an instance: `const sword = client.sword`
+Create an instance: `$sword = $client->Sword();`
 
 #### Operations
 
@@ -926,20 +955,22 @@ Create an instance: `const sword = client.sword`
 
 #### Example: Load
 
-```ts
-const sword = await client.sword.load({ id: 'sword_id' })
+```php
+// load() returns the bare Sword record (throws on error).
+$sword = $client->Sword()->load(["id" => "sword_id"]);
 ```
 
 #### Example: List
 
-```ts
-const swords = await client.sword.list()
+```php
+// list() returns an array of Sword records (throws on error).
+$swords = $client->Sword()->list();
 ```
 
 
 ### Technique
 
-Create an instance: `const technique = client.technique`
+Create an instance: `$technique = $client->Technique();`
 
 #### Operations
 
@@ -959,20 +990,22 @@ Create an instance: `const technique = client.technique`
 
 #### Example: Load
 
-```ts
-const technique = await client.technique.load({ id: 'technique_id' })
+```php
+// load() returns the bare Technique record (throws on error).
+$technique = $client->Technique()->load(["id" => "technique_id"]);
 ```
 
 #### Example: List
 
-```ts
-const techniques = await client.technique.list()
+```php
+// list() returns an array of Technique records (throws on error).
+$techniques = $client->Technique()->list();
 ```
 
 
 ### Volume
 
-Create an instance: `const volume = client.volume`
+Create an instance: `$volume = $client->Volume();`
 
 #### Operations
 
@@ -993,14 +1026,16 @@ Create an instance: `const volume = client.volume`
 
 #### Example: Load
 
-```ts
-const volume = await client.volume.load({ id: 'volume_id' })
+```php
+// load() returns the bare Volume record (throws on error).
+$volume = $client->Volume()->load(["id" => "volume_id"]);
 ```
 
 #### Example: List
 
-```ts
-const volumes = await client.volume.list()
+```php
+// list() returns an array of Volume records (throws on error).
+$volumes = $client->Volume()->list();
 ```
 
 
@@ -1075,7 +1110,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$boat = $client->boat();
+$boat = $client->Boat();
 $boat->load(["id" => "example_id"]);
 
 // $boat->dataGet() now returns the loaded boat data

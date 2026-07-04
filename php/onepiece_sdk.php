@@ -233,10 +233,10 @@ class OnePieceSDK
 
     private $_boat = null;
 
-    // Idiomatic facade: $client->boat()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Boat() (PHP method
-    // names are case-insensitive).
-    public function boat($data = null)
+    // Canonical facade: $client->Boat()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->boat()
+    // resolves here too.
+    public function Boat($data = null)
     {
         require_once __DIR__ . '/entity/boat_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class OnePieceSDK
 
     private $_bow = null;
 
-    // Idiomatic facade: $client->bow()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Bow() (PHP method
-    // names are case-insensitive).
-    public function bow($data = null)
+    // Canonical facade: $client->Bow()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->bow()
+    // resolves here too.
+    public function Bow($data = null)
     {
         require_once __DIR__ . '/entity/bow_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class OnePieceSDK
 
     private $_chapter = null;
 
-    // Idiomatic facade: $client->chapter()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Chapter() (PHP method
-    // names are case-insensitive).
-    public function chapter($data = null)
+    // Canonical facade: $client->Chapter()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->chapter()
+    // resolves here too.
+    public function Chapter($data = null)
     {
         require_once __DIR__ . '/entity/chapter_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class OnePieceSDK
 
     private $_character = null;
 
-    // Idiomatic facade: $client->character()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Character() (PHP method
-    // names are case-insensitive).
-    public function character($data = null)
+    // Canonical facade: $client->Character()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->character()
+    // resolves here too.
+    public function Character($data = null)
     {
         require_once __DIR__ . '/entity/character_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class OnePieceSDK
 
     private $_crew = null;
 
-    // Idiomatic facade: $client->crew()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Crew() (PHP method
-    // names are case-insensitive).
-    public function crew($data = null)
+    // Canonical facade: $client->Crew()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->crew()
+    // resolves here too.
+    public function Crew($data = null)
     {
         require_once __DIR__ . '/entity/crew_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class OnePieceSDK
 
     private $_dial = null;
 
-    // Idiomatic facade: $client->dial()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Dial() (PHP method
-    // names are case-insensitive).
-    public function dial($data = null)
+    // Canonical facade: $client->Dial()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->dial()
+    // resolves here too.
+    public function Dial($data = null)
     {
         require_once __DIR__ . '/entity/dial_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class OnePieceSDK
 
     private $_episode = null;
 
-    // Idiomatic facade: $client->episode()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Episode() (PHP method
-    // names are case-insensitive).
-    public function episode($data = null)
+    // Canonical facade: $client->Episode()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->episode()
+    // resolves here too.
+    public function Episode($data = null)
     {
         require_once __DIR__ . '/entity/episode_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class OnePieceSDK
 
     private $_film = null;
 
-    // Idiomatic facade: $client->film()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Film() (PHP method
-    // names are case-insensitive).
-    public function film($data = null)
+    // Canonical facade: $client->Film()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->film()
+    // resolves here too.
+    public function Film($data = null)
     {
         require_once __DIR__ . '/entity/film_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class OnePieceSDK
 
     private $_fruit = null;
 
-    // Idiomatic facade: $client->fruit()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Fruit() (PHP method
-    // names are case-insensitive).
-    public function fruit($data = null)
+    // Canonical facade: $client->Fruit()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->fruit()
+    // resolves here too.
+    public function Fruit($data = null)
     {
         require_once __DIR__ . '/entity/fruit_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class OnePieceSDK
 
     private $_gear = null;
 
-    // Idiomatic facade: $client->gear()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Gear() (PHP method
-    // names are case-insensitive).
-    public function gear($data = null)
+    // Canonical facade: $client->Gear()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gear()
+    // resolves here too.
+    public function Gear($data = null)
     {
         require_once __DIR__ . '/entity/gear_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class OnePieceSDK
 
     private $_haki = null;
 
-    // Idiomatic facade: $client->haki()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Haki() (PHP method
-    // names are case-insensitive).
-    public function haki($data = null)
+    // Canonical facade: $client->Haki()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->haki()
+    // resolves here too.
+    public function Haki($data = null)
     {
         require_once __DIR__ . '/entity/haki_entity.php';
         if ($data === null) {
@@ -431,10 +431,10 @@ class OnePieceSDK
 
     private $_location = null;
 
-    // Idiomatic facade: $client->location()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Location() (PHP method
-    // names are case-insensitive).
-    public function location($data = null)
+    // Canonical facade: $client->Location()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->location()
+    // resolves here too.
+    public function Location($data = null)
     {
         require_once __DIR__ . '/entity/location_entity.php';
         if ($data === null) {
@@ -449,10 +449,10 @@ class OnePieceSDK
 
     private $_saga = null;
 
-    // Idiomatic facade: $client->saga()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Saga() (PHP method
-    // names are case-insensitive).
-    public function saga($data = null)
+    // Canonical facade: $client->Saga()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->saga()
+    // resolves here too.
+    public function Saga($data = null)
     {
         require_once __DIR__ . '/entity/saga_entity.php';
         if ($data === null) {
@@ -467,10 +467,10 @@ class OnePieceSDK
 
     private $_sword = null;
 
-    // Idiomatic facade: $client->sword()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Sword() (PHP method
-    // names are case-insensitive).
-    public function sword($data = null)
+    // Canonical facade: $client->Sword()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->sword()
+    // resolves here too.
+    public function Sword($data = null)
     {
         require_once __DIR__ . '/entity/sword_entity.php';
         if ($data === null) {
@@ -485,10 +485,10 @@ class OnePieceSDK
 
     private $_technique = null;
 
-    // Idiomatic facade: $client->technique()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Technique() (PHP method
-    // names are case-insensitive).
-    public function technique($data = null)
+    // Canonical facade: $client->Technique()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->technique()
+    // resolves here too.
+    public function Technique($data = null)
     {
         require_once __DIR__ . '/entity/technique_entity.php';
         if ($data === null) {
@@ -503,10 +503,10 @@ class OnePieceSDK
 
     private $_volume = null;
 
-    // Idiomatic facade: $client->volume()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Volume() (PHP method
-    // names are case-insensitive).
-    public function volume($data = null)
+    // Canonical facade: $client->Volume()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->volume()
+    // resolves here too.
+    public function Volume($data = null)
     {
         require_once __DIR__ . '/entity/volume_entity.php';
         if ($data === null) {

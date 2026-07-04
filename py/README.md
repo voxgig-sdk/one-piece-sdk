@@ -31,24 +31,28 @@ from onepiece_sdk import OnePieceSDK
 client = OnePieceSDK()
 ```
 
-### 2. List boats
+### 2. List boat records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.boat.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    boats = client.Boat().list({})
+    for boat in boats:
+        print(boat)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a boat
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.boat.load({"id": "example_id"})
-    print(result)
+    boat = client.Boat().load({"id": "example_id"})
+    print(boat)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OnePieceSDK.test()
 
-result = client.boat.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+boat = client.Boat().load({"id": "test01"})
+# boat contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -179,7 +184,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Character` | `(data) -> CharacterEntity` | Create a Character entity instance. |
 | `Crew` | `(data) -> CrewEntity` | Create a Crew entity instance. |
 | `Dial` | `(data) -> DialEntity` | Create a Dial entity instance. |
-| `Episode` | `(data) -> EpisodeEntity` | Create a Episode entity instance. |
+| `Episode` | `(data) -> EpisodeEntity` | Create an Episode entity instance. |
 | `Film` | `(data) -> FilmEntity` | Create a Film entity instance. |
 | `Fruit` | `(data) -> FruitEntity` | Create a Fruit entity instance. |
 | `Gear` | `(data) -> GearEntity` | Create a Gear entity instance. |
@@ -456,7 +461,7 @@ API path: `/volumes`
 
 ### Boat
 
-Create an instance: `const boat = client.boat`
+Create an instance: `boat = client.Boat()`
 
 #### Operations
 
@@ -477,20 +482,20 @@ Create an instance: `const boat = client.boat`
 
 #### Example: Load
 
-```ts
-const boat = await client.boat.load({ id: 'boat_id' })
+```python
+boat = client.Boat().load({"id": "boat_id"})
 ```
 
 #### Example: List
 
-```ts
-const boats = await client.boat.list()
+```python
+boats = client.Boat().list({})
 ```
 
 
 ### Bow
 
-Create an instance: `const bow = client.bow`
+Create an instance: `bow = client.Bow()`
 
 #### Operations
 
@@ -510,20 +515,20 @@ Create an instance: `const bow = client.bow`
 
 #### Example: Load
 
-```ts
-const bow = await client.bow.load({ id: 'bow_id' })
+```python
+bow = client.Bow().load({"id": "bow_id"})
 ```
 
 #### Example: List
 
-```ts
-const bows = await client.bow.list()
+```python
+bows = client.Bow().list({})
 ```
 
 
 ### Chapter
 
-Create an instance: `const chapter = client.chapter`
+Create an instance: `chapter = client.Chapter()`
 
 #### Operations
 
@@ -544,20 +549,20 @@ Create an instance: `const chapter = client.chapter`
 
 #### Example: Load
 
-```ts
-const chapter = await client.chapter.load({ id: 'chapter_id' })
+```python
+chapter = client.Chapter().load({"id": "chapter_id"})
 ```
 
 #### Example: List
 
-```ts
-const chapters = await client.chapter.list()
+```python
+chapters = client.Chapter().list({})
 ```
 
 
 ### Character
 
-Create an instance: `const character = client.character`
+Create an instance: `character = client.Character()`
 
 #### Operations
 
@@ -580,20 +585,20 @@ Create an instance: `const character = client.character`
 
 #### Example: Load
 
-```ts
-const character = await client.character.load({ id: 'character_id' })
+```python
+character = client.Character().load({"id": "character_id"})
 ```
 
 #### Example: List
 
-```ts
-const characters = await client.character.list()
+```python
+characters = client.Character().list({})
 ```
 
 
 ### Crew
 
-Create an instance: `const crew = client.crew`
+Create an instance: `crew = client.Crew()`
 
 #### Operations
 
@@ -615,20 +620,20 @@ Create an instance: `const crew = client.crew`
 
 #### Example: Load
 
-```ts
-const crew = await client.crew.load({ id: 'crew_id' })
+```python
+crew = client.Crew().load({"id": "crew_id"})
 ```
 
 #### Example: List
 
-```ts
-const crews = await client.crew.list()
+```python
+crews = client.Crew().list({})
 ```
 
 
 ### Dial
 
-Create an instance: `const dial = client.dial`
+Create an instance: `dial = client.Dial()`
 
 #### Operations
 
@@ -648,20 +653,20 @@ Create an instance: `const dial = client.dial`
 
 #### Example: Load
 
-```ts
-const dial = await client.dial.load({ id: 'dial_id' })
+```python
+dial = client.Dial().load({"id": "dial_id"})
 ```
 
 #### Example: List
 
-```ts
-const dials = await client.dial.list()
+```python
+dials = client.Dial().list({})
 ```
 
 
 ### Episode
 
-Create an instance: `const episode = client.episode`
+Create an instance: `episode = client.Episode()`
 
 #### Operations
 
@@ -682,20 +687,20 @@ Create an instance: `const episode = client.episode`
 
 #### Example: Load
 
-```ts
-const episode = await client.episode.load({ id: 'episode_id' })
+```python
+episode = client.Episode().load({"id": "episode_id"})
 ```
 
 #### Example: List
 
-```ts
-const episodes = await client.episode.list()
+```python
+episodes = client.Episode().list({})
 ```
 
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `film = client.Film()`
 
 #### Operations
 
@@ -715,20 +720,20 @@ Create an instance: `const film = client.film`
 
 #### Example: Load
 
-```ts
-const film = await client.film.load({ id: 'film_id' })
+```python
+film = client.Film().load({"id": "film_id"})
 ```
 
 #### Example: List
 
-```ts
-const films = await client.film.list()
+```python
+films = client.Film().list({})
 ```
 
 
 ### Fruit
 
-Create an instance: `const fruit = client.fruit`
+Create an instance: `fruit = client.Fruit()`
 
 #### Operations
 
@@ -749,20 +754,20 @@ Create an instance: `const fruit = client.fruit`
 
 #### Example: Load
 
-```ts
-const fruit = await client.fruit.load({ id: 'fruit_id' })
+```python
+fruit = client.Fruit().load({"id": "fruit_id"})
 ```
 
 #### Example: List
 
-```ts
-const fruits = await client.fruit.list()
+```python
+fruits = client.Fruit().list({})
 ```
 
 
 ### Gear
 
-Create an instance: `const gear = client.gear`
+Create an instance: `gear = client.Gear()`
 
 #### Operations
 
@@ -782,20 +787,20 @@ Create an instance: `const gear = client.gear`
 
 #### Example: Load
 
-```ts
-const gear = await client.gear.load({ id: 'gear_id' })
+```python
+gear = client.Gear().load({"id": "gear_id"})
 ```
 
 #### Example: List
 
-```ts
-const gears = await client.gear.list()
+```python
+gears = client.Gear().list({})
 ```
 
 
 ### Haki
 
-Create an instance: `const haki = client.haki`
+Create an instance: `haki = client.Haki()`
 
 #### Operations
 
@@ -815,20 +820,20 @@ Create an instance: `const haki = client.haki`
 
 #### Example: Load
 
-```ts
-const haki = await client.haki.load({ id: 'haki_id' })
+```python
+haki = client.Haki().load({"id": "haki_id"})
 ```
 
 #### Example: List
 
-```ts
-const hakis = await client.haki.list()
+```python
+hakis = client.Haki().list({})
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `location = client.Location()`
 
 #### Operations
 
@@ -849,20 +854,20 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```python
+location = client.Location().load({"id": "location_id"})
 ```
 
 #### Example: List
 
-```ts
-const locations = await client.location.list()
+```python
+locations = client.Location().list({})
 ```
 
 
 ### Saga
 
-Create an instance: `const saga = client.saga`
+Create an instance: `saga = client.Saga()`
 
 #### Operations
 
@@ -883,20 +888,20 @@ Create an instance: `const saga = client.saga`
 
 #### Example: Load
 
-```ts
-const saga = await client.saga.load({ id: 'saga_id' })
+```python
+saga = client.Saga().load({"id": "saga_id"})
 ```
 
 #### Example: List
 
-```ts
-const sagas = await client.saga.list()
+```python
+sagas = client.Saga().list({})
 ```
 
 
 ### Sword
 
-Create an instance: `const sword = client.sword`
+Create an instance: `sword = client.Sword()`
 
 #### Operations
 
@@ -917,20 +922,20 @@ Create an instance: `const sword = client.sword`
 
 #### Example: Load
 
-```ts
-const sword = await client.sword.load({ id: 'sword_id' })
+```python
+sword = client.Sword().load({"id": "sword_id"})
 ```
 
 #### Example: List
 
-```ts
-const swords = await client.sword.list()
+```python
+swords = client.Sword().list({})
 ```
 
 
 ### Technique
 
-Create an instance: `const technique = client.technique`
+Create an instance: `technique = client.Technique()`
 
 #### Operations
 
@@ -950,20 +955,20 @@ Create an instance: `const technique = client.technique`
 
 #### Example: Load
 
-```ts
-const technique = await client.technique.load({ id: 'technique_id' })
+```python
+technique = client.Technique().load({"id": "technique_id"})
 ```
 
 #### Example: List
 
-```ts
-const techniques = await client.technique.list()
+```python
+techniques = client.Technique().list({})
 ```
 
 
 ### Volume
 
-Create an instance: `const volume = client.volume`
+Create an instance: `volume = client.Volume()`
 
 #### Operations
 
@@ -984,14 +989,14 @@ Create an instance: `const volume = client.volume`
 
 #### Example: Load
 
-```ts
-const volume = await client.volume.load({ id: 'volume_id' })
+```python
+volume = client.Volume().load({"id": "volume_id"})
 ```
 
 #### Example: List
 
-```ts
-const volumes = await client.volume.list()
+```python
+volumes = client.Volume().list({})
 ```
 
 
@@ -1065,7 +1070,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-boat = client.boat
+boat = client.Boat()
 boat.load({"id": "example_id"})
 
 # boat.data_get() now returns the loaded boat data

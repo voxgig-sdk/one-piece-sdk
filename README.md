@@ -26,9 +26,11 @@ import { OnePieceSDK } from '@voxgig-sdk/one-piece'
 
 const client = new OnePieceSDK()
 
-// List all boats
-const boats = await client.boat.list()
-console.log(boats.data)
+// List all boats (returns Boat[])
+const boats = await client.Boat().list()
+for (const boat of boats) {
+  console.log(boat)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -98,12 +100,13 @@ from onepiece_sdk import OnePieceSDK
 
 client = OnePieceSDK()
 
-# List all boats
-boats = client.boat.list()
-print(boats)
+# List all boats (returns a list, raises on error)
+boats = client.Boat().list({})
+for boat in boats:
+    print(boat)
 
-# Load a specific boat
-boat = client.boat.load({"id": "example_id"})
+# Load a specific boat (returns the record, raises on error)
+boat = client.Boat().load({"id": "example_id"})
 print(boat)
 ```
 
@@ -115,12 +118,12 @@ require_once 'onepiece_sdk.php';
 
 $client = new OnePieceSDK();
 
-// List all boats (throws on error)
-$boats = $client->boat()->list();
+// List all boats (returns an array; throws on error)
+$boats = $client->Boat()->list();
 print_r($boats);
 
-// Load a specific boat
-$boat = $client->boat()->load(["id" => "example_id"]);
+// Load a specific boat (returns the bare record; throws on error)
+$boat = $client->Boat()->load(["id" => "example_id"]);
 print_r($boat);
 ```
 
@@ -143,12 +146,12 @@ require_relative "OnePiece_sdk"
 
 client = OnePieceSDK.new
 
-# List all boats
-boats = client.boat.list
+# List all boats (returns an Array; raises on error)
+boats = client.Boat.list
 puts boats
 
-# Load a specific boat
-boat = client.boat.load({ "id" => "example_id" })
+# Load a specific boat (returns the bare record; raises on error)
+boat = client.Boat.load({ "id" => "example_id" })
 puts boat
 ```
 
@@ -160,11 +163,11 @@ local sdk = require("one-piece_sdk")
 local client = sdk.new()
 
 -- List all boats
-local boats, err = client:boat():list()
+local boats, err = client:Boat():list()
 print(boats)
 
 -- Load a specific boat
-local boat, err = client:boat():load({ id = "example_id" })
+local boat, err = client:Boat():load({ id = "example_id" })
 print(boat)
 ```
 
@@ -177,22 +180,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = OnePieceSDK.test()
-const result = await client.boat.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const boat = await client.Boat().load({ id: 1 })
+// boat is a bare Boat populated with mock data
+console.log(boat)
 ```
 
 ### Python
 
 ```python
 client = OnePieceSDK.test()
-result = client.boat.load({"id": "test01"})
+boat = client.Boat().load({"id": "test01"})
+print(boat)
 ```
 
 ### PHP
 
 ```php
-$client = OnePieceSDK::test();
-$result = $client->boat()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = OnePieceSDK::test([
+    "entity" => ["boat" => ["test01" => ["id" => "test01"]]],
+]);
+$boat = $client->Boat()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -207,15 +215,18 @@ result, err := client.Boat(nil).Load(
 ### Ruby
 
 ```ruby
-client = OnePieceSDK.test
-result = client.boat.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = OnePieceSDK.test({
+  "entity" => { "boat" => { "test01" => { "id" => "test01" } } },
+})
+boat = client.Boat.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:boat():load({ id = "test01" })
+local result, err = client:Boat():load({ id = "test01" })
 ```
 
 ## How it works
@@ -263,6 +274,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

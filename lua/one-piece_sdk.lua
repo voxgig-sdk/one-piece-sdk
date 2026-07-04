@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:boat():list() / client:boat():load({ id = ... })
-function OnePieceSDK:boat(data)
+-- Idiomatic facade: client:Boat():list() / client:Boat():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Boat(data)
   local EntityMod = require("entity.boat_entity")
   if data == nil then
     if self._boat == nil then
@@ -256,15 +257,10 @@ function OnePieceSDK:boat(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:boat() instead.
-function OnePieceSDK:Boat(data)
-  local EntityMod = require("entity.boat_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:bow():list() / client:bow():load({ id = ... })
-function OnePieceSDK:bow(data)
+-- Idiomatic facade: client:Bow():list() / client:Bow():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Bow(data)
   local EntityMod = require("entity.bow_entity")
   if data == nil then
     if self._bow == nil then
@@ -275,15 +271,10 @@ function OnePieceSDK:bow(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:bow() instead.
-function OnePieceSDK:Bow(data)
-  local EntityMod = require("entity.bow_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:chapter():list() / client:chapter():load({ id = ... })
-function OnePieceSDK:chapter(data)
+-- Idiomatic facade: client:Chapter():list() / client:Chapter():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Chapter(data)
   local EntityMod = require("entity.chapter_entity")
   if data == nil then
     if self._chapter == nil then
@@ -294,15 +285,10 @@ function OnePieceSDK:chapter(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:chapter() instead.
-function OnePieceSDK:Chapter(data)
-  local EntityMod = require("entity.chapter_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:character():list() / client:character():load({ id = ... })
-function OnePieceSDK:character(data)
+-- Idiomatic facade: client:Character():list() / client:Character():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Character(data)
   local EntityMod = require("entity.character_entity")
   if data == nil then
     if self._character == nil then
@@ -313,15 +299,10 @@ function OnePieceSDK:character(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:character() instead.
-function OnePieceSDK:Character(data)
-  local EntityMod = require("entity.character_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:crew():list() / client:crew():load({ id = ... })
-function OnePieceSDK:crew(data)
+-- Idiomatic facade: client:Crew():list() / client:Crew():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Crew(data)
   local EntityMod = require("entity.crew_entity")
   if data == nil then
     if self._crew == nil then
@@ -332,15 +313,10 @@ function OnePieceSDK:crew(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:crew() instead.
-function OnePieceSDK:Crew(data)
-  local EntityMod = require("entity.crew_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:dial():list() / client:dial():load({ id = ... })
-function OnePieceSDK:dial(data)
+-- Idiomatic facade: client:Dial():list() / client:Dial():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Dial(data)
   local EntityMod = require("entity.dial_entity")
   if data == nil then
     if self._dial == nil then
@@ -351,15 +327,10 @@ function OnePieceSDK:dial(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:dial() instead.
-function OnePieceSDK:Dial(data)
-  local EntityMod = require("entity.dial_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:episode():list() / client:episode():load({ id = ... })
-function OnePieceSDK:episode(data)
+-- Idiomatic facade: client:Episode():list() / client:Episode():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Episode(data)
   local EntityMod = require("entity.episode_entity")
   if data == nil then
     if self._episode == nil then
@@ -370,15 +341,10 @@ function OnePieceSDK:episode(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:episode() instead.
-function OnePieceSDK:Episode(data)
-  local EntityMod = require("entity.episode_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:film():list() / client:film():load({ id = ... })
-function OnePieceSDK:film(data)
+-- Idiomatic facade: client:Film():list() / client:Film():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Film(data)
   local EntityMod = require("entity.film_entity")
   if data == nil then
     if self._film == nil then
@@ -389,15 +355,10 @@ function OnePieceSDK:film(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:film() instead.
-function OnePieceSDK:Film(data)
-  local EntityMod = require("entity.film_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:fruit():list() / client:fruit():load({ id = ... })
-function OnePieceSDK:fruit(data)
+-- Idiomatic facade: client:Fruit():list() / client:Fruit():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Fruit(data)
   local EntityMod = require("entity.fruit_entity")
   if data == nil then
     if self._fruit == nil then
@@ -408,15 +369,10 @@ function OnePieceSDK:fruit(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:fruit() instead.
-function OnePieceSDK:Fruit(data)
-  local EntityMod = require("entity.fruit_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gear():list() / client:gear():load({ id = ... })
-function OnePieceSDK:gear(data)
+-- Idiomatic facade: client:Gear():list() / client:Gear():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Gear(data)
   local EntityMod = require("entity.gear_entity")
   if data == nil then
     if self._gear == nil then
@@ -427,15 +383,10 @@ function OnePieceSDK:gear(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gear() instead.
-function OnePieceSDK:Gear(data)
-  local EntityMod = require("entity.gear_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:haki():list() / client:haki():load({ id = ... })
-function OnePieceSDK:haki(data)
+-- Idiomatic facade: client:Haki():list() / client:Haki():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Haki(data)
   local EntityMod = require("entity.haki_entity")
   if data == nil then
     if self._haki == nil then
@@ -446,15 +397,10 @@ function OnePieceSDK:haki(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:haki() instead.
-function OnePieceSDK:Haki(data)
-  local EntityMod = require("entity.haki_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
-function OnePieceSDK:location(data)
+-- Idiomatic facade: client:Location():list() / client:Location():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   if data == nil then
     if self._location == nil then
@@ -465,15 +411,10 @@ function OnePieceSDK:location(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:location() instead.
-function OnePieceSDK:Location(data)
-  local EntityMod = require("entity.location_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:saga():list() / client:saga():load({ id = ... })
-function OnePieceSDK:saga(data)
+-- Idiomatic facade: client:Saga():list() / client:Saga():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Saga(data)
   local EntityMod = require("entity.saga_entity")
   if data == nil then
     if self._saga == nil then
@@ -484,15 +425,10 @@ function OnePieceSDK:saga(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:saga() instead.
-function OnePieceSDK:Saga(data)
-  local EntityMod = require("entity.saga_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:sword():list() / client:sword():load({ id = ... })
-function OnePieceSDK:sword(data)
+-- Idiomatic facade: client:Sword():list() / client:Sword():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Sword(data)
   local EntityMod = require("entity.sword_entity")
   if data == nil then
     if self._sword == nil then
@@ -503,15 +439,10 @@ function OnePieceSDK:sword(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:sword() instead.
-function OnePieceSDK:Sword(data)
-  local EntityMod = require("entity.sword_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:technique():list() / client:technique():load({ id = ... })
-function OnePieceSDK:technique(data)
+-- Idiomatic facade: client:Technique():list() / client:Technique():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Technique(data)
   local EntityMod = require("entity.technique_entity")
   if data == nil then
     if self._technique == nil then
@@ -522,15 +453,10 @@ function OnePieceSDK:technique(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:technique() instead.
-function OnePieceSDK:Technique(data)
-  local EntityMod = require("entity.technique_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:volume():list() / client:volume():load({ id = ... })
-function OnePieceSDK:volume(data)
+-- Idiomatic facade: client:Volume():list() / client:Volume():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OnePieceSDK:Volume(data)
   local EntityMod = require("entity.volume_entity")
   if data == nil then
     if self._volume == nil then
@@ -538,12 +464,6 @@ function OnePieceSDK:volume(data)
     end
     return self._volume
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:volume() instead.
-function OnePieceSDK:Volume(data)
-  local EntityMod = require("entity.volume_entity")
   return EntityMod.new(self, data)
 end
 
