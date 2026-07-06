@@ -17,6 +17,11 @@
 ---@field id number
 
 ---@class BoatListMatch
+---@field crew? string
+---@field description? string
+---@field id? number
+---@field name? string
+---@field type? string
 
 ---@class Bow
 ---@field description? string
@@ -28,6 +33,10 @@
 ---@field id number
 
 ---@class BowListMatch
+---@field description? string
+---@field id? number
+---@field name? string
+---@field owner? string
 
 ---@class Chapter
 ---@field id? number
@@ -40,6 +49,11 @@
 ---@field id number
 
 ---@class ChapterListMatch
+---@field id? number
+---@field number? number
+---@field release_date? string
+---@field saga? string
+---@field title? string
 
 ---@class Character
 ---@field age? number
@@ -54,6 +68,13 @@
 ---@field id number
 
 ---@class CharacterListMatch
+---@field age? number
+---@field bounty? number
+---@field crew? string
+---@field description? string
+---@field devil_fruit? string
+---@field id? number
+---@field name? string
 
 ---@class Crew
 ---@field captain? string
@@ -67,6 +88,12 @@
 ---@field id number
 
 ---@class CrewListMatch
+---@field captain? string
+---@field description? string
+---@field id? number
+---@field member? table
+---@field name? string
+---@field ship? string
 
 ---@class Dial
 ---@field description? string
@@ -78,6 +105,10 @@
 ---@field id number
 
 ---@class DialListMatch
+---@field description? string
+---@field id? number
+---@field name? string
+---@field type? string
 
 ---@class Episode
 ---@field air_date? string
@@ -90,6 +121,11 @@
 ---@field id number
 
 ---@class EpisodeListMatch
+---@field air_date? string
+---@field id? number
+---@field number? number
+---@field saga? string
+---@field title? string
 
 ---@class Film
 ---@field description? string
@@ -101,6 +137,10 @@
 ---@field id number
 
 ---@class FilmListMatch
+---@field description? string
+---@field id? number
+---@field release_date? string
+---@field title? string
 
 ---@class Fruit
 ---@field description? string
@@ -113,6 +153,11 @@
 ---@field id number
 
 ---@class FruitListMatch
+---@field description? string
+---@field id? number
+---@field name? string
+---@field type? string
+---@field user? string
 
 ---@class Gear
 ---@field description? string
@@ -124,6 +169,10 @@
 ---@field id number
 
 ---@class GearListMatch
+---@field description? string
+---@field first_appearance? string
+---@field id? number
+---@field name? string
 
 ---@class Haki
 ---@field description? string
@@ -135,6 +184,10 @@
 ---@field id number
 
 ---@class HakiListMatch
+---@field description? string
+---@field id? number
+---@field name? string
+---@field user? table
 
 ---@class Location
 ---@field description? string
@@ -147,6 +200,11 @@
 ---@field id number
 
 ---@class LocationListMatch
+---@field description? string
+---@field first_appearance? string
+---@field id? number
+---@field name? string
+---@field type? string
 
 ---@class Saga
 ---@field chapter? table
@@ -159,6 +217,11 @@
 ---@field id number
 
 ---@class SagaListMatch
+---@field chapter? table
+---@field description? string
+---@field episode? table
+---@field id? number
+---@field name? string
 
 ---@class Sword
 ---@field description? string
@@ -171,6 +234,11 @@
 ---@field id number
 
 ---@class SwordListMatch
+---@field description? string
+---@field grade? string
+---@field id? number
+---@field name? string
+---@field owner? string
 
 ---@class Technique
 ---@field description? string
@@ -182,6 +250,10 @@
 ---@field id number
 
 ---@class TechniqueListMatch
+---@field description? string
+---@field gear? string
+---@field id? number
+---@field name? string
 
 ---@class Volume
 ---@field chapter? table
@@ -194,6 +266,11 @@
 ---@field id number
 
 ---@class VolumeListMatch
+---@field chapter? table
+---@field id? number
+---@field number? number
+---@field release_date? string
+---@field title? string
 
 local M = {}
 

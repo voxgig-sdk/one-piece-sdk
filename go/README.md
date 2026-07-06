@@ -4,6 +4,8 @@
 
 The Golang SDK for the OnePiece API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Boat(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single boat — the value is the loaded record.
-    boat, err := client.Boat(nil).Load(map[string]any{"id": "example_id"}, nil)
+    boat, err := client.Boat(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(boat)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+boats, err := client.Boat(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = boats
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-boat, err := client.Boat(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+boat, err := client.Boat(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(boat) // the loaded mock data
+fmt.Println(boat) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -221,9 +252,6 @@ All entities implement the `OnePieceEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -236,16 +264,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    boat, err := client.Boat(nil).Load(map[string]any{"id": "example_id"}, nil)
+    boat, err := client.Boat(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // boat is the loaded record
+    // boat is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -493,11 +521,11 @@ Create an instance: `boat := client.Boat(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `crew` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -535,10 +563,10 @@ Create an instance: `bow := client.Bow(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
 
 #### Example: Load
 
@@ -576,11 +604,11 @@ Create an instance: `chapter := client.Chapter(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `release_date` | `string` |  |
+| `saga` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -618,13 +646,13 @@ Create an instance: `character := client.Character(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `age` | ``$INTEGER`` |  |
-| `bounty` | ``$INTEGER`` |  |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `devil_fruit` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `age` | `int` |  |
+| `bounty` | `int` |  |
+| `crew` | `string` |  |
+| `description` | `string` |  |
+| `devil_fruit` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -662,12 +690,12 @@ Create an instance: `crew := client.Crew(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `captain` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `member` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `ship` | ``$STRING`` |  |
+| `captain` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `member` | `[]any` |  |
+| `name` | `string` |  |
+| `ship` | `string` |  |
 
 #### Example: Load
 
@@ -705,10 +733,10 @@ Create an instance: `dial := client.Dial(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -746,11 +774,11 @@ Create an instance: `episode := client.Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `air_date` | `string` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `saga` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -788,10 +816,10 @@ Create an instance: `film := client.Film(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `release_date` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -829,11 +857,11 @@ Create an instance: `fruit := client.Fruit(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `user` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
+| `user` | `string` |  |
 
 #### Example: Load
 
@@ -871,10 +899,10 @@ Create an instance: `gear := client.Gear(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `first_appearance` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -912,10 +940,10 @@ Create an instance: `haki := client.Haki(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `user` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `user` | `[]any` |  |
 
 #### Example: Load
 
@@ -953,11 +981,11 @@ Create an instance: `location := client.Location(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `first_appearance` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -995,11 +1023,11 @@ Create an instance: `saga := client.Saga(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `episode` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `chapter` | `[]any` |  |
+| `description` | `string` |  |
+| `episode` | `[]any` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -1037,11 +1065,11 @@ Create an instance: `sword := client.Sword(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `grade` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `grade` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
 
 #### Example: Load
 
@@ -1079,10 +1107,10 @@ Create an instance: `technique := client.Technique(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `gear` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `gear` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -1120,11 +1148,11 @@ Create an instance: `volume := client.Volume(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `chapter` | `[]any` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `release_date` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -1147,12 +1175,16 @@ fmt.Println(volumes) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1169,9 +1201,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1212,14 +1244,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 boat := client.Boat(nil)
-boat.Load(map[string]any{"id": "example_id"}, nil)
+boat.List(nil, nil)
 
-// boat.Data() now returns the loaded boat data
+// boat.Data() now returns the boat data from the last list
 // boat.Match() returns the last match criteria
 ```
 

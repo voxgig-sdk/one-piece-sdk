@@ -221,97 +221,97 @@ class OnePieceSDK:
 
 
     def Boat(self, data=None) -> "BoatEntity":
-        """Entity factory: client.Boat().list({}) / client.Boat().load({"id": ...})."""
+        """Entity factory: client.Boat().list() / client.Boat().load({"id": ...})."""
         from entity.boat_entity import BoatEntity
         return BoatEntity(self, data)
 
 
     def Bow(self, data=None) -> "BowEntity":
-        """Entity factory: client.Bow().list({}) / client.Bow().load({"id": ...})."""
+        """Entity factory: client.Bow().list() / client.Bow().load({"id": ...})."""
         from entity.bow_entity import BowEntity
         return BowEntity(self, data)
 
 
     def Chapter(self, data=None) -> "ChapterEntity":
-        """Entity factory: client.Chapter().list({}) / client.Chapter().load({"id": ...})."""
+        """Entity factory: client.Chapter().list() / client.Chapter().load({"id": ...})."""
         from entity.chapter_entity import ChapterEntity
         return ChapterEntity(self, data)
 
 
     def Character(self, data=None) -> "CharacterEntity":
-        """Entity factory: client.Character().list({}) / client.Character().load({"id": ...})."""
+        """Entity factory: client.Character().list() / client.Character().load({"id": ...})."""
         from entity.character_entity import CharacterEntity
         return CharacterEntity(self, data)
 
 
     def Crew(self, data=None) -> "CrewEntity":
-        """Entity factory: client.Crew().list({}) / client.Crew().load({"id": ...})."""
+        """Entity factory: client.Crew().list() / client.Crew().load({"id": ...})."""
         from entity.crew_entity import CrewEntity
         return CrewEntity(self, data)
 
 
     def Dial(self, data=None) -> "DialEntity":
-        """Entity factory: client.Dial().list({}) / client.Dial().load({"id": ...})."""
+        """Entity factory: client.Dial().list() / client.Dial().load({"id": ...})."""
         from entity.dial_entity import DialEntity
         return DialEntity(self, data)
 
 
     def Episode(self, data=None) -> "EpisodeEntity":
-        """Entity factory: client.Episode().list({}) / client.Episode().load({"id": ...})."""
+        """Entity factory: client.Episode().list() / client.Episode().load({"id": ...})."""
         from entity.episode_entity import EpisodeEntity
         return EpisodeEntity(self, data)
 
 
     def Film(self, data=None) -> "FilmEntity":
-        """Entity factory: client.Film().list({}) / client.Film().load({"id": ...})."""
+        """Entity factory: client.Film().list() / client.Film().load({"id": ...})."""
         from entity.film_entity import FilmEntity
         return FilmEntity(self, data)
 
 
     def Fruit(self, data=None) -> "FruitEntity":
-        """Entity factory: client.Fruit().list({}) / client.Fruit().load({"id": ...})."""
+        """Entity factory: client.Fruit().list() / client.Fruit().load({"id": ...})."""
         from entity.fruit_entity import FruitEntity
         return FruitEntity(self, data)
 
 
     def Gear(self, data=None) -> "GearEntity":
-        """Entity factory: client.Gear().list({}) / client.Gear().load({"id": ...})."""
+        """Entity factory: client.Gear().list() / client.Gear().load({"id": ...})."""
         from entity.gear_entity import GearEntity
         return GearEntity(self, data)
 
 
     def Haki(self, data=None) -> "HakiEntity":
-        """Entity factory: client.Haki().list({}) / client.Haki().load({"id": ...})."""
+        """Entity factory: client.Haki().list() / client.Haki().load({"id": ...})."""
         from entity.haki_entity import HakiEntity
         return HakiEntity(self, data)
 
 
     def Location(self, data=None) -> "LocationEntity":
-        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
+        """Entity factory: client.Location().list() / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
     def Saga(self, data=None) -> "SagaEntity":
-        """Entity factory: client.Saga().list({}) / client.Saga().load({"id": ...})."""
+        """Entity factory: client.Saga().list() / client.Saga().load({"id": ...})."""
         from entity.saga_entity import SagaEntity
         return SagaEntity(self, data)
 
 
     def Sword(self, data=None) -> "SwordEntity":
-        """Entity factory: client.Sword().list({}) / client.Sword().load({"id": ...})."""
+        """Entity factory: client.Sword().list() / client.Sword().load({"id": ...})."""
         from entity.sword_entity import SwordEntity
         return SwordEntity(self, data)
 
 
     def Technique(self, data=None) -> "TechniqueEntity":
-        """Entity factory: client.Technique().list({}) / client.Technique().load({"id": ...})."""
+        """Entity factory: client.Technique().list() / client.Technique().load({"id": ...})."""
         from entity.technique_entity import TechniqueEntity
         return TechniqueEntity(self, data)
 
 
     def Volume(self, data=None) -> "VolumeEntity":
-        """Entity factory: client.Volume().list({}) / client.Volume().load({"id": ...})."""
+        """Entity factory: client.Volume().list() / client.Volume().load({"id": ...})."""
         from entity.volume_entity import VolumeEntity
         return VolumeEntity(self, data)
 

@@ -42,7 +42,7 @@ BoatLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Boat#list (any subset of Boat fields).
+# Request payload for Boat#list.
 #
 # @!attribute [rw] crew
 #   @return [String, nil]
@@ -97,7 +97,7 @@ BowLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Bow#list (any subset of Bow fields).
+# Request payload for Bow#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -152,7 +152,7 @@ ChapterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Chapter#list (any subset of Chapter fields).
+# Request payload for Chapter#list.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -219,7 +219,7 @@ CharacterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Character#list (any subset of Character fields).
+# Request payload for Character#list.
 #
 # @!attribute [rw] age
 #   @return [Integer, nil]
@@ -290,7 +290,7 @@ CrewLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Crew#list (any subset of Crew fields).
+# Request payload for Crew#list.
 #
 # @!attribute [rw] captain
 #   @return [String, nil]
@@ -349,7 +349,7 @@ DialLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Dial#list (any subset of Dial fields).
+# Request payload for Dial#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -404,7 +404,7 @@ EpisodeLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Episode#list (any subset of Episode fields).
+# Request payload for Episode#list.
 #
 # @!attribute [rw] air_date
 #   @return [String, nil]
@@ -459,7 +459,7 @@ FilmLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Film#list (any subset of Film fields).
+# Request payload for Film#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -514,7 +514,7 @@ FruitLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Fruit#list (any subset of Fruit fields).
+# Request payload for Fruit#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -569,7 +569,7 @@ GearLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Gear#list (any subset of Gear fields).
+# Request payload for Gear#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -620,7 +620,7 @@ HakiLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Haki#list (any subset of Haki fields).
+# Request payload for Haki#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -675,7 +675,7 @@ LocationLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Location#list (any subset of Location fields).
+# Request payload for Location#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -734,7 +734,7 @@ SagaLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Saga#list (any subset of Saga fields).
+# Request payload for Saga#list.
 #
 # @!attribute [rw] chapter
 #   @return [Array, nil]
@@ -793,7 +793,7 @@ SwordLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Sword#list (any subset of Sword fields).
+# Request payload for Sword#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -848,7 +848,7 @@ TechniqueLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Technique#list (any subset of Technique fields).
+# Request payload for Technique#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -903,7 +903,7 @@ VolumeLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Volume#list (any subset of Volume fields).
+# Request payload for Volume#list.
 #
 # @!attribute [rw] chapter
 #   @return [Array, nil]

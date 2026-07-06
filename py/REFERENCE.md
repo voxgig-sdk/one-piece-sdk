@@ -8,7 +8,7 @@ Complete API reference for the OnePiece Python SDK.
 ### Constructor
 
 ```python
-from one-piece_sdk import OnePieceSDK
+from onepiece_sdk import OnePieceSDK
 
 client = OnePieceSDK(options)
 ```
@@ -147,20 +147,20 @@ boat = client.Boat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `crew` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Boat().list({})
+results = client.Boat().list()
 for boat in results:
     print(boat)
 ```
@@ -212,19 +212,19 @@ bow = client.Bow()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `owner` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Bow().list({})
+results = client.Bow().list()
 for bow in results:
     print(bow)
 ```
@@ -276,20 +276,20 @@ chapter = client.Chapter()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `id` | `int` | No |  |
+| `number` | `int` | No |  |
+| `release_date` | `str` | No |  |
+| `saga` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Chapter().list({})
+results = client.Chapter().list()
 for chapter in results:
     print(chapter)
 ```
@@ -341,22 +341,22 @@ character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | ``$INTEGER`` | No |  |
-| `bounty` | ``$INTEGER`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `devil_fruit` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `age` | `int` | No |  |
+| `bounty` | `int` | No |  |
+| `crew` | `str` | No |  |
+| `description` | `str` | No |  |
+| `devil_fruit` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Character().list({})
+results = client.Character().list()
 for character in results:
     print(character)
 ```
@@ -408,21 +408,21 @@ crew = client.Crew()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ship` | ``$STRING`` | No |  |
+| `captain` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `member` | `list` | No |  |
+| `name` | `str` | No |  |
+| `ship` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Crew().list({})
+results = client.Crew().list()
 for crew in results:
     print(crew)
 ```
@@ -474,19 +474,19 @@ dial = client.Dial()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Dial().list({})
+results = client.Dial().list()
 for dial in results:
     print(dial)
 ```
@@ -538,20 +538,20 @@ episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `air_date` | `str` | No |  |
+| `id` | `int` | No |  |
+| `number` | `int` | No |  |
+| `saga` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Episode().list({})
+results = client.Episode().list()
 for episode in results:
     print(episode)
 ```
@@ -603,19 +603,19 @@ film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `release_date` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Film().list({})
+results = client.Film().list()
 for film in results:
     print(film)
 ```
@@ -667,20 +667,20 @@ fruit = client.Fruit()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
+| `user` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Fruit().list({})
+results = client.Fruit().list()
 for fruit in results:
     print(fruit)
 ```
@@ -732,19 +732,19 @@ gear = client.Gear()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `first_appearance` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Gear().list({})
+results = client.Gear().list()
 for gear in results:
     print(gear)
 ```
@@ -796,19 +796,19 @@ haki = client.Haki()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `user` | ``$ARRAY`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `user` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Haki().list({})
+results = client.Haki().list()
 for haki in results:
     print(haki)
 ```
@@ -860,20 +860,20 @@ location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `first_appearance` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Location().list({})
+results = client.Location().list()
 for location in results:
     print(location)
 ```
@@ -925,20 +925,20 @@ saga = client.Saga()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `chapter` | `list` | No |  |
+| `description` | `str` | No |  |
+| `episode` | `list` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Saga().list({})
+results = client.Saga().list()
 for saga in results:
     print(saga)
 ```
@@ -990,20 +990,20 @@ sword = client.Sword()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `grade` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `grade` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `owner` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Sword().list({})
+results = client.Sword().list()
 for sword in results:
     print(sword)
 ```
@@ -1055,19 +1055,19 @@ technique = client.Technique()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `gear` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `gear` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Technique().list({})
+results = client.Technique().list()
 for technique in results:
     print(technique)
 ```
@@ -1119,20 +1119,20 @@ volume = client.Volume()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `chapter` | `list` | No |  |
+| `id` | `int` | No |  |
+| `number` | `int` | No |  |
+| `release_date` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Volume().list({})
+results = client.Volume().list()
 for volume in results:
     print(volume)
 ```

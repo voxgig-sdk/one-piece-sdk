@@ -4,6 +4,8 @@
 
 The Ruby SDK for the OnePiece API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Boat` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,7 +37,7 @@ begin
   # list returns an Array of Boat records — iterate directly.
   boats = client.Boat.list
   boats.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id"]} #{item["crew"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,6 +54,33 @@ begin
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  boats = client.Boat.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -72,7 +101,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -103,8 +134,8 @@ client = OnePieceSDK.test({
   "entity" => { "boat" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
-boat = client.Boat.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+boat = client.Boat.list()
 puts boat
 ```
 
@@ -205,10 +236,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -476,11 +504,11 @@ Create an instance: `boat = client.Boat`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `crew` | `String` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -512,10 +540,10 @@ Create an instance: `bow = client.Bow`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `owner` | `String` |  |
 
 #### Example: Load
 
@@ -547,11 +575,11 @@ Create an instance: `chapter = client.Chapter`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `id` | `Integer` |  |
+| `number` | `Integer` |  |
+| `release_date` | `String` |  |
+| `saga` | `String` |  |
+| `title` | `String` |  |
 
 #### Example: Load
 
@@ -583,13 +611,13 @@ Create an instance: `character = client.Character`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `age` | ``$INTEGER`` |  |
-| `bounty` | ``$INTEGER`` |  |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `devil_fruit` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `age` | `Integer` |  |
+| `bounty` | `Integer` |  |
+| `crew` | `String` |  |
+| `description` | `String` |  |
+| `devil_fruit` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -621,12 +649,12 @@ Create an instance: `crew = client.Crew`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `captain` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `member` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `ship` | ``$STRING`` |  |
+| `captain` | `String` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `member` | `Array` |  |
+| `name` | `String` |  |
+| `ship` | `String` |  |
 
 #### Example: Load
 
@@ -658,10 +686,10 @@ Create an instance: `dial = client.Dial`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -693,11 +721,11 @@ Create an instance: `episode = client.Episode`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `air_date` | `String` |  |
+| `id` | `Integer` |  |
+| `number` | `Integer` |  |
+| `saga` | `String` |  |
+| `title` | `String` |  |
 
 #### Example: Load
 
@@ -729,10 +757,10 @@ Create an instance: `film = client.Film`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `release_date` | `String` |  |
+| `title` | `String` |  |
 
 #### Example: Load
 
@@ -764,11 +792,11 @@ Create an instance: `fruit = client.Fruit`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `user` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `type` | `String` |  |
+| `user` | `String` |  |
 
 #### Example: Load
 
@@ -800,10 +828,10 @@ Create an instance: `gear = client.Gear`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `first_appearance` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -835,10 +863,10 @@ Create an instance: `haki = client.Haki`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `user` | ``$ARRAY`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `user` | `Array` |  |
 
 #### Example: Load
 
@@ -870,11 +898,11 @@ Create an instance: `location = client.Location`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `first_appearance` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -906,11 +934,11 @@ Create an instance: `saga = client.Saga`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `episode` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `chapter` | `Array` |  |
+| `description` | `String` |  |
+| `episode` | `Array` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -942,11 +970,11 @@ Create an instance: `sword = client.Sword`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `grade` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `grade` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `owner` | `String` |  |
 
 #### Example: Load
 
@@ -978,10 +1006,10 @@ Create an instance: `technique = client.Technique`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `gear` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `gear` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -1013,11 +1041,11 @@ Create an instance: `volume = client.Volume`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `chapter` | `Array` |  |
+| `id` | `Integer` |  |
+| `number` | `Integer` |  |
+| `release_date` | `String` |  |
+| `title` | `String` |  |
 
 #### Example: Load
 
@@ -1034,12 +1062,16 @@ volumes = client.Volume.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1056,8 +1088,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1101,14 +1134,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 boat = client.Boat
-boat.load({ "id" => "example_id" })
+boat.list()
 
-# boat.data_get now returns the loaded boat data
+# boat.data_get now returns the boat data from the last list
 # boat.match_get returns the last match criteria
 ```
 

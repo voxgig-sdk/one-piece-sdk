@@ -296,11 +296,11 @@ const boat = client.Boat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `crew` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -317,7 +317,7 @@ const results = await client.Boat().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Boat().load({ id: 'boat_id' })
+const result = await client.Boat().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -358,10 +358,10 @@ const bow = client.Bow()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `owner` | `string` | No |  |
 
 ### Operations
 
@@ -378,7 +378,7 @@ const results = await client.Bow().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Bow().load({ id: 'bow_id' })
+const result = await client.Bow().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -419,11 +419,11 @@ const chapter = client.Chapter()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `id` | `number` | No |  |
+| `number` | `number` | No |  |
+| `release_date` | `string` | No |  |
+| `saga` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -440,7 +440,7 @@ const results = await client.Chapter().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Chapter().load({ id: 'chapter_id' })
+const result = await client.Chapter().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -481,13 +481,13 @@ const character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | ``$INTEGER`` | No |  |
-| `bounty` | ``$INTEGER`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `devil_fruit` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `age` | `number` | No |  |
+| `bounty` | `number` | No |  |
+| `crew` | `string` | No |  |
+| `description` | `string` | No |  |
+| `devil_fruit` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -504,7 +504,7 @@ const results = await client.Character().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Character().load({ id: 'character_id' })
+const result = await client.Character().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -545,12 +545,12 @@ const crew = client.Crew()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ship` | ``$STRING`` | No |  |
+| `captain` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `member` | `any[]` | No |  |
+| `name` | `string` | No |  |
+| `ship` | `string` | No |  |
 
 ### Operations
 
@@ -567,7 +567,7 @@ const results = await client.Crew().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Crew().load({ id: 'crew_id' })
+const result = await client.Crew().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -608,10 +608,10 @@ const dial = client.Dial()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -628,7 +628,7 @@ const results = await client.Dial().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Dial().load({ id: 'dial_id' })
+const result = await client.Dial().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -669,11 +669,11 @@ const episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `air_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `number` | `number` | No |  |
+| `saga` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -690,7 +690,7 @@ const results = await client.Episode().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Episode().load({ id: 'episode_id' })
+const result = await client.Episode().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -731,10 +731,10 @@ const film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `release_date` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -751,7 +751,7 @@ const results = await client.Film().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Film().load({ id: 'film_id' })
+const result = await client.Film().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -792,11 +792,11 @@ const fruit = client.Fruit()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
+| `user` | `string` | No |  |
 
 ### Operations
 
@@ -813,7 +813,7 @@ const results = await client.Fruit().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Fruit().load({ id: 'fruit_id' })
+const result = await client.Fruit().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -854,10 +854,10 @@ const gear = client.Gear()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `first_appearance` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -874,7 +874,7 @@ const results = await client.Gear().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Gear().load({ id: 'gear_id' })
+const result = await client.Gear().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -915,10 +915,10 @@ const haki = client.Haki()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `user` | ``$ARRAY`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `user` | `any[]` | No |  |
 
 ### Operations
 
@@ -935,7 +935,7 @@ const results = await client.Haki().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Haki().load({ id: 'haki_id' })
+const result = await client.Haki().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -976,11 +976,11 @@ const location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `first_appearance` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -997,7 +997,7 @@ const results = await client.Location().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Location().load({ id: 'location_id' })
+const result = await client.Location().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1038,11 +1038,11 @@ const saga = client.Saga()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `chapter` | `any[]` | No |  |
+| `description` | `string` | No |  |
+| `episode` | `any[]` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -1059,7 +1059,7 @@ const results = await client.Saga().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Saga().load({ id: 'saga_id' })
+const result = await client.Saga().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1100,11 +1100,11 @@ const sword = client.Sword()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `grade` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `grade` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `owner` | `string` | No |  |
 
 ### Operations
 
@@ -1121,7 +1121,7 @@ const results = await client.Sword().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Sword().load({ id: 'sword_id' })
+const result = await client.Sword().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1162,10 +1162,10 @@ const technique = client.Technique()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `gear` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `gear` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -1182,7 +1182,7 @@ const results = await client.Technique().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Technique().load({ id: 'technique_id' })
+const result = await client.Technique().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1223,11 +1223,11 @@ const volume = client.Volume()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `chapter` | `any[]` | No |  |
+| `id` | `number` | No |  |
+| `number` | `number` | No |  |
+| `release_date` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -1244,7 +1244,7 @@ const results = await client.Volume().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Volume().load({ id: 'volume_id' })
+const result = await client.Volume().load({ id: 1 })
 ```
 
 ### Common Methods

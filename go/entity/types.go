@@ -22,8 +22,7 @@ type BoatLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// BoatListMatch mirrors the boat fields as an all-optional match
-// filter (Go analog of Partial<Boat>).
+// BoatListMatch is the typed request payload for Boat.ListTyped.
 type BoatListMatch struct {
 	Crew *string `json:"crew,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -45,8 +44,7 @@ type BowLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// BowListMatch mirrors the bow fields as an all-optional match
-// filter (Go analog of Partial<Bow>).
+// BowListMatch is the typed request payload for Bow.ListTyped.
 type BowListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -68,8 +66,7 @@ type ChapterLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ChapterListMatch mirrors the chapter fields as an all-optional match
-// filter (Go analog of Partial<Chapter>).
+// ChapterListMatch is the typed request payload for Chapter.ListTyped.
 type ChapterListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
@@ -94,8 +91,7 @@ type CharacterLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// CharacterListMatch mirrors the character fields as an all-optional match
-// filter (Go analog of Partial<Character>).
+// CharacterListMatch is the typed request payload for Character.ListTyped.
 type CharacterListMatch struct {
 	Age *int `json:"age,omitempty"`
 	Bounty *int `json:"bounty,omitempty"`
@@ -121,8 +117,7 @@ type CrewLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// CrewListMatch mirrors the crew fields as an all-optional match
-// filter (Go analog of Partial<Crew>).
+// CrewListMatch is the typed request payload for Crew.ListTyped.
 type CrewListMatch struct {
 	Captain *string `json:"captain,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -145,8 +140,7 @@ type DialLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// DialListMatch mirrors the dial fields as an all-optional match
-// filter (Go analog of Partial<Dial>).
+// DialListMatch is the typed request payload for Dial.ListTyped.
 type DialListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -168,8 +162,7 @@ type EpisodeLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// EpisodeListMatch mirrors the episode fields as an all-optional match
-// filter (Go analog of Partial<Episode>).
+// EpisodeListMatch is the typed request payload for Episode.ListTyped.
 type EpisodeListMatch struct {
 	AirDate *string `json:"air_date,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -191,8 +184,7 @@ type FilmLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// FilmListMatch mirrors the film fields as an all-optional match
-// filter (Go analog of Partial<Film>).
+// FilmListMatch is the typed request payload for Film.ListTyped.
 type FilmListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -214,8 +206,7 @@ type FruitLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// FruitListMatch mirrors the fruit fields as an all-optional match
-// filter (Go analog of Partial<Fruit>).
+// FruitListMatch is the typed request payload for Fruit.ListTyped.
 type FruitListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -237,8 +228,7 @@ type GearLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// GearListMatch mirrors the gear fields as an all-optional match
-// filter (Go analog of Partial<Gear>).
+// GearListMatch is the typed request payload for Gear.ListTyped.
 type GearListMatch struct {
 	Description *string `json:"description,omitempty"`
 	FirstAppearance *string `json:"first_appearance,omitempty"`
@@ -259,8 +249,7 @@ type HakiLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// HakiListMatch mirrors the haki fields as an all-optional match
-// filter (Go analog of Partial<Haki>).
+// HakiListMatch is the typed request payload for Haki.ListTyped.
 type HakiListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -282,8 +271,7 @@ type LocationLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// LocationListMatch mirrors the location fields as an all-optional match
-// filter (Go analog of Partial<Location>).
+// LocationListMatch is the typed request payload for Location.ListTyped.
 type LocationListMatch struct {
 	Description *string `json:"description,omitempty"`
 	FirstAppearance *string `json:"first_appearance,omitempty"`
@@ -306,8 +294,7 @@ type SagaLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// SagaListMatch mirrors the saga fields as an all-optional match
-// filter (Go analog of Partial<Saga>).
+// SagaListMatch is the typed request payload for Saga.ListTyped.
 type SagaListMatch struct {
 	Chapter *[]any `json:"chapter,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -330,8 +317,7 @@ type SwordLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// SwordListMatch mirrors the sword fields as an all-optional match
-// filter (Go analog of Partial<Sword>).
+// SwordListMatch is the typed request payload for Sword.ListTyped.
 type SwordListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Grade *string `json:"grade,omitempty"`
@@ -353,8 +339,7 @@ type TechniqueLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// TechniqueListMatch mirrors the technique fields as an all-optional match
-// filter (Go analog of Partial<Technique>).
+// TechniqueListMatch is the typed request payload for Technique.ListTyped.
 type TechniqueListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Gear *string `json:"gear,omitempty"`
@@ -376,8 +361,7 @@ type VolumeLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// VolumeListMatch mirrors the volume fields as an all-optional match
-// filter (Go analog of Partial<Volume>).
+// VolumeListMatch is the typed request payload for Volume.ListTyped.
 type VolumeListMatch struct {
 	Chapter *[]any `json:"chapter,omitempty"`
 	Id *int `json:"id,omitempty"`

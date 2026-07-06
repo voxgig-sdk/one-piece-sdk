@@ -8,7 +8,7 @@ Complete API reference for the OnePiece Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'one-piece_sdk'
+require_relative 'OnePiece_sdk'
 
 client = OnePieceSDK.new(options)
 ```
@@ -153,20 +153,20 @@ boat = client.Boat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `crew` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Boat.list(nil)
+results = client.Boat.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -217,19 +217,19 @@ bow = client.Bow
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `owner` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Bow.list(nil)
+results = client.Bow.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -280,20 +280,20 @@ chapter = client.Chapter
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `id` | `Integer` | No |  |
+| `number` | `Integer` | No |  |
+| `release_date` | `String` | No |  |
+| `saga` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Chapter.list(nil)
+results = client.Chapter.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -344,22 +344,22 @@ character = client.Character
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | ``$INTEGER`` | No |  |
-| `bounty` | ``$INTEGER`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `devil_fruit` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `age` | `Integer` | No |  |
+| `bounty` | `Integer` | No |  |
+| `crew` | `String` | No |  |
+| `description` | `String` | No |  |
+| `devil_fruit` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Character.list(nil)
+results = client.Character.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -410,21 +410,21 @@ crew = client.Crew
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ship` | ``$STRING`` | No |  |
+| `captain` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `member` | `Array` | No |  |
+| `name` | `String` | No |  |
+| `ship` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Crew.list(nil)
+results = client.Crew.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -475,19 +475,19 @@ dial = client.Dial
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Dial.list(nil)
+results = client.Dial.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -538,20 +538,20 @@ episode = client.Episode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `air_date` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `number` | `Integer` | No |  |
+| `saga` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Episode.list(nil)
+results = client.Episode.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -602,19 +602,19 @@ film = client.Film
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `release_date` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Film.list(nil)
+results = client.Film.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -665,20 +665,20 @@ fruit = client.Fruit
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
+| `user` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Fruit.list(nil)
+results = client.Fruit.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -729,19 +729,19 @@ gear = client.Gear
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `first_appearance` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Gear.list(nil)
+results = client.Gear.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -792,19 +792,19 @@ haki = client.Haki
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `user` | ``$ARRAY`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `user` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Haki.list(nil)
+results = client.Haki.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -855,20 +855,20 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `first_appearance` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Location.list(nil)
+results = client.Location.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -919,20 +919,20 @@ saga = client.Saga
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `chapter` | `Array` | No |  |
+| `description` | `String` | No |  |
+| `episode` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Saga.list(nil)
+results = client.Saga.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -983,20 +983,20 @@ sword = client.Sword
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `grade` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `grade` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `owner` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Sword.list(nil)
+results = client.Sword.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1047,19 +1047,19 @@ technique = client.Technique
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `gear` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `gear` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Technique.list(nil)
+results = client.Technique.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1110,20 +1110,20 @@ volume = client.Volume
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `chapter` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `number` | `Integer` | No |  |
+| `release_date` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Volume.list(nil)
+results = client.Volume.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

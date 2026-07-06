@@ -150,11 +150,11 @@ local boat = client:Boat(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `crew` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -214,10 +214,10 @@ local bow = client:Bow(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `owner` | `string` | No |  |
 
 ### Operations
 
@@ -277,11 +277,11 @@ local chapter = client:Chapter(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `id` | `number` | No |  |
+| `number` | `number` | No |  |
+| `release_date` | `string` | No |  |
+| `saga` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -341,13 +341,13 @@ local character = client:Character(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | ``$INTEGER`` | No |  |
-| `bounty` | ``$INTEGER`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `devil_fruit` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `age` | `number` | No |  |
+| `bounty` | `number` | No |  |
+| `crew` | `string` | No |  |
+| `description` | `string` | No |  |
+| `devil_fruit` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -407,12 +407,12 @@ local crew = client:Crew(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ship` | ``$STRING`` | No |  |
+| `captain` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `member` | `table` | No |  |
+| `name` | `string` | No |  |
+| `ship` | `string` | No |  |
 
 ### Operations
 
@@ -472,10 +472,10 @@ local dial = client:Dial(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -535,11 +535,11 @@ local episode = client:Episode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `saga` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `air_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `number` | `number` | No |  |
+| `saga` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -599,10 +599,10 @@ local film = client:Film(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `release_date` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -662,11 +662,11 @@ local fruit = client:Fruit(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
+| `user` | `string` | No |  |
 
 ### Operations
 
@@ -726,10 +726,10 @@ local gear = client:Gear(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `first_appearance` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -789,10 +789,10 @@ local haki = client:Haki(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `user` | ``$ARRAY`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `user` | `table` | No |  |
 
 ### Operations
 
@@ -852,11 +852,11 @@ local location = client:Location(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `first_appearance` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `first_appearance` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -916,11 +916,11 @@ local saga = client:Saga(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `chapter` | `table` | No |  |
+| `description` | `string` | No |  |
+| `episode` | `table` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -980,11 +980,11 @@ local sword = client:Sword(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `grade` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `owner` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `grade` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `owner` | `string` | No |  |
 
 ### Operations
 
@@ -1044,10 +1044,10 @@ local technique = client:Technique(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `gear` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `gear` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -1107,11 +1107,11 @@ local volume = client:Volume(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `chapter` | `table` | No |  |
+| `id` | `number` | No |  |
+| `number` | `number` | No |  |
+| `release_date` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 

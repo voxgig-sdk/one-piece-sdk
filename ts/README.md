@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the OnePiece API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Boat()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -46,10 +51,39 @@ for (const boat of boats) {
 
 ```ts
 try {
-  const boat = await client.Boat().load({ id: 'example_id' })
+  const boat = await client.Boat().load({ id: 1 })
   console.log(boat)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const boats = await client.Boat().list()
+  console.log(boats)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OnePieceSDK.test()
 
-const boat = await client.Boat().load({ id: 'test01' })
+const boat = await client.Boat().list()
 // boat is a bare entity populated with mock response data
 console.log(boat)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Boat()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -227,11 +261,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): OnePieceSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -241,10 +272,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -521,16 +551,16 @@ Create an instance: `const boat = client.Boat()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `crew` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const boat = await client.Boat().load({ id: 'boat_id' })
+const boat = await client.Boat().load({ id: 1 })
 ```
 
 #### Example: List
@@ -555,15 +585,15 @@ Create an instance: `const bow = client.Bow()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const bow = await client.Bow().load({ id: 'bow_id' })
+const bow = await client.Bow().load({ id: 1 })
 ```
 
 #### Example: List
@@ -588,16 +618,16 @@ Create an instance: `const chapter = client.Chapter()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `id` | `number` |  |
+| `number` | `number` |  |
+| `release_date` | `string` |  |
+| `saga` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const chapter = await client.Chapter().load({ id: 'chapter_id' })
+const chapter = await client.Chapter().load({ id: 1 })
 ```
 
 #### Example: List
@@ -622,18 +652,18 @@ Create an instance: `const character = client.Character()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `age` | ``$INTEGER`` |  |
-| `bounty` | ``$INTEGER`` |  |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `devil_fruit` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `age` | `number` |  |
+| `bounty` | `number` |  |
+| `crew` | `string` |  |
+| `description` | `string` |  |
+| `devil_fruit` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const character = await client.Character().load({ id: 'character_id' })
+const character = await client.Character().load({ id: 1 })
 ```
 
 #### Example: List
@@ -658,17 +688,17 @@ Create an instance: `const crew = client.Crew()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `captain` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `member` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `ship` | ``$STRING`` |  |
+| `captain` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `member` | `any[]` |  |
+| `name` | `string` |  |
+| `ship` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const crew = await client.Crew().load({ id: 'crew_id' })
+const crew = await client.Crew().load({ id: 1 })
 ```
 
 #### Example: List
@@ -693,15 +723,15 @@ Create an instance: `const dial = client.Dial()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const dial = await client.Dial().load({ id: 'dial_id' })
+const dial = await client.Dial().load({ id: 1 })
 ```
 
 #### Example: List
@@ -726,16 +756,16 @@ Create an instance: `const episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `air_date` | `string` |  |
+| `id` | `number` |  |
+| `number` | `number` |  |
+| `saga` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const episode = await client.Episode().load({ id: 'episode_id' })
+const episode = await client.Episode().load({ id: 1 })
 ```
 
 #### Example: List
@@ -760,15 +790,15 @@ Create an instance: `const film = client.Film()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `release_date` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.Film().load({ id: 1 })
 ```
 
 #### Example: List
@@ -793,16 +823,16 @@ Create an instance: `const fruit = client.Fruit()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `user` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
+| `user` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const fruit = await client.Fruit().load({ id: 'fruit_id' })
+const fruit = await client.Fruit().load({ id: 1 })
 ```
 
 #### Example: List
@@ -827,15 +857,15 @@ Create an instance: `const gear = client.Gear()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `first_appearance` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const gear = await client.Gear().load({ id: 'gear_id' })
+const gear = await client.Gear().load({ id: 1 })
 ```
 
 #### Example: List
@@ -860,15 +890,15 @@ Create an instance: `const haki = client.Haki()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `user` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `user` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const haki = await client.Haki().load({ id: 'haki_id' })
+const haki = await client.Haki().load({ id: 1 })
 ```
 
 #### Example: List
@@ -893,16 +923,16 @@ Create an instance: `const location = client.Location()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `first_appearance` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.Location().load({ id: 1 })
 ```
 
 #### Example: List
@@ -927,16 +957,16 @@ Create an instance: `const saga = client.Saga()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `episode` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `chapter` | `any[]` |  |
+| `description` | `string` |  |
+| `episode` | `any[]` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const saga = await client.Saga().load({ id: 'saga_id' })
+const saga = await client.Saga().load({ id: 1 })
 ```
 
 #### Example: List
@@ -961,16 +991,16 @@ Create an instance: `const sword = client.Sword()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `grade` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `grade` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const sword = await client.Sword().load({ id: 'sword_id' })
+const sword = await client.Sword().load({ id: 1 })
 ```
 
 #### Example: List
@@ -995,15 +1025,15 @@ Create an instance: `const technique = client.Technique()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `gear` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `gear` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const technique = await client.Technique().load({ id: 'technique_id' })
+const technique = await client.Technique().load({ id: 1 })
 ```
 
 #### Example: List
@@ -1028,16 +1058,16 @@ Create an instance: `const volume = client.Volume()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `chapter` | `any[]` |  |
+| `id` | `number` |  |
+| `number` | `number` |  |
+| `release_date` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const volume = await client.Volume().load({ id: 'volume_id' })
+const volume = await client.Volume().load({ id: 1 })
 ```
 
 #### Example: List
@@ -1047,12 +1077,16 @@ const volumes = await client.Volume().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1069,11 +1103,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1109,16 +1141,16 @@ import { OnePieceSDK } from '@voxgig-sdk/one-piece'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const boat = client.Boat()
-await boat.load({ id: "example_id" })
+await boat.list()
 
-// boat.data() now returns the loaded boat data
-// boat.match() returns { id: "example_id" }
+// boat.data() now returns the boat data from the last `list`
+// boat.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

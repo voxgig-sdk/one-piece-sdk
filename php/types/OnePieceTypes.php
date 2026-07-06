@@ -28,7 +28,7 @@ class BoatLoadMatch
     public int $id;
 }
 
-/** Match filter for Boat#list (any subset of Boat fields). */
+/** Request payload for Boat#list. */
 class BoatListMatch
 {
     public ?string $crew = null;
@@ -53,7 +53,7 @@ class BowLoadMatch
     public int $id;
 }
 
-/** Match filter for Bow#list (any subset of Bow fields). */
+/** Request payload for Bow#list. */
 class BowListMatch
 {
     public ?string $description = null;
@@ -78,7 +78,7 @@ class ChapterLoadMatch
     public int $id;
 }
 
-/** Match filter for Chapter#list (any subset of Chapter fields). */
+/** Request payload for Chapter#list. */
 class ChapterListMatch
 {
     public ?int $id = null;
@@ -106,7 +106,7 @@ class CharacterLoadMatch
     public int $id;
 }
 
-/** Match filter for Character#list (any subset of Character fields). */
+/** Request payload for Character#list. */
 class CharacterListMatch
 {
     public ?int $age = null;
@@ -135,7 +135,7 @@ class CrewLoadMatch
     public int $id;
 }
 
-/** Match filter for Crew#list (any subset of Crew fields). */
+/** Request payload for Crew#list. */
 class CrewListMatch
 {
     public ?string $captain = null;
@@ -161,7 +161,7 @@ class DialLoadMatch
     public int $id;
 }
 
-/** Match filter for Dial#list (any subset of Dial fields). */
+/** Request payload for Dial#list. */
 class DialListMatch
 {
     public ?string $description = null;
@@ -186,7 +186,7 @@ class EpisodeLoadMatch
     public int $id;
 }
 
-/** Match filter for Episode#list (any subset of Episode fields). */
+/** Request payload for Episode#list. */
 class EpisodeListMatch
 {
     public ?string $air_date = null;
@@ -211,7 +211,7 @@ class FilmLoadMatch
     public int $id;
 }
 
-/** Match filter for Film#list (any subset of Film fields). */
+/** Request payload for Film#list. */
 class FilmListMatch
 {
     public ?string $description = null;
@@ -236,7 +236,7 @@ class FruitLoadMatch
     public int $id;
 }
 
-/** Match filter for Fruit#list (any subset of Fruit fields). */
+/** Request payload for Fruit#list. */
 class FruitListMatch
 {
     public ?string $description = null;
@@ -261,7 +261,7 @@ class GearLoadMatch
     public int $id;
 }
 
-/** Match filter for Gear#list (any subset of Gear fields). */
+/** Request payload for Gear#list. */
 class GearListMatch
 {
     public ?string $description = null;
@@ -285,7 +285,7 @@ class HakiLoadMatch
     public int $id;
 }
 
-/** Match filter for Haki#list (any subset of Haki fields). */
+/** Request payload for Haki#list. */
 class HakiListMatch
 {
     public ?string $description = null;
@@ -310,7 +310,7 @@ class LocationLoadMatch
     public int $id;
 }
 
-/** Match filter for Location#list (any subset of Location fields). */
+/** Request payload for Location#list. */
 class LocationListMatch
 {
     public ?string $description = null;
@@ -336,7 +336,7 @@ class SagaLoadMatch
     public int $id;
 }
 
-/** Match filter for Saga#list (any subset of Saga fields). */
+/** Request payload for Saga#list. */
 class SagaListMatch
 {
     public ?array $chapter = null;
@@ -362,7 +362,7 @@ class SwordLoadMatch
     public int $id;
 }
 
-/** Match filter for Sword#list (any subset of Sword fields). */
+/** Request payload for Sword#list. */
 class SwordListMatch
 {
     public ?string $description = null;
@@ -387,7 +387,7 @@ class TechniqueLoadMatch
     public int $id;
 }
 
-/** Match filter for Technique#list (any subset of Technique fields). */
+/** Request payload for Technique#list. */
 class TechniqueListMatch
 {
     public ?string $description = null;
@@ -412,7 +412,7 @@ class VolumeLoadMatch
     public int $id;
 }
 
-/** Match filter for Volume#list (any subset of Volume fields). */
+/** Request payload for Volume#list. */
 class VolumeListMatch
 {
     public ?array $chapter = null;

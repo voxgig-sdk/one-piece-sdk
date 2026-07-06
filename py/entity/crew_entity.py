@@ -65,8 +65,13 @@ class CrewEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: CrewLoadMatch, ctrl=None) -> Crew:
+    def load(self, reqmatch=None, ctrl=None) -> Crew:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Crew().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class CrewEntity:
 
 
     
-    def list(self, reqmatch: CrewListMatch, ctrl=None) -> list[Crew]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Crew]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Crew().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

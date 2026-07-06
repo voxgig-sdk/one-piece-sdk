@@ -4,6 +4,11 @@
 
 The Python SDK for the OnePiece API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Boat()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    boats = client.Boat().list({})
+    boats = client.Boat().list()
     for boat in boats:
         print(boat)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(boat)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    boats = client.Boat().list()
+    print(boats)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = OnePieceSDK.test()
 
 # Entity ops return the bare record and raise on error.
-boat = client.Boat().load({"id": "test01"})
+boat = client.Boat().list()
 # boat contains the mock response record
 ```
 
@@ -203,9 +239,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -467,18 +500,18 @@ Create an instance: `boat = client.Boat()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `crew` | `str` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -489,7 +522,7 @@ boat = client.Boat().load({"id": "boat_id"})
 #### Example: List
 
 ```python
-boats = client.Boat().list({})
+boats = client.Boat().list()
 ```
 
 
@@ -501,17 +534,17 @@ Create an instance: `bow = client.Bow()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `owner` | `str` |  |
 
 #### Example: Load
 
@@ -522,7 +555,7 @@ bow = client.Bow().load({"id": "bow_id"})
 #### Example: List
 
 ```python
-bows = client.Bow().list({})
+bows = client.Bow().list()
 ```
 
 
@@ -534,18 +567,18 @@ Create an instance: `chapter = client.Chapter()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `release_date` | `str` |  |
+| `saga` | `str` |  |
+| `title` | `str` |  |
 
 #### Example: Load
 
@@ -556,7 +589,7 @@ chapter = client.Chapter().load({"id": "chapter_id"})
 #### Example: List
 
 ```python
-chapters = client.Chapter().list({})
+chapters = client.Chapter().list()
 ```
 
 
@@ -568,20 +601,20 @@ Create an instance: `character = client.Character()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `age` | ``$INTEGER`` |  |
-| `bounty` | ``$INTEGER`` |  |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `devil_fruit` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `age` | `int` |  |
+| `bounty` | `int` |  |
+| `crew` | `str` |  |
+| `description` | `str` |  |
+| `devil_fruit` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -592,7 +625,7 @@ character = client.Character().load({"id": "character_id"})
 #### Example: List
 
 ```python
-characters = client.Character().list({})
+characters = client.Character().list()
 ```
 
 
@@ -604,19 +637,19 @@ Create an instance: `crew = client.Crew()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `captain` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `member` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `ship` | ``$STRING`` |  |
+| `captain` | `str` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `member` | `list` |  |
+| `name` | `str` |  |
+| `ship` | `str` |  |
 
 #### Example: Load
 
@@ -627,7 +660,7 @@ crew = client.Crew().load({"id": "crew_id"})
 #### Example: List
 
 ```python
-crews = client.Crew().list({})
+crews = client.Crew().list()
 ```
 
 
@@ -639,17 +672,17 @@ Create an instance: `dial = client.Dial()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -660,7 +693,7 @@ dial = client.Dial().load({"id": "dial_id"})
 #### Example: List
 
 ```python
-dials = client.Dial().list({})
+dials = client.Dial().list()
 ```
 
 
@@ -672,18 +705,18 @@ Create an instance: `episode = client.Episode()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `air_date` | `str` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `saga` | `str` |  |
+| `title` | `str` |  |
 
 #### Example: Load
 
@@ -694,7 +727,7 @@ episode = client.Episode().load({"id": "episode_id"})
 #### Example: List
 
 ```python
-episodes = client.Episode().list({})
+episodes = client.Episode().list()
 ```
 
 
@@ -706,17 +739,17 @@ Create an instance: `film = client.Film()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `release_date` | `str` |  |
+| `title` | `str` |  |
 
 #### Example: Load
 
@@ -727,7 +760,7 @@ film = client.Film().load({"id": "film_id"})
 #### Example: List
 
 ```python
-films = client.Film().list({})
+films = client.Film().list()
 ```
 
 
@@ -739,18 +772,18 @@ Create an instance: `fruit = client.Fruit()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `user` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
+| `user` | `str` |  |
 
 #### Example: Load
 
@@ -761,7 +794,7 @@ fruit = client.Fruit().load({"id": "fruit_id"})
 #### Example: List
 
 ```python
-fruits = client.Fruit().list({})
+fruits = client.Fruit().list()
 ```
 
 
@@ -773,17 +806,17 @@ Create an instance: `gear = client.Gear()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `first_appearance` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -794,7 +827,7 @@ gear = client.Gear().load({"id": "gear_id"})
 #### Example: List
 
 ```python
-gears = client.Gear().list({})
+gears = client.Gear().list()
 ```
 
 
@@ -806,17 +839,17 @@ Create an instance: `haki = client.Haki()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `user` | ``$ARRAY`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `user` | `list` |  |
 
 #### Example: Load
 
@@ -827,7 +860,7 @@ haki = client.Haki().load({"id": "haki_id"})
 #### Example: List
 
 ```python
-hakis = client.Haki().list({})
+hakis = client.Haki().list()
 ```
 
 
@@ -839,18 +872,18 @@ Create an instance: `location = client.Location()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `first_appearance` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -861,7 +894,7 @@ location = client.Location().load({"id": "location_id"})
 #### Example: List
 
 ```python
-locations = client.Location().list({})
+locations = client.Location().list()
 ```
 
 
@@ -873,18 +906,18 @@ Create an instance: `saga = client.Saga()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `episode` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `chapter` | `list` |  |
+| `description` | `str` |  |
+| `episode` | `list` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -895,7 +928,7 @@ saga = client.Saga().load({"id": "saga_id"})
 #### Example: List
 
 ```python
-sagas = client.Saga().list({})
+sagas = client.Saga().list()
 ```
 
 
@@ -907,18 +940,18 @@ Create an instance: `sword = client.Sword()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `grade` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `grade` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `owner` | `str` |  |
 
 #### Example: Load
 
@@ -929,7 +962,7 @@ sword = client.Sword().load({"id": "sword_id"})
 #### Example: List
 
 ```python
-swords = client.Sword().list({})
+swords = client.Sword().list()
 ```
 
 
@@ -941,17 +974,17 @@ Create an instance: `technique = client.Technique()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `gear` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `gear` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -962,7 +995,7 @@ technique = client.Technique().load({"id": "technique_id"})
 #### Example: List
 
 ```python
-techniques = client.Technique().list({})
+techniques = client.Technique().list()
 ```
 
 
@@ -974,18 +1007,18 @@ Create an instance: `volume = client.Volume()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `chapter` | `list` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `release_date` | `str` |  |
+| `title` | `str` |  |
 
 #### Example: Load
 
@@ -996,16 +1029,20 @@ volume = client.Volume().load({"id": "volume_id"})
 #### Example: List
 
 ```python
-volumes = client.Volume().list({})
+volumes = client.Volume().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1022,8 +1059,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1066,14 +1104,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 boat = client.Boat()
-boat.load({"id": "example_id"})
+boat.list()
 
-# boat.data_get() now returns the loaded boat data
+# boat.data_get() now returns the boat data from the last list
 # boat.match_get() returns the last match criteria
 ```
 

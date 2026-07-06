@@ -4,6 +4,8 @@
 
 The PHP SDK for the OnePiece API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Boat()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Boat records — iterate directly.
     $boats = $client->Boat()->list();
     foreach ($boats as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["crew"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($boat);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $boats = $client->Boat()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = OnePieceSDK::test([
     "entity" => ["boat" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$boat = $client->Boat()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$boat = $client->Boat()->list();
 print_r($boat);
 ```
 
@@ -209,10 +245,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -481,11 +514,11 @@ Create an instance: `$boat = $client->Boat();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `crew` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -517,10 +550,10 @@ Create an instance: `$bow = $client->Bow();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
 
 #### Example: Load
 
@@ -552,11 +585,11 @@ Create an instance: `$chapter = $client->Chapter();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `release_date` | `string` |  |
+| `saga` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -588,13 +621,13 @@ Create an instance: `$character = $client->Character();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `age` | ``$INTEGER`` |  |
-| `bounty` | ``$INTEGER`` |  |
-| `crew` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `devil_fruit` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `age` | `int` |  |
+| `bounty` | `int` |  |
+| `crew` | `string` |  |
+| `description` | `string` |  |
+| `devil_fruit` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -626,12 +659,12 @@ Create an instance: `$crew = $client->Crew();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `captain` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `member` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `ship` | ``$STRING`` |  |
+| `captain` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `member` | `array` |  |
+| `name` | `string` |  |
+| `ship` | `string` |  |
 
 #### Example: Load
 
@@ -663,10 +696,10 @@ Create an instance: `$dial = $client->Dial();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -698,11 +731,11 @@ Create an instance: `$episode = $client->Episode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `saga` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `air_date` | `string` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `saga` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -734,10 +767,10 @@ Create an instance: `$film = $client->Film();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `release_date` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -769,11 +802,11 @@ Create an instance: `$fruit = $client->Fruit();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `user` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
+| `user` | `string` |  |
 
 #### Example: Load
 
@@ -805,10 +838,10 @@ Create an instance: `$gear = $client->Gear();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `first_appearance` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -840,10 +873,10 @@ Create an instance: `$haki = $client->Haki();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `user` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `user` | `array` |  |
 
 #### Example: Load
 
@@ -875,11 +908,11 @@ Create an instance: `$location = $client->Location();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `first_appearance` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `first_appearance` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -911,11 +944,11 @@ Create an instance: `$saga = $client->Saga();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `episode` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `chapter` | `array` |  |
+| `description` | `string` |  |
+| `episode` | `array` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -947,11 +980,11 @@ Create an instance: `$sword = $client->Sword();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `grade` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `owner` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `grade` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
 
 #### Example: Load
 
@@ -983,10 +1016,10 @@ Create an instance: `$technique = $client->Technique();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `gear` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `gear` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -1018,11 +1051,11 @@ Create an instance: `$volume = $client->Volume();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `number` | ``$INTEGER`` |  |
-| `release_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `chapter` | `array` |  |
+| `id` | `int` |  |
+| `number` | `int` |  |
+| `release_date` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -1039,12 +1072,16 @@ $volumes = $client->Volume()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1061,8 +1098,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1106,15 +1144,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $boat = $client->Boat();
-$boat->load(["id" => "example_id"]);
+$boat->list();
 
-// $boat->dataGet() now returns the loaded boat data
-// $boat->matchGet() returns the last match criteria
+// $boat->data_get() now returns the boat data from the last list
+// $boat->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

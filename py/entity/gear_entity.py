@@ -65,8 +65,13 @@ class GearEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: GearLoadMatch, ctrl=None) -> Gear:
+    def load(self, reqmatch=None, ctrl=None) -> Gear:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Gear().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class GearEntity:
 
 
     
-    def list(self, reqmatch: GearListMatch, ctrl=None) -> list[Gear]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Gear]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Gear().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,
