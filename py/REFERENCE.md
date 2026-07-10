@@ -170,7 +170,7 @@ for boat in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Boat().load({"id": "boat_id"})
+result = client.Boat().load({"id": 1})
 ```
 
 ### Common Methods
@@ -234,7 +234,7 @@ for bow in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Bow().load({"id": "bow_id"})
+result = client.Bow().load({"id": 1})
 ```
 
 ### Common Methods
@@ -299,7 +299,7 @@ for chapter in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Chapter().load({"id": "chapter_id"})
+result = client.Chapter().load({"id": 1})
 ```
 
 ### Common Methods
@@ -366,7 +366,7 @@ for character in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Character().load({"id": "character_id"})
+result = client.Character().load({"id": 1})
 ```
 
 ### Common Methods
@@ -432,7 +432,7 @@ for crew in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Crew().load({"id": "crew_id"})
+result = client.Crew().load({"id": 1})
 ```
 
 ### Common Methods
@@ -496,7 +496,7 @@ for dial in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Dial().load({"id": "dial_id"})
+result = client.Dial().load({"id": 1})
 ```
 
 ### Common Methods
@@ -561,7 +561,7 @@ for episode in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Episode().load({"id": "episode_id"})
+result = client.Episode().load({"id": 1})
 ```
 
 ### Common Methods
@@ -625,7 +625,7 @@ for film in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Film().load({"id": "film_id"})
+result = client.Film().load({"id": 1})
 ```
 
 ### Common Methods
@@ -690,7 +690,7 @@ for fruit in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Fruit().load({"id": "fruit_id"})
+result = client.Fruit().load({"id": 1})
 ```
 
 ### Common Methods
@@ -754,7 +754,7 @@ for gear in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Gear().load({"id": "gear_id"})
+result = client.Gear().load({"id": 1})
 ```
 
 ### Common Methods
@@ -818,7 +818,7 @@ for haki in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Haki().load({"id": "haki_id"})
+result = client.Haki().load({"id": 1})
 ```
 
 ### Common Methods
@@ -883,7 +883,7 @@ for location in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Location().load({"id": "location_id"})
+result = client.Location().load({"id": 1})
 ```
 
 ### Common Methods
@@ -948,7 +948,7 @@ for saga in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Saga().load({"id": "saga_id"})
+result = client.Saga().load({"id": 1})
 ```
 
 ### Common Methods
@@ -1013,7 +1013,7 @@ for sword in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Sword().load({"id": "sword_id"})
+result = client.Sword().load({"id": 1})
 ```
 
 ### Common Methods
@@ -1077,7 +1077,7 @@ for technique in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Technique().load({"id": "technique_id"})
+result = client.Technique().load({"id": 1})
 ```
 
 ### Common Methods
@@ -1142,7 +1142,7 @@ for volume in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Volume().load({"id": "volume_id"})
+result = client.Volume().load({"id": 1})
 ```
 
 ### Common Methods

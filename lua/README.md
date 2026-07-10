@@ -50,7 +50,7 @@ end
 ### 3. Load a boat
 
 ```lua
-local boat, err = client:Boat():load({ id = "example_id" })
+local boat, err = client:Boat():load({ id = 1 })
 if err then error(err) end
 print(boat)
 ```
@@ -502,7 +502,7 @@ Create an instance: `local boat = client:Boat(nil)`
 #### Example: Load
 
 ```lua
-local boat, err = client:Boat():load({ id = "boat_id" })
+local boat, err = client:Boat():load({ id = 1 })
 ```
 
 #### Example: List
@@ -535,7 +535,7 @@ Create an instance: `local bow = client:Bow(nil)`
 #### Example: Load
 
 ```lua
-local bow, err = client:Bow():load({ id = "bow_id" })
+local bow, err = client:Bow():load({ id = 1 })
 ```
 
 #### Example: List
@@ -569,7 +569,7 @@ Create an instance: `local chapter = client:Chapter(nil)`
 #### Example: Load
 
 ```lua
-local chapter, err = client:Chapter():load({ id = "chapter_id" })
+local chapter, err = client:Chapter():load({ id = 1 })
 ```
 
 #### Example: List
@@ -605,7 +605,7 @@ Create an instance: `local character = client:Character(nil)`
 #### Example: Load
 
 ```lua
-local character, err = client:Character():load({ id = "character_id" })
+local character, err = client:Character():load({ id = 1 })
 ```
 
 #### Example: List
@@ -640,7 +640,7 @@ Create an instance: `local crew = client:Crew(nil)`
 #### Example: Load
 
 ```lua
-local crew, err = client:Crew():load({ id = "crew_id" })
+local crew, err = client:Crew():load({ id = 1 })
 ```
 
 #### Example: List
@@ -673,7 +673,7 @@ Create an instance: `local dial = client:Dial(nil)`
 #### Example: Load
 
 ```lua
-local dial, err = client:Dial():load({ id = "dial_id" })
+local dial, err = client:Dial():load({ id = 1 })
 ```
 
 #### Example: List
@@ -707,7 +707,7 @@ Create an instance: `local episode = client:Episode(nil)`
 #### Example: Load
 
 ```lua
-local episode, err = client:Episode():load({ id = "episode_id" })
+local episode, err = client:Episode():load({ id = 1 })
 ```
 
 #### Example: List
@@ -740,7 +740,7 @@ Create an instance: `local film = client:Film(nil)`
 #### Example: Load
 
 ```lua
-local film, err = client:Film():load({ id = "film_id" })
+local film, err = client:Film():load({ id = 1 })
 ```
 
 #### Example: List
@@ -774,7 +774,7 @@ Create an instance: `local fruit = client:Fruit(nil)`
 #### Example: Load
 
 ```lua
-local fruit, err = client:Fruit():load({ id = "fruit_id" })
+local fruit, err = client:Fruit():load({ id = 1 })
 ```
 
 #### Example: List
@@ -807,7 +807,7 @@ Create an instance: `local gear = client:Gear(nil)`
 #### Example: Load
 
 ```lua
-local gear, err = client:Gear():load({ id = "gear_id" })
+local gear, err = client:Gear():load({ id = 1 })
 ```
 
 #### Example: List
@@ -840,7 +840,7 @@ Create an instance: `local haki = client:Haki(nil)`
 #### Example: Load
 
 ```lua
-local haki, err = client:Haki():load({ id = "haki_id" })
+local haki, err = client:Haki():load({ id = 1 })
 ```
 
 #### Example: List
@@ -874,7 +874,7 @@ Create an instance: `local location = client:Location(nil)`
 #### Example: Load
 
 ```lua
-local location, err = client:Location():load({ id = "location_id" })
+local location, err = client:Location():load({ id = 1 })
 ```
 
 #### Example: List
@@ -908,7 +908,7 @@ Create an instance: `local saga = client:Saga(nil)`
 #### Example: Load
 
 ```lua
-local saga, err = client:Saga():load({ id = "saga_id" })
+local saga, err = client:Saga():load({ id = 1 })
 ```
 
 #### Example: List
@@ -942,7 +942,7 @@ Create an instance: `local sword = client:Sword(nil)`
 #### Example: Load
 
 ```lua
-local sword, err = client:Sword():load({ id = "sword_id" })
+local sword, err = client:Sword():load({ id = 1 })
 ```
 
 #### Example: List
@@ -975,7 +975,7 @@ Create an instance: `local technique = client:Technique(nil)`
 #### Example: Load
 
 ```lua
-local technique, err = client:Technique():load({ id = "technique_id" })
+local technique, err = client:Technique():load({ id = 1 })
 ```
 
 #### Example: List
@@ -1009,7 +1009,7 @@ Create an instance: `local volume = client:Volume(nil)`
 #### Example: Load
 
 ```lua
-local volume, err = client:Volume():load({ id = "volume_id" })
+local volume, err = client:Volume():load({ id = 1 })
 ```
 
 #### Example: List

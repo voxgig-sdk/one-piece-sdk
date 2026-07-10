@@ -171,7 +171,7 @@ local results, err = client:Boat():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Boat():load({ id = "boat_id" })
+local result, err = client:Boat():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -234,7 +234,7 @@ local results, err = client:Bow():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Bow():load({ id = "bow_id" })
+local result, err = client:Bow():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -298,7 +298,7 @@ local results, err = client:Chapter():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Chapter():load({ id = "chapter_id" })
+local result, err = client:Chapter():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -364,7 +364,7 @@ local results, err = client:Character():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Character():load({ id = "character_id" })
+local result, err = client:Character():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -429,7 +429,7 @@ local results, err = client:Crew():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Crew():load({ id = "crew_id" })
+local result, err = client:Crew():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -492,7 +492,7 @@ local results, err = client:Dial():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Dial():load({ id = "dial_id" })
+local result, err = client:Dial():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -556,7 +556,7 @@ local results, err = client:Episode():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Episode():load({ id = "episode_id" })
+local result, err = client:Episode():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -619,7 +619,7 @@ local results, err = client:Film():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Film():load({ id = "film_id" })
+local result, err = client:Film():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -683,7 +683,7 @@ local results, err = client:Fruit():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Fruit():load({ id = "fruit_id" })
+local result, err = client:Fruit():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -746,7 +746,7 @@ local results, err = client:Gear():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Gear():load({ id = "gear_id" })
+local result, err = client:Gear():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -809,7 +809,7 @@ local results, err = client:Haki():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Haki():load({ id = "haki_id" })
+local result, err = client:Haki():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -873,7 +873,7 @@ local results, err = client:Location():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Location():load({ id = "location_id" })
+local result, err = client:Location():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -937,7 +937,7 @@ local results, err = client:Saga():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Saga():load({ id = "saga_id" })
+local result, err = client:Saga():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -1001,7 +1001,7 @@ local results, err = client:Sword():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Sword():load({ id = "sword_id" })
+local result, err = client:Sword():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -1064,7 +1064,7 @@ local results, err = client:Technique():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Technique():load({ id = "technique_id" })
+local result, err = client:Technique():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -1128,7 +1128,7 @@ local results, err = client:Volume():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Volume():load({ id = "volume_id" })
+local result, err = client:Volume():load({ id = 1 })
 ```
 
 ### Common Methods

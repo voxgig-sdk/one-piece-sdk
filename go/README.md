@@ -530,7 +530,7 @@ Create an instance: `boat := client.Boat(nil)`
 #### Example: Load
 
 ```go
-boat, err := client.Boat(nil).Load(map[string]any{"id": "boat_id"}, nil)
+boat, err := client.Boat(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -571,7 +571,7 @@ Create an instance: `bow := client.Bow(nil)`
 #### Example: Load
 
 ```go
-bow, err := client.Bow(nil).Load(map[string]any{"id": "bow_id"}, nil)
+bow, err := client.Bow(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -613,7 +613,7 @@ Create an instance: `chapter := client.Chapter(nil)`
 #### Example: Load
 
 ```go
-chapter, err := client.Chapter(nil).Load(map[string]any{"id": "chapter_id"}, nil)
+chapter, err := client.Chapter(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -657,7 +657,7 @@ Create an instance: `character := client.Character(nil)`
 #### Example: Load
 
 ```go
-character, err := client.Character(nil).Load(map[string]any{"id": "character_id"}, nil)
+character, err := client.Character(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -700,7 +700,7 @@ Create an instance: `crew := client.Crew(nil)`
 #### Example: Load
 
 ```go
-crew, err := client.Crew(nil).Load(map[string]any{"id": "crew_id"}, nil)
+crew, err := client.Crew(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -741,7 +741,7 @@ Create an instance: `dial := client.Dial(nil)`
 #### Example: Load
 
 ```go
-dial, err := client.Dial(nil).Load(map[string]any{"id": "dial_id"}, nil)
+dial, err := client.Dial(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -783,7 +783,7 @@ Create an instance: `episode := client.Episode(nil)`
 #### Example: Load
 
 ```go
-episode, err := client.Episode(nil).Load(map[string]any{"id": "episode_id"}, nil)
+episode, err := client.Episode(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -824,7 +824,7 @@ Create an instance: `film := client.Film(nil)`
 #### Example: Load
 
 ```go
-film, err := client.Film(nil).Load(map[string]any{"id": "film_id"}, nil)
+film, err := client.Film(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -866,7 +866,7 @@ Create an instance: `fruit := client.Fruit(nil)`
 #### Example: Load
 
 ```go
-fruit, err := client.Fruit(nil).Load(map[string]any{"id": "fruit_id"}, nil)
+fruit, err := client.Fruit(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -907,7 +907,7 @@ Create an instance: `gear := client.Gear(nil)`
 #### Example: Load
 
 ```go
-gear, err := client.Gear(nil).Load(map[string]any{"id": "gear_id"}, nil)
+gear, err := client.Gear(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -948,7 +948,7 @@ Create an instance: `haki := client.Haki(nil)`
 #### Example: Load
 
 ```go
-haki, err := client.Haki(nil).Load(map[string]any{"id": "haki_id"}, nil)
+haki, err := client.Haki(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -990,7 +990,7 @@ Create an instance: `location := client.Location(nil)`
 #### Example: Load
 
 ```go
-location, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+location, err := client.Location(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1032,7 +1032,7 @@ Create an instance: `saga := client.Saga(nil)`
 #### Example: Load
 
 ```go
-saga, err := client.Saga(nil).Load(map[string]any{"id": "saga_id"}, nil)
+saga, err := client.Saga(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1074,7 +1074,7 @@ Create an instance: `sword := client.Sword(nil)`
 #### Example: Load
 
 ```go
-sword, err := client.Sword(nil).Load(map[string]any{"id": "sword_id"}, nil)
+sword, err := client.Sword(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1115,7 +1115,7 @@ Create an instance: `technique := client.Technique(nil)`
 #### Example: Load
 
 ```go
-technique, err := client.Technique(nil).Load(map[string]any{"id": "technique_id"}, nil)
+technique, err := client.Technique(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1157,7 +1157,7 @@ Create an instance: `volume := client.Volume(nil)`
 #### Example: Load
 
 ```go
-volume, err := client.Volume(nil).Load(map[string]any{"id": "volume_id"}, nil)
+volume, err := client.Volume(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

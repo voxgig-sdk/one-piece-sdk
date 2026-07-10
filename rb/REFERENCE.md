@@ -174,7 +174,7 @@ results = client.Boat.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Boat.load({ "id" => "boat_id" })
+result = client.Boat.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -237,7 +237,7 @@ results = client.Bow.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Bow.load({ "id" => "bow_id" })
+result = client.Bow.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -301,7 +301,7 @@ results = client.Chapter.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Chapter.load({ "id" => "chapter_id" })
+result = client.Chapter.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -367,7 +367,7 @@ results = client.Character.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Character.load({ "id" => "character_id" })
+result = client.Character.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -432,7 +432,7 @@ results = client.Crew.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Crew.load({ "id" => "crew_id" })
+result = client.Crew.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -495,7 +495,7 @@ results = client.Dial.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Dial.load({ "id" => "dial_id" })
+result = client.Dial.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -559,7 +559,7 @@ results = client.Episode.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Episode.load({ "id" => "episode_id" })
+result = client.Episode.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -622,7 +622,7 @@ results = client.Film.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Film.load({ "id" => "film_id" })
+result = client.Film.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -686,7 +686,7 @@ results = client.Fruit.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Fruit.load({ "id" => "fruit_id" })
+result = client.Fruit.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -749,7 +749,7 @@ results = client.Gear.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Gear.load({ "id" => "gear_id" })
+result = client.Gear.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -812,7 +812,7 @@ results = client.Haki.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Haki.load({ "id" => "haki_id" })
+result = client.Haki.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -876,7 +876,7 @@ results = client.Location.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Location.load({ "id" => "location_id" })
+result = client.Location.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -940,7 +940,7 @@ results = client.Saga.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Saga.load({ "id" => "saga_id" })
+result = client.Saga.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -1004,7 +1004,7 @@ results = client.Sword.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Sword.load({ "id" => "sword_id" })
+result = client.Sword.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -1067,7 +1067,7 @@ results = client.Technique.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Technique.load({ "id" => "technique_id" })
+result = client.Technique.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -1131,7 +1131,7 @@ results = client.Volume.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Volume.load({ "id" => "volume_id" })
+result = client.Volume.load({ "id" => 1 })
 ```
 
 ### Common Methods

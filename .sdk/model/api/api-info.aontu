@@ -15,10 +15,10 @@ main: {
           url: "https://api-onepiece.com"
         }
       ]
+      summary: "Access information about the One Piece manga, including sagas, fruits, chapters, volumes, episodes, and more."
       termsOfService: "https://api-onepiece.com/en/terms-of-use"
       title: "One Piece API"
       version: "1.0.0"
+      website: "https://com"
     }
   }
-}
-

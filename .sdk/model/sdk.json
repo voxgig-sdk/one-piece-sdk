@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -2538,15 +2535,18 @@
           "name": "Nathan Dierickx"
         },
         "description": "Access information about the One Piece manga, including sagas, fruits, chapters, volumes, episodes, and more. Explore details about characters, crews, locations, and various elements from the One Piece world.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api-onepiece.com"
           }
         ],
+        "summary": "Access information about the One Piece manga, including sagas, fruits, chapters, volumes, episodes, and more.",
         "termsOfService": "https://api-onepiece.com/en/terms-of-use",
         "title": "One Piece API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://com"
       },
       "option": {},
       "target": {
@@ -2599,6 +2599,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -2649,6 +2652,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

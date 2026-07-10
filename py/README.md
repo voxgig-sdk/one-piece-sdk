@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    boat = client.Boat().load({"id": "example_id"})
+    boat = client.Boat().load({"id": 1})
     print(boat)
 except Exception as err:
     print(f"load failed: {err}")
@@ -516,7 +516,7 @@ Create an instance: `boat = client.Boat()`
 #### Example: Load
 
 ```python
-boat = client.Boat().load({"id": "boat_id"})
+boat = client.Boat().load({"id": 1})
 ```
 
 #### Example: List
@@ -549,7 +549,7 @@ Create an instance: `bow = client.Bow()`
 #### Example: Load
 
 ```python
-bow = client.Bow().load({"id": "bow_id"})
+bow = client.Bow().load({"id": 1})
 ```
 
 #### Example: List
@@ -583,7 +583,7 @@ Create an instance: `chapter = client.Chapter()`
 #### Example: Load
 
 ```python
-chapter = client.Chapter().load({"id": "chapter_id"})
+chapter = client.Chapter().load({"id": 1})
 ```
 
 #### Example: List
@@ -619,7 +619,7 @@ Create an instance: `character = client.Character()`
 #### Example: Load
 
 ```python
-character = client.Character().load({"id": "character_id"})
+character = client.Character().load({"id": 1})
 ```
 
 #### Example: List
@@ -654,7 +654,7 @@ Create an instance: `crew = client.Crew()`
 #### Example: Load
 
 ```python
-crew = client.Crew().load({"id": "crew_id"})
+crew = client.Crew().load({"id": 1})
 ```
 
 #### Example: List
@@ -687,7 +687,7 @@ Create an instance: `dial = client.Dial()`
 #### Example: Load
 
 ```python
-dial = client.Dial().load({"id": "dial_id"})
+dial = client.Dial().load({"id": 1})
 ```
 
 #### Example: List
@@ -721,7 +721,7 @@ Create an instance: `episode = client.Episode()`
 #### Example: Load
 
 ```python
-episode = client.Episode().load({"id": "episode_id"})
+episode = client.Episode().load({"id": 1})
 ```
 
 #### Example: List
@@ -754,7 +754,7 @@ Create an instance: `film = client.Film()`
 #### Example: Load
 
 ```python
-film = client.Film().load({"id": "film_id"})
+film = client.Film().load({"id": 1})
 ```
 
 #### Example: List
@@ -788,7 +788,7 @@ Create an instance: `fruit = client.Fruit()`
 #### Example: Load
 
 ```python
-fruit = client.Fruit().load({"id": "fruit_id"})
+fruit = client.Fruit().load({"id": 1})
 ```
 
 #### Example: List
@@ -821,7 +821,7 @@ Create an instance: `gear = client.Gear()`
 #### Example: Load
 
 ```python
-gear = client.Gear().load({"id": "gear_id"})
+gear = client.Gear().load({"id": 1})
 ```
 
 #### Example: List
@@ -854,7 +854,7 @@ Create an instance: `haki = client.Haki()`
 #### Example: Load
 
 ```python
-haki = client.Haki().load({"id": "haki_id"})
+haki = client.Haki().load({"id": 1})
 ```
 
 #### Example: List
@@ -888,7 +888,7 @@ Create an instance: `location = client.Location()`
 #### Example: Load
 
 ```python
-location = client.Location().load({"id": "location_id"})
+location = client.Location().load({"id": 1})
 ```
 
 #### Example: List
@@ -922,7 +922,7 @@ Create an instance: `saga = client.Saga()`
 #### Example: Load
 
 ```python
-saga = client.Saga().load({"id": "saga_id"})
+saga = client.Saga().load({"id": 1})
 ```
 
 #### Example: List
@@ -956,7 +956,7 @@ Create an instance: `sword = client.Sword()`
 #### Example: Load
 
 ```python
-sword = client.Sword().load({"id": "sword_id"})
+sword = client.Sword().load({"id": 1})
 ```
 
 #### Example: List
@@ -989,7 +989,7 @@ Create an instance: `technique = client.Technique()`
 #### Example: Load
 
 ```python
-technique = client.Technique().load({"id": "technique_id"})
+technique = client.Technique().load({"id": 1})
 ```
 
 #### Example: List
@@ -1023,7 +1023,7 @@ Create an instance: `volume = client.Volume()`
 #### Example: Load
 
 ```python
-volume = client.Volume().load({"id": "volume_id"})
+volume = client.Volume().load({"id": 1})
 ```
 
 #### Example: List

@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Boat record (raises on error).
-  boat = client.Boat.load({ "id" => "example_id" })
+  boat = client.Boat.load({ "id" => 1 })
   puts boat
 rescue => err
   warn "load failed: #{err}"
@@ -514,7 +514,7 @@ Create an instance: `boat = client.Boat`
 
 ```ruby
 # load returns the bare Boat record (raises on error).
-boat = client.Boat.load({ "id" => "boat_id" })
+boat = client.Boat.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -549,7 +549,7 @@ Create an instance: `bow = client.Bow`
 
 ```ruby
 # load returns the bare Bow record (raises on error).
-bow = client.Bow.load({ "id" => "bow_id" })
+bow = client.Bow.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -585,7 +585,7 @@ Create an instance: `chapter = client.Chapter`
 
 ```ruby
 # load returns the bare Chapter record (raises on error).
-chapter = client.Chapter.load({ "id" => "chapter_id" })
+chapter = client.Chapter.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -623,7 +623,7 @@ Create an instance: `character = client.Character`
 
 ```ruby
 # load returns the bare Character record (raises on error).
-character = client.Character.load({ "id" => "character_id" })
+character = client.Character.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -660,7 +660,7 @@ Create an instance: `crew = client.Crew`
 
 ```ruby
 # load returns the bare Crew record (raises on error).
-crew = client.Crew.load({ "id" => "crew_id" })
+crew = client.Crew.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -695,7 +695,7 @@ Create an instance: `dial = client.Dial`
 
 ```ruby
 # load returns the bare Dial record (raises on error).
-dial = client.Dial.load({ "id" => "dial_id" })
+dial = client.Dial.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -731,7 +731,7 @@ Create an instance: `episode = client.Episode`
 
 ```ruby
 # load returns the bare Episode record (raises on error).
-episode = client.Episode.load({ "id" => "episode_id" })
+episode = client.Episode.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -766,7 +766,7 @@ Create an instance: `film = client.Film`
 
 ```ruby
 # load returns the bare Film record (raises on error).
-film = client.Film.load({ "id" => "film_id" })
+film = client.Film.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -802,7 +802,7 @@ Create an instance: `fruit = client.Fruit`
 
 ```ruby
 # load returns the bare Fruit record (raises on error).
-fruit = client.Fruit.load({ "id" => "fruit_id" })
+fruit = client.Fruit.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -837,7 +837,7 @@ Create an instance: `gear = client.Gear`
 
 ```ruby
 # load returns the bare Gear record (raises on error).
-gear = client.Gear.load({ "id" => "gear_id" })
+gear = client.Gear.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -872,7 +872,7 @@ Create an instance: `haki = client.Haki`
 
 ```ruby
 # load returns the bare Haki record (raises on error).
-haki = client.Haki.load({ "id" => "haki_id" })
+haki = client.Haki.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -908,7 +908,7 @@ Create an instance: `location = client.Location`
 
 ```ruby
 # load returns the bare Location record (raises on error).
-location = client.Location.load({ "id" => "location_id" })
+location = client.Location.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -944,7 +944,7 @@ Create an instance: `saga = client.Saga`
 
 ```ruby
 # load returns the bare Saga record (raises on error).
-saga = client.Saga.load({ "id" => "saga_id" })
+saga = client.Saga.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -980,7 +980,7 @@ Create an instance: `sword = client.Sword`
 
 ```ruby
 # load returns the bare Sword record (raises on error).
-sword = client.Sword.load({ "id" => "sword_id" })
+sword = client.Sword.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -1015,7 +1015,7 @@ Create an instance: `technique = client.Technique`
 
 ```ruby
 # load returns the bare Technique record (raises on error).
-technique = client.Technique.load({ "id" => "technique_id" })
+technique = client.Technique.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -1051,7 +1051,7 @@ Create an instance: `volume = client.Volume`
 
 ```ruby
 # load returns the bare Volume record (raises on error).
-volume = client.Volume.load({ "id" => "volume_id" })
+volume = client.Volume.load({ "id" => 1 })
 ```
 
 #### Example: List
