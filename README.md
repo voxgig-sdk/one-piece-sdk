@@ -16,8 +16,8 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as a small set of **semantic entities** — Boat, Bow, Chapter, Character, Crew, Dial, Episode, Film, Fruit, Gear, Haki, Location, Saga, Sword, Technique and Volume — that you
-call directly, instead of assembling URL paths and query strings. Entities are
+This SDK exposes the API as **16 semantic entities** that you
+call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`):
 
