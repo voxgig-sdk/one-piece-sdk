@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- OnePiece SDK exists test
 
 local sdk = require("one-piece_sdk")
 
