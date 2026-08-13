@@ -126,7 +126,7 @@ BowListMatch = Struct.new(
 # @!attribute [rw] number
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] saga
@@ -137,7 +137,7 @@ BowListMatch = Struct.new(
 Chapter = Struct.new(
   :id,
   :number,
-  :release_date,
+  :releaseDate,
   :saga,
   :title,
   keyword_init: true
@@ -160,7 +160,7 @@ ChapterLoadMatch = Struct.new(
 # @!attribute [rw] number
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] saga
@@ -171,7 +171,7 @@ ChapterLoadMatch = Struct.new(
 ChapterListMatch = Struct.new(
   :id,
   :number,
-  :release_date,
+  :releaseDate,
   :saga,
   :title,
   keyword_init: true
@@ -191,7 +191,7 @@ ChapterListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] devil_fruit
+# @!attribute [rw] devilFruit
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -204,7 +204,7 @@ Character = Struct.new(
   :bounty,
   :crew,
   :description,
-  :devil_fruit,
+  :devilFruit,
   :id,
   :name,
   keyword_init: true
@@ -233,7 +233,7 @@ CharacterLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] devil_fruit
+# @!attribute [rw] devilFruit
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -246,7 +246,7 @@ CharacterListMatch = Struct.new(
   :bounty,
   :crew,
   :description,
-  :devil_fruit,
+  :devilFruit,
   :id,
   :name,
   keyword_init: true
@@ -263,7 +263,7 @@ CharacterListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] member
+# @!attribute [rw] members
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -275,7 +275,7 @@ Crew = Struct.new(
   :captain,
   :description,
   :id,
-  :member,
+  :members,
   :name,
   :ship,
   keyword_init: true
@@ -301,7 +301,7 @@ CrewLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] member
+# @!attribute [rw] members
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -313,7 +313,7 @@ CrewListMatch = Struct.new(
   :captain,
   :description,
   :id,
-  :member,
+  :members,
   :name,
   :ship,
   keyword_init: true
@@ -372,7 +372,7 @@ DialListMatch = Struct.new(
 
 # Episode entity data model.
 #
-# @!attribute [rw] air_date
+# @!attribute [rw] airDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -387,7 +387,7 @@ DialListMatch = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 Episode = Struct.new(
-  :air_date,
+  :airDate,
   :id,
   :number,
   :saga,
@@ -406,7 +406,7 @@ EpisodeLoadMatch = Struct.new(
 
 # Request payload for Episode#list.
 #
-# @!attribute [rw] air_date
+# @!attribute [rw] airDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -421,7 +421,7 @@ EpisodeLoadMatch = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 EpisodeListMatch = Struct.new(
-  :air_date,
+  :airDate,
   :id,
   :number,
   :saga,
@@ -437,7 +437,7 @@ EpisodeListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] title
@@ -445,7 +445,7 @@ EpisodeListMatch = Struct.new(
 Film = Struct.new(
   :description,
   :id,
-  :release_date,
+  :releaseDate,
   :title,
   keyword_init: true
 )
@@ -467,7 +467,7 @@ FilmLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] title
@@ -475,7 +475,7 @@ FilmLoadMatch = Struct.new(
 FilmListMatch = Struct.new(
   :description,
   :id,
-  :release_date,
+  :releaseDate,
   :title,
   keyword_init: true
 )
@@ -544,7 +544,7 @@ FruitListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] first_appearance
+# @!attribute [rw] firstAppearance
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -554,7 +554,7 @@ FruitListMatch = Struct.new(
 #   @return [String, nil]
 Gear = Struct.new(
   :description,
-  :first_appearance,
+  :firstAppearance,
   :id,
   :name,
   keyword_init: true
@@ -574,7 +574,7 @@ GearLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] first_appearance
+# @!attribute [rw] firstAppearance
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -584,7 +584,7 @@ GearLoadMatch = Struct.new(
 #   @return [String, nil]
 GearListMatch = Struct.new(
   :description,
-  :first_appearance,
+  :firstAppearance,
   :id,
   :name,
   keyword_init: true
@@ -601,13 +601,13 @@ GearListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Array, nil]
 Haki = Struct.new(
   :description,
   :id,
   :name,
-  :user,
+  :users,
   keyword_init: true
 )
 
@@ -631,13 +631,13 @@ HakiLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Array, nil]
 HakiListMatch = Struct.new(
   :description,
   :id,
   :name,
-  :user,
+  :users,
   keyword_init: true
 )
 
@@ -646,7 +646,7 @@ HakiListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] first_appearance
+# @!attribute [rw] firstAppearance
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -659,7 +659,7 @@ HakiListMatch = Struct.new(
 #   @return [String, nil]
 Location = Struct.new(
   :description,
-  :first_appearance,
+  :firstAppearance,
   :id,
   :name,
   :type,
@@ -680,7 +680,7 @@ LocationLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] first_appearance
+# @!attribute [rw] firstAppearance
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -693,7 +693,7 @@ LocationLoadMatch = Struct.new(
 #   @return [String, nil]
 LocationListMatch = Struct.new(
   :description,
-  :first_appearance,
+  :firstAppearance,
   :id,
   :name,
   :type,
@@ -702,13 +702,13 @@ LocationListMatch = Struct.new(
 
 # Saga entity data model.
 #
-# @!attribute [rw] chapter
+# @!attribute [rw] chapters
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] episode
+# @!attribute [rw] episodes
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -717,9 +717,9 @@ LocationListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 Saga = Struct.new(
-  :chapter,
+  :chapters,
   :description,
-  :episode,
+  :episodes,
   :id,
   :name,
   keyword_init: true
@@ -736,13 +736,13 @@ SagaLoadMatch = Struct.new(
 
 # Request payload for Saga#list.
 #
-# @!attribute [rw] chapter
+# @!attribute [rw] chapters
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] episode
+# @!attribute [rw] episodes
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -751,9 +751,9 @@ SagaLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 SagaListMatch = Struct.new(
-  :chapter,
+  :chapters,
   :description,
-  :episode,
+  :episodes,
   :id,
   :name,
   keyword_init: true
@@ -871,7 +871,7 @@ TechniqueListMatch = Struct.new(
 
 # Volume entity data model.
 #
-# @!attribute [rw] chapter
+# @!attribute [rw] chapters
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -880,16 +880,16 @@ TechniqueListMatch = Struct.new(
 # @!attribute [rw] number
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] title
 #   @return [String, nil]
 Volume = Struct.new(
-  :chapter,
+  :chapters,
   :id,
   :number,
-  :release_date,
+  :releaseDate,
   :title,
   keyword_init: true
 )
@@ -905,7 +905,7 @@ VolumeLoadMatch = Struct.new(
 
 # Request payload for Volume#list.
 #
-# @!attribute [rw] chapter
+# @!attribute [rw] chapters
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -914,16 +914,16 @@ VolumeLoadMatch = Struct.new(
 # @!attribute [rw] number
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] title
 #   @return [String, nil]
 VolumeListMatch = Struct.new(
-  :chapter,
+  :chapters,
   :id,
   :number,
-  :release_date,
+  :releaseDate,
   :title,
   keyword_init: true
 )

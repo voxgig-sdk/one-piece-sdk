@@ -46,7 +46,7 @@ export interface BowListMatch {
 export interface Chapter {
   id?: number
   number?: number
-  release_date?: string
+  releaseDate?: string
   saga?: string
   title?: string
 }
@@ -58,7 +58,7 @@ export interface ChapterLoadMatch {
 export interface ChapterListMatch {
   id?: number
   number?: number
-  release_date?: string
+  releaseDate?: string
   saga?: string
   title?: string
 }
@@ -68,7 +68,7 @@ export interface Character {
   bounty?: number
   crew?: string
   description?: string
-  devil_fruit?: string
+  devilFruit?: string
   id?: number
   name?: string
 }
@@ -82,7 +82,7 @@ export interface CharacterListMatch {
   bounty?: number
   crew?: string
   description?: string
-  devil_fruit?: string
+  devilFruit?: string
   id?: number
   name?: string
 }
@@ -91,7 +91,7 @@ export interface Crew {
   captain?: string
   description?: string
   id?: number
-  member?: any[]
+  members?: any[]
   name?: string
   ship?: string
 }
@@ -104,7 +104,7 @@ export interface CrewListMatch {
   captain?: string
   description?: string
   id?: number
-  member?: any[]
+  members?: any[]
   name?: string
   ship?: string
 }
@@ -128,7 +128,7 @@ export interface DialListMatch {
 }
 
 export interface Episode {
-  air_date?: string
+  airDate?: string
   id?: number
   number?: number
   saga?: string
@@ -140,7 +140,7 @@ export interface EpisodeLoadMatch {
 }
 
 export interface EpisodeListMatch {
-  air_date?: string
+  airDate?: string
   id?: number
   number?: number
   saga?: string
@@ -150,7 +150,7 @@ export interface EpisodeListMatch {
 export interface Film {
   description?: string
   id?: number
-  release_date?: string
+  releaseDate?: string
   title?: string
 }
 
@@ -161,7 +161,7 @@ export interface FilmLoadMatch {
 export interface FilmListMatch {
   description?: string
   id?: number
-  release_date?: string
+  releaseDate?: string
   title?: string
 }
 
@@ -187,7 +187,7 @@ export interface FruitListMatch {
 
 export interface Gear {
   description?: string
-  first_appearance?: string
+  firstAppearance?: string
   id?: number
   name?: string
 }
@@ -198,7 +198,7 @@ export interface GearLoadMatch {
 
 export interface GearListMatch {
   description?: string
-  first_appearance?: string
+  firstAppearance?: string
   id?: number
   name?: string
 }
@@ -207,7 +207,7 @@ export interface Haki {
   description?: string
   id?: number
   name?: string
-  user?: any[]
+  users?: any[]
 }
 
 export interface HakiLoadMatch {
@@ -218,12 +218,12 @@ export interface HakiListMatch {
   description?: string
   id?: number
   name?: string
-  user?: any[]
+  users?: any[]
 }
 
 export interface Location {
   description?: string
-  first_appearance?: string
+  firstAppearance?: string
   id?: number
   name?: string
   type?: string
@@ -235,16 +235,16 @@ export interface LocationLoadMatch {
 
 export interface LocationListMatch {
   description?: string
-  first_appearance?: string
+  firstAppearance?: string
   id?: number
   name?: string
   type?: string
 }
 
 export interface Saga {
-  chapter?: any[]
+  chapters?: any[]
   description?: string
-  episode?: any[]
+  episodes?: any[]
   id?: number
   name?: string
 }
@@ -254,9 +254,9 @@ export interface SagaLoadMatch {
 }
 
 export interface SagaListMatch {
-  chapter?: any[]
+  chapters?: any[]
   description?: string
-  episode?: any[]
+  episodes?: any[]
   id?: number
   name?: string
 }
@@ -300,10 +300,10 @@ export interface TechniqueListMatch {
 }
 
 export interface Volume {
-  chapter?: any[]
+  chapters?: any[]
   id?: number
   number?: number
-  release_date?: string
+  releaseDate?: string
   title?: string
 }
 
@@ -312,10 +312,10 @@ export interface VolumeLoadMatch {
 }
 
 export interface VolumeListMatch {
-  chapter?: any[]
+  chapters?: any[]
   id?: number
   number?: number
-  release_date?: string
+  releaseDate?: string
   title?: string
 }
 

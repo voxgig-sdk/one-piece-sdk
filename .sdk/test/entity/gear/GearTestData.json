@@ -3,19 +3,19 @@
     "gear": {
       "GEAR00": {
         "description": "s28",
-        "first_appearance": "s29",
+        "firstAppearance": "s29",
         "id": "GEAR00",
         "name": "s2b"
       },
       "GEAR01": {
         "description": "s50",
-        "first_appearance": "s51",
+        "firstAppearance": "s51",
         "id": "GEAR01",
         "name": "s53"
       },
       "GEAR02": {
         "description": "s78",
-        "first_appearance": "s79",
+        "firstAppearance": "s79",
         "id": "GEAR02",
         "name": "s7b"
       }
@@ -25,7 +25,7 @@
     "gear": {
       "gear_ref01": {
         "description": "sa0",
-        "first_appearance": "sa1",
+        "firstAppearance": "sa1",
         "name": "sa3"
       }
     }

@@ -4,19 +4,19 @@
       "FILM00": {
         "description": "s28",
         "id": "FILM00",
-        "release_date": "s2a",
+        "releaseDate": "s2a",
         "title": "s2b"
       },
       "FILM01": {
         "description": "s50",
         "id": "FILM01",
-        "release_date": "s52",
+        "releaseDate": "s52",
         "title": "s53"
       },
       "FILM02": {
         "description": "s78",
         "id": "FILM02",
-        "release_date": "s7a",
+        "releaseDate": "s7a",
         "title": "s7b"
       }
     }
@@ -25,7 +25,7 @@
     "film": {
       "film_ref01": {
         "description": "sa0",
-        "release_date": "sa2",
+        "releaseDate": "sa2",
         "title": "sa3"
       }
     }

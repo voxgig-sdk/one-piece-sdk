@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ OnePieceUtility.registrar = ->(u) {
   u.prepare_params = OnePieceUtilities::PrepareParams
   u.prepare_path = OnePieceUtilities::PreparePath
   u.prepare_query = OnePieceUtilities::PrepareQuery
+  u.graphql_body = OnePieceUtilities::GraphqlBody
+  u.graphql_errors = OnePieceUtilities::GraphqlErrors
   u.result_basic = OnePieceUtilities::ResultBasic
   u.result_body = OnePieceUtilities::ResultBody
   u.result_headers = OnePieceUtilities::ResultHeaders

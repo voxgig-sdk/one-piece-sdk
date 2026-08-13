@@ -6,7 +6,7 @@ main: kit: entity: volume: {
 
   fields: [
     {
-      name: "chapter"
+      name: "chapters"
       req: false
       type: "`$ARRAY`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: volume: {
       type: "`$INTEGER`"
     }
     {
-      name: "release_date"
+      name: "releaseDate"
       req: false
       type: "`$STRING`"
     }

@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "boat": {
           "active": true,
@@ -69,6 +74,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/boats",
                   "parts": [
@@ -100,6 +106,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/boats/{id}",
                   "parts": [
@@ -167,6 +174,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bows",
                   "parts": [
@@ -198,6 +206,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bows/{id}",
                   "parts": [
@@ -241,7 +250,7 @@
             },
             {
               "active": true,
-              "name": "release_date",
+              "name": "releaseDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -271,6 +280,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/chapters",
                   "parts": [
@@ -302,6 +312,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/chapters/{id}",
                   "parts": [
@@ -357,7 +368,7 @@
             },
             {
               "active": true,
-              "name": "devil_fruit",
+              "name": "devilFruit",
               "req": false,
               "type": "`$STRING`"
             },
@@ -387,6 +398,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/characters",
                   "parts": [
@@ -418,6 +430,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/characters/{id}",
                   "parts": [
@@ -467,7 +480,7 @@
             },
             {
               "active": true,
-              "name": "member",
+              "name": "members",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -497,6 +510,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/crews",
                   "parts": [
@@ -528,6 +542,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/crews/{id}",
                   "parts": [
@@ -595,6 +610,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/dials",
                   "parts": [
@@ -626,6 +642,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/dials/{id}",
                   "parts": [
@@ -657,7 +674,7 @@
           "fields": [
             {
               "active": true,
-              "name": "air_date",
+              "name": "airDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -699,6 +716,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/episodes",
                   "parts": [
@@ -730,6 +748,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/episodes/{id}",
                   "parts": [
@@ -773,7 +792,7 @@
             },
             {
               "active": true,
-              "name": "release_date",
+              "name": "releaseDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -797,6 +816,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/films",
                   "parts": [
@@ -828,6 +848,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/films/{id}",
                   "parts": [
@@ -901,6 +922,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/fruits",
                   "parts": [
@@ -932,6 +954,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/fruits/{id}",
                   "parts": [
@@ -969,7 +992,7 @@
             },
             {
               "active": true,
-              "name": "first_appearance",
+              "name": "firstAppearance",
               "req": false,
               "type": "`$STRING`"
             },
@@ -999,6 +1022,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/gears",
                   "parts": [
@@ -1030,6 +1054,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/gears/{id}",
                   "parts": [
@@ -1079,7 +1104,7 @@
             },
             {
               "active": true,
-              "name": "user",
+              "name": "users",
               "req": false,
               "type": "`$ARRAY`"
             }
@@ -1097,6 +1122,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/hakis",
                   "parts": [
@@ -1128,6 +1154,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/hakis/{id}",
                   "parts": [
@@ -1165,7 +1192,7 @@
             },
             {
               "active": true,
-              "name": "first_appearance",
+              "name": "firstAppearance",
               "req": false,
               "type": "`$STRING`"
             },
@@ -1201,6 +1228,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/locations",
                   "parts": [
@@ -1232,6 +1260,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/locations/{id}",
                   "parts": [
@@ -1263,7 +1292,7 @@
           "fields": [
             {
               "active": true,
-              "name": "chapter",
+              "name": "chapters",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1275,7 +1304,7 @@
             },
             {
               "active": true,
-              "name": "episode",
+              "name": "episodes",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1305,6 +1334,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/sagas",
                   "parts": [
@@ -1336,6 +1366,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/sagas/{id}",
                   "parts": [
@@ -1409,6 +1440,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/swords",
                   "parts": [
@@ -1440,6 +1472,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/swords/{id}",
                   "parts": [
@@ -1507,6 +1540,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/techniques",
                   "parts": [
@@ -1538,6 +1572,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/techniques/{id}",
                   "parts": [
@@ -1569,7 +1604,7 @@
           "fields": [
             {
               "active": true,
-              "name": "chapter",
+              "name": "chapters",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1587,7 +1622,7 @@
             },
             {
               "active": true,
-              "name": "release_date",
+              "name": "releaseDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -1611,6 +1646,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/volumes",
                   "parts": [
@@ -1642,6 +1678,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/volumes/{id}",
                   "parts": [
@@ -2549,18 +2586,41 @@
         "website": "https://com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2582,22 +2642,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -2636,21 +2714,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -2689,12 +2785,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -2706,10 +2807,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2731,22 +2845,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2768,13 +2900,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -2786,10 +2923,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2811,13 +2961,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -2834,10 +2989,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2859,13 +3027,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -2888,10 +3061,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "one-piece"
+            "goversion": "",
+            "name": "one-piece",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2913,9 +3099,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

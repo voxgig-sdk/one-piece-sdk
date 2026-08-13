@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import OnePieceControl
-from core.error import OnePieceError
-from core.result import OnePieceResult
-from core.spec import OnePieceSpec
+from onepiece_sdk.config import make_config
+from onepiece_sdk.features import _make_feature
+from onepiece_sdk.core.control import OnePieceControl
+from onepiece_sdk.core.error import OnePieceError
+from onepiece_sdk.core.result import OnePieceResult
+from onepiece_sdk.core.spec import OnePieceSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'OnePiece',
   }
 
 
@@ -144,6 +144,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/boats",
               "parts": [
@@ -178,6 +179,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boats/{id}",
               "parts": [
@@ -243,6 +245,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/bows",
               "parts": [
@@ -277,6 +280,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/bows/{id}",
               "parts": [
@@ -320,7 +324,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "release_date",
+          "name": "releaseDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -349,6 +353,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/chapters",
               "parts": [
@@ -383,6 +388,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/chapters/{id}",
               "parts": [
@@ -440,7 +446,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "devil_fruit",
+          "name": "devilFruit",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
@@ -469,6 +475,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/characters",
               "parts": [
@@ -503,6 +510,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/characters/{id}",
               "parts": [
@@ -553,7 +561,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "member",
+          "name": "members",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 3
@@ -582,6 +590,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/crews",
               "parts": [
@@ -616,6 +625,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/crews/{id}",
               "parts": [
@@ -681,6 +691,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/dials",
               "parts": [
@@ -715,6 +726,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/dials/{id}",
               "parts": [
@@ -744,7 +756,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "air_date",
+          "name": "airDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -787,6 +799,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/episodes",
               "parts": [
@@ -821,6 +834,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/episodes/{id}",
               "parts": [
@@ -864,7 +878,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "release_date",
+          "name": "releaseDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -886,6 +900,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/films",
               "parts": [
@@ -920,6 +935,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/films/{id}",
               "parts": [
@@ -992,6 +1008,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/fruits",
               "parts": [
@@ -1026,6 +1043,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/fruits/{id}",
               "parts": [
@@ -1062,7 +1080,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "first_appearance",
+          "name": "firstAppearance",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -1091,6 +1109,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/gears",
               "parts": [
@@ -1125,6 +1144,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/gears/{id}",
               "parts": [
@@ -1175,7 +1195,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "user",
+          "name": "users",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 3
@@ -1190,6 +1210,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/hakis",
               "parts": [
@@ -1224,6 +1245,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/hakis/{id}",
               "parts": [
@@ -1260,7 +1282,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "first_appearance",
+          "name": "firstAppearance",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -1296,6 +1318,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/locations",
               "parts": [
@@ -1330,6 +1353,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/locations/{id}",
               "parts": [
@@ -1359,7 +1383,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "chapter",
+          "name": "chapters",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -1373,7 +1397,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "episode",
+          "name": "episodes",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 2
@@ -1402,6 +1426,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/sagas",
               "parts": [
@@ -1436,6 +1461,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/sagas/{id}",
               "parts": [
@@ -1508,6 +1534,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/swords",
               "parts": [
@@ -1542,6 +1569,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/swords/{id}",
               "parts": [
@@ -1607,6 +1635,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/techniques",
               "parts": [
@@ -1641,6 +1670,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/techniques/{id}",
               "parts": [
@@ -1670,7 +1700,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "chapter",
+          "name": "chapters",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -1691,7 +1721,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "release_date",
+          "name": "releaseDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -1713,6 +1743,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/volumes",
               "parts": [
@@ -1747,6 +1778,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/volumes/{id}",
               "parts": [

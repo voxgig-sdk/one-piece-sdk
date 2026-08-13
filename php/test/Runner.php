@@ -43,8 +43,8 @@ class OnePieceTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ONEPIECE_TEST_LIVE');
-        $override = self::getenv('ONEPIECE_TEST_OVERRIDE');
+        $live = self::getenv('ONE_PIECE_TEST_LIVE');
+        $override = self::getenv('ONE_PIECE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class OnePieceTestRunner
             }
         }
 
-        $explain = self::getenv('ONEPIECE_TEST_EXPLAIN');
+        $explain = self::getenv('ONE_PIECE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ONEPIECE_TEST_EXPLAIN'] = $explain;
+            $m['ONE_PIECE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

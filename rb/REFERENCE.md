@@ -282,7 +282,7 @@ chapter = client.Chapter
 | --- | --- | --- | --- |
 | `id` | `Integer` | No |  |
 | `number` | `Integer` | No |  |
-| `release_date` | `String` | No |  |
+| `releaseDate` | `String` | No |  |
 | `saga` | `String` | No |  |
 | `title` | `String` | No |  |
 
@@ -348,7 +348,7 @@ character = client.Character
 | `bounty` | `Integer` | No |  |
 | `crew` | `String` | No |  |
 | `description` | `String` | No |  |
-| `devil_fruit` | `String` | No |  |
+| `devilFruit` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 
@@ -413,7 +413,7 @@ crew = client.Crew
 | `captain` | `String` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `member` | `Array` | No |  |
+| `members` | `Array` | No |  |
 | `name` | `String` | No |  |
 | `ship` | `String` | No |  |
 
@@ -538,7 +538,7 @@ episode = client.Episode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `String` | No |  |
+| `airDate` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `number` | `Integer` | No |  |
 | `saga` | `String` | No |  |
@@ -604,7 +604,7 @@ film = client.Film
 | --- | --- | --- | --- |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `release_date` | `String` | No |  |
+| `releaseDate` | `String` | No |  |
 | `title` | `String` | No |  |
 
 ### Operations
@@ -730,7 +730,7 @@ gear = client.Gear
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `String` | No |  |
-| `first_appearance` | `String` | No |  |
+| `firstAppearance` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 
@@ -795,7 +795,7 @@ haki = client.Haki
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `user` | `Array` | No |  |
+| `users` | `Array` | No |  |
 
 ### Operations
 
@@ -856,7 +856,7 @@ location = client.Location
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `String` | No |  |
-| `first_appearance` | `String` | No |  |
+| `firstAppearance` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `type` | `String` | No |  |
@@ -919,9 +919,9 @@ saga = client.Saga
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `Array` | No |  |
+| `chapters` | `Array` | No |  |
 | `description` | `String` | No |  |
-| `episode` | `Array` | No |  |
+| `episodes` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 
@@ -1110,10 +1110,10 @@ volume = client.Volume
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `Array` | No |  |
+| `chapters` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `number` | `Integer` | No |  |
-| `release_date` | `String` | No |  |
+| `releaseDate` | `String` | No |  |
 | `title` | `String` | No |  |
 
 ### Operations

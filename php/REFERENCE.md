@@ -281,7 +281,7 @@ $chapter = $client->Chapter();
 | --- | --- | --- | --- |
 | `id` | `int` | No |  |
 | `number` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `saga` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -347,7 +347,7 @@ $character = $client->Character();
 | `bounty` | `int` | No |  |
 | `crew` | `string` | No |  |
 | `description` | `string` | No |  |
-| `devil_fruit` | `string` | No |  |
+| `devilFruit` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -412,7 +412,7 @@ $crew = $client->Crew();
 | `captain` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `member` | `array` | No |  |
+| `members` | `array` | No |  |
 | `name` | `string` | No |  |
 | `ship` | `string` | No |  |
 
@@ -537,7 +537,7 @@ $episode = $client->Episode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | No |  |
+| `airDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `number` | `int` | No |  |
 | `saga` | `string` | No |  |
@@ -603,7 +603,7 @@ $film = $client->Film();
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations
@@ -729,7 +729,7 @@ $gear = $client->Gear();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -794,7 +794,7 @@ $haki = $client->Haki();
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `user` | `array` | No |  |
+| `users` | `array` | No |  |
 
 ### Operations
 
@@ -855,7 +855,7 @@ $location = $client->Location();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -918,9 +918,9 @@ $saga = $client->Saga();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `array` | No |  |
+| `chapters` | `array` | No |  |
 | `description` | `string` | No |  |
-| `episode` | `array` | No |  |
+| `episodes` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -1109,10 +1109,10 @@ $volume = $client->Volume();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `array` | No |  |
+| `chapters` | `array` | No |  |
 | `id` | `int` | No |  |
 | `number` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations

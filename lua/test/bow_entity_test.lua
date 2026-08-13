@@ -70,7 +70,7 @@ describe("BowEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set ONEPIECE_TEST_BOW_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set ONE_PIECE_TEST_BOW_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("BowEntity", function()
     }
     local bow_ref01_data_dt0_loaded, err = bow_ref01_ent:load(bow_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local bow_ref01_data_dt0_load_result = helpers.to_map(bow_ref01_data_dt0_loaded)
+    local bow_ref01_data_dt0_load_result = helpers.to_map(type(bow_ref01_data_dt0_loaded) == 'table' and bow_ref01_data_dt0_loaded.data_get and bow_ref01_data_dt0_loaded:data_get() or bow_ref01_data_dt0_loaded)
     assert.is_not_nil(bow_ref01_data_dt0_load_result)
     assert.are.equal(bow_ref01_data_dt0_load_result["id"], bow_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function bow_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("ONEPIECE_TEST_BOW_ENTID")
+  local entid_env_raw = os.getenv("ONE_PIECE_TEST_BOW_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["ONEPIECE_TEST_BOW_ENTID"] = idmap,
-    ["ONEPIECE_TEST_LIVE"] = "FALSE",
-    ["ONEPIECE_TEST_EXPLAIN"] = "FALSE",
+    ["ONE_PIECE_TEST_BOW_ENTID"] = idmap,
+    ["ONE_PIECE_TEST_LIVE"] = "FALSE",
+    ["ONE_PIECE_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["ONEPIECE_TEST_BOW_ENTID"])
+    env["ONE_PIECE_TEST_BOW_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["ONEPIECE_TEST_LIVE"] == "TRUE" then
+  if env["ONE_PIECE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function bow_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["ONEPIECE_TEST_LIVE"] == "TRUE"
+  local live = env["ONE_PIECE_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["ONEPIECE_TEST_EXPLAIN"] == "TRUE",
+    explain = env["ONE_PIECE_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

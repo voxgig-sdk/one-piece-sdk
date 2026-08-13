@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a boat
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OnePieceSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 boat = client.Boat().list()
 # boat contains the mock response record
 ```
@@ -248,7 +249,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -299,7 +300,7 @@ API path: `/bows`
 | --- | --- |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `saga` |  |
 | `title` |  |
 
@@ -315,7 +316,7 @@ API path: `/chapters`
 | `bounty` |  |
 | `crew` |  |
 | `description` |  |
-| `devil_fruit` |  |
+| `devilFruit` |  |
 | `id` |  |
 | `name` |  |
 
@@ -330,7 +331,7 @@ API path: `/characters`
 | `captain` |  |
 | `description` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `ship` |  |
 
@@ -355,7 +356,7 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `id` |  |
 | `number` |  |
 | `saga` |  |
@@ -371,7 +372,7 @@ API path: `/episodes`
 | --- | --- |
 | `description` |  |
 | `id` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -397,7 +398,7 @@ API path: `/fruits`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 
@@ -412,7 +413,7 @@ API path: `/gears`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List, Load.
 
@@ -423,7 +424,7 @@ API path: `/hakis`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 | `type` |  |
@@ -436,9 +437,9 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `description` |  |
-| `episode` |  |
+| `episodes` |  |
 | `id` |  |
 | `name` |  |
 
@@ -477,10 +478,10 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -576,7 +577,7 @@ Create an instance: `chapter = client.Chapter()`
 | --- | --- | --- |
 | `id` | `int` |  |
 | `number` | `int` |  |
-| `release_date` | `str` |  |
+| `releaseDate` | `str` |  |
 | `saga` | `str` |  |
 | `title` | `str` |  |
 
@@ -612,7 +613,7 @@ Create an instance: `character = client.Character()`
 | `bounty` | `int` |  |
 | `crew` | `str` |  |
 | `description` | `str` |  |
-| `devil_fruit` | `str` |  |
+| `devilFruit` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 
@@ -647,7 +648,7 @@ Create an instance: `crew = client.Crew()`
 | `captain` | `str` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `member` | `list` |  |
+| `members` | `list` |  |
 | `name` | `str` |  |
 | `ship` | `str` |  |
 
@@ -712,7 +713,7 @@ Create an instance: `episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `str` |  |
+| `airDate` | `str` |  |
 | `id` | `int` |  |
 | `number` | `int` |  |
 | `saga` | `str` |  |
@@ -748,7 +749,7 @@ Create an instance: `film = client.Film()`
 | --- | --- | --- |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `release_date` | `str` |  |
+| `releaseDate` | `str` |  |
 | `title` | `str` |  |
 
 #### Example: Load
@@ -814,7 +815,7 @@ Create an instance: `gear = client.Gear()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` |  |
-| `first_appearance` | `str` |  |
+| `firstAppearance` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 
@@ -849,7 +850,7 @@ Create an instance: `haki = client.Haki()`
 | `description` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `user` | `list` |  |
+| `users` | `list` |  |
 
 #### Example: Load
 
@@ -880,7 +881,7 @@ Create an instance: `location = client.Location()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` |  |
-| `first_appearance` | `str` |  |
+| `firstAppearance` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `type` | `str` |  |
@@ -913,9 +914,9 @@ Create an instance: `saga = client.Saga()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `list` |  |
+| `chapters` | `list` |  |
 | `description` | `str` |  |
-| `episode` | `list` |  |
+| `episodes` | `list` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 
@@ -1014,10 +1015,10 @@ Create an instance: `volume = client.Volume()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `list` |  |
+| `chapters` | `list` |  |
 | `id` | `int` |  |
 | `number` | `int` |  |
-| `release_date` | `str` |  |
+| `releaseDate` | `str` |  |
 | `title` | `str` |  |
 
 #### Example: Load

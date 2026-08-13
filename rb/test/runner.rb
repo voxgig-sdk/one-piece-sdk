@@ -23,8 +23,8 @@ module OnePieceTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ONEPIECE_TEST_LIVE")
-    override = getenv("ONEPIECE_TEST_OVERRIDE")
+    live = getenv("ONE_PIECE_TEST_LIVE")
+    override = getenv("ONE_PIECE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module OnePieceTestRunner
       end
     end
 
-    explain = getenv("ONEPIECE_TEST_EXPLAIN")
-    m["ONEPIECE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ONE_PIECE_TEST_EXPLAIN")
+    m["ONE_PIECE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

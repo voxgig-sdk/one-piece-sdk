@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Boat record (raises on error).
+  # load returns the ENTITY — call data_get for the Boat record (raises on error).
   boat = client.Boat.load({ "id" => 1 })
   puts boat
 rescue => err
@@ -134,7 +134,8 @@ client = OnePieceSDK.test({
   "entity" => { "boat" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 boat = client.Boat.list()
 puts boat
 ```
@@ -296,7 +297,7 @@ API path: `/bows`
 | --- | --- |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `saga` |  |
 | `title` |  |
 
@@ -312,7 +313,7 @@ API path: `/chapters`
 | `bounty` |  |
 | `crew` |  |
 | `description` |  |
-| `devil_fruit` |  |
+| `devilFruit` |  |
 | `id` |  |
 | `name` |  |
 
@@ -327,7 +328,7 @@ API path: `/characters`
 | `captain` |  |
 | `description` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `ship` |  |
 
@@ -352,7 +353,7 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `id` |  |
 | `number` |  |
 | `saga` |  |
@@ -368,7 +369,7 @@ API path: `/episodes`
 | --- | --- |
 | `description` |  |
 | `id` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -394,7 +395,7 @@ API path: `/fruits`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 
@@ -409,7 +410,7 @@ API path: `/gears`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List, Load.
 
@@ -420,7 +421,7 @@ API path: `/hakis`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 | `type` |  |
@@ -433,9 +434,9 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `description` |  |
-| `episode` |  |
+| `episodes` |  |
 | `id` |  |
 | `name` |  |
 
@@ -474,10 +475,10 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -513,7 +514,7 @@ Create an instance: `boat = client.Boat`
 #### Example: Load
 
 ```ruby
-# load returns the bare Boat record (raises on error).
+# load returns the ENTITY — call data_get for the Boat record (raises on error).
 boat = client.Boat.load({ "id" => 1 })
 ```
 
@@ -548,7 +549,7 @@ Create an instance: `bow = client.Bow`
 #### Example: Load
 
 ```ruby
-# load returns the bare Bow record (raises on error).
+# load returns the ENTITY — call data_get for the Bow record (raises on error).
 bow = client.Bow.load({ "id" => 1 })
 ```
 
@@ -577,14 +578,14 @@ Create an instance: `chapter = client.Chapter`
 | --- | --- | --- |
 | `id` | `Integer` |  |
 | `number` | `Integer` |  |
-| `release_date` | `String` |  |
+| `releaseDate` | `String` |  |
 | `saga` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Chapter record (raises on error).
+# load returns the ENTITY — call data_get for the Chapter record (raises on error).
 chapter = client.Chapter.load({ "id" => 1 })
 ```
 
@@ -615,14 +616,14 @@ Create an instance: `character = client.Character`
 | `bounty` | `Integer` |  |
 | `crew` | `String` |  |
 | `description` | `String` |  |
-| `devil_fruit` | `String` |  |
+| `devilFruit` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Character record (raises on error).
+# load returns the ENTITY — call data_get for the Character record (raises on error).
 character = client.Character.load({ "id" => 1 })
 ```
 
@@ -652,14 +653,14 @@ Create an instance: `crew = client.Crew`
 | `captain` | `String` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `member` | `Array` |  |
+| `members` | `Array` |  |
 | `name` | `String` |  |
 | `ship` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Crew record (raises on error).
+# load returns the ENTITY — call data_get for the Crew record (raises on error).
 crew = client.Crew.load({ "id" => 1 })
 ```
 
@@ -694,7 +695,7 @@ Create an instance: `dial = client.Dial`
 #### Example: Load
 
 ```ruby
-# load returns the bare Dial record (raises on error).
+# load returns the ENTITY — call data_get for the Dial record (raises on error).
 dial = client.Dial.load({ "id" => 1 })
 ```
 
@@ -721,7 +722,7 @@ Create an instance: `episode = client.Episode`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `String` |  |
+| `airDate` | `String` |  |
 | `id` | `Integer` |  |
 | `number` | `Integer` |  |
 | `saga` | `String` |  |
@@ -730,7 +731,7 @@ Create an instance: `episode = client.Episode`
 #### Example: Load
 
 ```ruby
-# load returns the bare Episode record (raises on error).
+# load returns the ENTITY — call data_get for the Episode record (raises on error).
 episode = client.Episode.load({ "id" => 1 })
 ```
 
@@ -759,13 +760,13 @@ Create an instance: `film = client.Film`
 | --- | --- | --- |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `release_date` | `String` |  |
+| `releaseDate` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Film record (raises on error).
+# load returns the ENTITY — call data_get for the Film record (raises on error).
 film = client.Film.load({ "id" => 1 })
 ```
 
@@ -801,7 +802,7 @@ Create an instance: `fruit = client.Fruit`
 #### Example: Load
 
 ```ruby
-# load returns the bare Fruit record (raises on error).
+# load returns the ENTITY — call data_get for the Fruit record (raises on error).
 fruit = client.Fruit.load({ "id" => 1 })
 ```
 
@@ -829,14 +830,14 @@ Create an instance: `gear = client.Gear`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` |  |
-| `first_appearance` | `String` |  |
+| `firstAppearance` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Gear record (raises on error).
+# load returns the ENTITY — call data_get for the Gear record (raises on error).
 gear = client.Gear.load({ "id" => 1 })
 ```
 
@@ -866,12 +867,12 @@ Create an instance: `haki = client.Haki`
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `user` | `Array` |  |
+| `users` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Haki record (raises on error).
+# load returns the ENTITY — call data_get for the Haki record (raises on error).
 haki = client.Haki.load({ "id" => 1 })
 ```
 
@@ -899,7 +900,7 @@ Create an instance: `location = client.Location`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` |  |
-| `first_appearance` | `String` |  |
+| `firstAppearance` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `type` | `String` |  |
@@ -907,7 +908,7 @@ Create an instance: `location = client.Location`
 #### Example: Load
 
 ```ruby
-# load returns the bare Location record (raises on error).
+# load returns the ENTITY — call data_get for the Location record (raises on error).
 location = client.Location.load({ "id" => 1 })
 ```
 
@@ -934,16 +935,16 @@ Create an instance: `saga = client.Saga`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `Array` |  |
+| `chapters` | `Array` |  |
 | `description` | `String` |  |
-| `episode` | `Array` |  |
+| `episodes` | `Array` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Saga record (raises on error).
+# load returns the ENTITY — call data_get for the Saga record (raises on error).
 saga = client.Saga.load({ "id" => 1 })
 ```
 
@@ -979,7 +980,7 @@ Create an instance: `sword = client.Sword`
 #### Example: Load
 
 ```ruby
-# load returns the bare Sword record (raises on error).
+# load returns the ENTITY — call data_get for the Sword record (raises on error).
 sword = client.Sword.load({ "id" => 1 })
 ```
 
@@ -1014,7 +1015,7 @@ Create an instance: `technique = client.Technique`
 #### Example: Load
 
 ```ruby
-# load returns the bare Technique record (raises on error).
+# load returns the ENTITY — call data_get for the Technique record (raises on error).
 technique = client.Technique.load({ "id" => 1 })
 ```
 
@@ -1041,16 +1042,16 @@ Create an instance: `volume = client.Volume`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `Array` |  |
+| `chapters` | `Array` |  |
 | `id` | `Integer` |  |
 | `number` | `Integer` |  |
-| `release_date` | `String` |  |
+| `releaseDate` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Volume record (raises on error).
+# load returns the ENTITY — call data_get for the Volume record (raises on error).
 volume = client.Volume.load({ "id" => 1 })
 ```
 

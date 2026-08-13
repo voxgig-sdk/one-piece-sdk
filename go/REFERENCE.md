@@ -293,7 +293,7 @@ fmt.Println(chapter.GetName()) // "chapter"
 | --- | --- | --- | --- |
 | `id` | `int` | No |  |
 | `number` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `saga` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -362,7 +362,7 @@ fmt.Println(character.GetName()) // "character"
 | `bounty` | `int` | No |  |
 | `crew` | `string` | No |  |
 | `description` | `string` | No |  |
-| `devil_fruit` | `string` | No |  |
+| `devilFruit` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -430,7 +430,7 @@ fmt.Println(crew.GetName()) // "crew"
 | `captain` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `member` | `[]any` | No |  |
+| `members` | `[]any` | No |  |
 | `name` | `string` | No |  |
 | `ship` | `string` | No |  |
 
@@ -561,7 +561,7 @@ fmt.Println(episode.GetName()) // "episode"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | No |  |
+| `airDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `number` | `int` | No |  |
 | `saga` | `string` | No |  |
@@ -630,7 +630,7 @@ fmt.Println(film.GetName()) // "film"
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations
@@ -762,7 +762,7 @@ fmt.Println(gear.GetName()) // "gear"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -830,7 +830,7 @@ fmt.Println(haki.GetName()) // "haki"
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `user` | `[]any` | No |  |
+| `users` | `[]any` | No |  |
 
 ### Operations
 
@@ -894,7 +894,7 @@ fmt.Println(location.GetName()) // "location"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -960,9 +960,9 @@ fmt.Println(saga.GetName()) // "saga"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `[]any` | No |  |
+| `chapters` | `[]any` | No |  |
 | `description` | `string` | No |  |
-| `episode` | `[]any` | No |  |
+| `episodes` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -1160,10 +1160,10 @@ fmt.Println(volume.GetName()) // "volume"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `[]any` | No |  |
+| `chapters` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `number` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations

@@ -41,7 +41,7 @@
 ---@class Chapter
 ---@field id? number
 ---@field number? number
----@field release_date? string
+---@field releaseDate? string
 ---@field saga? string
 ---@field title? string
 
@@ -51,7 +51,7 @@
 ---@class ChapterListMatch
 ---@field id? number
 ---@field number? number
----@field release_date? string
+---@field releaseDate? string
 ---@field saga? string
 ---@field title? string
 
@@ -60,7 +60,7 @@
 ---@field bounty? number
 ---@field crew? string
 ---@field description? string
----@field devil_fruit? string
+---@field devilFruit? string
 ---@field id? number
 ---@field name? string
 
@@ -72,7 +72,7 @@
 ---@field bounty? number
 ---@field crew? string
 ---@field description? string
----@field devil_fruit? string
+---@field devilFruit? string
 ---@field id? number
 ---@field name? string
 
@@ -80,7 +80,7 @@
 ---@field captain? string
 ---@field description? string
 ---@field id? number
----@field member? table
+---@field members? table
 ---@field name? string
 ---@field ship? string
 
@@ -91,7 +91,7 @@
 ---@field captain? string
 ---@field description? string
 ---@field id? number
----@field member? table
+---@field members? table
 ---@field name? string
 ---@field ship? string
 
@@ -111,7 +111,7 @@
 ---@field type? string
 
 ---@class Episode
----@field air_date? string
+---@field airDate? string
 ---@field id? number
 ---@field number? number
 ---@field saga? string
@@ -121,7 +121,7 @@
 ---@field id number
 
 ---@class EpisodeListMatch
----@field air_date? string
+---@field airDate? string
 ---@field id? number
 ---@field number? number
 ---@field saga? string
@@ -130,7 +130,7 @@
 ---@class Film
 ---@field description? string
 ---@field id? number
----@field release_date? string
+---@field releaseDate? string
 ---@field title? string
 
 ---@class FilmLoadMatch
@@ -139,7 +139,7 @@
 ---@class FilmListMatch
 ---@field description? string
 ---@field id? number
----@field release_date? string
+---@field releaseDate? string
 ---@field title? string
 
 ---@class Fruit
@@ -161,7 +161,7 @@
 
 ---@class Gear
 ---@field description? string
----@field first_appearance? string
+---@field firstAppearance? string
 ---@field id? number
 ---@field name? string
 
@@ -170,7 +170,7 @@
 
 ---@class GearListMatch
 ---@field description? string
----@field first_appearance? string
+---@field firstAppearance? string
 ---@field id? number
 ---@field name? string
 
@@ -178,7 +178,7 @@
 ---@field description? string
 ---@field id? number
 ---@field name? string
----@field user? table
+---@field users? table
 
 ---@class HakiLoadMatch
 ---@field id number
@@ -187,11 +187,11 @@
 ---@field description? string
 ---@field id? number
 ---@field name? string
----@field user? table
+---@field users? table
 
 ---@class Location
 ---@field description? string
----@field first_appearance? string
+---@field firstAppearance? string
 ---@field id? number
 ---@field name? string
 ---@field type? string
@@ -201,15 +201,15 @@
 
 ---@class LocationListMatch
 ---@field description? string
----@field first_appearance? string
+---@field firstAppearance? string
 ---@field id? number
 ---@field name? string
 ---@field type? string
 
 ---@class Saga
----@field chapter? table
+---@field chapters? table
 ---@field description? string
----@field episode? table
+---@field episodes? table
 ---@field id? number
 ---@field name? string
 
@@ -217,9 +217,9 @@
 ---@field id number
 
 ---@class SagaListMatch
----@field chapter? table
+---@field chapters? table
 ---@field description? string
----@field episode? table
+---@field episodes? table
 ---@field id? number
 ---@field name? string
 
@@ -256,20 +256,20 @@
 ---@field name? string
 
 ---@class Volume
----@field chapter? table
+---@field chapters? table
 ---@field id? number
 ---@field number? number
----@field release_date? string
+---@field releaseDate? string
 ---@field title? string
 
 ---@class VolumeLoadMatch
 ---@field id number
 
 ---@class VolumeListMatch
----@field chapter? table
+---@field chapters? table
 ---@field id? number
 ---@field number? number
----@field release_date? string
+---@field releaseDate? string
 ---@field title? string
 
 local M = {}

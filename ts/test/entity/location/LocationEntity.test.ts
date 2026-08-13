@@ -26,8 +26,8 @@ import {
 describe('LocationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('LocationEntity', async () => {
     const location_ref01_ent = client.Location()
     const location_ref01_match: any = {}
 
-    const location_ref01_list = await location_ref01_ent.list(location_ref01_match)
+    const location_ref01_list = (await location_ref01_ent.list(location_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const location_ref01_match_dt0: any = {}
     location_ref01_match_dt0.id = location_ref01_data.id
-    const location_ref01_data_dt0 = await location_ref01_ent.load(location_ref01_match_dt0)
+    const location_ref01_data_dt0 = (await location_ref01_ent.load(location_ref01_match_dt0)).data()
     assert(location_ref01_data_dt0.id === location_ref01_data.id)
 
 

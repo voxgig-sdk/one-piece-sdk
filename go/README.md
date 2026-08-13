@@ -313,7 +313,7 @@ API path: `/bows`
 | --- | --- |
 | `"id"` |  |
 | `"number"` |  |
-| `"release_date"` |  |
+| `"releaseDate"` |  |
 | `"saga"` |  |
 | `"title"` |  |
 
@@ -329,7 +329,7 @@ API path: `/chapters`
 | `"bounty"` |  |
 | `"crew"` |  |
 | `"description"` |  |
-| `"devil_fruit"` |  |
+| `"devilFruit"` |  |
 | `"id"` |  |
 | `"name"` |  |
 
@@ -344,7 +344,7 @@ API path: `/characters`
 | `"captain"` |  |
 | `"description"` |  |
 | `"id"` |  |
-| `"member"` |  |
+| `"members"` |  |
 | `"name"` |  |
 | `"ship"` |  |
 
@@ -369,7 +369,7 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `"air_date"` |  |
+| `"airDate"` |  |
 | `"id"` |  |
 | `"number"` |  |
 | `"saga"` |  |
@@ -385,7 +385,7 @@ API path: `/episodes`
 | --- | --- |
 | `"description"` |  |
 | `"id"` |  |
-| `"release_date"` |  |
+| `"releaseDate"` |  |
 | `"title"` |  |
 
 Operations: List, Load.
@@ -411,7 +411,7 @@ API path: `/fruits`
 | Field | Description |
 | --- | --- |
 | `"description"` |  |
-| `"first_appearance"` |  |
+| `"firstAppearance"` |  |
 | `"id"` |  |
 | `"name"` |  |
 
@@ -426,7 +426,7 @@ API path: `/gears`
 | `"description"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"user"` |  |
+| `"users"` |  |
 
 Operations: List, Load.
 
@@ -437,7 +437,7 @@ API path: `/hakis`
 | Field | Description |
 | --- | --- |
 | `"description"` |  |
-| `"first_appearance"` |  |
+| `"firstAppearance"` |  |
 | `"id"` |  |
 | `"name"` |  |
 | `"type"` |  |
@@ -450,9 +450,9 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `"chapter"` |  |
+| `"chapters"` |  |
 | `"description"` |  |
-| `"episode"` |  |
+| `"episodes"` |  |
 | `"id"` |  |
 | `"name"` |  |
 
@@ -491,10 +491,10 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `"chapter"` |  |
+| `"chapters"` |  |
 | `"id"` |  |
 | `"number"` |  |
-| `"release_date"` |  |
+| `"releaseDate"` |  |
 | `"title"` |  |
 
 Operations: List, Load.
@@ -606,7 +606,7 @@ Create an instance: `chapter := client.Chapter(nil)`
 | --- | --- | --- |
 | `id` | `int` |  |
 | `number` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `saga` | `string` |  |
 | `title` | `string` |  |
 
@@ -650,7 +650,7 @@ Create an instance: `character := client.Character(nil)`
 | `bounty` | `int` |  |
 | `crew` | `string` |  |
 | `description` | `string` |  |
-| `devil_fruit` | `string` |  |
+| `devilFruit` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -693,7 +693,7 @@ Create an instance: `crew := client.Crew(nil)`
 | `captain` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `member` | `[]any` |  |
+| `members` | `[]any` |  |
 | `name` | `string` |  |
 | `ship` | `string` |  |
 
@@ -774,7 +774,7 @@ Create an instance: `episode := client.Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `id` | `int` |  |
 | `number` | `int` |  |
 | `saga` | `string` |  |
@@ -818,7 +818,7 @@ Create an instance: `film := client.Film(nil)`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
@@ -900,7 +900,7 @@ Create an instance: `gear := client.Gear(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -943,7 +943,7 @@ Create an instance: `haki := client.Haki(nil)`
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `user` | `[]any` |  |
+| `users` | `[]any` |  |
 
 #### Example: Load
 
@@ -982,7 +982,7 @@ Create an instance: `location := client.Location(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `type` | `string` |  |
@@ -1023,9 +1023,9 @@ Create an instance: `saga := client.Saga(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `[]any` |  |
+| `chapters` | `[]any` |  |
 | `description` | `string` |  |
-| `episode` | `[]any` |  |
+| `episodes` | `[]any` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -1148,10 +1148,10 @@ Create an instance: `volume := client.Volume(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `[]any` |  |
+| `chapters` | `[]any` |  |
 | `id` | `int` |  |
 | `number` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load

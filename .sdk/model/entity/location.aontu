@@ -11,7 +11,7 @@ main: kit: entity: location: {
       type: "`$STRING`"
     }
     {
-      name: "first_appearance"
+      name: "firstAppearance"
       req: false
       type: "`$STRING`"
     }

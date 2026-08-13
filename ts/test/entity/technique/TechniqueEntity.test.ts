@@ -26,8 +26,8 @@ import {
 describe('TechniqueEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('TechniqueEntity', async () => {
     const technique_ref01_ent = client.Technique()
     const technique_ref01_match: any = {}
 
-    const technique_ref01_list = await technique_ref01_ent.list(technique_ref01_match)
+    const technique_ref01_list = (await technique_ref01_ent.list(technique_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const technique_ref01_match_dt0: any = {}
     technique_ref01_match_dt0.id = technique_ref01_data.id
-    const technique_ref01_data_dt0 = await technique_ref01_ent.load(technique_ref01_match_dt0)
+    const technique_ref01_data_dt0 = (await technique_ref01_ent.load(technique_ref01_match_dt0)).data()
     assert(technique_ref01_data_dt0.id === technique_ref01_data.id)
 
 

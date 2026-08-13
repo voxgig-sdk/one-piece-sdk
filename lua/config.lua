@@ -84,6 +84,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boats",
                 ["parts"] = {
@@ -118,6 +119,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boats/{id}",
                 ["parts"] = {
@@ -183,6 +185,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bows",
                 ["parts"] = {
@@ -217,6 +220,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/bows/{id}",
                 ["parts"] = {
@@ -260,7 +264,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "release_date",
+            ["name"] = "releaseDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -289,6 +293,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/chapters",
                 ["parts"] = {
@@ -323,6 +328,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/chapters/{id}",
                 ["parts"] = {
@@ -380,7 +386,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "devil_fruit",
+            ["name"] = "devilFruit",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -409,6 +415,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/characters",
                 ["parts"] = {
@@ -443,6 +450,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/characters/{id}",
                 ["parts"] = {
@@ -493,7 +501,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "member",
+            ["name"] = "members",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -522,6 +530,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/crews",
                 ["parts"] = {
@@ -556,6 +565,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/crews/{id}",
                 ["parts"] = {
@@ -621,6 +631,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dials",
                 ["parts"] = {
@@ -655,6 +666,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dials/{id}",
                 ["parts"] = {
@@ -684,7 +696,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "air_date",
+            ["name"] = "airDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -727,6 +739,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/episodes",
                 ["parts"] = {
@@ -761,6 +774,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/episodes/{id}",
                 ["parts"] = {
@@ -804,7 +818,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "release_date",
+            ["name"] = "releaseDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -826,6 +840,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/films",
                 ["parts"] = {
@@ -860,6 +875,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/films/{id}",
                 ["parts"] = {
@@ -932,6 +948,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/fruits",
                 ["parts"] = {
@@ -966,6 +983,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/fruits/{id}",
                 ["parts"] = {
@@ -1002,7 +1020,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "first_appearance",
+            ["name"] = "firstAppearance",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -1031,6 +1049,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/gears",
                 ["parts"] = {
@@ -1065,6 +1084,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/gears/{id}",
                 ["parts"] = {
@@ -1115,7 +1135,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "user",
+            ["name"] = "users",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -1130,6 +1150,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/hakis",
                 ["parts"] = {
@@ -1164,6 +1185,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/hakis/{id}",
                 ["parts"] = {
@@ -1200,7 +1222,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "first_appearance",
+            ["name"] = "firstAppearance",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -1236,6 +1258,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations",
                 ["parts"] = {
@@ -1270,6 +1293,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations/{id}",
                 ["parts"] = {
@@ -1299,7 +1323,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "chapter",
+            ["name"] = "chapters",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -1313,7 +1337,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "episode",
+            ["name"] = "episodes",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -1342,6 +1366,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/sagas",
                 ["parts"] = {
@@ -1376,6 +1401,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/sagas/{id}",
                 ["parts"] = {
@@ -1448,6 +1474,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/swords",
                 ["parts"] = {
@@ -1482,6 +1509,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/swords/{id}",
                 ["parts"] = {
@@ -1547,6 +1575,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/techniques",
                 ["parts"] = {
@@ -1581,6 +1610,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/techniques/{id}",
                 ["parts"] = {
@@ -1610,7 +1640,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "chapter",
+            ["name"] = "chapters",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -1631,7 +1661,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "release_date",
+            ["name"] = "releaseDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -1653,6 +1683,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/volumes",
                 ["parts"] = {
@@ -1687,6 +1718,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/volumes/{id}",
                 ["parts"] = {

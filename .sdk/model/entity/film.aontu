@@ -16,7 +16,7 @@ main: kit: entity: film: {
       type: "`$INTEGER`"
     }
     {
-      name: "release_date"
+      name: "releaseDate"
       req: false
       type: "`$STRING`"
     }

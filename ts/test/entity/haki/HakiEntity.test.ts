@@ -26,8 +26,8 @@ import {
 describe('HakiEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('HakiEntity', async () => {
     const haki_ref01_ent = client.Haki()
     const haki_ref01_match: any = {}
 
-    const haki_ref01_list = await haki_ref01_ent.list(haki_ref01_match)
+    const haki_ref01_list = (await haki_ref01_ent.list(haki_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const haki_ref01_match_dt0: any = {}
     haki_ref01_match_dt0.id = haki_ref01_data.id
-    const haki_ref01_data_dt0 = await haki_ref01_ent.load(haki_ref01_match_dt0)
+    const haki_ref01_data_dt0 = (await haki_ref01_ent.load(haki_ref01_match_dt0)).data()
     assert(haki_ref01_data_dt0.id === haki_ref01_data.id)
 
 

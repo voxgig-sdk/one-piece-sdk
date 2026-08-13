@@ -26,8 +26,8 @@ import {
 describe('GearEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('GearEntity', async () => {
     const gear_ref01_ent = client.Gear()
     const gear_ref01_match: any = {}
 
-    const gear_ref01_list = await gear_ref01_ent.list(gear_ref01_match)
+    const gear_ref01_list = (await gear_ref01_ent.list(gear_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const gear_ref01_match_dt0: any = {}
     gear_ref01_match_dt0.id = gear_ref01_data.id
-    const gear_ref01_data_dt0 = await gear_ref01_ent.load(gear_ref01_match_dt0)
+    const gear_ref01_data_dt0 = (await gear_ref01_ent.load(gear_ref01_match_dt0)).data()
     assert(gear_ref01_data_dt0.id === gear_ref01_data.id)
 
 

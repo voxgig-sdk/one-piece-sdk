@@ -26,8 +26,8 @@ import {
 describe('CrewEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('CrewEntity', async () => {
     const crew_ref01_ent = client.Crew()
     const crew_ref01_match: any = {}
 
-    const crew_ref01_list = await crew_ref01_ent.list(crew_ref01_match)
+    const crew_ref01_list = (await crew_ref01_ent.list(crew_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const crew_ref01_match_dt0: any = {}
     crew_ref01_match_dt0.id = crew_ref01_data.id
-    const crew_ref01_data_dt0 = await crew_ref01_ent.load(crew_ref01_match_dt0)
+    const crew_ref01_data_dt0 = (await crew_ref01_ent.load(crew_ref01_match_dt0)).data()
     assert(crew_ref01_data_dt0.id === crew_ref01_data.id)
 
 

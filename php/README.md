@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Boat record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Boat record (throws on error).
     $boat = $client->Boat()->load(["id" => 1]);
     print_r($boat);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = OnePieceSDK::test([
     "entity" => ["boat" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $boat = $client->Boat()->list();
 print_r($boat);
 ```
@@ -255,7 +256,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -306,7 +307,7 @@ API path: `/bows`
 | --- | --- |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `saga` |  |
 | `title` |  |
 
@@ -322,7 +323,7 @@ API path: `/chapters`
 | `bounty` |  |
 | `crew` |  |
 | `description` |  |
-| `devil_fruit` |  |
+| `devilFruit` |  |
 | `id` |  |
 | `name` |  |
 
@@ -337,7 +338,7 @@ API path: `/characters`
 | `captain` |  |
 | `description` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `ship` |  |
 
@@ -362,7 +363,7 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `id` |  |
 | `number` |  |
 | `saga` |  |
@@ -378,7 +379,7 @@ API path: `/episodes`
 | --- | --- |
 | `description` |  |
 | `id` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -404,7 +405,7 @@ API path: `/fruits`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 
@@ -419,7 +420,7 @@ API path: `/gears`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List, Load.
 
@@ -430,7 +431,7 @@ API path: `/hakis`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 | `type` |  |
@@ -443,9 +444,9 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `description` |  |
-| `episode` |  |
+| `episodes` |  |
 | `id` |  |
 | `name` |  |
 
@@ -484,10 +485,10 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -523,7 +524,7 @@ Create an instance: `$boat = $client->Boat();`
 #### Example: Load
 
 ```php
-// load() returns the bare Boat record (throws on error).
+// load() returns the ENTITY — call data_get() for the Boat record (throws on error).
 $boat = $client->Boat()->load(["id" => 1]);
 ```
 
@@ -558,7 +559,7 @@ Create an instance: `$bow = $client->Bow();`
 #### Example: Load
 
 ```php
-// load() returns the bare Bow record (throws on error).
+// load() returns the ENTITY — call data_get() for the Bow record (throws on error).
 $bow = $client->Bow()->load(["id" => 1]);
 ```
 
@@ -587,14 +588,14 @@ Create an instance: `$chapter = $client->Chapter();`
 | --- | --- | --- |
 | `id` | `int` |  |
 | `number` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `saga` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Chapter record (throws on error).
+// load() returns the ENTITY — call data_get() for the Chapter record (throws on error).
 $chapter = $client->Chapter()->load(["id" => 1]);
 ```
 
@@ -625,14 +626,14 @@ Create an instance: `$character = $client->Character();`
 | `bounty` | `int` |  |
 | `crew` | `string` |  |
 | `description` | `string` |  |
-| `devil_fruit` | `string` |  |
+| `devilFruit` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Character record (throws on error).
+// load() returns the ENTITY — call data_get() for the Character record (throws on error).
 $character = $client->Character()->load(["id" => 1]);
 ```
 
@@ -662,14 +663,14 @@ Create an instance: `$crew = $client->Crew();`
 | `captain` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `member` | `array` |  |
+| `members` | `array` |  |
 | `name` | `string` |  |
 | `ship` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Crew record (throws on error).
+// load() returns the ENTITY — call data_get() for the Crew record (throws on error).
 $crew = $client->Crew()->load(["id" => 1]);
 ```
 
@@ -704,7 +705,7 @@ Create an instance: `$dial = $client->Dial();`
 #### Example: Load
 
 ```php
-// load() returns the bare Dial record (throws on error).
+// load() returns the ENTITY — call data_get() for the Dial record (throws on error).
 $dial = $client->Dial()->load(["id" => 1]);
 ```
 
@@ -731,7 +732,7 @@ Create an instance: `$episode = $client->Episode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `id` | `int` |  |
 | `number` | `int` |  |
 | `saga` | `string` |  |
@@ -740,7 +741,7 @@ Create an instance: `$episode = $client->Episode();`
 #### Example: Load
 
 ```php
-// load() returns the bare Episode record (throws on error).
+// load() returns the ENTITY — call data_get() for the Episode record (throws on error).
 $episode = $client->Episode()->load(["id" => 1]);
 ```
 
@@ -769,13 +770,13 @@ Create an instance: `$film = $client->Film();`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Film record (throws on error).
+// load() returns the ENTITY — call data_get() for the Film record (throws on error).
 $film = $client->Film()->load(["id" => 1]);
 ```
 
@@ -811,7 +812,7 @@ Create an instance: `$fruit = $client->Fruit();`
 #### Example: Load
 
 ```php
-// load() returns the bare Fruit record (throws on error).
+// load() returns the ENTITY — call data_get() for the Fruit record (throws on error).
 $fruit = $client->Fruit()->load(["id" => 1]);
 ```
 
@@ -839,14 +840,14 @@ Create an instance: `$gear = $client->Gear();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Gear record (throws on error).
+// load() returns the ENTITY — call data_get() for the Gear record (throws on error).
 $gear = $client->Gear()->load(["id" => 1]);
 ```
 
@@ -876,12 +877,12 @@ Create an instance: `$haki = $client->Haki();`
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `user` | `array` |  |
+| `users` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Haki record (throws on error).
+// load() returns the ENTITY — call data_get() for the Haki record (throws on error).
 $haki = $client->Haki()->load(["id" => 1]);
 ```
 
@@ -909,7 +910,7 @@ Create an instance: `$location = $client->Location();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `type` | `string` |  |
@@ -917,7 +918,7 @@ Create an instance: `$location = $client->Location();`
 #### Example: Load
 
 ```php
-// load() returns the bare Location record (throws on error).
+// load() returns the ENTITY — call data_get() for the Location record (throws on error).
 $location = $client->Location()->load(["id" => 1]);
 ```
 
@@ -944,16 +945,16 @@ Create an instance: `$saga = $client->Saga();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `array` |  |
+| `chapters` | `array` |  |
 | `description` | `string` |  |
-| `episode` | `array` |  |
+| `episodes` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Saga record (throws on error).
+// load() returns the ENTITY — call data_get() for the Saga record (throws on error).
 $saga = $client->Saga()->load(["id" => 1]);
 ```
 
@@ -989,7 +990,7 @@ Create an instance: `$sword = $client->Sword();`
 #### Example: Load
 
 ```php
-// load() returns the bare Sword record (throws on error).
+// load() returns the ENTITY — call data_get() for the Sword record (throws on error).
 $sword = $client->Sword()->load(["id" => 1]);
 ```
 
@@ -1024,7 +1025,7 @@ Create an instance: `$technique = $client->Technique();`
 #### Example: Load
 
 ```php
-// load() returns the bare Technique record (throws on error).
+// load() returns the ENTITY — call data_get() for the Technique record (throws on error).
 $technique = $client->Technique()->load(["id" => 1]);
 ```
 
@@ -1051,16 +1052,16 @@ Create an instance: `$volume = $client->Volume();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `array` |  |
+| `chapters` | `array` |  |
 | `id` | `int` |  |
 | `number` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Volume record (throws on error).
+// load() returns the ENTITY — call data_get() for the Volume record (throws on error).
 $volume = $client->Volume()->load(["id" => 1]);
 ```
 

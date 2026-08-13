@@ -26,8 +26,8 @@ import {
 describe('BoatEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('BoatEntity', async () => {
     const boat_ref01_ent = client.Boat()
     const boat_ref01_match: any = {}
 
-    const boat_ref01_list = await boat_ref01_ent.list(boat_ref01_match)
+    const boat_ref01_list = (await boat_ref01_ent.list(boat_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const boat_ref01_match_dt0: any = {}
     boat_ref01_match_dt0.id = boat_ref01_data.id
-    const boat_ref01_data_dt0 = await boat_ref01_ent.load(boat_ref01_match_dt0)
+    const boat_ref01_data_dt0 = (await boat_ref01_ent.load(boat_ref01_match_dt0)).data()
     assert(boat_ref01_data_dt0.id === boat_ref01_data.id)
 
 

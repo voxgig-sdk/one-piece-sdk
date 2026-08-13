@@ -21,7 +21,7 @@ main: kit: entity: crew: {
       type: "`$INTEGER`"
     }
     {
-      name: "member"
+      name: "members"
       req: false
       type: "`$ARRAY`"
     }

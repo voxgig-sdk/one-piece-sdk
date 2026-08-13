@@ -35,7 +35,9 @@ const client = new OnePieceSDK()
 
 ### 2. List boat records
 
-`list()` resolves to an array of Boat objects — iterate it directly:
+`list()` resolves to an array of Boat ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const boats = await client.Boat().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = OnePieceSDK.test()
 
 const boat = await client.Boat().list()
-// boat is a bare entity populated with mock response data
+// boat is the entity, populated with mock response data
+// — call boat.data() for the record itself
 console.log(boat)
 ```
 
@@ -343,7 +346,7 @@ API path: `/bows`
 | --- | --- |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `saga` |  |
 | `title` |  |
 
@@ -359,7 +362,7 @@ API path: `/chapters`
 | `bounty` |  |
 | `crew` |  |
 | `description` |  |
-| `devil_fruit` |  |
+| `devilFruit` |  |
 | `id` |  |
 | `name` |  |
 
@@ -374,7 +377,7 @@ API path: `/characters`
 | `captain` |  |
 | `description` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `ship` |  |
 
@@ -399,7 +402,7 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `id` |  |
 | `number` |  |
 | `saga` |  |
@@ -415,7 +418,7 @@ API path: `/episodes`
 | --- | --- |
 | `description` |  |
 | `id` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: list, load.
@@ -441,7 +444,7 @@ API path: `/fruits`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 
@@ -456,7 +459,7 @@ API path: `/gears`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: list, load.
 
@@ -467,7 +470,7 @@ API path: `/hakis`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 | `type` |  |
@@ -480,9 +483,9 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `description` |  |
-| `episode` |  |
+| `episodes` |  |
 | `id` |  |
 | `name` |  |
 
@@ -521,10 +524,10 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: list, load.
@@ -620,7 +623,7 @@ Create an instance: `const chapter = client.Chapter()`
 | --- | --- | --- |
 | `id` | `number` |  |
 | `number` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `saga` | `string` |  |
 | `title` | `string` |  |
 
@@ -656,7 +659,7 @@ Create an instance: `const character = client.Character()`
 | `bounty` | `number` |  |
 | `crew` | `string` |  |
 | `description` | `string` |  |
-| `devil_fruit` | `string` |  |
+| `devilFruit` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -691,7 +694,7 @@ Create an instance: `const crew = client.Crew()`
 | `captain` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `member` | `any[]` |  |
+| `members` | `any[]` |  |
 | `name` | `string` |  |
 | `ship` | `string` |  |
 
@@ -756,7 +759,7 @@ Create an instance: `const episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `id` | `number` |  |
 | `number` | `number` |  |
 | `saga` | `string` |  |
@@ -792,7 +795,7 @@ Create an instance: `const film = client.Film()`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
@@ -858,7 +861,7 @@ Create an instance: `const gear = client.Gear()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -893,7 +896,7 @@ Create an instance: `const haki = client.Haki()`
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `user` | `any[]` |  |
+| `users` | `any[]` |  |
 
 #### Example: Load
 
@@ -924,7 +927,7 @@ Create an instance: `const location = client.Location()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `type` | `string` |  |
@@ -957,9 +960,9 @@ Create an instance: `const saga = client.Saga()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `any[]` |  |
+| `chapters` | `any[]` |  |
 | `description` | `string` |  |
-| `episode` | `any[]` |  |
+| `episodes` | `any[]` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -1058,10 +1061,10 @@ Create an instance: `const volume = client.Volume()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `any[]` |  |
+| `chapters` | `any[]` |  |
 | `id` | `number` |  |
 | `number` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load

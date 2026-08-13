@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import OnePieceSDK
-from core.error import OnePieceError
-from core.result import OnePieceResult
-from core.response import OnePieceResponse
-from core.spec import OnePieceSpec
-from feature.base_feature import OnePieceBaseFeature
+from projectname_sdk.core.error import OnePieceError
+from projectname_sdk.core.result import OnePieceResult
+from projectname_sdk.core.response import OnePieceResponse
+from projectname_sdk.core.spec import OnePieceSpec
+from projectname_sdk.feature.base_feature import OnePieceBaseFeature
 
 
 def _client():

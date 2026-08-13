@@ -26,8 +26,8 @@ import {
 describe('DialEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('DialEntity', async () => {
     const dial_ref01_ent = client.Dial()
     const dial_ref01_match: any = {}
 
-    const dial_ref01_list = await dial_ref01_ent.list(dial_ref01_match)
+    const dial_ref01_list = (await dial_ref01_ent.list(dial_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const dial_ref01_match_dt0: any = {}
     dial_ref01_match_dt0.id = dial_ref01_data.id
-    const dial_ref01_data_dt0 = await dial_ref01_ent.load(dial_ref01_match_dt0)
+    const dial_ref01_data_dt0 = (await dial_ref01_ent.load(dial_ref01_match_dt0)).data()
     assert(dial_ref01_data_dt0.id === dial_ref01_data.id)
 
 

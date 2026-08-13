@@ -2,23 +2,23 @@
   "existing": {
     "saga": {
       "SAGA00": {
-        "chapter": [],
+        "chapters": [],
         "description": "s33",
-        "episode": [],
+        "episodes": [],
         "id": "SAGA00",
         "name": "s36"
       },
       "SAGA01": {
-        "chapter": [],
+        "chapters": [],
         "description": "s65",
-        "episode": [],
+        "episodes": [],
         "id": "SAGA01",
         "name": "s68"
       },
       "SAGA02": {
-        "chapter": [],
+        "chapters": [],
         "description": "s97",
-        "episode": [],
+        "episodes": [],
         "id": "SAGA02",
         "name": "s9a"
       }
@@ -27,9 +27,9 @@
   "new": {
     "saga": {
       "saga_ref01": {
-        "chapter": [],
+        "chapters": [],
         "description": "sc9",
-        "episode": [],
+        "episodes": [],
         "name": "scc"
       }
     }

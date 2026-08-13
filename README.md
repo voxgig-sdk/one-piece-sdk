@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = OnePieceSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = OnePieceSDK.test({
+  entity: {
+    boat: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const boats = await client.Boat().list()
-// boats is an array of bare Boat records populated with mock data
+// boats is an array of Boat entities, populated with mock data
+// — call boats[0].data() for the record itself
 console.log(boats)
 ```
 
@@ -110,7 +119,7 @@ import { OnePieceSDK } from '@voxgig-sdk/one-piece'
 
 const client = new OnePieceSDK()
 
-// List all boats (returns Boat[])
+// List all boats (returns BoatEntity[] — .data() for the record)
 const boats = await client.Boat().list()
 for (const boat of boats) {
   console.log(boat)
@@ -206,7 +215,7 @@ $client = new OnePieceSDK();
 $boats = $client->Boat()->list();
 print_r($boats);
 
-// Load a specific boat (returns the bare record; throws on error)
+// Load a specific boat (returns the ENTITY; call data_get() for the record; throws on error)
 $boat = $client->Boat()->load(["id" => 1]);
 print_r($boat);
 ```
@@ -237,7 +246,7 @@ client = OnePieceSDK.new
 boats = client.Boat.list
 puts boats
 
-# Load a specific boat (returns the bare record; raises on error)
+# Load a specific boat (returns the ENTITY; call data_get for the record)
 boat = client.Boat.load({ "id" => 1 })
 puts boat
 ```
@@ -374,6 +383,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api-onepiece.com](https://api-onepiece.com)
 

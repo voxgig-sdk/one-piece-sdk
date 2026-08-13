@@ -161,8 +161,29 @@ class OnePieceSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('OnePieceSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -223,115 +244,201 @@ class OnePieceSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('OnePieceSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('OnePieceSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Boat().list()` / `client.Boat().load({ id })`.
-  Boat(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Boat(entopts?: Record<string, any>) {
     const self = this
-    return new BoatEntity(self,data)
+    return new BoatEntity(self, entopts)
   }
 
 
   // Entity access: `client.Bow().list()` / `client.Bow().load({ id })`.
-  Bow(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Bow(entopts?: Record<string, any>) {
     const self = this
-    return new BowEntity(self,data)
+    return new BowEntity(self, entopts)
   }
 
 
   // Entity access: `client.Chapter().list()` / `client.Chapter().load({ id })`.
-  Chapter(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Chapter(entopts?: Record<string, any>) {
     const self = this
-    return new ChapterEntity(self,data)
+    return new ChapterEntity(self, entopts)
   }
 
 
   // Entity access: `client.Character().list()` / `client.Character().load({ id })`.
-  Character(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Character(entopts?: Record<string, any>) {
     const self = this
-    return new CharacterEntity(self,data)
+    return new CharacterEntity(self, entopts)
   }
 
 
   // Entity access: `client.Crew().list()` / `client.Crew().load({ id })`.
-  Crew(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Crew(entopts?: Record<string, any>) {
     const self = this
-    return new CrewEntity(self,data)
+    return new CrewEntity(self, entopts)
   }
 
 
   // Entity access: `client.Dial().list()` / `client.Dial().load({ id })`.
-  Dial(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Dial(entopts?: Record<string, any>) {
     const self = this
-    return new DialEntity(self,data)
+    return new DialEntity(self, entopts)
   }
 
 
   // Entity access: `client.Episode().list()` / `client.Episode().load({ id })`.
-  Episode(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Episode(entopts?: Record<string, any>) {
     const self = this
-    return new EpisodeEntity(self,data)
+    return new EpisodeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Film().list()` / `client.Film().load({ id })`.
-  Film(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Film(entopts?: Record<string, any>) {
     const self = this
-    return new FilmEntity(self,data)
+    return new FilmEntity(self, entopts)
   }
 
 
   // Entity access: `client.Fruit().list()` / `client.Fruit().load({ id })`.
-  Fruit(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Fruit(entopts?: Record<string, any>) {
     const self = this
-    return new FruitEntity(self,data)
+    return new FruitEntity(self, entopts)
   }
 
 
   // Entity access: `client.Gear().list()` / `client.Gear().load({ id })`.
-  Gear(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Gear(entopts?: Record<string, any>) {
     const self = this
-    return new GearEntity(self,data)
+    return new GearEntity(self, entopts)
   }
 
 
   // Entity access: `client.Haki().list()` / `client.Haki().load({ id })`.
-  Haki(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Haki(entopts?: Record<string, any>) {
     const self = this
-    return new HakiEntity(self,data)
+    return new HakiEntity(self, entopts)
   }
 
 
   // Entity access: `client.Location().list()` / `client.Location().load({ id })`.
-  Location(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Location(entopts?: Record<string, any>) {
     const self = this
-    return new LocationEntity(self,data)
+    return new LocationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Saga().list()` / `client.Saga().load({ id })`.
-  Saga(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Saga(entopts?: Record<string, any>) {
     const self = this
-    return new SagaEntity(self,data)
+    return new SagaEntity(self, entopts)
   }
 
 
   // Entity access: `client.Sword().list()` / `client.Sword().load({ id })`.
-  Sword(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Sword(entopts?: Record<string, any>) {
     const self = this
-    return new SwordEntity(self,data)
+    return new SwordEntity(self, entopts)
   }
 
 
   // Entity access: `client.Technique().list()` / `client.Technique().load({ id })`.
-  Technique(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Technique(entopts?: Record<string, any>) {
     const self = this
-    return new TechniqueEntity(self,data)
+    return new TechniqueEntity(self, entopts)
   }
 
 
   // Entity access: `client.Volume().list()` / `client.Volume().load({ id })`.
-  Volume(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Volume(entopts?: Record<string, any>) {
     const self = this
-    return new VolumeEntity(self,data)
+    return new VolumeEntity(self, entopts)
   }
 
 

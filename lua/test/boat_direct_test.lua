@@ -115,11 +115,11 @@ function boat_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ONEPIECE_TEST_BOAT_ENTID"] = {},
-    ["ONEPIECE_TEST_LIVE"] = "FALSE",
+    ["ONE_PIECE_TEST_BOAT_ENTID"] = {},
+    ["ONE_PIECE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ONEPIECE_TEST_LIVE"] == "TRUE"
+  local live = env["ONE_PIECE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# OnePiece SDK exists test
 
 import pytest
 from onepiece_sdk import OnePieceSDK

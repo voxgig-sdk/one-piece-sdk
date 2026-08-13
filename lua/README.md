@@ -285,7 +285,7 @@ API path: `/bows`
 | --- | --- |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `saga` |  |
 | `title` |  |
 
@@ -301,7 +301,7 @@ API path: `/chapters`
 | `bounty` |  |
 | `crew` |  |
 | `description` |  |
-| `devil_fruit` |  |
+| `devilFruit` |  |
 | `id` |  |
 | `name` |  |
 
@@ -316,7 +316,7 @@ API path: `/characters`
 | `captain` |  |
 | `description` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `ship` |  |
 
@@ -341,7 +341,7 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `id` |  |
 | `number` |  |
 | `saga` |  |
@@ -357,7 +357,7 @@ API path: `/episodes`
 | --- | --- |
 | `description` |  |
 | `id` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -383,7 +383,7 @@ API path: `/fruits`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 
@@ -398,7 +398,7 @@ API path: `/gears`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List, Load.
 
@@ -409,7 +409,7 @@ API path: `/hakis`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `first_appearance` |  |
+| `firstAppearance` |  |
 | `id` |  |
 | `name` |  |
 | `type` |  |
@@ -422,9 +422,9 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `description` |  |
-| `episode` |  |
+| `episodes` |  |
 | `id` |  |
 | `name` |  |
 
@@ -463,10 +463,10 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `chapter` |  |
+| `chapters` |  |
 | `id` |  |
 | `number` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 | `title` |  |
 
 Operations: List, Load.
@@ -562,7 +562,7 @@ Create an instance: `local chapter = client:Chapter(nil)`
 | --- | --- | --- |
 | `id` | `number` |  |
 | `number` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `saga` | `string` |  |
 | `title` | `string` |  |
 
@@ -598,7 +598,7 @@ Create an instance: `local character = client:Character(nil)`
 | `bounty` | `number` |  |
 | `crew` | `string` |  |
 | `description` | `string` |  |
-| `devil_fruit` | `string` |  |
+| `devilFruit` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -633,7 +633,7 @@ Create an instance: `local crew = client:Crew(nil)`
 | `captain` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `member` | `table` |  |
+| `members` | `table` |  |
 | `name` | `string` |  |
 | `ship` | `string` |  |
 
@@ -698,7 +698,7 @@ Create an instance: `local episode = client:Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `id` | `number` |  |
 | `number` | `number` |  |
 | `saga` | `string` |  |
@@ -734,7 +734,7 @@ Create an instance: `local film = client:Film(nil)`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
@@ -800,7 +800,7 @@ Create an instance: `local gear = client:Gear(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -835,7 +835,7 @@ Create an instance: `local haki = client:Haki(nil)`
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `user` | `table` |  |
+| `users` | `table` |  |
 
 #### Example: Load
 
@@ -866,7 +866,7 @@ Create an instance: `local location = client:Location(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `first_appearance` | `string` |  |
+| `firstAppearance` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `type` | `string` |  |
@@ -899,9 +899,9 @@ Create an instance: `local saga = client:Saga(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `table` |  |
+| `chapters` | `table` |  |
 | `description` | `string` |  |
-| `episode` | `table` |  |
+| `episodes` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -1000,10 +1000,10 @@ Create an instance: `local volume = client:Volume(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapter` | `table` |  |
+| `chapters` | `table` |  |
 | `id` | `number` |  |
 | `number` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load

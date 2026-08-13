@@ -26,8 +26,8 @@ import {
 describe('VolumeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('VolumeEntity', async () => {
     const volume_ref01_ent = client.Volume()
     const volume_ref01_match: any = {}
 
-    const volume_ref01_list = await volume_ref01_ent.list(volume_ref01_match)
+    const volume_ref01_list = (await volume_ref01_ent.list(volume_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const volume_ref01_match_dt0: any = {}
     volume_ref01_match_dt0.id = volume_ref01_data.id
-    const volume_ref01_data_dt0 = await volume_ref01_ent.load(volume_ref01_match_dt0)
+    const volume_ref01_data_dt0 = (await volume_ref01_ent.load(volume_ref01_match_dt0)).data()
     assert(volume_ref01_data_dt0.id === volume_ref01_data.id)
 
 

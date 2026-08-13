@@ -6,7 +6,7 @@ main: kit: entity: saga: {
 
   fields: [
     {
-      name: "chapter"
+      name: "chapters"
       req: false
       type: "`$ARRAY`"
     }
@@ -16,7 +16,7 @@ main: kit: entity: saga: {
       type: "`$STRING`"
     }
     {
-      name: "episode"
+      name: "episodes"
       req: false
       type: "`$ARRAY`"
     }

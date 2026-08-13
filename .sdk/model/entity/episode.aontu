@@ -6,7 +6,7 @@ main: kit: entity: episode: {
 
   fields: [
     {
-      name: "air_date"
+      name: "airDate"
       req: false
       type: "`$STRING`"
     }

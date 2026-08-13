@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/one-piece-sdk/go/core"
+)
 
 // Boat is the typed data model for the boat entity.
 type Boat struct {
@@ -56,7 +60,7 @@ type BowListMatch struct {
 type Chapter struct {
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Saga *string `json:"saga,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
@@ -70,7 +74,7 @@ type ChapterLoadMatch struct {
 type ChapterListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Saga *string `json:"saga,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
@@ -81,7 +85,7 @@ type Character struct {
 	Bounty *int `json:"bounty,omitempty"`
 	Crew *string `json:"crew,omitempty"`
 	Description *string `json:"description,omitempty"`
-	DevilFruit *string `json:"devil_fruit,omitempty"`
+	DevilFruit *string `json:"devilFruit,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -97,7 +101,7 @@ type CharacterListMatch struct {
 	Bounty *int `json:"bounty,omitempty"`
 	Crew *string `json:"crew,omitempty"`
 	Description *string `json:"description,omitempty"`
-	DevilFruit *string `json:"devil_fruit,omitempty"`
+	DevilFruit *string `json:"devilFruit,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -107,7 +111,7 @@ type Crew struct {
 	Captain *string `json:"captain,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Member *[]any `json:"member,omitempty"`
+	Members *[]any `json:"members,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Ship *string `json:"ship,omitempty"`
 }
@@ -122,7 +126,7 @@ type CrewListMatch struct {
 	Captain *string `json:"captain,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Member *[]any `json:"member,omitempty"`
+	Members *[]any `json:"members,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Ship *string `json:"ship,omitempty"`
 }
@@ -150,7 +154,7 @@ type DialListMatch struct {
 
 // Episode is the typed data model for the episode entity.
 type Episode struct {
-	AirDate *string `json:"air_date,omitempty"`
+	AirDate *string `json:"airDate,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
 	Saga *string `json:"saga,omitempty"`
@@ -164,7 +168,7 @@ type EpisodeLoadMatch struct {
 
 // EpisodeListMatch is the typed request payload for Episode.ListTyped.
 type EpisodeListMatch struct {
-	AirDate *string `json:"air_date,omitempty"`
+	AirDate *string `json:"airDate,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
 	Saga *string `json:"saga,omitempty"`
@@ -175,7 +179,7 @@ type EpisodeListMatch struct {
 type Film struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
 
@@ -188,7 +192,7 @@ type FilmLoadMatch struct {
 type FilmListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
 
@@ -218,7 +222,7 @@ type FruitListMatch struct {
 // Gear is the typed data model for the gear entity.
 type Gear struct {
 	Description *string `json:"description,omitempty"`
-	FirstAppearance *string `json:"first_appearance,omitempty"`
+	FirstAppearance *string `json:"firstAppearance,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -231,7 +235,7 @@ type GearLoadMatch struct {
 // GearListMatch is the typed request payload for Gear.ListTyped.
 type GearListMatch struct {
 	Description *string `json:"description,omitempty"`
-	FirstAppearance *string `json:"first_appearance,omitempty"`
+	FirstAppearance *string `json:"firstAppearance,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -241,7 +245,7 @@ type Haki struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	User *[]any `json:"user,omitempty"`
+	Users *[]any `json:"users,omitempty"`
 }
 
 // HakiLoadMatch is the typed request payload for Haki.LoadTyped.
@@ -254,13 +258,13 @@ type HakiListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	User *[]any `json:"user,omitempty"`
+	Users *[]any `json:"users,omitempty"`
 }
 
 // Location is the typed data model for the location entity.
 type Location struct {
 	Description *string `json:"description,omitempty"`
-	FirstAppearance *string `json:"first_appearance,omitempty"`
+	FirstAppearance *string `json:"firstAppearance,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -274,7 +278,7 @@ type LocationLoadMatch struct {
 // LocationListMatch is the typed request payload for Location.ListTyped.
 type LocationListMatch struct {
 	Description *string `json:"description,omitempty"`
-	FirstAppearance *string `json:"first_appearance,omitempty"`
+	FirstAppearance *string `json:"firstAppearance,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -282,9 +286,9 @@ type LocationListMatch struct {
 
 // Saga is the typed data model for the saga entity.
 type Saga struct {
-	Chapter *[]any `json:"chapter,omitempty"`
+	Chapters *[]any `json:"chapters,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Episode *[]any `json:"episode,omitempty"`
+	Episodes *[]any `json:"episodes,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -296,9 +300,9 @@ type SagaLoadMatch struct {
 
 // SagaListMatch is the typed request payload for Saga.ListTyped.
 type SagaListMatch struct {
-	Chapter *[]any `json:"chapter,omitempty"`
+	Chapters *[]any `json:"chapters,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Episode *[]any `json:"episode,omitempty"`
+	Episodes *[]any `json:"episodes,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -349,10 +353,10 @@ type TechniqueListMatch struct {
 
 // Volume is the typed data model for the volume entity.
 type Volume struct {
-	Chapter *[]any `json:"chapter,omitempty"`
+	Chapters *[]any `json:"chapters,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
 
@@ -363,10 +367,10 @@ type VolumeLoadMatch struct {
 
 // VolumeListMatch is the typed request payload for Volume.ListTyped.
 type VolumeListMatch struct {
-	Chapter *[]any `json:"chapter,omitempty"`
+	Chapters *[]any `json:"chapters,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Number *int `json:"number,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
 
@@ -382,12 +386,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -399,12 +417,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

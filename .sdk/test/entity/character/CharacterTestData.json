@@ -6,7 +6,7 @@
         "bounty": "s47",
         "crew": "s48",
         "description": "s49",
-        "devil_fruit": "s4a",
+        "devilFruit": "s4a",
         "id": "CHARACTER00",
         "name": "s4c"
       },
@@ -15,7 +15,7 @@
         "bounty": "s8d",
         "crew": "s8e",
         "description": "s8f",
-        "devil_fruit": "s90",
+        "devilFruit": "s90",
         "id": "CHARACTER01",
         "name": "s92"
       },
@@ -24,7 +24,7 @@
         "bounty": "sd3",
         "crew": "sd4",
         "description": "sd5",
-        "devil_fruit": "sd6",
+        "devilFruit": "sd6",
         "id": "CHARACTER02",
         "name": "sd8"
       }
@@ -37,7 +37,7 @@
         "bounty": "s119",
         "crew": "s11a",
         "description": "s11b",
-        "devil_fruit": "s11c",
+        "devilFruit": "s11c",
         "name": "s11e"
       }
     }

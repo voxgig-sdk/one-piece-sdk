@@ -421,7 +421,7 @@ const chapter = client.Chapter()
 | --- | --- | --- | --- |
 | `id` | `number` | No |  |
 | `number` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `saga` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -485,7 +485,7 @@ const character = client.Character()
 | `bounty` | `number` | No |  |
 | `crew` | `string` | No |  |
 | `description` | `string` | No |  |
-| `devil_fruit` | `string` | No |  |
+| `devilFruit` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -548,7 +548,7 @@ const crew = client.Crew()
 | `captain` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `member` | `any[]` | No |  |
+| `members` | `any[]` | No |  |
 | `name` | `string` | No |  |
 | `ship` | `string` | No |  |
 
@@ -669,7 +669,7 @@ const episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | No |  |
+| `airDate` | `string` | No |  |
 | `id` | `number` | No |  |
 | `number` | `number` | No |  |
 | `saga` | `string` | No |  |
@@ -733,7 +733,7 @@ const film = client.Film()
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations
@@ -855,7 +855,7 @@ const gear = client.Gear()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -918,7 +918,7 @@ const haki = client.Haki()
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `user` | `any[]` | No |  |
+| `users` | `any[]` | No |  |
 
 ### Operations
 
@@ -977,7 +977,7 @@ const location = client.Location()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -1038,9 +1038,9 @@ const saga = client.Saga()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `any[]` | No |  |
+| `chapters` | `any[]` | No |  |
 | `description` | `string` | No |  |
-| `episode` | `any[]` | No |  |
+| `episodes` | `any[]` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -1223,10 +1223,10 @@ const volume = client.Volume()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `any[]` | No |  |
+| `chapters` | `any[]` | No |  |
 | `id` | `number` | No |  |
 | `number` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations

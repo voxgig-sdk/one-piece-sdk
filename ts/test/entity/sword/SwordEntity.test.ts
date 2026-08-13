@@ -26,8 +26,8 @@ import {
 describe('SwordEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OnePieceSDK.test()
@@ -63,13 +63,13 @@ describe('SwordEntity', async () => {
     const sword_ref01_ent = client.Sword()
     const sword_ref01_match: any = {}
 
-    const sword_ref01_list = await sword_ref01_ent.list(sword_ref01_match)
+    const sword_ref01_list = (await sword_ref01_ent.list(sword_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const sword_ref01_match_dt0: any = {}
     sword_ref01_match_dt0.id = sword_ref01_data.id
-    const sword_ref01_data_dt0 = await sword_ref01_ent.load(sword_ref01_match_dt0)
+    const sword_ref01_data_dt0 = (await sword_ref01_ent.load(sword_ref01_match_dt0)).data()
     assert(sword_ref01_data_dt0.id === sword_ref01_data.id)
 
 

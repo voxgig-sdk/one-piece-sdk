@@ -3,21 +3,21 @@
     "location": {
       "LOCATION00": {
         "description": "s32",
-        "first_appearance": "s33",
+        "firstAppearance": "s33",
         "id": "LOCATION00",
         "name": "s35",
         "type": "s36"
       },
       "LOCATION01": {
         "description": "s64",
-        "first_appearance": "s65",
+        "firstAppearance": "s65",
         "id": "LOCATION01",
         "name": "s67",
         "type": "s68"
       },
       "LOCATION02": {
         "description": "s96",
-        "first_appearance": "s97",
+        "firstAppearance": "s97",
         "id": "LOCATION02",
         "name": "s99",
         "type": "s9a"
@@ -28,7 +28,7 @@
     "location": {
       "location_ref01": {
         "description": "sc8",
-        "first_appearance": "sc9",
+        "firstAppearance": "sc9",
         "name": "scb",
         "type": "scc"
       }

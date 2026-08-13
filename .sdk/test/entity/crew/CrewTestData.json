@@ -5,7 +5,7 @@
         "captain": "s3c",
         "description": "s3d",
         "id": "CREW00",
-        "member": [],
+        "members": [],
         "name": "s40",
         "ship": "s41"
       },
@@ -13,7 +13,7 @@
         "captain": "s78",
         "description": "s79",
         "id": "CREW01",
-        "member": [],
+        "members": [],
         "name": "s7c",
         "ship": "s7d"
       },
@@ -21,7 +21,7 @@
         "captain": "sb4",
         "description": "sb5",
         "id": "CREW02",
-        "member": [],
+        "members": [],
         "name": "sb8",
         "ship": "sb9"
       }
@@ -32,7 +32,7 @@
       "crew_ref01": {
         "captain": "sf0",
         "description": "sf1",
-        "member": [],
+        "members": [],
         "name": "sf4",
         "ship": "sf5"
       }

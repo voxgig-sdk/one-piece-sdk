@@ -4,21 +4,21 @@
       "CHAPTER00": {
         "id": "CHAPTER00",
         "number": "s33",
-        "release_date": "s34",
+        "releaseDate": "s34",
         "saga": "s35",
         "title": "s36"
       },
       "CHAPTER01": {
         "id": "CHAPTER01",
         "number": "s65",
-        "release_date": "s66",
+        "releaseDate": "s66",
         "saga": "s67",
         "title": "s68"
       },
       "CHAPTER02": {
         "id": "CHAPTER02",
         "number": "s97",
-        "release_date": "s98",
+        "releaseDate": "s98",
         "saga": "s99",
         "title": "s9a"
       }
@@ -28,7 +28,7 @@
     "chapter": {
       "chapter_ref01": {
         "number": "sc9",
-        "release_date": "sca",
+        "releaseDate": "sca",
         "saga": "scb",
         "title": "scc"
       }

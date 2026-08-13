@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from onepiece_sdk.utility.voxgig_struct import voxgig_struct as vs
 from onepiece_sdk import OnePieceSDK
-from core import helpers
+from onepiece_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _episode_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ONEPIECE_TEST_EPISODE_ENTID": {},
-        "ONEPIECE_TEST_LIVE": "FALSE",
+        "ONE_PIECE_TEST_EPISODE_ENTID": {},
+        "ONE_PIECE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ONEPIECE_TEST_LIVE") == "TRUE"
+    live = env.get("ONE_PIECE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

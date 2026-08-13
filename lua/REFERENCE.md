@@ -279,7 +279,7 @@ local chapter = client:Chapter(nil)
 | --- | --- | --- | --- |
 | `id` | `number` | No |  |
 | `number` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `saga` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -345,7 +345,7 @@ local character = client:Character(nil)
 | `bounty` | `number` | No |  |
 | `crew` | `string` | No |  |
 | `description` | `string` | No |  |
-| `devil_fruit` | `string` | No |  |
+| `devilFruit` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -410,7 +410,7 @@ local crew = client:Crew(nil)
 | `captain` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `member` | `table` | No |  |
+| `members` | `table` | No |  |
 | `name` | `string` | No |  |
 | `ship` | `string` | No |  |
 
@@ -535,7 +535,7 @@ local episode = client:Episode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | No |  |
+| `airDate` | `string` | No |  |
 | `id` | `number` | No |  |
 | `number` | `number` | No |  |
 | `saga` | `string` | No |  |
@@ -601,7 +601,7 @@ local film = client:Film(nil)
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations
@@ -727,7 +727,7 @@ local gear = client:Gear(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -792,7 +792,7 @@ local haki = client:Haki(nil)
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `user` | `table` | No |  |
+| `users` | `table` | No |  |
 
 ### Operations
 
@@ -853,7 +853,7 @@ local location = client:Location(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `first_appearance` | `string` | No |  |
+| `firstAppearance` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `type` | `string` | No |  |
@@ -916,9 +916,9 @@ local saga = client:Saga(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `table` | No |  |
+| `chapters` | `table` | No |  |
 | `description` | `string` | No |  |
-| `episode` | `table` | No |  |
+| `episodes` | `table` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 
@@ -1107,10 +1107,10 @@ local volume = client:Volume(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapter` | `table` | No |  |
+| `chapters` | `table` | No |  |
 | `id` | `number` | No |  |
 | `number` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `title` | `string` | No |  |
 
 ### Operations

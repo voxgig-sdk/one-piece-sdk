@@ -19,11 +19,15 @@ import {
 describe('FilmDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ONEPIECE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ONEPIECE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ONE_PIECE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ONE_PIECE_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new OnePieceSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,17 +138,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'ONEPIECE_TEST_FILM_ENTID': {},
-    'ONEPIECE_TEST_LIVE': 'FALSE',
+    'ONE_PIECE_TEST_FILM_ENTID': {},
+    'ONE_PIECE_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.ONEPIECE_TEST_LIVE
+  const live = 'TRUE' === env.ONE_PIECE_TEST_LIVE
 
   if (live) {
     const client = new OnePieceSDK({
     })
 
-    let idmap: any = env['ONEPIECE_TEST_FILM_ENTID']
+    let idmap: any = env['ONE_PIECE_TEST_FILM_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

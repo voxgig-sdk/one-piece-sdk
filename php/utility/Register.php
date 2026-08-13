@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ OnePieceUtility::setRegistrar(function (OnePieceUtility $u): void {
     $u->prepare_params = [OnePiecePrepareParams::class, 'call'];
     $u->prepare_path = [OnePiecePreparePath::class, 'call'];
     $u->prepare_query = [OnePiecePrepareQuery::class, 'call'];
+    $u->graphql_body = [OnePieceGraphql::class, 'body'];
+    $u->graphql_errors = [OnePieceGraphql::class, 'errors'];
     $u->result_basic = [OnePieceResultBasic::class, 'call'];
     $u->result_body = [OnePieceResultBody::class, 'call'];
     $u->result_headers = [OnePieceResultHeaders::class, 'call'];

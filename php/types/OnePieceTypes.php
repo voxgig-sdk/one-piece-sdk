@@ -67,7 +67,7 @@ class Chapter
 {
     public ?int $id = null;
     public ?int $number = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
     public ?string $saga = null;
     public ?string $title = null;
 }
@@ -83,7 +83,7 @@ class ChapterListMatch
 {
     public ?int $id = null;
     public ?int $number = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
     public ?string $saga = null;
     public ?string $title = null;
 }
@@ -95,7 +95,7 @@ class Character
     public ?int $bounty = null;
     public ?string $crew = null;
     public ?string $description = null;
-    public ?string $devil_fruit = null;
+    public ?string $devilFruit = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -113,7 +113,7 @@ class CharacterListMatch
     public ?int $bounty = null;
     public ?string $crew = null;
     public ?string $description = null;
-    public ?string $devil_fruit = null;
+    public ?string $devilFruit = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -124,7 +124,7 @@ class Crew
     public ?string $captain = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?array $member = null;
+    public ?array $members = null;
     public ?string $name = null;
     public ?string $ship = null;
 }
@@ -141,7 +141,7 @@ class CrewListMatch
     public ?string $captain = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?array $member = null;
+    public ?array $members = null;
     public ?string $name = null;
     public ?string $ship = null;
 }
@@ -173,7 +173,7 @@ class DialListMatch
 /** Episode entity data model. */
 class Episode
 {
-    public ?string $air_date = null;
+    public ?string $airDate = null;
     public ?int $id = null;
     public ?int $number = null;
     public ?string $saga = null;
@@ -189,7 +189,7 @@ class EpisodeLoadMatch
 /** Request payload for Episode#list. */
 class EpisodeListMatch
 {
-    public ?string $air_date = null;
+    public ?string $airDate = null;
     public ?int $id = null;
     public ?int $number = null;
     public ?string $saga = null;
@@ -201,7 +201,7 @@ class Film
 {
     public ?string $description = null;
     public ?int $id = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
     public ?string $title = null;
 }
 
@@ -216,7 +216,7 @@ class FilmListMatch
 {
     public ?string $description = null;
     public ?int $id = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
     public ?string $title = null;
 }
 
@@ -250,7 +250,7 @@ class FruitListMatch
 class Gear
 {
     public ?string $description = null;
-    public ?string $first_appearance = null;
+    public ?string $firstAppearance = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -265,7 +265,7 @@ class GearLoadMatch
 class GearListMatch
 {
     public ?string $description = null;
-    public ?string $first_appearance = null;
+    public ?string $firstAppearance = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -276,7 +276,7 @@ class Haki
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $user = null;
+    public ?array $users = null;
 }
 
 /** Request payload for Haki#load. */
@@ -291,14 +291,14 @@ class HakiListMatch
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $user = null;
+    public ?array $users = null;
 }
 
 /** Location entity data model. */
 class Location
 {
     public ?string $description = null;
-    public ?string $first_appearance = null;
+    public ?string $firstAppearance = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?string $type = null;
@@ -314,7 +314,7 @@ class LocationLoadMatch
 class LocationListMatch
 {
     public ?string $description = null;
-    public ?string $first_appearance = null;
+    public ?string $firstAppearance = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?string $type = null;
@@ -323,9 +323,9 @@ class LocationListMatch
 /** Saga entity data model. */
 class Saga
 {
-    public ?array $chapter = null;
+    public ?array $chapters = null;
     public ?string $description = null;
-    public ?array $episode = null;
+    public ?array $episodes = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -339,9 +339,9 @@ class SagaLoadMatch
 /** Request payload for Saga#list. */
 class SagaListMatch
 {
-    public ?array $chapter = null;
+    public ?array $chapters = null;
     public ?string $description = null;
-    public ?array $episode = null;
+    public ?array $episodes = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -399,10 +399,10 @@ class TechniqueListMatch
 /** Volume entity data model. */
 class Volume
 {
-    public ?array $chapter = null;
+    public ?array $chapters = null;
     public ?int $id = null;
     public ?int $number = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
     public ?string $title = null;
 }
 
@@ -415,10 +415,10 @@ class VolumeLoadMatch
 /** Request payload for Volume#list. */
 class VolumeListMatch
 {
-    public ?array $chapter = null;
+    public ?array $chapters = null;
     public ?int $id = null;
     public ?int $number = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
     public ?string $title = null;
 }
 
