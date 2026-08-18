@@ -28,7 +28,7 @@ class OnePieceSDK
     utility = OnePieceUtility.new
     @_utility = utility
 
-    config = OnePieceConfig.make_config
+    config = OnePieceConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

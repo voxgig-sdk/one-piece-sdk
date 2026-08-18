@@ -40,7 +40,7 @@ class BoatEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = OnePieceConfig::make_config();
+        $cfg = OnePieceConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = OnePieceSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

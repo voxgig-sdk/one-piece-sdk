@@ -40,7 +40,7 @@ class OnePieceSDK
         $utility = new OnePieceUtility();
         $this->_utility = $utility;
 
-        $config = OnePieceConfig::make_config();
+        $config = OnePieceConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
