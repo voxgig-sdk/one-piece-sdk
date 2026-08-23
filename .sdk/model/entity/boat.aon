@@ -1,0 +1,100 @@
+# Entity: boat
+
+main: kit: entity: boat: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "crew"
+      req: false
+      short: "Crew that owns the boat"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Description of the boat"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the boat"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the boat/ship"
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Type of vessel"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "boat"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/boats"
+          parts: [
+            "boats"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boats/{id}"
+          parts: [
+            "boats"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

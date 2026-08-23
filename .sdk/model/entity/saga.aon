@@ -1,0 +1,100 @@
+# Entity: saga
+
+main: kit: entity: saga: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "chapters"
+      req: false
+      short: "Chapter IDs included in this saga"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Description of the saga"
+      type: "`$STRING`"
+    }
+    {
+      name: "episodes"
+      req: false
+      short: "Episode IDs included in this saga"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the saga"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the saga"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "saga"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/sagas"
+          parts: [
+            "sagas"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/sagas/{id}"
+          parts: [
+            "sagas"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

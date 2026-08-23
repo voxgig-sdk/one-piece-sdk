@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "OnePiece",
+			"slug": "one-piece",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -48,22 +51,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "crew",
+						"short": "Crew that owns the boat",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Description of the boat",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the boat",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the boat/ship",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of vessel",
 						"type": "`$STRING`",
 					},
 				},
@@ -133,18 +141,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the bow",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the bow",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the bow",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "owner",
+						"short": "Owner of the bow",
 						"type": "`$STRING`",
 					},
 				},
@@ -214,22 +226,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the chapter",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "number",
+						"short": "Chapter number",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "releaseDate",
+						"short": "Release date of the chapter",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "saga",
+						"short": "Saga this chapter belongs to",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the chapter",
 						"type": "`$STRING`",
 					},
 				},
@@ -299,30 +316,37 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "age",
+						"short": "Age of the character",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "bounty",
+						"short": "Bounty of the character",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "crew",
+						"short": "Crew affiliation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Description of the character",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "devilFruit",
+						"short": "Devil Fruit ability if applicable",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the character",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the character",
 						"type": "`$STRING`",
 					},
 				},
@@ -392,26 +416,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "captain",
+						"short": "Captain of the crew",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Description of the crew",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the crew",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "members",
+						"short": "Members of the crew",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the crew",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ship",
+						"short": "Name of the crew's ship",
 						"type": "`$STRING`",
 					},
 				},
@@ -481,18 +511,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the dial's function",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the dial",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the dial",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of dial",
 						"type": "`$STRING`",
 					},
 				},
@@ -562,22 +596,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "airDate",
+						"short": "Air date of the episode",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the episode",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "number",
+						"short": "Episode number",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "saga",
+						"short": "Saga this episode belongs to",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the episode",
 						"type": "`$STRING`",
 					},
 				},
@@ -647,18 +686,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the film",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the film",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "releaseDate",
+						"short": "Release date of the film",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the film",
 						"type": "`$STRING`",
 					},
 				},
@@ -728,22 +771,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the Devil Fruit's powers",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the Devil Fruit",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the Devil Fruit",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of Devil Fruit (Paramecia, Zoan, Logia)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "user",
+						"short": "Current or known user of the fruit",
 						"type": "`$STRING`",
 					},
 				},
@@ -813,18 +861,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the gear's abilities",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "firstAppearance",
+						"short": "First appearance of this gear",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the gear",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the gear form",
 						"type": "`$STRING`",
 					},
 				},
@@ -894,18 +946,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the Haki type",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the Haki type",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the Haki type",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "users",
+						"short": "Known users of this Haki type",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -975,22 +1031,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "firstAppearance",
+						"short": "First appearance of this location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the location",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of location (island, sea, etc.)",
 						"type": "`$STRING`",
 					},
 				},
@@ -1060,22 +1121,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "chapters",
+						"short": "Chapter IDs included in this saga",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Description of the saga",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "episodes",
+						"short": "Episode IDs included in this saga",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the saga",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the saga",
 						"type": "`$STRING`",
 					},
 				},
@@ -1145,22 +1211,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the sword",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "grade",
+						"short": "Grade of the sword",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the sword",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the sword",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "owner",
+						"short": "Current owner of the sword",
 						"type": "`$STRING`",
 					},
 				},
@@ -1230,18 +1301,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Description of the technique",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gear",
+						"short": "Associated gear form if applicable",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the technique",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the technique",
 						"type": "`$STRING`",
 					},
 				},
@@ -1311,22 +1386,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "chapters",
+						"short": "Chapter IDs included in this volume",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the volume",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "number",
+						"short": "Volume number",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "releaseDate",
+						"short": "Release date of the volume",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the volume",
 						"type": "`$STRING`",
 					},
 				},

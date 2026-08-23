@@ -1,0 +1,106 @@
+# Entity: crew
+
+main: kit: entity: crew: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "captain"
+      req: false
+      short: "Captain of the crew"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Description of the crew"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the crew"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "members"
+      req: false
+      short: "Members of the crew"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the crew"
+      type: "`$STRING`"
+    }
+    {
+      name: "ship"
+      req: false
+      short: "Name of the crew's ship"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "crew"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/crews"
+          parts: [
+            "crews"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/crews/{id}"
+          parts: [
+            "crews"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

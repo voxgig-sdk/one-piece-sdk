@@ -158,11 +158,11 @@ fmt.Println(boat.GetName()) // "boat"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `crew` | `string` | No | Crew that owns the boat |
+| `description` | `string` | No | Description of the boat |
+| `id` | `int` | No | Unique identifier for the boat |
+| `name` | `string` | No | Name of the boat/ship |
+| `type` | `string` | No | Type of vessel |
 
 ### Operations
 
@@ -225,10 +225,10 @@ fmt.Println(bow.GetName()) // "bow"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `owner` | `string` | No |  |
+| `description` | `string` | No | Description of the bow |
+| `id` | `int` | No | Unique identifier for the bow |
+| `name` | `string` | No | Name of the bow |
+| `owner` | `string` | No | Owner of the bow |
 
 ### Operations
 
@@ -291,11 +291,11 @@ fmt.Println(chapter.GetName()) // "chapter"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `number` | `int` | No |  |
-| `releaseDate` | `string` | No |  |
-| `saga` | `string` | No |  |
-| `title` | `string` | No |  |
+| `id` | `int` | No | Unique identifier for the chapter |
+| `number` | `int` | No | Chapter number |
+| `releaseDate` | `string` | No | Release date of the chapter |
+| `saga` | `string` | No | Saga this chapter belongs to |
+| `title` | `string` | No | Title of the chapter |
 
 ### Operations
 
@@ -358,13 +358,13 @@ fmt.Println(character.GetName()) // "character"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | `int` | No |  |
-| `bounty` | `int` | No |  |
-| `crew` | `string` | No |  |
-| `description` | `string` | No |  |
-| `devilFruit` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `age` | `int` | No | Age of the character |
+| `bounty` | `int` | No | Bounty of the character |
+| `crew` | `string` | No | Crew affiliation |
+| `description` | `string` | No | Description of the character |
+| `devilFruit` | `string` | No | Devil Fruit ability if applicable |
+| `id` | `int` | No | Unique identifier for the character |
+| `name` | `string` | No | Name of the character |
 
 ### Operations
 
@@ -427,12 +427,12 @@ fmt.Println(crew.GetName()) // "crew"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `members` | `[]any` | No |  |
-| `name` | `string` | No |  |
-| `ship` | `string` | No |  |
+| `captain` | `string` | No | Captain of the crew |
+| `description` | `string` | No | Description of the crew |
+| `id` | `int` | No | Unique identifier for the crew |
+| `members` | `[]any` | No | Members of the crew |
+| `name` | `string` | No | Name of the crew |
+| `ship` | `string` | No | Name of the crew's ship |
 
 ### Operations
 
@@ -495,10 +495,10 @@ fmt.Println(dial.GetName()) // "dial"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `description` | `string` | No | Description of the dial's function |
+| `id` | `int` | No | Unique identifier for the dial |
+| `name` | `string` | No | Name of the dial |
+| `type` | `string` | No | Type of dial |
 
 ### Operations
 
@@ -561,11 +561,11 @@ fmt.Println(episode.GetName()) // "episode"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `airDate` | `string` | No |  |
-| `id` | `int` | No |  |
-| `number` | `int` | No |  |
-| `saga` | `string` | No |  |
-| `title` | `string` | No |  |
+| `airDate` | `string` | No | Air date of the episode |
+| `id` | `int` | No | Unique identifier for the episode |
+| `number` | `int` | No | Episode number |
+| `saga` | `string` | No | Saga this episode belongs to |
+| `title` | `string` | No | Title of the episode |
 
 ### Operations
 
@@ -628,10 +628,10 @@ fmt.Println(film.GetName()) // "film"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `releaseDate` | `string` | No |  |
-| `title` | `string` | No |  |
+| `description` | `string` | No | Description of the film |
+| `id` | `int` | No | Unique identifier for the film |
+| `releaseDate` | `string` | No | Release date of the film |
+| `title` | `string` | No | Title of the film |
 
 ### Operations
 
@@ -694,11 +694,11 @@ fmt.Println(fruit.GetName()) // "fruit"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
-| `user` | `string` | No |  |
+| `description` | `string` | No | Description of the Devil Fruit's powers |
+| `id` | `int` | No | Unique identifier for the Devil Fruit |
+| `name` | `string` | No | Name of the Devil Fruit |
+| `type` | `string` | No | Type of Devil Fruit (Paramecia, Zoan, Logia) |
+| `user` | `string` | No | Current or known user of the fruit |
 
 ### Operations
 
@@ -761,10 +761,10 @@ fmt.Println(gear.GetName()) // "gear"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `firstAppearance` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Description of the gear's abilities |
+| `firstAppearance` | `string` | No | First appearance of this gear |
+| `id` | `int` | No | Unique identifier for the gear |
+| `name` | `string` | No | Name of the gear form |
 
 ### Operations
 
@@ -827,10 +827,10 @@ fmt.Println(haki.GetName()) // "haki"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `users` | `[]any` | No |  |
+| `description` | `string` | No | Description of the Haki type |
+| `id` | `int` | No | Unique identifier for the Haki type |
+| `name` | `string` | No | Name of the Haki type |
+| `users` | `[]any` | No | Known users of this Haki type |
 
 ### Operations
 
@@ -893,11 +893,11 @@ fmt.Println(location.GetName()) // "location"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `firstAppearance` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `description` | `string` | No | Description of the location |
+| `firstAppearance` | `string` | No | First appearance of this location |
+| `id` | `int` | No | Unique identifier for the location |
+| `name` | `string` | No | Name of the location |
+| `type` | `string` | No | Type of location (island, sea, etc.) |
 
 ### Operations
 
@@ -960,11 +960,11 @@ fmt.Println(saga.GetName()) // "saga"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapters` | `[]any` | No |  |
-| `description` | `string` | No |  |
-| `episodes` | `[]any` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `chapters` | `[]any` | No | Chapter IDs included in this saga |
+| `description` | `string` | No | Description of the saga |
+| `episodes` | `[]any` | No | Episode IDs included in this saga |
+| `id` | `int` | No | Unique identifier for the saga |
+| `name` | `string` | No | Name of the saga |
 
 ### Operations
 
@@ -1027,11 +1027,11 @@ fmt.Println(sword.GetName()) // "sword"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `grade` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `owner` | `string` | No |  |
+| `description` | `string` | No | Description of the sword |
+| `grade` | `string` | No | Grade of the sword |
+| `id` | `int` | No | Unique identifier for the sword |
+| `name` | `string` | No | Name of the sword |
+| `owner` | `string` | No | Current owner of the sword |
 
 ### Operations
 
@@ -1094,10 +1094,10 @@ fmt.Println(technique.GetName()) // "technique"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `gear` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Description of the technique |
+| `gear` | `string` | No | Associated gear form if applicable |
+| `id` | `int` | No | Unique identifier for the technique |
+| `name` | `string` | No | Name of the technique |
 
 ### Operations
 
@@ -1160,11 +1160,11 @@ fmt.Println(volume.GetName()) // "volume"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapters` | `[]any` | No |  |
-| `id` | `int` | No |  |
-| `number` | `int` | No |  |
-| `releaseDate` | `string` | No |  |
-| `title` | `string` | No |  |
+| `chapters` | `[]any` | No | Chapter IDs included in this volume |
+| `id` | `int` | No | Unique identifier for the volume |
+| `number` | `int` | No | Volume number |
+| `releaseDate` | `string` | No | Release date of the volume |
+| `title` | `string` | No | Title of the volume |
 
 ### Operations
 

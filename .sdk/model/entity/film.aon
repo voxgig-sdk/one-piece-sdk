@@ -1,0 +1,94 @@
+# Entity: film
+
+main: kit: entity: film: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "description"
+      req: false
+      short: "Description of the film"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the film"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "releaseDate"
+      req: false
+      short: "Release date of the film"
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      short: "Title of the film"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "film"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/films"
+          parts: [
+            "films"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/films/{id}"
+          parts: [
+            "films"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

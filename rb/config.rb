@@ -19,6 +19,9 @@ module OnePieceConfig
     {
       "main" => {
         "name" => "OnePiece",
+        "slug" => "one-piece",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -56,22 +59,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "crew",
+              "short" => "Crew that owns the boat",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Description of the boat",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the boat",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the boat/ship",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Type of vessel",
               "type" => "`$STRING`",
             },
           ],
@@ -141,18 +149,22 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the bow",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the bow",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the bow",
               "type" => "`$STRING`",
             },
             {
               "name" => "owner",
+              "short" => "Owner of the bow",
               "type" => "`$STRING`",
             },
           ],
@@ -222,22 +234,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "id",
+              "short" => "Unique identifier for the chapter",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "number",
+              "short" => "Chapter number",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "releaseDate",
+              "short" => "Release date of the chapter",
               "type" => "`$STRING`",
             },
             {
               "name" => "saga",
+              "short" => "Saga this chapter belongs to",
               "type" => "`$STRING`",
             },
             {
               "name" => "title",
+              "short" => "Title of the chapter",
               "type" => "`$STRING`",
             },
           ],
@@ -307,30 +324,37 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "age",
+              "short" => "Age of the character",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "bounty",
+              "short" => "Bounty of the character",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "crew",
+              "short" => "Crew affiliation",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Description of the character",
               "type" => "`$STRING`",
             },
             {
               "name" => "devilFruit",
+              "short" => "Devil Fruit ability if applicable",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the character",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the character",
               "type" => "`$STRING`",
             },
           ],
@@ -400,26 +424,32 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "captain",
+              "short" => "Captain of the crew",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Description of the crew",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the crew",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "members",
+              "short" => "Members of the crew",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "name",
+              "short" => "Name of the crew",
               "type" => "`$STRING`",
             },
             {
               "name" => "ship",
+              "short" => "Name of the crew's ship",
               "type" => "`$STRING`",
             },
           ],
@@ -489,18 +519,22 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the dial's function",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the dial",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the dial",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Type of dial",
               "type" => "`$STRING`",
             },
           ],
@@ -570,22 +604,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "airDate",
+              "short" => "Air date of the episode",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the episode",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "number",
+              "short" => "Episode number",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "saga",
+              "short" => "Saga this episode belongs to",
               "type" => "`$STRING`",
             },
             {
               "name" => "title",
+              "short" => "Title of the episode",
               "type" => "`$STRING`",
             },
           ],
@@ -655,18 +694,22 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the film",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the film",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "releaseDate",
+              "short" => "Release date of the film",
               "type" => "`$STRING`",
             },
             {
               "name" => "title",
+              "short" => "Title of the film",
               "type" => "`$STRING`",
             },
           ],
@@ -736,22 +779,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the Devil Fruit's powers",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the Devil Fruit",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the Devil Fruit",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Type of Devil Fruit (Paramecia, Zoan, Logia)",
               "type" => "`$STRING`",
             },
             {
               "name" => "user",
+              "short" => "Current or known user of the fruit",
               "type" => "`$STRING`",
             },
           ],
@@ -821,18 +869,22 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the gear's abilities",
               "type" => "`$STRING`",
             },
             {
               "name" => "firstAppearance",
+              "short" => "First appearance of this gear",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the gear",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the gear form",
               "type" => "`$STRING`",
             },
           ],
@@ -902,18 +954,22 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the Haki type",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the Haki type",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the Haki type",
               "type" => "`$STRING`",
             },
             {
               "name" => "users",
+              "short" => "Known users of this Haki type",
               "type" => "`$ARRAY`",
             },
           ],
@@ -983,22 +1039,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the location",
               "type" => "`$STRING`",
             },
             {
               "name" => "firstAppearance",
+              "short" => "First appearance of this location",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the location",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the location",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Type of location (island, sea, etc.)",
               "type" => "`$STRING`",
             },
           ],
@@ -1068,22 +1129,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "chapters",
+              "short" => "Chapter IDs included in this saga",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "description",
+              "short" => "Description of the saga",
               "type" => "`$STRING`",
             },
             {
               "name" => "episodes",
+              "short" => "Episode IDs included in this saga",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the saga",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the saga",
               "type" => "`$STRING`",
             },
           ],
@@ -1153,22 +1219,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the sword",
               "type" => "`$STRING`",
             },
             {
               "name" => "grade",
+              "short" => "Grade of the sword",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the sword",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the sword",
               "type" => "`$STRING`",
             },
             {
               "name" => "owner",
+              "short" => "Current owner of the sword",
               "type" => "`$STRING`",
             },
           ],
@@ -1238,18 +1309,22 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Description of the technique",
               "type" => "`$STRING`",
             },
             {
               "name" => "gear",
+              "short" => "Associated gear form if applicable",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the technique",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Name of the technique",
               "type" => "`$STRING`",
             },
           ],
@@ -1319,22 +1394,27 @@ module OnePieceConfig
           "fields" => [
             {
               "name" => "chapters",
+              "short" => "Chapter IDs included in this volume",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the volume",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "number",
+              "short" => "Volume number",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "releaseDate",
+              "short" => "Release date of the volume",
               "type" => "`$STRING`",
             },
             {
               "name" => "title",
+              "short" => "Title of the volume",
               "type" => "`$STRING`",
             },
           ],

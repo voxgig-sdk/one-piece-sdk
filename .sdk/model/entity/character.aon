@@ -1,0 +1,112 @@
+# Entity: character
+
+main: kit: entity: character: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "age"
+      req: false
+      short: "Age of the character"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "bounty"
+      req: false
+      short: "Bounty of the character"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "crew"
+      req: false
+      short: "Crew affiliation"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Description of the character"
+      type: "`$STRING`"
+    }
+    {
+      name: "devilFruit"
+      req: false
+      short: "Devil Fruit ability if applicable"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the character"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the character"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "character"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/characters"
+          parts: [
+            "characters"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/characters/{id}"
+          parts: [
+            "characters"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

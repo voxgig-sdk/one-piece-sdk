@@ -268,11 +268,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `crew` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `type` |  |
+| `crew` | Crew that owns the boat |
+| `description` | Description of the boat |
+| `id` | Unique identifier for the boat |
+| `name` | Name of the boat/ship |
+| `type` | Type of vessel |
 
 Operations: List, Load.
 
@@ -282,10 +282,10 @@ API path: `/boats`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `owner` |  |
+| `description` | Description of the bow |
+| `id` | Unique identifier for the bow |
+| `name` | Name of the bow |
+| `owner` | Owner of the bow |
 
 Operations: List, Load.
 
@@ -295,11 +295,11 @@ API path: `/bows`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `number` |  |
-| `releaseDate` |  |
-| `saga` |  |
-| `title` |  |
+| `id` | Unique identifier for the chapter |
+| `number` | Chapter number |
+| `releaseDate` | Release date of the chapter |
+| `saga` | Saga this chapter belongs to |
+| `title` | Title of the chapter |
 
 Operations: List, Load.
 
@@ -309,13 +309,13 @@ API path: `/chapters`
 
 | Field | Description |
 | --- | --- |
-| `age` |  |
-| `bounty` |  |
-| `crew` |  |
-| `description` |  |
-| `devilFruit` |  |
-| `id` |  |
-| `name` |  |
+| `age` | Age of the character |
+| `bounty` | Bounty of the character |
+| `crew` | Crew affiliation |
+| `description` | Description of the character |
+| `devilFruit` | Devil Fruit ability if applicable |
+| `id` | Unique identifier for the character |
+| `name` | Name of the character |
 
 Operations: List, Load.
 
@@ -325,12 +325,12 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `captain` |  |
-| `description` |  |
-| `id` |  |
-| `members` |  |
-| `name` |  |
-| `ship` |  |
+| `captain` | Captain of the crew |
+| `description` | Description of the crew |
+| `id` | Unique identifier for the crew |
+| `members` | Members of the crew |
+| `name` | Name of the crew |
+| `ship` | Name of the crew's ship |
 
 Operations: List, Load.
 
@@ -340,10 +340,10 @@ API path: `/crews`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `type` |  |
+| `description` | Description of the dial's function |
+| `id` | Unique identifier for the dial |
+| `name` | Name of the dial |
+| `type` | Type of dial |
 
 Operations: List, Load.
 
@@ -353,11 +353,11 @@ API path: `/dials`
 
 | Field | Description |
 | --- | --- |
-| `airDate` |  |
-| `id` |  |
-| `number` |  |
-| `saga` |  |
-| `title` |  |
+| `airDate` | Air date of the episode |
+| `id` | Unique identifier for the episode |
+| `number` | Episode number |
+| `saga` | Saga this episode belongs to |
+| `title` | Title of the episode |
 
 Operations: List, Load.
 
@@ -367,10 +367,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `releaseDate` |  |
-| `title` |  |
+| `description` | Description of the film |
+| `id` | Unique identifier for the film |
+| `releaseDate` | Release date of the film |
+| `title` | Title of the film |
 
 Operations: List, Load.
 
@@ -380,11 +380,11 @@ API path: `/films`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `type` |  |
-| `user` |  |
+| `description` | Description of the Devil Fruit's powers |
+| `id` | Unique identifier for the Devil Fruit |
+| `name` | Name of the Devil Fruit |
+| `type` | Type of Devil Fruit (Paramecia, Zoan, Logia) |
+| `user` | Current or known user of the fruit |
 
 Operations: List, Load.
 
@@ -394,10 +394,10 @@ API path: `/fruits`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `firstAppearance` |  |
-| `id` |  |
-| `name` |  |
+| `description` | Description of the gear's abilities |
+| `firstAppearance` | First appearance of this gear |
+| `id` | Unique identifier for the gear |
+| `name` | Name of the gear form |
 
 Operations: List, Load.
 
@@ -407,10 +407,10 @@ API path: `/gears`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `users` |  |
+| `description` | Description of the Haki type |
+| `id` | Unique identifier for the Haki type |
+| `name` | Name of the Haki type |
+| `users` | Known users of this Haki type |
 
 Operations: List, Load.
 
@@ -420,11 +420,11 @@ API path: `/hakis`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `firstAppearance` |  |
-| `id` |  |
-| `name` |  |
-| `type` |  |
+| `description` | Description of the location |
+| `firstAppearance` | First appearance of this location |
+| `id` | Unique identifier for the location |
+| `name` | Name of the location |
+| `type` | Type of location (island, sea, etc.) |
 
 Operations: List, Load.
 
@@ -434,11 +434,11 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `chapters` |  |
-| `description` |  |
-| `episodes` |  |
-| `id` |  |
-| `name` |  |
+| `chapters` | Chapter IDs included in this saga |
+| `description` | Description of the saga |
+| `episodes` | Episode IDs included in this saga |
+| `id` | Unique identifier for the saga |
+| `name` | Name of the saga |
 
 Operations: List, Load.
 
@@ -448,11 +448,11 @@ API path: `/sagas`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `grade` |  |
-| `id` |  |
-| `name` |  |
-| `owner` |  |
+| `description` | Description of the sword |
+| `grade` | Grade of the sword |
+| `id` | Unique identifier for the sword |
+| `name` | Name of the sword |
+| `owner` | Current owner of the sword |
 
 Operations: List, Load.
 
@@ -462,10 +462,10 @@ API path: `/swords`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `gear` |  |
-| `id` |  |
-| `name` |  |
+| `description` | Description of the technique |
+| `gear` | Associated gear form if applicable |
+| `id` | Unique identifier for the technique |
+| `name` | Name of the technique |
 
 Operations: List, Load.
 
@@ -475,11 +475,11 @@ API path: `/techniques`
 
 | Field | Description |
 | --- | --- |
-| `chapters` |  |
-| `id` |  |
-| `number` |  |
-| `releaseDate` |  |
-| `title` |  |
+| `chapters` | Chapter IDs included in this volume |
+| `id` | Unique identifier for the volume |
+| `number` | Volume number |
+| `releaseDate` | Release date of the volume |
+| `title` | Title of the volume |
 
 Operations: List, Load.
 
@@ -505,11 +505,11 @@ Create an instance: `boat = client.Boat`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crew` | `String` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `type` | `String` |  |
+| `crew` | `String` | Crew that owns the boat |
+| `description` | `String` | Description of the boat |
+| `id` | `Integer` | Unique identifier for the boat |
+| `name` | `String` | Name of the boat/ship |
+| `type` | `String` | Type of vessel |
 
 #### Example: Load
 
@@ -541,10 +541,10 @@ Create an instance: `bow = client.Bow`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `owner` | `String` |  |
+| `description` | `String` | Description of the bow |
+| `id` | `Integer` | Unique identifier for the bow |
+| `name` | `String` | Name of the bow |
+| `owner` | `String` | Owner of the bow |
 
 #### Example: Load
 
@@ -576,11 +576,11 @@ Create an instance: `chapter = client.Chapter`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `Integer` |  |
-| `number` | `Integer` |  |
-| `releaseDate` | `String` |  |
-| `saga` | `String` |  |
-| `title` | `String` |  |
+| `id` | `Integer` | Unique identifier for the chapter |
+| `number` | `Integer` | Chapter number |
+| `releaseDate` | `String` | Release date of the chapter |
+| `saga` | `String` | Saga this chapter belongs to |
+| `title` | `String` | Title of the chapter |
 
 #### Example: Load
 
@@ -612,13 +612,13 @@ Create an instance: `character = client.Character`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `age` | `Integer` |  |
-| `bounty` | `Integer` |  |
-| `crew` | `String` |  |
-| `description` | `String` |  |
-| `devilFruit` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
+| `age` | `Integer` | Age of the character |
+| `bounty` | `Integer` | Bounty of the character |
+| `crew` | `String` | Crew affiliation |
+| `description` | `String` | Description of the character |
+| `devilFruit` | `String` | Devil Fruit ability if applicable |
+| `id` | `Integer` | Unique identifier for the character |
+| `name` | `String` | Name of the character |
 
 #### Example: Load
 
@@ -650,12 +650,12 @@ Create an instance: `crew = client.Crew`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `captain` | `String` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `members` | `Array` |  |
-| `name` | `String` |  |
-| `ship` | `String` |  |
+| `captain` | `String` | Captain of the crew |
+| `description` | `String` | Description of the crew |
+| `id` | `Integer` | Unique identifier for the crew |
+| `members` | `Array` | Members of the crew |
+| `name` | `String` | Name of the crew |
+| `ship` | `String` | Name of the crew's ship |
 
 #### Example: Load
 
@@ -687,10 +687,10 @@ Create an instance: `dial = client.Dial`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `type` | `String` |  |
+| `description` | `String` | Description of the dial's function |
+| `id` | `Integer` | Unique identifier for the dial |
+| `name` | `String` | Name of the dial |
+| `type` | `String` | Type of dial |
 
 #### Example: Load
 
@@ -722,11 +722,11 @@ Create an instance: `episode = client.Episode`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `airDate` | `String` |  |
-| `id` | `Integer` |  |
-| `number` | `Integer` |  |
-| `saga` | `String` |  |
-| `title` | `String` |  |
+| `airDate` | `String` | Air date of the episode |
+| `id` | `Integer` | Unique identifier for the episode |
+| `number` | `Integer` | Episode number |
+| `saga` | `String` | Saga this episode belongs to |
+| `title` | `String` | Title of the episode |
 
 #### Example: Load
 
@@ -758,10 +758,10 @@ Create an instance: `film = client.Film`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `releaseDate` | `String` |  |
-| `title` | `String` |  |
+| `description` | `String` | Description of the film |
+| `id` | `Integer` | Unique identifier for the film |
+| `releaseDate` | `String` | Release date of the film |
+| `title` | `String` | Title of the film |
 
 #### Example: Load
 
@@ -793,11 +793,11 @@ Create an instance: `fruit = client.Fruit`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `type` | `String` |  |
-| `user` | `String` |  |
+| `description` | `String` | Description of the Devil Fruit's powers |
+| `id` | `Integer` | Unique identifier for the Devil Fruit |
+| `name` | `String` | Name of the Devil Fruit |
+| `type` | `String` | Type of Devil Fruit (Paramecia, Zoan, Logia) |
+| `user` | `String` | Current or known user of the fruit |
 
 #### Example: Load
 
@@ -829,10 +829,10 @@ Create an instance: `gear = client.Gear`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `firstAppearance` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
+| `description` | `String` | Description of the gear's abilities |
+| `firstAppearance` | `String` | First appearance of this gear |
+| `id` | `Integer` | Unique identifier for the gear |
+| `name` | `String` | Name of the gear form |
 
 #### Example: Load
 
@@ -864,10 +864,10 @@ Create an instance: `haki = client.Haki`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `users` | `Array` |  |
+| `description` | `String` | Description of the Haki type |
+| `id` | `Integer` | Unique identifier for the Haki type |
+| `name` | `String` | Name of the Haki type |
+| `users` | `Array` | Known users of this Haki type |
 
 #### Example: Load
 
@@ -899,11 +899,11 @@ Create an instance: `location = client.Location`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `firstAppearance` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `type` | `String` |  |
+| `description` | `String` | Description of the location |
+| `firstAppearance` | `String` | First appearance of this location |
+| `id` | `Integer` | Unique identifier for the location |
+| `name` | `String` | Name of the location |
+| `type` | `String` | Type of location (island, sea, etc.) |
 
 #### Example: Load
 
@@ -935,11 +935,11 @@ Create an instance: `saga = client.Saga`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapters` | `Array` |  |
-| `description` | `String` |  |
-| `episodes` | `Array` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
+| `chapters` | `Array` | Chapter IDs included in this saga |
+| `description` | `String` | Description of the saga |
+| `episodes` | `Array` | Episode IDs included in this saga |
+| `id` | `Integer` | Unique identifier for the saga |
+| `name` | `String` | Name of the saga |
 
 #### Example: Load
 
@@ -971,11 +971,11 @@ Create an instance: `sword = client.Sword`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `grade` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `owner` | `String` |  |
+| `description` | `String` | Description of the sword |
+| `grade` | `String` | Grade of the sword |
+| `id` | `Integer` | Unique identifier for the sword |
+| `name` | `String` | Name of the sword |
+| `owner` | `String` | Current owner of the sword |
 
 #### Example: Load
 
@@ -1007,10 +1007,10 @@ Create an instance: `technique = client.Technique`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `gear` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
+| `description` | `String` | Description of the technique |
+| `gear` | `String` | Associated gear form if applicable |
+| `id` | `Integer` | Unique identifier for the technique |
+| `name` | `String` | Name of the technique |
 
 #### Example: Load
 
@@ -1042,11 +1042,11 @@ Create an instance: `volume = client.Volume`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chapters` | `Array` |  |
-| `id` | `Integer` |  |
-| `number` | `Integer` |  |
-| `releaseDate` | `String` |  |
-| `title` | `String` |  |
+| `chapters` | `Array` | Chapter IDs included in this volume |
+| `id` | `Integer` | Unique identifier for the volume |
+| `number` | `Integer` | Volume number |
+| `releaseDate` | `String` | Release date of the volume |
+| `title` | `String` | Title of the volume |
 
 #### Example: Load
 

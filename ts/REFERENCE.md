@@ -296,11 +296,11 @@ const boat = client.Boat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `crew` | `string` | No | Crew that owns the boat |
+| `description` | `string` | No | Description of the boat |
+| `id` | `number` | No | Unique identifier for the boat |
+| `name` | `string` | No | Name of the boat/ship |
+| `type` | `string` | No | Type of vessel |
 
 ### Operations
 
@@ -358,10 +358,10 @@ const bow = client.Bow()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `owner` | `string` | No |  |
+| `description` | `string` | No | Description of the bow |
+| `id` | `number` | No | Unique identifier for the bow |
+| `name` | `string` | No | Name of the bow |
+| `owner` | `string` | No | Owner of the bow |
 
 ### Operations
 
@@ -419,11 +419,11 @@ const chapter = client.Chapter()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `number` | `number` | No |  |
-| `releaseDate` | `string` | No |  |
-| `saga` | `string` | No |  |
-| `title` | `string` | No |  |
+| `id` | `number` | No | Unique identifier for the chapter |
+| `number` | `number` | No | Chapter number |
+| `releaseDate` | `string` | No | Release date of the chapter |
+| `saga` | `string` | No | Saga this chapter belongs to |
+| `title` | `string` | No | Title of the chapter |
 
 ### Operations
 
@@ -481,13 +481,13 @@ const character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | `number` | No |  |
-| `bounty` | `number` | No |  |
-| `crew` | `string` | No |  |
-| `description` | `string` | No |  |
-| `devilFruit` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `age` | `number` | No | Age of the character |
+| `bounty` | `number` | No | Bounty of the character |
+| `crew` | `string` | No | Crew affiliation |
+| `description` | `string` | No | Description of the character |
+| `devilFruit` | `string` | No | Devil Fruit ability if applicable |
+| `id` | `number` | No | Unique identifier for the character |
+| `name` | `string` | No | Name of the character |
 
 ### Operations
 
@@ -545,12 +545,12 @@ const crew = client.Crew()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `members` | `any[]` | No |  |
-| `name` | `string` | No |  |
-| `ship` | `string` | No |  |
+| `captain` | `string` | No | Captain of the crew |
+| `description` | `string` | No | Description of the crew |
+| `id` | `number` | No | Unique identifier for the crew |
+| `members` | `any[]` | No | Members of the crew |
+| `name` | `string` | No | Name of the crew |
+| `ship` | `string` | No | Name of the crew's ship |
 
 ### Operations
 
@@ -608,10 +608,10 @@ const dial = client.Dial()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `description` | `string` | No | Description of the dial's function |
+| `id` | `number` | No | Unique identifier for the dial |
+| `name` | `string` | No | Name of the dial |
+| `type` | `string` | No | Type of dial |
 
 ### Operations
 
@@ -669,11 +669,11 @@ const episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `airDate` | `string` | No |  |
-| `id` | `number` | No |  |
-| `number` | `number` | No |  |
-| `saga` | `string` | No |  |
-| `title` | `string` | No |  |
+| `airDate` | `string` | No | Air date of the episode |
+| `id` | `number` | No | Unique identifier for the episode |
+| `number` | `number` | No | Episode number |
+| `saga` | `string` | No | Saga this episode belongs to |
+| `title` | `string` | No | Title of the episode |
 
 ### Operations
 
@@ -731,10 +731,10 @@ const film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `releaseDate` | `string` | No |  |
-| `title` | `string` | No |  |
+| `description` | `string` | No | Description of the film |
+| `id` | `number` | No | Unique identifier for the film |
+| `releaseDate` | `string` | No | Release date of the film |
+| `title` | `string` | No | Title of the film |
 
 ### Operations
 
@@ -792,11 +792,11 @@ const fruit = client.Fruit()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
-| `user` | `string` | No |  |
+| `description` | `string` | No | Description of the Devil Fruit's powers |
+| `id` | `number` | No | Unique identifier for the Devil Fruit |
+| `name` | `string` | No | Name of the Devil Fruit |
+| `type` | `string` | No | Type of Devil Fruit (Paramecia, Zoan, Logia) |
+| `user` | `string` | No | Current or known user of the fruit |
 
 ### Operations
 
@@ -854,10 +854,10 @@ const gear = client.Gear()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `firstAppearance` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Description of the gear's abilities |
+| `firstAppearance` | `string` | No | First appearance of this gear |
+| `id` | `number` | No | Unique identifier for the gear |
+| `name` | `string` | No | Name of the gear form |
 
 ### Operations
 
@@ -915,10 +915,10 @@ const haki = client.Haki()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `users` | `any[]` | No |  |
+| `description` | `string` | No | Description of the Haki type |
+| `id` | `number` | No | Unique identifier for the Haki type |
+| `name` | `string` | No | Name of the Haki type |
+| `users` | `any[]` | No | Known users of this Haki type |
 
 ### Operations
 
@@ -976,11 +976,11 @@ const location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `firstAppearance` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `description` | `string` | No | Description of the location |
+| `firstAppearance` | `string` | No | First appearance of this location |
+| `id` | `number` | No | Unique identifier for the location |
+| `name` | `string` | No | Name of the location |
+| `type` | `string` | No | Type of location (island, sea, etc.) |
 
 ### Operations
 
@@ -1038,11 +1038,11 @@ const saga = client.Saga()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapters` | `any[]` | No |  |
-| `description` | `string` | No |  |
-| `episodes` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `chapters` | `any[]` | No | Chapter IDs included in this saga |
+| `description` | `string` | No | Description of the saga |
+| `episodes` | `any[]` | No | Episode IDs included in this saga |
+| `id` | `number` | No | Unique identifier for the saga |
+| `name` | `string` | No | Name of the saga |
 
 ### Operations
 
@@ -1100,11 +1100,11 @@ const sword = client.Sword()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `grade` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `owner` | `string` | No |  |
+| `description` | `string` | No | Description of the sword |
+| `grade` | `string` | No | Grade of the sword |
+| `id` | `number` | No | Unique identifier for the sword |
+| `name` | `string` | No | Name of the sword |
+| `owner` | `string` | No | Current owner of the sword |
 
 ### Operations
 
@@ -1162,10 +1162,10 @@ const technique = client.Technique()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `gear` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Description of the technique |
+| `gear` | `string` | No | Associated gear form if applicable |
+| `id` | `number` | No | Unique identifier for the technique |
+| `name` | `string` | No | Name of the technique |
 
 ### Operations
 
@@ -1223,11 +1223,11 @@ const volume = client.Volume()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapters` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `number` | `number` | No |  |
-| `releaseDate` | `string` | No |  |
-| `title` | `string` | No |  |
+| `chapters` | `any[]` | No | Chapter IDs included in this volume |
+| `id` | `number` | No | Unique identifier for the volume |
+| `number` | `number` | No | Volume number |
+| `releaseDate` | `string` | No | Release date of the volume |
+| `title` | `string` | No | Title of the volume |
 
 ### Operations
 

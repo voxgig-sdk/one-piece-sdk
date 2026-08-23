@@ -36,30 +36,35 @@
               "active": true,
               "name": "crew",
               "req": false,
+              "short": "Crew that owns the boat",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the boat",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the boat",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the boat/ship",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of vessel",
               "type": "`$STRING`"
             }
           ],
@@ -142,24 +147,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the bow",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the bow",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the bow",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "Owner of the bow",
               "type": "`$STRING`"
             }
           ],
@@ -242,30 +251,35 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the chapter",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "number",
               "req": false,
+              "short": "Chapter number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "releaseDate",
               "req": false,
+              "short": "Release date of the chapter",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "saga",
               "req": false,
+              "short": "Saga this chapter belongs to",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the chapter",
               "type": "`$STRING`"
             }
           ],
@@ -348,42 +362,49 @@
               "active": true,
               "name": "age",
               "req": false,
+              "short": "Age of the character",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "bounty",
               "req": false,
+              "short": "Bounty of the character",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "crew",
               "req": false,
+              "short": "Crew affiliation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the character",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "devilFruit",
               "req": false,
+              "short": "Devil Fruit ability if applicable",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the character",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the character",
               "type": "`$STRING`"
             }
           ],
@@ -466,36 +487,42 @@
               "active": true,
               "name": "captain",
               "req": false,
+              "short": "Captain of the crew",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the crew",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the crew",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "members",
               "req": false,
+              "short": "Members of the crew",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the crew",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ship",
               "req": false,
+              "short": "Name of the crew's ship",
               "type": "`$STRING`"
             }
           ],
@@ -578,24 +605,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the dial's function",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the dial",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the dial",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of dial",
               "type": "`$STRING`"
             }
           ],
@@ -678,30 +709,35 @@
               "active": true,
               "name": "airDate",
               "req": false,
+              "short": "Air date of the episode",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the episode",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "number",
               "req": false,
+              "short": "Episode number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "saga",
               "req": false,
+              "short": "Saga this episode belongs to",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the episode",
               "type": "`$STRING`"
             }
           ],
@@ -784,24 +820,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the film",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "releaseDate",
               "req": false,
+              "short": "Release date of the film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the film",
               "type": "`$STRING`"
             }
           ],
@@ -884,30 +924,35 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the Devil Fruit's powers",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the Devil Fruit",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the Devil Fruit",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of Devil Fruit (Paramecia, Zoan, Logia)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "user",
               "req": false,
+              "short": "Current or known user of the fruit",
               "type": "`$STRING`"
             }
           ],
@@ -990,24 +1035,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the gear's abilities",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "firstAppearance",
               "req": false,
+              "short": "First appearance of this gear",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the gear",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the gear form",
               "type": "`$STRING`"
             }
           ],
@@ -1090,24 +1139,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the Haki type",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the Haki type",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the Haki type",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "users",
               "req": false,
+              "short": "Known users of this Haki type",
               "type": "`$ARRAY`"
             }
           ],
@@ -1190,30 +1243,35 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "firstAppearance",
               "req": false,
+              "short": "First appearance of this location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the location",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of location (island, sea, etc.)",
               "type": "`$STRING`"
             }
           ],
@@ -1296,30 +1354,35 @@
               "active": true,
               "name": "chapters",
               "req": false,
+              "short": "Chapter IDs included in this saga",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the saga",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "episodes",
               "req": false,
+              "short": "Episode IDs included in this saga",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the saga",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the saga",
               "type": "`$STRING`"
             }
           ],
@@ -1402,30 +1465,35 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the sword",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "grade",
               "req": false,
+              "short": "Grade of the sword",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the sword",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the sword",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "Current owner of the sword",
               "type": "`$STRING`"
             }
           ],
@@ -1508,24 +1576,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Description of the technique",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gear",
               "req": false,
+              "short": "Associated gear form if applicable",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the technique",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the technique",
               "type": "`$STRING`"
             }
           ],
@@ -1608,30 +1680,35 @@
               "active": true,
               "name": "chapters",
               "req": false,
+              "short": "Chapter IDs included in this volume",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the volume",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "number",
               "req": false,
+              "short": "Volume number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "releaseDate",
               "req": false,
+              "short": "Release date of the volume",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the volume",
               "type": "`$STRING`"
             }
           ],

@@ -153,11 +153,11 @@ boat = client.Boat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crew` | `String` | No |  |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `type` | `String` | No |  |
+| `crew` | `String` | No | Crew that owns the boat |
+| `description` | `String` | No | Description of the boat |
+| `id` | `Integer` | No | Unique identifier for the boat |
+| `name` | `String` | No | Name of the boat/ship |
+| `type` | `String` | No | Type of vessel |
 
 ### Operations
 
@@ -217,10 +217,10 @@ bow = client.Bow
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `owner` | `String` | No |  |
+| `description` | `String` | No | Description of the bow |
+| `id` | `Integer` | No | Unique identifier for the bow |
+| `name` | `String` | No | Name of the bow |
+| `owner` | `String` | No | Owner of the bow |
 
 ### Operations
 
@@ -280,11 +280,11 @@ chapter = client.Chapter
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `number` | `Integer` | No |  |
-| `releaseDate` | `String` | No |  |
-| `saga` | `String` | No |  |
-| `title` | `String` | No |  |
+| `id` | `Integer` | No | Unique identifier for the chapter |
+| `number` | `Integer` | No | Chapter number |
+| `releaseDate` | `String` | No | Release date of the chapter |
+| `saga` | `String` | No | Saga this chapter belongs to |
+| `title` | `String` | No | Title of the chapter |
 
 ### Operations
 
@@ -344,13 +344,13 @@ character = client.Character
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `age` | `Integer` | No |  |
-| `bounty` | `Integer` | No |  |
-| `crew` | `String` | No |  |
-| `description` | `String` | No |  |
-| `devilFruit` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `age` | `Integer` | No | Age of the character |
+| `bounty` | `Integer` | No | Bounty of the character |
+| `crew` | `String` | No | Crew affiliation |
+| `description` | `String` | No | Description of the character |
+| `devilFruit` | `String` | No | Devil Fruit ability if applicable |
+| `id` | `Integer` | No | Unique identifier for the character |
+| `name` | `String` | No | Name of the character |
 
 ### Operations
 
@@ -410,12 +410,12 @@ crew = client.Crew
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `captain` | `String` | No |  |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `members` | `Array` | No |  |
-| `name` | `String` | No |  |
-| `ship` | `String` | No |  |
+| `captain` | `String` | No | Captain of the crew |
+| `description` | `String` | No | Description of the crew |
+| `id` | `Integer` | No | Unique identifier for the crew |
+| `members` | `Array` | No | Members of the crew |
+| `name` | `String` | No | Name of the crew |
+| `ship` | `String` | No | Name of the crew's ship |
 
 ### Operations
 
@@ -475,10 +475,10 @@ dial = client.Dial
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `type` | `String` | No |  |
+| `description` | `String` | No | Description of the dial's function |
+| `id` | `Integer` | No | Unique identifier for the dial |
+| `name` | `String` | No | Name of the dial |
+| `type` | `String` | No | Type of dial |
 
 ### Operations
 
@@ -538,11 +538,11 @@ episode = client.Episode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `airDate` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `number` | `Integer` | No |  |
-| `saga` | `String` | No |  |
-| `title` | `String` | No |  |
+| `airDate` | `String` | No | Air date of the episode |
+| `id` | `Integer` | No | Unique identifier for the episode |
+| `number` | `Integer` | No | Episode number |
+| `saga` | `String` | No | Saga this episode belongs to |
+| `title` | `String` | No | Title of the episode |
 
 ### Operations
 
@@ -602,10 +602,10 @@ film = client.Film
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `releaseDate` | `String` | No |  |
-| `title` | `String` | No |  |
+| `description` | `String` | No | Description of the film |
+| `id` | `Integer` | No | Unique identifier for the film |
+| `releaseDate` | `String` | No | Release date of the film |
+| `title` | `String` | No | Title of the film |
 
 ### Operations
 
@@ -665,11 +665,11 @@ fruit = client.Fruit
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `type` | `String` | No |  |
-| `user` | `String` | No |  |
+| `description` | `String` | No | Description of the Devil Fruit's powers |
+| `id` | `Integer` | No | Unique identifier for the Devil Fruit |
+| `name` | `String` | No | Name of the Devil Fruit |
+| `type` | `String` | No | Type of Devil Fruit (Paramecia, Zoan, Logia) |
+| `user` | `String` | No | Current or known user of the fruit |
 
 ### Operations
 
@@ -729,10 +729,10 @@ gear = client.Gear
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `firstAppearance` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `description` | `String` | No | Description of the gear's abilities |
+| `firstAppearance` | `String` | No | First appearance of this gear |
+| `id` | `Integer` | No | Unique identifier for the gear |
+| `name` | `String` | No | Name of the gear form |
 
 ### Operations
 
@@ -792,10 +792,10 @@ haki = client.Haki
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `users` | `Array` | No |  |
+| `description` | `String` | No | Description of the Haki type |
+| `id` | `Integer` | No | Unique identifier for the Haki type |
+| `name` | `String` | No | Name of the Haki type |
+| `users` | `Array` | No | Known users of this Haki type |
 
 ### Operations
 
@@ -855,11 +855,11 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `firstAppearance` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `type` | `String` | No |  |
+| `description` | `String` | No | Description of the location |
+| `firstAppearance` | `String` | No | First appearance of this location |
+| `id` | `Integer` | No | Unique identifier for the location |
+| `name` | `String` | No | Name of the location |
+| `type` | `String` | No | Type of location (island, sea, etc.) |
 
 ### Operations
 
@@ -919,11 +919,11 @@ saga = client.Saga
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapters` | `Array` | No |  |
-| `description` | `String` | No |  |
-| `episodes` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `chapters` | `Array` | No | Chapter IDs included in this saga |
+| `description` | `String` | No | Description of the saga |
+| `episodes` | `Array` | No | Episode IDs included in this saga |
+| `id` | `Integer` | No | Unique identifier for the saga |
+| `name` | `String` | No | Name of the saga |
 
 ### Operations
 
@@ -983,11 +983,11 @@ sword = client.Sword
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `grade` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `owner` | `String` | No |  |
+| `description` | `String` | No | Description of the sword |
+| `grade` | `String` | No | Grade of the sword |
+| `id` | `Integer` | No | Unique identifier for the sword |
+| `name` | `String` | No | Name of the sword |
+| `owner` | `String` | No | Current owner of the sword |
 
 ### Operations
 
@@ -1047,10 +1047,10 @@ technique = client.Technique
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `gear` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `description` | `String` | No | Description of the technique |
+| `gear` | `String` | No | Associated gear form if applicable |
+| `id` | `Integer` | No | Unique identifier for the technique |
+| `name` | `String` | No | Name of the technique |
 
 ### Operations
 
@@ -1110,11 +1110,11 @@ volume = client.Volume
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chapters` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `number` | `Integer` | No |  |
-| `releaseDate` | `String` | No |  |
-| `title` | `String` | No |  |
+| `chapters` | `Array` | No | Chapter IDs included in this volume |
+| `id` | `Integer` | No | Unique identifier for the volume |
+| `number` | `Integer` | No | Volume number |
+| `releaseDate` | `String` | No | Release date of the volume |
+| `title` | `String` | No | Title of the volume |
 
 ### Operations
 

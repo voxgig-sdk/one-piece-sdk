@@ -1,0 +1,100 @@
+# Entity: episode
+
+main: kit: entity: episode: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "airDate"
+      req: false
+      short: "Air date of the episode"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the episode"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "number"
+      req: false
+      short: "Episode number"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "saga"
+      req: false
+      short: "Saga this episode belongs to"
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      short: "Title of the episode"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "episode"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/episodes"
+          parts: [
+            "episodes"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/episodes/{id}"
+          parts: [
+            "episodes"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
