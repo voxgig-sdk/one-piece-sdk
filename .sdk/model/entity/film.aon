@@ -18,6 +18,7 @@ main: kit: entity: film: {
       type: "`$INTEGER`"
     }
     {
+      format: "date"
       name: "releaseDate"
       req: false
       short: "Release date of the film"
@@ -44,8 +45,10 @@ main: kit: entity: film: {
         {
           method: "GET"
           orig: "/films"
-          parts: [
-            "films"
+          segments: [
+            {
+              lit: "films"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +74,13 @@ main: kit: entity: film: {
           }
           method: "GET"
           orig: "/films/{id}"
-          parts: [
-            "films"
-            "{id}"
+          segments: [
+            {
+              lit: "films"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

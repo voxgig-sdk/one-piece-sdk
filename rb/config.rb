@@ -84,6 +84,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "boat",
           "op" => {
             "list" => {
@@ -95,14 +99,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boats",
-                  "parts" => [
-                    "boats",
+                  "segments" => [
+                    {
+                      "lit" => "boats",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "boats",
+                  ],
                 },
               ],
             },
@@ -125,9 +134,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boats/{id}",
-                  "parts" => [
-                    "boats",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "boats",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -138,6 +151,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "boats",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -169,6 +186,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "bow",
           "op" => {
             "list" => {
@@ -180,14 +201,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bows",
-                  "parts" => [
-                    "bows",
+                  "segments" => [
+                    {
+                      "lit" => "bows",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "bows",
+                  ],
                 },
               ],
             },
@@ -210,9 +236,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bows/{id}",
-                  "parts" => [
-                    "bows",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "bows",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -223,6 +253,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "bows",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -244,6 +278,7 @@ module OnePieceConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date",
               "name" => "releaseDate",
               "short" => "Release date of the chapter",
               "type" => "`$STRING`",
@@ -259,6 +294,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "chapter",
           "op" => {
             "list" => {
@@ -270,14 +309,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/chapters",
-                  "parts" => [
-                    "chapters",
+                  "segments" => [
+                    {
+                      "lit" => "chapters",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "chapters",
+                  ],
                 },
               ],
             },
@@ -300,9 +344,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/chapters/{id}",
-                  "parts" => [
-                    "chapters",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "chapters",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -313,6 +361,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "chapters",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -359,6 +411,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "character",
           "op" => {
             "list" => {
@@ -370,14 +426,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters",
-                  "parts" => [
-                    "characters",
+                  "segments" => [
+                    {
+                      "lit" => "characters",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "characters",
+                  ],
                 },
               ],
             },
@@ -400,9 +461,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters/{id}",
-                  "parts" => [
-                    "characters",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "characters",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -413,6 +478,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "characters",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -454,6 +523,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "crew",
           "op" => {
             "list" => {
@@ -465,14 +538,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/crews",
-                  "parts" => [
-                    "crews",
+                  "segments" => [
+                    {
+                      "lit" => "crews",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "crews",
+                  ],
                 },
               ],
             },
@@ -495,9 +573,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/crews/{id}",
-                  "parts" => [
-                    "crews",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "crews",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -508,6 +590,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "crews",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -539,6 +625,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "dial",
           "op" => {
             "list" => {
@@ -550,14 +640,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dials",
-                  "parts" => [
-                    "dials",
+                  "segments" => [
+                    {
+                      "lit" => "dials",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "dials",
+                  ],
                 },
               ],
             },
@@ -580,9 +675,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dials/{id}",
-                  "parts" => [
-                    "dials",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "dials",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -593,6 +692,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "dials",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -604,6 +707,7 @@ module OnePieceConfig
         "episode" => {
           "fields" => [
             {
+              "format" => "date",
               "name" => "airDate",
               "short" => "Air date of the episode",
               "type" => "`$STRING`",
@@ -629,6 +733,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "episode",
           "op" => {
             "list" => {
@@ -640,14 +748,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/episodes",
-                  "parts" => [
-                    "episodes",
+                  "segments" => [
+                    {
+                      "lit" => "episodes",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "episodes",
+                  ],
                 },
               ],
             },
@@ -670,9 +783,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/episodes/{id}",
-                  "parts" => [
-                    "episodes",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "episodes",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -683,6 +800,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "episodes",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -704,6 +825,7 @@ module OnePieceConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date",
               "name" => "releaseDate",
               "short" => "Release date of the film",
               "type" => "`$STRING`",
@@ -714,6 +836,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "film",
           "op" => {
             "list" => {
@@ -725,14 +851,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/films",
-                  "parts" => [
-                    "films",
+                  "segments" => [
+                    {
+                      "lit" => "films",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "films",
+                  ],
                 },
               ],
             },
@@ -755,9 +886,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/films/{id}",
-                  "parts" => [
-                    "films",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "films",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -768,6 +903,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "films",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -804,6 +943,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "fruit",
           "op" => {
             "list" => {
@@ -815,14 +958,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/fruits",
-                  "parts" => [
-                    "fruits",
+                  "segments" => [
+                    {
+                      "lit" => "fruits",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "fruits",
+                  ],
                 },
               ],
             },
@@ -845,9 +993,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/fruits/{id}",
-                  "parts" => [
-                    "fruits",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "fruits",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -858,6 +1010,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "fruits",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -889,6 +1045,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "gear",
           "op" => {
             "list" => {
@@ -900,14 +1060,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/gears",
-                  "parts" => [
-                    "gears",
+                  "segments" => [
+                    {
+                      "lit" => "gears",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "gears",
+                  ],
                 },
               ],
             },
@@ -930,9 +1095,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/gears/{id}",
-                  "parts" => [
-                    "gears",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "gears",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -943,6 +1112,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "gears",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -974,6 +1147,10 @@ module OnePieceConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "haki",
           "op" => {
             "list" => {
@@ -985,14 +1162,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/hakis",
-                  "parts" => [
-                    "hakis",
+                  "segments" => [
+                    {
+                      "lit" => "hakis",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "hakis",
+                  ],
                 },
               ],
             },
@@ -1015,9 +1197,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/hakis/{id}",
-                  "parts" => [
-                    "hakis",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "hakis",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1028,6 +1214,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "hakis",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1064,6 +1254,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "location",
           "op" => {
             "list" => {
@@ -1075,14 +1269,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations",
-                  "parts" => [
-                    "locations",
+                  "segments" => [
+                    {
+                      "lit" => "locations",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "locations",
+                  ],
                 },
               ],
             },
@@ -1105,9 +1304,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations/{id}",
-                  "parts" => [
-                    "locations",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "locations",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1118,6 +1321,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "locations",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1154,6 +1361,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "saga",
           "op" => {
             "list" => {
@@ -1165,14 +1376,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/sagas",
-                  "parts" => [
-                    "sagas",
+                  "segments" => [
+                    {
+                      "lit" => "sagas",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sagas",
+                  ],
                 },
               ],
             },
@@ -1195,9 +1411,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/sagas/{id}",
-                  "parts" => [
-                    "sagas",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "sagas",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1208,6 +1428,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sagas",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1244,6 +1468,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "sword",
           "op" => {
             "list" => {
@@ -1255,14 +1483,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/swords",
-                  "parts" => [
-                    "swords",
+                  "segments" => [
+                    {
+                      "lit" => "swords",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "swords",
+                  ],
                 },
               ],
             },
@@ -1285,9 +1518,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/swords/{id}",
-                  "parts" => [
-                    "swords",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "swords",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1298,6 +1535,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "swords",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1329,6 +1570,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "technique",
           "op" => {
             "list" => {
@@ -1340,14 +1585,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/techniques",
-                  "parts" => [
-                    "techniques",
+                  "segments" => [
+                    {
+                      "lit" => "techniques",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "techniques",
+                  ],
                 },
               ],
             },
@@ -1370,9 +1620,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/techniques/{id}",
-                  "parts" => [
-                    "techniques",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "techniques",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1383,6 +1637,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "techniques",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1409,6 +1667,7 @@ module OnePieceConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date",
               "name" => "releaseDate",
               "short" => "Release date of the volume",
               "type" => "`$STRING`",
@@ -1419,6 +1678,10 @@ module OnePieceConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "volume",
           "op" => {
             "list" => {
@@ -1430,14 +1693,19 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/volumes",
-                  "parts" => [
-                    "volumes",
+                  "segments" => [
+                    {
+                      "lit" => "volumes",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "volumes",
+                  ],
                 },
               ],
             },
@@ -1460,9 +1728,13 @@ module OnePieceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/volumes/{id}",
-                  "parts" => [
-                    "volumes",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "volumes",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1473,6 +1745,10 @@ module OnePieceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "volumes",
+                    "{id}",
+                  ],
                 },
               ],
             },

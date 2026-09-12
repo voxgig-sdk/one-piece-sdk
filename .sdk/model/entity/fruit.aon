@@ -50,8 +50,10 @@ main: kit: entity: fruit: {
         {
           method: "GET"
           orig: "/fruits"
-          parts: [
-            "fruits"
+          segments: [
+            {
+              lit: "fruits"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: fruit: {
           }
           method: "GET"
           orig: "/fruits/{id}"
-          parts: [
-            "fruits"
-            "{id}"
+          segments: [
+            {
+              lit: "fruits"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

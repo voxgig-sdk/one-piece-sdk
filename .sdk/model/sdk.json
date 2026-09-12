@@ -84,8 +84,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boats",
-                  "parts": [
-                    "boats"
+                  "segments": [
+                    {
+                      "lit": "boats"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -116,9 +118,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boats/{id}",
-                  "parts": [
-                    "boats",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "boats"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -188,8 +194,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bows",
-                  "parts": [
-                    "bows"
+                  "segments": [
+                    {
+                      "lit": "bows"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -220,9 +228,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bows/{id}",
-                  "parts": [
-                    "bows",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "bows"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -263,6 +275,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "releaseDate",
               "req": false,
               "short": "Release date of the chapter",
@@ -299,8 +312,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/chapters",
-                  "parts": [
-                    "chapters"
+                  "segments": [
+                    {
+                      "lit": "chapters"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -331,9 +346,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/chapters/{id}",
-                  "parts": [
-                    "chapters",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "chapters"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -424,8 +443,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/characters",
-                  "parts": [
-                    "characters"
+                  "segments": [
+                    {
+                      "lit": "characters"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -456,9 +477,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/characters/{id}",
-                  "parts": [
-                    "characters",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "characters"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -542,8 +567,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/crews",
-                  "parts": [
-                    "crews"
+                  "segments": [
+                    {
+                      "lit": "crews"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -574,9 +601,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/crews/{id}",
-                  "parts": [
-                    "crews",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "crews"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -646,8 +677,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/dials",
-                  "parts": [
-                    "dials"
+                  "segments": [
+                    {
+                      "lit": "dials"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -678,9 +711,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/dials/{id}",
-                  "parts": [
-                    "dials",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "dials"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -707,6 +744,7 @@
           "fields": [
             {
               "active": true,
+              "format": "date",
               "name": "airDate",
               "req": false,
               "short": "Air date of the episode",
@@ -757,8 +795,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/episodes",
-                  "parts": [
-                    "episodes"
+                  "segments": [
+                    {
+                      "lit": "episodes"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -789,9 +829,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/episodes/{id}",
-                  "parts": [
-                    "episodes",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "episodes"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -832,6 +876,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "releaseDate",
               "req": false,
               "short": "Release date of the film",
@@ -861,8 +906,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/films",
-                  "parts": [
-                    "films"
+                  "segments": [
+                    {
+                      "lit": "films"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -893,9 +940,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/films/{id}",
-                  "parts": [
-                    "films",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "films"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -972,8 +1023,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/fruits",
-                  "parts": [
-                    "fruits"
+                  "segments": [
+                    {
+                      "lit": "fruits"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1004,9 +1057,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/fruits/{id}",
-                  "parts": [
-                    "fruits",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "fruits"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1076,8 +1133,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/gears",
-                  "parts": [
-                    "gears"
+                  "segments": [
+                    {
+                      "lit": "gears"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1108,9 +1167,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/gears/{id}",
-                  "parts": [
-                    "gears",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "gears"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1180,8 +1243,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/hakis",
-                  "parts": [
-                    "hakis"
+                  "segments": [
+                    {
+                      "lit": "hakis"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1212,9 +1277,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/hakis/{id}",
-                  "parts": [
-                    "hakis",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "hakis"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1291,8 +1360,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/locations",
-                  "parts": [
-                    "locations"
+                  "segments": [
+                    {
+                      "lit": "locations"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1323,9 +1394,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/locations/{id}",
-                  "parts": [
-                    "locations",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "locations"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1402,8 +1477,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/sagas",
-                  "parts": [
-                    "sagas"
+                  "segments": [
+                    {
+                      "lit": "sagas"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1434,9 +1511,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/sagas/{id}",
-                  "parts": [
-                    "sagas",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "sagas"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1513,8 +1594,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/swords",
-                  "parts": [
-                    "swords"
+                  "segments": [
+                    {
+                      "lit": "swords"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1545,9 +1628,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/swords/{id}",
-                  "parts": [
-                    "swords",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "swords"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1617,8 +1704,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/techniques",
-                  "parts": [
-                    "techniques"
+                  "segments": [
+                    {
+                      "lit": "techniques"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1649,9 +1738,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/techniques/{id}",
-                  "parts": [
-                    "techniques",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "techniques"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1699,6 +1792,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "releaseDate",
               "req": false,
               "short": "Release date of the volume",
@@ -1728,8 +1822,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/volumes",
-                  "parts": [
-                    "volumes"
+                  "segments": [
+                    {
+                      "lit": "volumes"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1760,9 +1856,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/volumes/{id}",
-                  "parts": [
-                    "volumes",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "volumes"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1846,8 +1946,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -2708,6 +2811,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2733,6 +2839,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -2784,6 +2894,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2808,6 +2919,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -2859,6 +2971,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2883,6 +2996,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -2923,6 +3037,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2948,6 +3065,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -2982,6 +3102,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3007,6 +3130,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -3047,6 +3173,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3072,6 +3201,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -3117,6 +3249,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3142,6 +3277,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -3159,11 +3297,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -3192,6 +3325,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3216,6 +3352,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

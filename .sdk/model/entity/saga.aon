@@ -50,8 +50,10 @@ main: kit: entity: saga: {
         {
           method: "GET"
           orig: "/sagas"
-          parts: [
-            "sagas"
+          segments: [
+            {
+              lit: "sagas"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: saga: {
           }
           method: "GET"
           orig: "/sagas/{id}"
-          parts: [
-            "sagas"
-            "{id}"
+          segments: [
+            {
+              lit: "sagas"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

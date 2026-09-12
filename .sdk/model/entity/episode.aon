@@ -6,6 +6,7 @@ main: kit: entity: episode: {
 
   fields: [
     {
+      format: "date"
       name: "airDate"
       req: false
       short: "Air date of the episode"
@@ -50,8 +51,10 @@ main: kit: entity: episode: {
         {
           method: "GET"
           orig: "/episodes"
-          parts: [
-            "episodes"
+          segments: [
+            {
+              lit: "episodes"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +80,13 @@ main: kit: entity: episode: {
           }
           method: "GET"
           orig: "/episodes/{id}"
-          parts: [
-            "episodes"
-            "{id}"
+          segments: [
+            {
+              lit: "episodes"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

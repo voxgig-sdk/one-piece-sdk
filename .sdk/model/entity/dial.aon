@@ -44,8 +44,10 @@ main: kit: entity: dial: {
         {
           method: "GET"
           orig: "/dials"
-          parts: [
-            "dials"
+          segments: [
+            {
+              lit: "dials"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +73,13 @@ main: kit: entity: dial: {
           }
           method: "GET"
           orig: "/dials/{id}"
-          parts: [
-            "dials"
-            "{id}"
+          segments: [
+            {
+              lit: "dials"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

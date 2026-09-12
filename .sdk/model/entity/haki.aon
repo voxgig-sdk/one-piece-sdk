@@ -44,8 +44,10 @@ main: kit: entity: haki: {
         {
           method: "GET"
           orig: "/hakis"
-          parts: [
-            "hakis"
+          segments: [
+            {
+              lit: "hakis"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +73,13 @@ main: kit: entity: haki: {
           }
           method: "GET"
           orig: "/hakis/{id}"
-          parts: [
-            "hakis"
-            "{id}"
+          segments: [
+            {
+              lit: "hakis"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

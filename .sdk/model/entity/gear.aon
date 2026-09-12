@@ -44,8 +44,10 @@ main: kit: entity: gear: {
         {
           method: "GET"
           orig: "/gears"
-          parts: [
-            "gears"
+          segments: [
+            {
+              lit: "gears"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +73,13 @@ main: kit: entity: gear: {
           }
           method: "GET"
           orig: "/gears/{id}"
-          parts: [
-            "gears"
-            "{id}"
+          segments: [
+            {
+              lit: "gears"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

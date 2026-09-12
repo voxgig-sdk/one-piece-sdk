@@ -44,8 +44,10 @@ main: kit: entity: bow: {
         {
           method: "GET"
           orig: "/bows"
-          parts: [
-            "bows"
+          segments: [
+            {
+              lit: "bows"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +73,13 @@ main: kit: entity: bow: {
           }
           method: "GET"
           orig: "/bows/{id}"
-          parts: [
-            "bows"
-            "{id}"
+          segments: [
+            {
+              lit: "bows"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

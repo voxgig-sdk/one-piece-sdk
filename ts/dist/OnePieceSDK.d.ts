@@ -1,0 +1,87 @@
+import { BoatEntity } from './entity/BoatEntity';
+import { BowEntity } from './entity/BowEntity';
+import { ChapterEntity } from './entity/ChapterEntity';
+import { CharacterEntity } from './entity/CharacterEntity';
+import { CrewEntity } from './entity/CrewEntity';
+import { DialEntity } from './entity/DialEntity';
+import { EpisodeEntity } from './entity/EpisodeEntity';
+import { FilmEntity } from './entity/FilmEntity';
+import { FruitEntity } from './entity/FruitEntity';
+import { GearEntity } from './entity/GearEntity';
+import { HakiEntity } from './entity/HakiEntity';
+import { LocationEntity } from './entity/LocationEntity';
+import { SagaEntity } from './entity/SagaEntity';
+import { SwordEntity } from './entity/SwordEntity';
+import { TechniqueEntity } from './entity/TechniqueEntity';
+import { VolumeEntity } from './entity/VolumeEntity';
+export type * from './OnePieceTypes';
+import { inspect } from 'node:util';
+import type { Context, Feature } from './types';
+import { config } from './Config';
+import { OnePieceEntityBase } from './OnePieceEntityBase';
+import { Utility } from './utility/Utility';
+import { BaseFeature } from './feature/base/BaseFeature';
+declare const stdutil: Utility;
+declare class OnePieceSDK {
+    _mode: string;
+    _options: any;
+    _utility: Utility;
+    _features: Feature[];
+    _rootctx: Context;
+    constructor(options?: any);
+    options(): any;
+    utility(): any;
+    prepare(fetchargs?: any): Promise<any>;
+    direct(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    _rawRequest(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
+    Boat(entopts?: Record<string, any>): BoatEntity;
+    Bow(entopts?: Record<string, any>): BowEntity;
+    Chapter(entopts?: Record<string, any>): ChapterEntity;
+    Character(entopts?: Record<string, any>): CharacterEntity;
+    Crew(entopts?: Record<string, any>): CrewEntity;
+    Dial(entopts?: Record<string, any>): DialEntity;
+    Episode(entopts?: Record<string, any>): EpisodeEntity;
+    Film(entopts?: Record<string, any>): FilmEntity;
+    Fruit(entopts?: Record<string, any>): FruitEntity;
+    Gear(entopts?: Record<string, any>): GearEntity;
+    Haki(entopts?: Record<string, any>): HakiEntity;
+    Location(entopts?: Record<string, any>): LocationEntity;
+    Saga(entopts?: Record<string, any>): SagaEntity;
+    Sword(entopts?: Record<string, any>): SwordEntity;
+    Technique(entopts?: Record<string, any>): TechniqueEntity;
+    Volume(entopts?: Record<string, any>): VolumeEntity;
+    static test(testoptsarg?: any, sdkoptsarg?: any): OnePieceSDK;
+    tester(testopts?: any, sdkopts?: any): OnePieceSDK;
+    toJSON(): {
+        name: string;
+    };
+    toString(): string;
+    [inspect.custom](): string;
+}
+declare const SDK: typeof OnePieceSDK;
+export { stdutil, config, BaseFeature, OnePieceEntityBase, OnePieceSDK, SDK, };

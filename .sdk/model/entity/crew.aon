@@ -56,8 +56,10 @@ main: kit: entity: crew: {
         {
           method: "GET"
           orig: "/crews"
-          parts: [
-            "crews"
+          segments: [
+            {
+              lit: "crews"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -83,9 +85,13 @@ main: kit: entity: crew: {
           }
           method: "GET"
           orig: "/crews/{id}"
-          parts: [
-            "crews"
-            "{id}"
+          segments: [
+            {
+              lit: "crews"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

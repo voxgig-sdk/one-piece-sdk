@@ -44,8 +44,10 @@ main: kit: entity: technique: {
         {
           method: "GET"
           orig: "/techniques"
-          parts: [
-            "techniques"
+          segments: [
+            {
+              lit: "techniques"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +73,13 @@ main: kit: entity: technique: {
           }
           method: "GET"
           orig: "/techniques/{id}"
-          parts: [
-            "techniques"
-            "{id}"
+          segments: [
+            {
+              lit: "techniques"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

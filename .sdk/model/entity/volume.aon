@@ -24,6 +24,7 @@ main: kit: entity: volume: {
       type: "`$INTEGER`"
     }
     {
+      format: "date"
       name: "releaseDate"
       req: false
       short: "Release date of the volume"
@@ -50,8 +51,10 @@ main: kit: entity: volume: {
         {
           method: "GET"
           orig: "/volumes"
-          parts: [
-            "volumes"
+          segments: [
+            {
+              lit: "volumes"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +80,13 @@ main: kit: entity: volume: {
           }
           method: "GET"
           orig: "/volumes/{id}"
-          parts: [
-            "volumes"
-            "{id}"
+          segments: [
+            {
+              lit: "volumes"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

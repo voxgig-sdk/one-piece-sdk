@@ -50,8 +50,10 @@ main: kit: entity: sword: {
         {
           method: "GET"
           orig: "/swords"
-          parts: [
-            "swords"
+          segments: [
+            {
+              lit: "swords"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: sword: {
           }
           method: "GET"
           orig: "/swords/{id}"
-          parts: [
-            "swords"
-            "{id}"
+          segments: [
+            {
+              lit: "swords"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

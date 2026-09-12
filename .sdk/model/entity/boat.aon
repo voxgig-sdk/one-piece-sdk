@@ -50,8 +50,10 @@ main: kit: entity: boat: {
         {
           method: "GET"
           orig: "/boats"
-          parts: [
-            "boats"
+          segments: [
+            {
+              lit: "boats"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: boat: {
           }
           method: "GET"
           orig: "/boats/{id}"
-          parts: [
-            "boats"
-            "{id}"
+          segments: [
+            {
+              lit: "boats"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

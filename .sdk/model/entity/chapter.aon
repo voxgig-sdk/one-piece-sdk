@@ -18,6 +18,7 @@ main: kit: entity: chapter: {
       type: "`$INTEGER`"
     }
     {
+      format: "date"
       name: "releaseDate"
       req: false
       short: "Release date of the chapter"
@@ -50,8 +51,10 @@ main: kit: entity: chapter: {
         {
           method: "GET"
           orig: "/chapters"
-          parts: [
-            "chapters"
+          segments: [
+            {
+              lit: "chapters"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +80,13 @@ main: kit: entity: chapter: {
           }
           method: "GET"
           orig: "/chapters/{id}"
-          parts: [
-            "chapters"
-            "{id}"
+          segments: [
+            {
+              lit: "chapters"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
