@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/one-piece",
+  "name": "@voxgig-sdk/one-piece-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the One Piece public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

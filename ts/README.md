@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OnePieceSDK } from '@voxgig-sdk/one-piece'
+import { OnePieceSDK } from '@voxgig-sdk/one-piece-sdk'
 
 const client = new OnePieceSDK()
 ```
@@ -1162,7 +1162,7 @@ one-piece/
 Import the SDK from the package root:
 
 ```ts
-import { OnePieceSDK } from '@voxgig-sdk/one-piece'
+import { OnePieceSDK } from '@voxgig-sdk/one-piece-sdk'
 ```
 
 ### Entity state

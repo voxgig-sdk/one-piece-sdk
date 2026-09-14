@@ -105,7 +105,7 @@ local results, err = client:Boat():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
+| TypeScript | `@voxgig-sdk/one-piece-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
 | Python | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
 | PHP | `voxgig-sdk/one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/one-piece-sdk/go` | `go get github.com/voxgig-sdk/one-piece-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Boat():list()
 ### TypeScript
 
 ```ts
-import { OnePieceSDK } from '@voxgig-sdk/one-piece'
+import { OnePieceSDK } from '@voxgig-sdk/one-piece-sdk'
 
 const client = new OnePieceSDK()
 
