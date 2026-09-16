@@ -42,6 +42,12 @@ main: kit: entity: gear: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /gears"
+            json: "{\"operationId\":\"getGears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the gear's abilities\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this gear\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the gear\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the gear form\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/gears"
           segments: [
@@ -70,6 +76,12 @@ main: kit: entity: gear: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /gears/{id}"
+            json: "{\"operationId\":\"getGearById\",\"parameters\":[{\"description\":\"The ID of the gear\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the gear's abilities\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this gear\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the gear\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the gear form\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Gear not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/gears/{id}"

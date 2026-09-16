@@ -29,5 +29,101 @@
         "name": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /gears": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGears",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Description of the gear's abilities",
+                        "type": "string"
+                      },
+                      "firstAppearance": {
+                        "description": "First appearance of this gear",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the gear",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Name of the gear form",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /gears/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGearById",
+        "parameters": [
+          {
+            "description": "The ID of the gear",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "Description of the gear's abilities",
+                      "type": "string"
+                    },
+                    "firstAppearance": {
+                      "description": "First appearance of this gear",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the gear",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name of the gear form",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Gear not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

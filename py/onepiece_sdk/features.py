@@ -1,12 +1,18 @@
 # OnePiece SDK feature factory
 
 from onepiece_sdk.feature.base_feature import OnePieceBaseFeature
+from onepiece_sdk.feature.ratelimit_feature import OnePieceRatelimitFeature
+from onepiece_sdk.feature.retry_feature import OnePieceRetryFeature
 from onepiece_sdk.feature.test_feature import OnePieceTestFeature
+from onepiece_sdk.feature.timeout_feature import OnePieceTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: OnePieceBaseFeature(),
+    "ratelimit": lambda: OnePieceRatelimitFeature(),
+    "retry": lambda: OnePieceRetryFeature(),
     "test": lambda: OnePieceTestFeature(),
+    "timeout": lambda: OnePieceTimeoutFeature(),
 }
 
 

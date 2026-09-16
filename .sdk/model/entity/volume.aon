@@ -49,6 +49,12 @@ main: kit: entity: volume: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /volumes"
+            json: "{\"operationId\":\"getVolumes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this volume\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the volume\",\"type\":\"integer\"},\"number\":{\"description\":\"Volume number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the volume\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the volume\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/volumes"
           segments: [
@@ -77,6 +83,12 @@ main: kit: entity: volume: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /volumes/{id}"
+            json: "{\"operationId\":\"getVolumeById\",\"parameters\":[{\"description\":\"The ID of the volume\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this volume\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the volume\",\"type\":\"integer\"},\"number\":{\"description\":\"Volume number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the volume\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the volume\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Volume not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/volumes/{id}"

@@ -49,6 +49,12 @@ main: kit: entity: episode: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /episodes"
+            json: "{\"operationId\":\"getEpisodes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"airDate\":{\"description\":\"Air date of the episode\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the episode\",\"type\":\"integer\"},\"number\":{\"description\":\"Episode number\",\"type\":\"integer\"},\"saga\":{\"description\":\"Saga this episode belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the episode\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/episodes"
           segments: [
@@ -77,6 +83,12 @@ main: kit: entity: episode: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /episodes/{id}"
+            json: "{\"operationId\":\"getEpisodeById\",\"parameters\":[{\"description\":\"The ID of the episode\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"airDate\":{\"description\":\"Air date of the episode\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the episode\",\"type\":\"integer\"},\"number\":{\"description\":\"Episode number\",\"type\":\"integer\"},\"saga\":{\"description\":\"Saga this episode belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the episode\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Episode not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/episodes/{id}"

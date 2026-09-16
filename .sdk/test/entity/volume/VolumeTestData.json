@@ -4,21 +4,21 @@
       "VOLUME00": {
         "chapters": [],
         "id": "VOLUME00",
-        "number": "s34",
+        "number": 52,
         "releaseDate": "s35",
         "title": "s36"
       },
       "VOLUME01": {
         "chapters": [],
         "id": "VOLUME01",
-        "number": "s66",
+        "number": 102,
         "releaseDate": "s67",
         "title": "s68"
       },
       "VOLUME02": {
         "chapters": [],
         "id": "VOLUME02",
-        "number": "s98",
+        "number": 152,
         "releaseDate": "s99",
         "title": "s9a"
       }
@@ -28,9 +28,121 @@
     "volume": {
       "volume_ref01": {
         "chapters": [],
-        "number": "sca",
+        "number": 202,
         "releaseDate": "scb",
         "title": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /volumes": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getVolumes",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "chapters": {
+                        "description": "Chapter IDs included in this volume",
+                        "items": {
+                          "type": "integer"
+                        },
+                        "type": "array"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the volume",
+                        "type": "integer"
+                      },
+                      "number": {
+                        "description": "Volume number",
+                        "type": "integer"
+                      },
+                      "releaseDate": {
+                        "description": "Release date of the volume",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "title": {
+                        "description": "Title of the volume",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /volumes/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getVolumeById",
+        "parameters": [
+          {
+            "description": "The ID of the volume",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "chapters": {
+                      "description": "Chapter IDs included in this volume",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the volume",
+                      "type": "integer"
+                    },
+                    "number": {
+                      "description": "Volume number",
+                      "type": "integer"
+                    },
+                    "releaseDate": {
+                      "description": "Release date of the volume",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "title": {
+                      "description": "Title of the volume",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Volume not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -48,6 +48,12 @@ main: kit: entity: fruit: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /fruits"
+            json: "{\"operationId\":\"getFruits\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the Devil Fruit's powers\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Devil Fruit\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Devil Fruit\",\"type\":\"string\"},\"type\":{\"description\":\"Type of Devil Fruit (Paramecia, Zoan, Logia)\",\"type\":\"string\"},\"user\":{\"description\":\"Current or known user of the fruit\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/fruits"
           segments: [
@@ -76,6 +82,12 @@ main: kit: entity: fruit: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /fruits/{id}"
+            json: "{\"operationId\":\"getFruitById\",\"parameters\":[{\"description\":\"The ID of the Devil Fruit\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the Devil Fruit's powers\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Devil Fruit\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Devil Fruit\",\"type\":\"string\"},\"type\":{\"description\":\"Type of Devil Fruit (Paramecia, Zoan, Logia)\",\"type\":\"string\"},\"user\":{\"description\":\"Current or known user of the fruit\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Fruit not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/fruits/{id}"

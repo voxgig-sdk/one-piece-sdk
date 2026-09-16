@@ -48,6 +48,12 @@ main: kit: entity: sword: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /swords"
+            json: "{\"operationId\":\"getSwords\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the sword\",\"type\":\"string\"},\"grade\":{\"description\":\"Grade of the sword\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the sword\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the sword\",\"type\":\"string\"},\"owner\":{\"description\":\"Current owner of the sword\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/swords"
           segments: [
@@ -76,6 +82,12 @@ main: kit: entity: sword: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /swords/{id}"
+            json: "{\"operationId\":\"getSwordById\",\"parameters\":[{\"description\":\"The ID of the sword\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the sword\",\"type\":\"string\"},\"grade\":{\"description\":\"Grade of the sword\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the sword\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the sword\",\"type\":\"string\"},\"owner\":{\"description\":\"Current owner of the sword\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Sword not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/swords/{id}"

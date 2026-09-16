@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "boat": {
           "active": true,
@@ -81,6 +145,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /boats",
+                    "json": "{\"operationId\":\"getBoats\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"crew\":{\"description\":\"Crew that owns the boat\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the boat\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the boat\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the boat/ship\",\"type\":\"string\"},\"type\":{\"description\":\"Type of vessel\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boats",
@@ -114,6 +184,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /boats/{id}",
+                    "json": "{\"operationId\":\"getBoatById\",\"parameters\":[{\"description\":\"The ID of the boat\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"crew\":{\"description\":\"Crew that owns the boat\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the boat\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the boat\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the boat/ship\",\"type\":\"string\"},\"type\":{\"description\":\"Type of vessel\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Boat not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -191,6 +267,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /bows",
+                    "json": "{\"operationId\":\"getBows\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the bow\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the bow\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the bow\",\"type\":\"string\"},\"owner\":{\"description\":\"Owner of the bow\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bows",
@@ -224,6 +306,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /bows/{id}",
+                    "json": "{\"operationId\":\"getBowById\",\"parameters\":[{\"description\":\"The ID of the bow\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the bow\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the bow\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the bow\",\"type\":\"string\"},\"owner\":{\"description\":\"Owner of the bow\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Bow not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -309,6 +397,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /chapters",
+                    "json": "{\"operationId\":\"getChapters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the chapter\",\"type\":\"integer\"},\"number\":{\"description\":\"Chapter number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the chapter\",\"format\":\"date\",\"type\":\"string\"},\"saga\":{\"description\":\"Saga this chapter belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the chapter\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/chapters",
@@ -342,6 +436,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /chapters/{id}",
+                    "json": "{\"operationId\":\"getChapterById\",\"parameters\":[{\"description\":\"The ID of the chapter\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the chapter\",\"type\":\"integer\"},\"number\":{\"description\":\"Chapter number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the chapter\",\"format\":\"date\",\"type\":\"string\"},\"saga\":{\"description\":\"Saga this chapter belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the chapter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Chapter not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -440,6 +540,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /characters",
+                    "json": "{\"operationId\":\"getCharacters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"age\":{\"description\":\"Age of the character\",\"type\":\"integer\"},\"bounty\":{\"description\":\"Bounty of the character\",\"type\":\"integer\"},\"crew\":{\"description\":\"Crew affiliation\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the character\",\"type\":\"string\"},\"devilFruit\":{\"description\":\"Devil Fruit ability if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the character\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the character\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/characters",
@@ -473,6 +579,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /characters/{id}",
+                    "json": "{\"operationId\":\"getCharacterById\",\"parameters\":[{\"description\":\"The ID of the character\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"age\":{\"description\":\"Age of the character\",\"type\":\"integer\"},\"bounty\":{\"description\":\"Bounty of the character\",\"type\":\"integer\"},\"crew\":{\"description\":\"Crew affiliation\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the character\",\"type\":\"string\"},\"devilFruit\":{\"description\":\"Devil Fruit ability if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the character\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the character\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Character not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -564,6 +676,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /crews",
+                    "json": "{\"operationId\":\"getCrews\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"captain\":{\"description\":\"Captain of the crew\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the crew\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the crew\",\"type\":\"integer\"},\"members\":{\"description\":\"Members of the crew\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the crew\",\"type\":\"string\"},\"ship\":{\"description\":\"Name of the crew's ship\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/crews",
@@ -597,6 +715,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /crews/{id}",
+                    "json": "{\"operationId\":\"getCrewById\",\"parameters\":[{\"description\":\"The ID of the crew\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"captain\":{\"description\":\"Captain of the crew\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the crew\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the crew\",\"type\":\"integer\"},\"members\":{\"description\":\"Members of the crew\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the crew\",\"type\":\"string\"},\"ship\":{\"description\":\"Name of the crew's ship\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Crew not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -674,6 +798,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /dials",
+                    "json": "{\"operationId\":\"getDials\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the dial's function\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the dial\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the dial\",\"type\":\"string\"},\"type\":{\"description\":\"Type of dial\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/dials",
@@ -707,6 +837,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /dials/{id}",
+                    "json": "{\"operationId\":\"getDialById\",\"parameters\":[{\"description\":\"The ID of the dial\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the dial's function\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the dial\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the dial\",\"type\":\"string\"},\"type\":{\"description\":\"Type of dial\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Dial not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -792,6 +928,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /episodes",
+                    "json": "{\"operationId\":\"getEpisodes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"airDate\":{\"description\":\"Air date of the episode\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the episode\",\"type\":\"integer\"},\"number\":{\"description\":\"Episode number\",\"type\":\"integer\"},\"saga\":{\"description\":\"Saga this episode belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the episode\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/episodes",
@@ -825,6 +967,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /episodes/{id}",
+                    "json": "{\"operationId\":\"getEpisodeById\",\"parameters\":[{\"description\":\"The ID of the episode\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"airDate\":{\"description\":\"Air date of the episode\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the episode\",\"type\":\"integer\"},\"number\":{\"description\":\"Episode number\",\"type\":\"integer\"},\"saga\":{\"description\":\"Saga this episode belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the episode\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Episode not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -903,6 +1051,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /films",
+                    "json": "{\"operationId\":\"getFilms\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the film\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the film\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the film\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the film\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/films",
@@ -936,6 +1090,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /films/{id}",
+                    "json": "{\"operationId\":\"getFilmById\",\"parameters\":[{\"description\":\"The ID of the film\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the film\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the film\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the film\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the film\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Film not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1020,6 +1180,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /fruits",
+                    "json": "{\"operationId\":\"getFruits\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the Devil Fruit's powers\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Devil Fruit\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Devil Fruit\",\"type\":\"string\"},\"type\":{\"description\":\"Type of Devil Fruit (Paramecia, Zoan, Logia)\",\"type\":\"string\"},\"user\":{\"description\":\"Current or known user of the fruit\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/fruits",
@@ -1053,6 +1219,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /fruits/{id}",
+                    "json": "{\"operationId\":\"getFruitById\",\"parameters\":[{\"description\":\"The ID of the Devil Fruit\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the Devil Fruit's powers\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Devil Fruit\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Devil Fruit\",\"type\":\"string\"},\"type\":{\"description\":\"Type of Devil Fruit (Paramecia, Zoan, Logia)\",\"type\":\"string\"},\"user\":{\"description\":\"Current or known user of the fruit\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Fruit not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1130,6 +1302,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /gears",
+                    "json": "{\"operationId\":\"getGears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the gear's abilities\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this gear\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the gear\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the gear form\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/gears",
@@ -1163,6 +1341,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /gears/{id}",
+                    "json": "{\"operationId\":\"getGearById\",\"parameters\":[{\"description\":\"The ID of the gear\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the gear's abilities\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this gear\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the gear\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the gear form\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Gear not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1240,6 +1424,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /hakis",
+                    "json": "{\"operationId\":\"getHakis\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the Haki type\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Haki type\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Haki type\",\"type\":\"string\"},\"users\":{\"description\":\"Known users of this Haki type\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/hakis",
@@ -1273,6 +1463,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /hakis/{id}",
+                    "json": "{\"operationId\":\"getHakiById\",\"parameters\":[{\"description\":\"The ID of the Haki\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the Haki type\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Haki type\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Haki type\",\"type\":\"string\"},\"users\":{\"description\":\"Known users of this Haki type\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Haki not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1357,6 +1553,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /locations",
+                    "json": "{\"operationId\":\"getLocations\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the location\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this location\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the location\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the location\",\"type\":\"string\"},\"type\":{\"description\":\"Type of location (island, sea, etc.)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/locations",
@@ -1390,6 +1592,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /locations/{id}",
+                    "json": "{\"operationId\":\"getLocationById\",\"parameters\":[{\"description\":\"The ID of the location\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the location\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this location\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the location\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the location\",\"type\":\"string\"},\"type\":{\"description\":\"Type of location (island, sea, etc.)\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1474,6 +1682,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /sagas",
+                    "json": "{\"operationId\":\"getSagas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"description\":{\"description\":\"Description of the saga\",\"type\":\"string\"},\"episodes\":{\"description\":\"Episode IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the saga\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the saga\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/sagas",
@@ -1507,6 +1721,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /sagas/{id}",
+                    "json": "{\"operationId\":\"getSagaById\",\"parameters\":[{\"description\":\"The ID of the saga\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"description\":{\"description\":\"Description of the saga\",\"type\":\"string\"},\"episodes\":{\"description\":\"Episode IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the saga\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the saga\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Saga not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1591,6 +1811,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /swords",
+                    "json": "{\"operationId\":\"getSwords\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the sword\",\"type\":\"string\"},\"grade\":{\"description\":\"Grade of the sword\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the sword\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the sword\",\"type\":\"string\"},\"owner\":{\"description\":\"Current owner of the sword\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/swords",
@@ -1624,6 +1850,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /swords/{id}",
+                    "json": "{\"operationId\":\"getSwordById\",\"parameters\":[{\"description\":\"The ID of the sword\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the sword\",\"type\":\"string\"},\"grade\":{\"description\":\"Grade of the sword\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the sword\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the sword\",\"type\":\"string\"},\"owner\":{\"description\":\"Current owner of the sword\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Sword not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1701,6 +1933,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /techniques",
+                    "json": "{\"operationId\":\"getTechniques\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the technique\",\"type\":\"string\"},\"gear\":{\"description\":\"Associated gear form if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the technique\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the technique\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/techniques",
@@ -1734,6 +1972,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /techniques/{id}",
+                    "json": "{\"operationId\":\"getTechniqueById\",\"parameters\":[{\"description\":\"The ID of the technique\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the technique\",\"type\":\"string\"},\"gear\":{\"description\":\"Associated gear form if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the technique\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the technique\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Technique not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1819,6 +2063,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /volumes",
+                    "json": "{\"operationId\":\"getVolumes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this volume\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the volume\",\"type\":\"integer\"},\"number\":{\"description\":\"Volume number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the volume\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the volume\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/volumes",
@@ -1853,6 +2103,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /volumes/{id}",
+                    "json": "{\"operationId\":\"getVolumeById\",\"parameters\":[{\"description\":\"The ID of the volume\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this volume\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the volume\",\"type\":\"integer\"},\"number\":{\"description\":\"Volume number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the volume\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the volume\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Volume not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/volumes/{id}",
@@ -1883,13 +2139,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1979,6 +2445,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -2772,6 +3334,48 @@
         "website": "https://com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -3326,6 +3930,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -3367,7 +3972,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

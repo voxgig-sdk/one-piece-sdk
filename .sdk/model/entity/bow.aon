@@ -42,6 +42,12 @@ main: kit: entity: bow: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /bows"
+            json: "{\"operationId\":\"getBows\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the bow\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the bow\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the bow\",\"type\":\"string\"},\"owner\":{\"description\":\"Owner of the bow\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/bows"
           segments: [
@@ -70,6 +76,12 @@ main: kit: entity: bow: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /bows/{id}"
+            json: "{\"operationId\":\"getBowById\",\"parameters\":[{\"description\":\"The ID of the bow\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the bow\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the bow\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the bow\",\"type\":\"string\"},\"owner\":{\"description\":\"Owner of the bow\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Bow not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/bows/{id}"

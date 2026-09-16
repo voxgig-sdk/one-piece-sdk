@@ -49,6 +49,12 @@ main: kit: entity: chapter: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /chapters"
+            json: "{\"operationId\":\"getChapters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the chapter\",\"type\":\"integer\"},\"number\":{\"description\":\"Chapter number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the chapter\",\"format\":\"date\",\"type\":\"string\"},\"saga\":{\"description\":\"Saga this chapter belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the chapter\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/chapters"
           segments: [
@@ -77,6 +83,12 @@ main: kit: entity: chapter: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /chapters/{id}"
+            json: "{\"operationId\":\"getChapterById\",\"parameters\":[{\"description\":\"The ID of the chapter\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the chapter\",\"type\":\"integer\"},\"number\":{\"description\":\"Chapter number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the chapter\",\"format\":\"date\",\"type\":\"string\"},\"saga\":{\"description\":\"Saga this chapter belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the chapter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Chapter not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/chapters/{id}"

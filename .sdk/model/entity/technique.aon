@@ -42,6 +42,12 @@ main: kit: entity: technique: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /techniques"
+            json: "{\"operationId\":\"getTechniques\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the technique\",\"type\":\"string\"},\"gear\":{\"description\":\"Associated gear form if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the technique\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the technique\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/techniques"
           segments: [
@@ -70,6 +76,12 @@ main: kit: entity: technique: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /techniques/{id}"
+            json: "{\"operationId\":\"getTechniqueById\",\"parameters\":[{\"description\":\"The ID of the technique\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the technique\",\"type\":\"string\"},\"gear\":{\"description\":\"Associated gear form if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the technique\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the technique\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Technique not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/techniques/{id}"

@@ -54,6 +54,12 @@ main: kit: entity: crew: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /crews"
+            json: "{\"operationId\":\"getCrews\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"captain\":{\"description\":\"Captain of the crew\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the crew\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the crew\",\"type\":\"integer\"},\"members\":{\"description\":\"Members of the crew\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the crew\",\"type\":\"string\"},\"ship\":{\"description\":\"Name of the crew's ship\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/crews"
           segments: [
@@ -82,6 +88,12 @@ main: kit: entity: crew: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /crews/{id}"
+            json: "{\"operationId\":\"getCrewById\",\"parameters\":[{\"description\":\"The ID of the crew\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"captain\":{\"description\":\"Captain of the crew\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the crew\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the crew\",\"type\":\"integer\"},\"members\":{\"description\":\"Members of the crew\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the crew\",\"type\":\"string\"},\"ship\":{\"description\":\"Name of the crew's ship\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Crew not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/crews/{id}"

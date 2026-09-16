@@ -29,5 +29,101 @@
         "type": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /dials": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDials",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Description of the dial's function",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the dial",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Name of the dial",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "Type of dial",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /dials/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDialById",
+        "parameters": [
+          {
+            "description": "The ID of the dial",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "Description of the dial's function",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the dial",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name of the dial",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Type of dial",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Dial not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

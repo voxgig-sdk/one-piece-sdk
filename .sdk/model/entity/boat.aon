@@ -48,6 +48,12 @@ main: kit: entity: boat: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /boats"
+            json: "{\"operationId\":\"getBoats\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"crew\":{\"description\":\"Crew that owns the boat\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the boat\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the boat\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the boat/ship\",\"type\":\"string\"},\"type\":{\"description\":\"Type of vessel\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boats"
           segments: [
@@ -76,6 +82,12 @@ main: kit: entity: boat: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /boats/{id}"
+            json: "{\"operationId\":\"getBoatById\",\"parameters\":[{\"description\":\"The ID of the boat\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"crew\":{\"description\":\"Crew that owns the boat\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the boat\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the boat\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the boat/ship\",\"type\":\"string\"},\"type\":{\"description\":\"Type of vessel\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Boat not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/boats/{id}"

@@ -29,5 +29,107 @@
         "users": []
       }
     }
+  },
+  "requests": {
+    "GET /hakis": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHakis",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Description of the Haki type",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the Haki type",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Name of the Haki type",
+                        "type": "string"
+                      },
+                      "users": {
+                        "description": "Known users of this Haki type",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /hakis/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHakiById",
+        "parameters": [
+          {
+            "description": "The ID of the Haki",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "Description of the Haki type",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the Haki type",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name of the Haki type",
+                      "type": "string"
+                    },
+                    "users": {
+                      "description": "Known users of this Haki type",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Haki not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

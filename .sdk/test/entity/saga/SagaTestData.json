@@ -33,5 +33,121 @@
         "name": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /sagas": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSagas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "chapters": {
+                        "description": "Chapter IDs included in this saga",
+                        "items": {
+                          "type": "integer"
+                        },
+                        "type": "array"
+                      },
+                      "description": {
+                        "description": "Description of the saga",
+                        "type": "string"
+                      },
+                      "episodes": {
+                        "description": "Episode IDs included in this saga",
+                        "items": {
+                          "type": "integer"
+                        },
+                        "type": "array"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the saga",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Name of the saga",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /sagas/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSagaById",
+        "parameters": [
+          {
+            "description": "The ID of the saga",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "chapters": {
+                      "description": "Chapter IDs included in this saga",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
+                    "description": {
+                      "description": "Description of the saga",
+                      "type": "string"
+                    },
+                    "episodes": {
+                      "description": "Episode IDs included in this saga",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the saga",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name of the saga",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Saga not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

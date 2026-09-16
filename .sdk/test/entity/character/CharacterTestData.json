@@ -2,8 +2,8 @@
   "existing": {
     "character": {
       "CHARACTER00": {
-        "age": "s46",
-        "bounty": "s47",
+        "age": 70,
+        "bounty": 71,
         "crew": "s48",
         "description": "s49",
         "devilFruit": "s4a",
@@ -11,8 +11,8 @@
         "name": "s4c"
       },
       "CHARACTER01": {
-        "age": "s8c",
-        "bounty": "s8d",
+        "age": 140,
+        "bounty": 141,
         "crew": "s8e",
         "description": "s8f",
         "devilFruit": "s90",
@@ -20,8 +20,8 @@
         "name": "s92"
       },
       "CHARACTER02": {
-        "age": "sd2",
-        "bounty": "sd3",
+        "age": 210,
+        "bounty": 211,
         "crew": "sd4",
         "description": "sd5",
         "devilFruit": "sd6",
@@ -33,12 +33,132 @@
   "new": {
     "character": {
       "character_ref01": {
-        "age": "s118",
-        "bounty": "s119",
+        "age": 280,
+        "bounty": 281,
         "crew": "s11a",
         "description": "s11b",
         "devilFruit": "s11c",
         "name": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /characters": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCharacters",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "age": {
+                        "description": "Age of the character",
+                        "type": "integer"
+                      },
+                      "bounty": {
+                        "description": "Bounty of the character",
+                        "type": "integer"
+                      },
+                      "crew": {
+                        "description": "Crew affiliation",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Description of the character",
+                        "type": "string"
+                      },
+                      "devilFruit": {
+                        "description": "Devil Fruit ability if applicable",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the character",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Name of the character",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /characters/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCharacterById",
+        "parameters": [
+          {
+            "description": "The ID of the character",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "age": {
+                      "description": "Age of the character",
+                      "type": "integer"
+                    },
+                    "bounty": {
+                      "description": "Bounty of the character",
+                      "type": "integer"
+                    },
+                    "crew": {
+                      "description": "Crew affiliation",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Description of the character",
+                      "type": "string"
+                    },
+                    "devilFruit": {
+                      "description": "Devil Fruit ability if applicable",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the character",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name of the character",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Character not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

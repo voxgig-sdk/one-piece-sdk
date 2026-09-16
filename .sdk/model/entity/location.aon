@@ -48,6 +48,12 @@ main: kit: entity: location: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /locations"
+            json: "{\"operationId\":\"getLocations\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the location\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this location\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the location\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the location\",\"type\":\"string\"},\"type\":{\"description\":\"Type of location (island, sea, etc.)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/locations"
           segments: [
@@ -76,6 +82,12 @@ main: kit: entity: location: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /locations/{id}"
+            json: "{\"operationId\":\"getLocationById\",\"parameters\":[{\"description\":\"The ID of the location\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the location\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this location\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the location\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the location\",\"type\":\"string\"},\"type\":{\"description\":\"Type of location (island, sea, etc.)\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/locations/{id}"

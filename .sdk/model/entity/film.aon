@@ -43,6 +43,12 @@ main: kit: entity: film: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /films"
+            json: "{\"operationId\":\"getFilms\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the film\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the film\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the film\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the film\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/films"
           segments: [
@@ -71,6 +77,12 @@ main: kit: entity: film: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /films/{id}"
+            json: "{\"operationId\":\"getFilmById\",\"parameters\":[{\"description\":\"The ID of the film\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the film\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the film\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the film\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the film\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Film not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/films/{id}"
