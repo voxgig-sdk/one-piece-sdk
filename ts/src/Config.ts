@@ -127,54 +127,54 @@ class Config {
 
     entity: {
       
-      boat: {
-      },
-
-      bow: {
-      },
-
-      chapter: {
-      },
-
-      character: {
-      },
-
-      crew: {
-      },
-
-      dial: {
-      },
-
-      episode: {
-      },
-
-      film: {
-      },
-
-      fruit: {
-      },
-
-      gear: {
-      },
-
-      haki: {
-      },
-
-      location: {
-      },
-
-      saga: {
-      },
-
-      sword: {
-      },
-
-      technique: {
-      },
-
-      volume: {
-      },
-
+        boat: {
+        },
+  
+        bow: {
+        },
+  
+        chapter: {
+        },
+  
+        character: {
+        },
+  
+        crew: {
+        },
+  
+        dial: {
+        },
+  
+        episode: {
+        },
+  
+        film: {
+        },
+  
+        fruit: {
+        },
+  
+        gear: {
+        },
+  
+        haki: {
+        },
+  
+        location: {
+        },
+  
+        saga: {
+        },
+  
+        sword: {
+        },
+  
+        technique: {
+        },
+  
+        volume: {
+        },
+  
     }
   }
 

@@ -105,12 +105,12 @@ local results, err = client:Boat():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/one-piece-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
-| Python | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
-| PHP | `voxgig-sdk/one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
+| TypeScript | `@voxgig-sdk/one-piece-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/tags) |
+| Python | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/tags) |
+| PHP | `voxgig-sdk/one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/one-piece-sdk/go` | `go get github.com/voxgig-sdk/one-piece-sdk/go@latest` |
-| Ruby | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
-| Lua | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/releases) |
+| Ruby | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/tags) |
+| Lua | `voxgig-sdk-one-piece` | publish pending — [install from git tag](https://github.com/voxgig-sdk/one-piece-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/one-piece-sdk/go-cli` | `go install github.com/voxgig-sdk/one-piece-sdk/go-cli/cmd/one-piece@latest` |
 | Go MCP server | `github.com/voxgig-sdk/one-piece-sdk/go-mcp` | `go get github.com/voxgig-sdk/one-piece-sdk/go-mcp@latest` |
 
