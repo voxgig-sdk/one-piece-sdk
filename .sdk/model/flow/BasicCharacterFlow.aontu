@@ -1,0 +1,44 @@
+# BasicCharacterFlow
+
+main: kit: flow: BasicCharacterFlow:
+{
+  entity: "character",
+  kind: "basic",
+  name: "BasicCharacterFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "character_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "character_ref01",
+        srcdatavar: "character_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "character01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-character_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCharacterFlow"
+}

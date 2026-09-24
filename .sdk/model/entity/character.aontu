@@ -1,0 +1,135 @@
+# Entity: character
+
+main: kit: entity: character: {
+
+  alias: field: {}
+
+  fields: {
+    age: {
+      h: "Age"
+      n: "age"
+      r: false
+      sh: "Age of the character"
+      t: "`$INTEGER`"
+    }
+    bounty: {
+      h: "Bounty"
+      n: "bounty"
+      r: false
+      sh: "Bounty of the character"
+      t: "`$INTEGER`"
+    }
+    crew: {
+      h: "Crew"
+      n: "crew"
+      r: false
+      sh: "Crew affiliation"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the character"
+      t: "`$STRING`"
+    }
+    devilFruit: {
+      h: "Devil Fruit"
+      n: "devilFruit"
+      r: false
+      sh: "Devil Fruit ability if applicable"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the character"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the character"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "character"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /characters"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/characters"
+          s: [
+            {
+              lit: "characters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /characters/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/characters/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "characters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -43,7 +43,7 @@ local boats, err = client:Boat():list()
 if err then error(err) end
 
 for _, item in ipairs(boats) do
-  print(item["id"], item["crew"])
+  print(item["id"])
 end
 ```
 

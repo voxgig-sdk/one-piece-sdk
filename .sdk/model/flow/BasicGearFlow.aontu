@@ -1,0 +1,44 @@
+# BasicGearFlow
+
+main: kit: flow: BasicGearFlow:
+{
+  entity: "gear",
+  kind: "basic",
+  name: "BasicGearFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "gear_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "gear_ref01",
+        srcdatavar: "gear_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "gear01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gear_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGearFlow"
+}

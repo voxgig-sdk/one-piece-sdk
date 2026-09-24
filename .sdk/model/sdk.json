@@ -24,49 +24,120 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "boat": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "crew",
-              "req": false,
-              "short": "Crew that owns the boat",
-              "type": "`$STRING`"
+          "fields": {
+            "crew": {
+              "a": true,
+              "h": "Crew",
+              "n": "crew",
+              "r": false,
+              "sh": "Crew that owns the boat",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the boat",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the boat",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the boat",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the boat",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the boat/ship",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the boat/ship",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Type of vessel",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Type of vessel",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -78,24 +149,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /boats",
-                    "json": "{\"operationId\":\"getBoats\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"crew\":{\"description\":\"Crew that owns the boat\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the boat\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the boat\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the boat/ship\",\"type\":\"string\"},\"type\":{\"description\":\"Type of vessel\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boats",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boats",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "boats"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -107,29 +178,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boats/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boats/{id}",
-                    "json": "{\"operationId\":\"getBoatById\",\"parameters\":[{\"description\":\"The ID of the boat\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"crew\":{\"description\":\"Crew that owns the boat\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the boat\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the boat\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the boat/ship\",\"type\":\"string\"},\"type\":{\"description\":\"Type of vessel\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Boat not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boats/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boats/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "boats"
                     },
@@ -137,12 +213,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -159,36 +230,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the bow",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the bow",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the bow",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the bow",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the bow",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the bow",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "owner",
-              "req": false,
-              "short": "Owner of the bow",
-              "type": "`$STRING`"
+            "owner": {
+              "a": true,
+              "h": "Owner",
+              "n": "owner",
+              "r": false,
+              "sh": "Owner of the bow",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -200,24 +275,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /bows",
-                    "json": "{\"operationId\":\"getBows\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the bow\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the bow\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the bow\",\"type\":\"string\"},\"owner\":{\"description\":\"Owner of the bow\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/bows",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/bows",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "bows"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -229,29 +304,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /bows/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /bows/{id}",
-                    "json": "{\"operationId\":\"getBowById\",\"parameters\":[{\"description\":\"The ID of the bow\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the bow\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the bow\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the bow\",\"type\":\"string\"},\"owner\":{\"description\":\"Owner of the bow\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Bow not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/bows/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/bows/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "bows"
                     },
@@ -259,12 +339,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -281,44 +356,49 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the chapter",
-              "type": "`$INTEGER`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the chapter",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "number",
-              "req": false,
-              "short": "Chapter number",
-              "type": "`$INTEGER`"
+            "number": {
+              "a": true,
+              "h": "Number",
+              "n": "number",
+              "r": false,
+              "sh": "Chapter number",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "releaseDate",
-              "req": false,
-              "short": "Release date of the chapter",
-              "type": "`$STRING`"
+            "releaseDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Release Date",
+              "n": "releaseDate",
+              "r": false,
+              "sh": "Release date of the chapter",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "saga",
-              "req": false,
-              "short": "Saga this chapter belongs to",
-              "type": "`$STRING`"
+            "saga": {
+              "a": true,
+              "h": "Saga",
+              "n": "saga",
+              "r": false,
+              "sh": "Saga this chapter belongs to",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Title of the chapter",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Title of the chapter",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -330,24 +410,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /chapters",
-                    "json": "{\"operationId\":\"getChapters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the chapter\",\"type\":\"integer\"},\"number\":{\"description\":\"Chapter number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the chapter\",\"format\":\"date\",\"type\":\"string\"},\"saga\":{\"description\":\"Saga this chapter belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the chapter\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/chapters",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/chapters",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "chapters"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -359,29 +439,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /chapters/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /chapters/{id}",
-                    "json": "{\"operationId\":\"getChapterById\",\"parameters\":[{\"description\":\"The ID of the chapter\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the chapter\",\"type\":\"integer\"},\"number\":{\"description\":\"Chapter number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the chapter\",\"format\":\"date\",\"type\":\"string\"},\"saga\":{\"description\":\"Saga this chapter belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the chapter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Chapter not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/chapters/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/chapters/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "chapters"
                     },
@@ -389,12 +474,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -411,57 +491,64 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "age",
-              "req": false,
-              "short": "Age of the character",
-              "type": "`$INTEGER`"
+          "fields": {
+            "age": {
+              "a": true,
+              "h": "Age",
+              "n": "age",
+              "r": false,
+              "sh": "Age of the character",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "bounty",
-              "req": false,
-              "short": "Bounty of the character",
-              "type": "`$INTEGER`"
+            "bounty": {
+              "a": true,
+              "h": "Bounty",
+              "n": "bounty",
+              "r": false,
+              "sh": "Bounty of the character",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "crew",
-              "req": false,
-              "short": "Crew affiliation",
-              "type": "`$STRING`"
+            "crew": {
+              "a": true,
+              "h": "Crew",
+              "n": "crew",
+              "r": false,
+              "sh": "Crew affiliation",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the character",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the character",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "devilFruit",
-              "req": false,
-              "short": "Devil Fruit ability if applicable",
-              "type": "`$STRING`"
+            "devilFruit": {
+              "a": true,
+              "h": "Devil Fruit",
+              "n": "devilFruit",
+              "r": false,
+              "sh": "Devil Fruit ability if applicable",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the character",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the character",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the character",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the character",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -473,24 +560,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /characters",
-                    "json": "{\"operationId\":\"getCharacters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"age\":{\"description\":\"Age of the character\",\"type\":\"integer\"},\"bounty\":{\"description\":\"Bounty of the character\",\"type\":\"integer\"},\"crew\":{\"description\":\"Crew affiliation\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the character\",\"type\":\"string\"},\"devilFruit\":{\"description\":\"Devil Fruit ability if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the character\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the character\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/characters",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/characters",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "characters"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -502,29 +589,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /characters/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /characters/{id}",
-                    "json": "{\"operationId\":\"getCharacterById\",\"parameters\":[{\"description\":\"The ID of the character\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"age\":{\"description\":\"Age of the character\",\"type\":\"integer\"},\"bounty\":{\"description\":\"Bounty of the character\",\"type\":\"integer\"},\"crew\":{\"description\":\"Crew affiliation\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the character\",\"type\":\"string\"},\"devilFruit\":{\"description\":\"Devil Fruit ability if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the character\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the character\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Character not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/characters/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/characters/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "characters"
                     },
@@ -532,12 +624,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -554,50 +641,56 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "captain",
-              "req": false,
-              "short": "Captain of the crew",
-              "type": "`$STRING`"
+          "fields": {
+            "captain": {
+              "a": true,
+              "h": "Captain",
+              "n": "captain",
+              "r": false,
+              "sh": "Captain of the crew",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the crew",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the crew",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the crew",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the crew",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "members",
-              "req": false,
-              "short": "Members of the crew",
-              "type": "`$ARRAY`"
+            "members": {
+              "a": true,
+              "h": "Members",
+              "n": "members",
+              "r": false,
+              "sh": "Members of the crew",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the crew",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the crew",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "ship",
-              "req": false,
-              "short": "Name of the crew's ship",
-              "type": "`$STRING`"
+            "ship": {
+              "a": true,
+              "h": "Ship",
+              "n": "ship",
+              "r": false,
+              "sh": "Name of the crew's ship",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -609,24 +702,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /crews",
-                    "json": "{\"operationId\":\"getCrews\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"captain\":{\"description\":\"Captain of the crew\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the crew\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the crew\",\"type\":\"integer\"},\"members\":{\"description\":\"Members of the crew\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the crew\",\"type\":\"string\"},\"ship\":{\"description\":\"Name of the crew's ship\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/crews",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/crews",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "crews"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -638,29 +731,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /crews/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /crews/{id}",
-                    "json": "{\"operationId\":\"getCrewById\",\"parameters\":[{\"description\":\"The ID of the crew\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"captain\":{\"description\":\"Captain of the crew\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the crew\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the crew\",\"type\":\"integer\"},\"members\":{\"description\":\"Members of the crew\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the crew\",\"type\":\"string\"},\"ship\":{\"description\":\"Name of the crew's ship\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Crew not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/crews/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/crews/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "crews"
                     },
@@ -668,12 +766,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -690,36 +783,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the dial's function",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the dial's function",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the dial",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the dial",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the dial",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the dial",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Type of dial",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Type of dial",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -731,24 +828,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /dials",
-                    "json": "{\"operationId\":\"getDials\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the dial's function\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the dial\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the dial\",\"type\":\"string\"},\"type\":{\"description\":\"Type of dial\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/dials",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/dials",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "dials"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -760,29 +857,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /dials/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /dials/{id}",
-                    "json": "{\"operationId\":\"getDialById\",\"parameters\":[{\"description\":\"The ID of the dial\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the dial's function\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the dial\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the dial\",\"type\":\"string\"},\"type\":{\"description\":\"Type of dial\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Dial not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/dials/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/dials/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "dials"
                     },
@@ -790,12 +892,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -812,44 +909,49 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date",
-              "name": "airDate",
-              "req": false,
-              "short": "Air date of the episode",
-              "type": "`$STRING`"
+          "fields": {
+            "airDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Air Date",
+              "n": "airDate",
+              "r": false,
+              "sh": "Air date of the episode",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the episode",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the episode",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "number",
-              "req": false,
-              "short": "Episode number",
-              "type": "`$INTEGER`"
+            "number": {
+              "a": true,
+              "h": "Number",
+              "n": "number",
+              "r": false,
+              "sh": "Episode number",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "saga",
-              "req": false,
-              "short": "Saga this episode belongs to",
-              "type": "`$STRING`"
+            "saga": {
+              "a": true,
+              "h": "Saga",
+              "n": "saga",
+              "r": false,
+              "sh": "Saga this episode belongs to",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Title of the episode",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Title of the episode",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -861,24 +963,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /episodes",
-                    "json": "{\"operationId\":\"getEpisodes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"airDate\":{\"description\":\"Air date of the episode\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the episode\",\"type\":\"integer\"},\"number\":{\"description\":\"Episode number\",\"type\":\"integer\"},\"saga\":{\"description\":\"Saga this episode belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the episode\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/episodes",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/episodes",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "episodes"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -890,29 +992,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /episodes/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /episodes/{id}",
-                    "json": "{\"operationId\":\"getEpisodeById\",\"parameters\":[{\"description\":\"The ID of the episode\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"airDate\":{\"description\":\"Air date of the episode\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the episode\",\"type\":\"integer\"},\"number\":{\"description\":\"Episode number\",\"type\":\"integer\"},\"saga\":{\"description\":\"Saga this episode belongs to\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the episode\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Episode not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/episodes/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/episodes/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "episodes"
                     },
@@ -920,12 +1027,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -942,37 +1044,41 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the film",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the film",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the film",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "releaseDate",
-              "req": false,
-              "short": "Release date of the film",
-              "type": "`$STRING`"
+            "releaseDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Release Date",
+              "n": "releaseDate",
+              "r": false,
+              "sh": "Release date of the film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Title of the film",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Title of the film",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -984,24 +1090,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /films",
-                    "json": "{\"operationId\":\"getFilms\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the film\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the film\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the film\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the film\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/films",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/films",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "films"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1013,29 +1119,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /films/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /films/{id}",
-                    "json": "{\"operationId\":\"getFilmById\",\"parameters\":[{\"description\":\"The ID of the film\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the film\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the film\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the film\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the film\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Film not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/films/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/films/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "films"
                     },
@@ -1043,12 +1154,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1065,43 +1171,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the Devil Fruit's powers",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the Devil Fruit's powers",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the Devil Fruit",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the Devil Fruit",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the Devil Fruit",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the Devil Fruit",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Type of Devil Fruit (Paramecia, Zoan, Logia)",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Type of Devil Fruit (Paramecia, Zoan, Logia)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "user",
-              "req": false,
-              "short": "Current or known user of the fruit",
-              "type": "`$STRING`"
+            "user": {
+              "a": true,
+              "h": "User",
+              "n": "user",
+              "r": false,
+              "sh": "Current or known user of the fruit",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1113,24 +1224,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /fruits",
-                    "json": "{\"operationId\":\"getFruits\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the Devil Fruit's powers\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Devil Fruit\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Devil Fruit\",\"type\":\"string\"},\"type\":{\"description\":\"Type of Devil Fruit (Paramecia, Zoan, Logia)\",\"type\":\"string\"},\"user\":{\"description\":\"Current or known user of the fruit\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/fruits",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/fruits",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "fruits"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1142,29 +1253,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /fruits/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /fruits/{id}",
-                    "json": "{\"operationId\":\"getFruitById\",\"parameters\":[{\"description\":\"The ID of the Devil Fruit\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the Devil Fruit's powers\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Devil Fruit\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Devil Fruit\",\"type\":\"string\"},\"type\":{\"description\":\"Type of Devil Fruit (Paramecia, Zoan, Logia)\",\"type\":\"string\"},\"user\":{\"description\":\"Current or known user of the fruit\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Fruit not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/fruits/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/fruits/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "fruits"
                     },
@@ -1172,12 +1288,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1194,36 +1305,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the gear's abilities",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the gear's abilities",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "firstAppearance",
-              "req": false,
-              "short": "First appearance of this gear",
-              "type": "`$STRING`"
+            "firstAppearance": {
+              "a": true,
+              "h": "First Appearance",
+              "n": "firstAppearance",
+              "r": false,
+              "sh": "First appearance of this gear",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the gear",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the gear",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the gear form",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the gear form",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1235,24 +1350,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /gears",
-                    "json": "{\"operationId\":\"getGears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the gear's abilities\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this gear\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the gear\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the gear form\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/gears",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/gears",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "gears"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1264,29 +1379,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /gears/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /gears/{id}",
-                    "json": "{\"operationId\":\"getGearById\",\"parameters\":[{\"description\":\"The ID of the gear\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the gear's abilities\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this gear\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the gear\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the gear form\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Gear not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/gears/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/gears/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "gears"
                     },
@@ -1294,12 +1414,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1316,36 +1431,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the Haki type",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the Haki type",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the Haki type",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the Haki type",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the Haki type",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the Haki type",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "users",
-              "req": false,
-              "short": "Known users of this Haki type",
-              "type": "`$ARRAY`"
+            "users": {
+              "a": true,
+              "h": "Users",
+              "n": "users",
+              "r": false,
+              "sh": "Known users of this Haki type",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1357,24 +1476,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /hakis",
-                    "json": "{\"operationId\":\"getHakis\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the Haki type\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Haki type\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Haki type\",\"type\":\"string\"},\"users\":{\"description\":\"Known users of this Haki type\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/hakis",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/hakis",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "hakis"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1386,29 +1505,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /hakis/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /hakis/{id}",
-                    "json": "{\"operationId\":\"getHakiById\",\"parameters\":[{\"description\":\"The ID of the Haki\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the Haki type\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the Haki type\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the Haki type\",\"type\":\"string\"},\"users\":{\"description\":\"Known users of this Haki type\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Haki not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/hakis/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/hakis/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "hakis"
                     },
@@ -1416,12 +1540,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1438,43 +1557,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the location",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the location",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "firstAppearance",
-              "req": false,
-              "short": "First appearance of this location",
-              "type": "`$STRING`"
+            "firstAppearance": {
+              "a": true,
+              "h": "First Appearance",
+              "n": "firstAppearance",
+              "r": false,
+              "sh": "First appearance of this location",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the location",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the location",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the location",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the location",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Type of location (island, sea, etc.)",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Type of location (island, sea, etc.)",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1486,24 +1610,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /locations",
-                    "json": "{\"operationId\":\"getLocations\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the location\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this location\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the location\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the location\",\"type\":\"string\"},\"type\":{\"description\":\"Type of location (island, sea, etc.)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/locations",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/locations",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "locations"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1515,29 +1639,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /locations/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /locations/{id}",
-                    "json": "{\"operationId\":\"getLocationById\",\"parameters\":[{\"description\":\"The ID of the location\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the location\",\"type\":\"string\"},\"firstAppearance\":{\"description\":\"First appearance of this location\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the location\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the location\",\"type\":\"string\"},\"type\":{\"description\":\"Type of location (island, sea, etc.)\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/locations/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/locations/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "locations"
                     },
@@ -1545,12 +1674,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1567,43 +1691,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "chapters",
-              "req": false,
-              "short": "Chapter IDs included in this saga",
-              "type": "`$ARRAY`"
+          "fields": {
+            "chapters": {
+              "a": true,
+              "h": "Chapters",
+              "n": "chapters",
+              "r": false,
+              "sh": "Chapter IDs included in this saga",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the saga",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the saga",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "episodes",
-              "req": false,
-              "short": "Episode IDs included in this saga",
-              "type": "`$ARRAY`"
+            "episodes": {
+              "a": true,
+              "h": "Episodes",
+              "n": "episodes",
+              "r": false,
+              "sh": "Episode IDs included in this saga",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the saga",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the saga",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the saga",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the saga",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1615,24 +1744,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /sagas",
-                    "json": "{\"operationId\":\"getSagas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"description\":{\"description\":\"Description of the saga\",\"type\":\"string\"},\"episodes\":{\"description\":\"Episode IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the saga\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the saga\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/sagas",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/sagas",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "sagas"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1644,29 +1773,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /sagas/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /sagas/{id}",
-                    "json": "{\"operationId\":\"getSagaById\",\"parameters\":[{\"description\":\"The ID of the saga\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"description\":{\"description\":\"Description of the saga\",\"type\":\"string\"},\"episodes\":{\"description\":\"Episode IDs included in this saga\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the saga\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the saga\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Saga not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/sagas/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/sagas/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "sagas"
                     },
@@ -1674,12 +1808,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1696,43 +1825,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the sword",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the sword",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "grade",
-              "req": false,
-              "short": "Grade of the sword",
-              "type": "`$STRING`"
+            "grade": {
+              "a": true,
+              "h": "Grade",
+              "n": "grade",
+              "r": false,
+              "sh": "Grade of the sword",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the sword",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the sword",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the sword",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the sword",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "owner",
-              "req": false,
-              "short": "Current owner of the sword",
-              "type": "`$STRING`"
+            "owner": {
+              "a": true,
+              "h": "Owner",
+              "n": "owner",
+              "r": false,
+              "sh": "Current owner of the sword",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1744,24 +1878,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /swords",
-                    "json": "{\"operationId\":\"getSwords\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the sword\",\"type\":\"string\"},\"grade\":{\"description\":\"Grade of the sword\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the sword\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the sword\",\"type\":\"string\"},\"owner\":{\"description\":\"Current owner of the sword\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/swords",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/swords",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "swords"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1773,29 +1907,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /swords/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /swords/{id}",
-                    "json": "{\"operationId\":\"getSwordById\",\"parameters\":[{\"description\":\"The ID of the sword\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the sword\",\"type\":\"string\"},\"grade\":{\"description\":\"Grade of the sword\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the sword\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the sword\",\"type\":\"string\"},\"owner\":{\"description\":\"Current owner of the sword\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Sword not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/swords/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/swords/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "swords"
                     },
@@ -1803,12 +1942,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1825,36 +1959,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Description of the technique",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Description of the technique",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gear",
-              "req": false,
-              "short": "Associated gear form if applicable",
-              "type": "`$STRING`"
+            "gear": {
+              "a": true,
+              "h": "Gear",
+              "n": "gear",
+              "r": false,
+              "sh": "Associated gear form if applicable",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the technique",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the technique",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the technique",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the technique",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1866,24 +2004,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /techniques",
-                    "json": "{\"operationId\":\"getTechniques\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the technique\",\"type\":\"string\"},\"gear\":{\"description\":\"Associated gear form if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the technique\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the technique\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/techniques",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/techniques",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "techniques"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1895,29 +2033,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /techniques/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /techniques/{id}",
-                    "json": "{\"operationId\":\"getTechniqueById\",\"parameters\":[{\"description\":\"The ID of the technique\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Description of the technique\",\"type\":\"string\"},\"gear\":{\"description\":\"Associated gear form if applicable\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the technique\",\"type\":\"integer\"},\"name\":{\"description\":\"Name of the technique\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Technique not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/techniques/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/techniques/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "techniques"
                     },
@@ -1925,12 +2068,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1947,44 +2085,49 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "chapters",
-              "req": false,
-              "short": "Chapter IDs included in this volume",
-              "type": "`$ARRAY`"
+          "fields": {
+            "chapters": {
+              "a": true,
+              "h": "Chapters",
+              "n": "chapters",
+              "r": false,
+              "sh": "Chapter IDs included in this volume",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the volume",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the volume",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "number",
-              "req": false,
-              "short": "Volume number",
-              "type": "`$INTEGER`"
+            "number": {
+              "a": true,
+              "h": "Number",
+              "n": "number",
+              "r": false,
+              "sh": "Volume number",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "releaseDate",
-              "req": false,
-              "short": "Release date of the volume",
-              "type": "`$STRING`"
+            "releaseDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Release Date",
+              "n": "releaseDate",
+              "r": false,
+              "sh": "Release date of the volume",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Title of the volume",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Title of the volume",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1996,24 +2139,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /volumes",
-                    "json": "{\"operationId\":\"getVolumes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this volume\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the volume\",\"type\":\"integer\"},\"number\":{\"description\":\"Volume number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the volume\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the volume\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/volumes",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/volumes",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "volumes"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2025,29 +2168,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /volumes/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /volumes/{id}",
-                    "json": "{\"operationId\":\"getVolumeById\",\"parameters\":[{\"description\":\"The ID of the volume\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chapters\":{\"description\":\"Chapter IDs included in this volume\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the volume\",\"type\":\"integer\"},\"number\":{\"description\":\"Volume number\",\"type\":\"integer\"},\"releaseDate\":{\"description\":\"Release date of the volume\",\"format\":\"date\",\"type\":\"string\"},\"title\":{\"description\":\"Title of the volume\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Volume not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/volumes/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/volumes/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "volumes"
                     },
@@ -2055,12 +2203,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2489,13 +2632,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2505,19 +2648,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "boat_ref01",
                 "srcdatavar": "boat_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "boat01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2537,13 +2680,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2553,19 +2696,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "bow_ref01",
                 "srcdatavar": "bow_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "bow01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2585,13 +2728,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2601,19 +2744,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "chapter_ref01",
                 "srcdatavar": "chapter_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "chapter01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2633,13 +2776,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2649,19 +2792,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "character_ref01",
                 "srcdatavar": "character_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "character01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2681,13 +2824,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2697,19 +2840,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "crew_ref01",
                 "srcdatavar": "crew_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "crew01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2729,13 +2872,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2745,19 +2888,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "dial_ref01",
                 "srcdatavar": "dial_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "dial01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2777,13 +2920,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2793,19 +2936,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "episode_ref01",
                 "srcdatavar": "episode_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "episode01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2825,13 +2968,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2841,19 +2984,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "film_ref01",
                 "srcdatavar": "film_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "film01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2873,13 +3016,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2889,19 +3032,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "fruit_ref01",
                 "srcdatavar": "fruit_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "fruit01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2921,13 +3064,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2937,19 +3080,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "gear_ref01",
                 "srcdatavar": "gear_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "gear01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2969,13 +3112,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2985,19 +3128,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "haki_ref01",
                 "srcdatavar": "haki_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "haki01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3017,13 +3160,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3033,19 +3176,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "location_ref01",
                 "srcdatavar": "location_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "location01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3065,13 +3208,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3081,19 +3224,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "saga_ref01",
                 "srcdatavar": "saga_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "saga01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3113,13 +3256,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3129,19 +3272,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "sword_ref01",
                 "srcdatavar": "sword_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "sword01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3161,13 +3304,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3177,19 +3320,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "technique_ref01",
                 "srcdatavar": "technique_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "technique01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3209,13 +3352,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3225,19 +3368,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "volume_ref01",
                 "srcdatavar": "volume_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "volume01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

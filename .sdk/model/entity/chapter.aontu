@@ -1,0 +1,122 @@
+# Entity: chapter
+
+main: kit: entity: chapter: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the chapter"
+      t: "`$INTEGER`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: false
+      sh: "Chapter number"
+      t: "`$INTEGER`"
+    }
+    releaseDate: {
+      fo: "date"
+      h: "Release Date"
+      n: "releaseDate"
+      r: false
+      sh: "Release date of the chapter"
+      t: "`$STRING`"
+    }
+    saga: {
+      h: "Saga"
+      n: "saga"
+      r: false
+      sh: "Saga this chapter belongs to"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title of the chapter"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "chapter"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /chapters"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/chapters"
+          s: [
+            {
+              lit: "chapters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /chapters/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/chapters/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "chapters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

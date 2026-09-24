@@ -1,0 +1,122 @@
+# Entity: episode
+
+main: kit: entity: episode: {
+
+  alias: field: {}
+
+  fields: {
+    airDate: {
+      fo: "date"
+      h: "Air Date"
+      n: "airDate"
+      r: false
+      sh: "Air date of the episode"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the episode"
+      t: "`$INTEGER`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: false
+      sh: "Episode number"
+      t: "`$INTEGER`"
+    }
+    saga: {
+      h: "Saga"
+      n: "saga"
+      r: false
+      sh: "Saga this episode belongs to"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title of the episode"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "episode"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /episodes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/episodes"
+          s: [
+            {
+              lit: "episodes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /episodes/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/episodes/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "episodes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

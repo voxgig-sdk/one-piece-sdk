@@ -1,0 +1,44 @@
+# BasicBowFlow
+
+main: kit: flow: BasicBowFlow:
+{
+  entity: "bow",
+  kind: "basic",
+  name: "BasicBowFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bow_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bow_ref01",
+        srcdatavar: "bow_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "bow01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bow_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBowFlow"
+}

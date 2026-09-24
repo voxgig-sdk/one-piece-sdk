@@ -37,113 +37,13 @@
   "requests": {
     "GET /volumes": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getVolumes",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "properties": {
-                      "chapters": {
-                        "description": "Chapter IDs included in this volume",
-                        "items": {
-                          "type": "integer"
-                        },
-                        "type": "array"
-                      },
-                      "id": {
-                        "description": "Unique identifier for the volume",
-                        "type": "integer"
-                      },
-                      "number": {
-                        "description": "Volume number",
-                        "type": "integer"
-                      },
-                      "releaseDate": {
-                        "description": "Release date of the volume",
-                        "format": "date",
-                        "type": "string"
-                      },
-                      "title": {
-                        "description": "Title of the volume",
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     },
     "GET /volumes/{id}": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getVolumeById",
-        "parameters": [
-          {
-            "description": "The ID of the volume",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "chapters": {
-                      "description": "Chapter IDs included in this volume",
-                      "items": {
-                        "type": "integer"
-                      },
-                      "type": "array"
-                    },
-                    "id": {
-                      "description": "Unique identifier for the volume",
-                      "type": "integer"
-                    },
-                    "number": {
-                      "description": "Volume number",
-                      "type": "integer"
-                    },
-                    "releaseDate": {
-                      "description": "Release date of the volume",
-                      "format": "date",
-                      "type": "string"
-                    },
-                    "title": {
-                      "description": "Title of the volume",
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response"
-          },
-          "404": {
-            "description": "Volume not found"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

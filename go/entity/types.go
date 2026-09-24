@@ -1,7 +1,7 @@
 // Typed models for the OnePiece SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // Boat is the typed data model for the boat entity.
 type Boat struct {
-	Crew *string `json:"crew,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // BoatLoadMatch is the typed request payload for Boat.LoadTyped.
@@ -37,10 +32,6 @@ type BoatListMatch struct {
 
 // Bow is the typed data model for the bow entity.
 type Bow struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Owner *string `json:"owner,omitempty"`
 }
 
 // BowLoadMatch is the typed request payload for Bow.LoadTyped.
@@ -58,11 +49,6 @@ type BowListMatch struct {
 
 // Chapter is the typed data model for the chapter entity.
 type Chapter struct {
-	Id *int `json:"id,omitempty"`
-	Number *int `json:"number,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
-	Saga *string `json:"saga,omitempty"`
-	Title *string `json:"title,omitempty"`
 }
 
 // ChapterLoadMatch is the typed request payload for Chapter.LoadTyped.
@@ -81,13 +67,6 @@ type ChapterListMatch struct {
 
 // Character is the typed data model for the character entity.
 type Character struct {
-	Age *int `json:"age,omitempty"`
-	Bounty *int `json:"bounty,omitempty"`
-	Crew *string `json:"crew,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DevilFruit *string `json:"devilFruit,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // CharacterLoadMatch is the typed request payload for Character.LoadTyped.
@@ -108,12 +87,6 @@ type CharacterListMatch struct {
 
 // Crew is the typed data model for the crew entity.
 type Crew struct {
-	Captain *string `json:"captain,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Members *[]any `json:"members,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Ship *string `json:"ship,omitempty"`
 }
 
 // CrewLoadMatch is the typed request payload for Crew.LoadTyped.
@@ -133,10 +106,6 @@ type CrewListMatch struct {
 
 // Dial is the typed data model for the dial entity.
 type Dial struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // DialLoadMatch is the typed request payload for Dial.LoadTyped.
@@ -154,11 +123,6 @@ type DialListMatch struct {
 
 // Episode is the typed data model for the episode entity.
 type Episode struct {
-	AirDate *string `json:"airDate,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Number *int `json:"number,omitempty"`
-	Saga *string `json:"saga,omitempty"`
-	Title *string `json:"title,omitempty"`
 }
 
 // EpisodeLoadMatch is the typed request payload for Episode.LoadTyped.
@@ -177,10 +141,6 @@ type EpisodeListMatch struct {
 
 // Film is the typed data model for the film entity.
 type Film struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
-	Title *string `json:"title,omitempty"`
 }
 
 // FilmLoadMatch is the typed request payload for Film.LoadTyped.
@@ -198,11 +158,6 @@ type FilmListMatch struct {
 
 // Fruit is the typed data model for the fruit entity.
 type Fruit struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
-	User *string `json:"user,omitempty"`
 }
 
 // FruitLoadMatch is the typed request payload for Fruit.LoadTyped.
@@ -221,10 +176,6 @@ type FruitListMatch struct {
 
 // Gear is the typed data model for the gear entity.
 type Gear struct {
-	Description *string `json:"description,omitempty"`
-	FirstAppearance *string `json:"firstAppearance,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // GearLoadMatch is the typed request payload for Gear.LoadTyped.
@@ -242,10 +193,6 @@ type GearListMatch struct {
 
 // Haki is the typed data model for the haki entity.
 type Haki struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Users *[]any `json:"users,omitempty"`
 }
 
 // HakiLoadMatch is the typed request payload for Haki.LoadTyped.
@@ -263,11 +210,6 @@ type HakiListMatch struct {
 
 // Location is the typed data model for the location entity.
 type Location struct {
-	Description *string `json:"description,omitempty"`
-	FirstAppearance *string `json:"firstAppearance,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // LocationLoadMatch is the typed request payload for Location.LoadTyped.
@@ -286,11 +228,6 @@ type LocationListMatch struct {
 
 // Saga is the typed data model for the saga entity.
 type Saga struct {
-	Chapters *[]any `json:"chapters,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Episodes *[]any `json:"episodes,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // SagaLoadMatch is the typed request payload for Saga.LoadTyped.
@@ -309,11 +246,6 @@ type SagaListMatch struct {
 
 // Sword is the typed data model for the sword entity.
 type Sword struct {
-	Description *string `json:"description,omitempty"`
-	Grade *string `json:"grade,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Owner *string `json:"owner,omitempty"`
 }
 
 // SwordLoadMatch is the typed request payload for Sword.LoadTyped.
@@ -332,10 +264,6 @@ type SwordListMatch struct {
 
 // Technique is the typed data model for the technique entity.
 type Technique struct {
-	Description *string `json:"description,omitempty"`
-	Gear *string `json:"gear,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // TechniqueLoadMatch is the typed request payload for Technique.LoadTyped.
@@ -353,11 +281,6 @@ type TechniqueListMatch struct {
 
 // Volume is the typed data model for the volume entity.
 type Volume struct {
-	Chapters *[]any `json:"chapters,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Number *int `json:"number,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
-	Title *string `json:"title,omitempty"`
 }
 
 // VolumeLoadMatch is the typed request payload for Volume.LoadTyped.

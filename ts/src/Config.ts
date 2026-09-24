@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -184,28 +177,33 @@ class Config {
       "fields": [
         {
           "name": "crew",
-          "short": "Crew that owns the boat",
-          "type": "`$STRING`"
+          "title": "Crew",
+          "type": "`$STRING`",
+          "short": "Crew that owns the boat"
         },
         {
           "name": "description",
-          "short": "Description of the boat",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the boat"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the boat",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the boat"
         },
         {
           "name": "name",
-          "short": "Name of the boat/ship",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the boat/ship"
         },
         {
           "name": "type",
-          "short": "Type of vessel",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of vessel"
         }
       ],
       "id": {
@@ -219,7 +217,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/boats",
@@ -228,14 +225,16 @@ class Config {
                   "lit": "boats"
                 }
               ],
-              "select": {},
+              "parts": [
+                "boats"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "boats"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -244,17 +243,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boats/{id}",
@@ -266,19 +254,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "boats",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "boats",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -291,23 +291,27 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the bow",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the bow"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the bow",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the bow"
         },
         {
           "name": "name",
-          "short": "Name of the bow",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the bow"
         },
         {
           "name": "owner",
-          "short": "Owner of the bow",
-          "type": "`$STRING`"
+          "title": "Owner",
+          "type": "`$STRING`",
+          "short": "Owner of the bow"
         }
       ],
       "id": {
@@ -321,7 +325,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/bows",
@@ -330,14 +333,16 @@ class Config {
                   "lit": "bows"
                 }
               ],
-              "select": {},
+              "parts": [
+                "bows"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "bows"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -346,17 +351,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/bows/{id}",
@@ -368,19 +362,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "bows",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "bows",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -393,29 +399,34 @@ class Config {
       "fields": [
         {
           "name": "id",
-          "short": "Unique identifier for the chapter",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the chapter"
         },
         {
           "name": "number",
-          "short": "Chapter number",
-          "type": "`$INTEGER`"
+          "title": "Number",
+          "type": "`$INTEGER`",
+          "short": "Chapter number"
         },
         {
-          "format": "date",
           "name": "releaseDate",
+          "title": "Release Date",
+          "type": "`$STRING`",
           "short": "Release date of the chapter",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "saga",
-          "short": "Saga this chapter belongs to",
-          "type": "`$STRING`"
+          "title": "Saga",
+          "type": "`$STRING`",
+          "short": "Saga this chapter belongs to"
         },
         {
           "name": "title",
-          "short": "Title of the chapter",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Title of the chapter"
         }
       ],
       "id": {
@@ -429,7 +440,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/chapters",
@@ -438,14 +448,16 @@ class Config {
                   "lit": "chapters"
                 }
               ],
-              "select": {},
+              "parts": [
+                "chapters"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "chapters"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -454,17 +466,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/chapters/{id}",
@@ -476,19 +477,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "chapters",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "chapters",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -501,38 +514,45 @@ class Config {
       "fields": [
         {
           "name": "age",
-          "short": "Age of the character",
-          "type": "`$INTEGER`"
+          "title": "Age",
+          "type": "`$INTEGER`",
+          "short": "Age of the character"
         },
         {
           "name": "bounty",
-          "short": "Bounty of the character",
-          "type": "`$INTEGER`"
+          "title": "Bounty",
+          "type": "`$INTEGER`",
+          "short": "Bounty of the character"
         },
         {
           "name": "crew",
-          "short": "Crew affiliation",
-          "type": "`$STRING`"
+          "title": "Crew",
+          "type": "`$STRING`",
+          "short": "Crew affiliation"
         },
         {
           "name": "description",
-          "short": "Description of the character",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the character"
         },
         {
           "name": "devilFruit",
-          "short": "Devil Fruit ability if applicable",
-          "type": "`$STRING`"
+          "title": "Devil Fruit",
+          "type": "`$STRING`",
+          "short": "Devil Fruit ability if applicable"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the character",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the character"
         },
         {
           "name": "name",
-          "short": "Name of the character",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the character"
         }
       ],
       "id": {
@@ -546,7 +566,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/characters",
@@ -555,14 +574,16 @@ class Config {
                   "lit": "characters"
                 }
               ],
-              "select": {},
+              "parts": [
+                "characters"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "characters"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -571,17 +592,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/characters/{id}",
@@ -593,19 +603,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "characters",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "characters",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -618,33 +640,39 @@ class Config {
       "fields": [
         {
           "name": "captain",
-          "short": "Captain of the crew",
-          "type": "`$STRING`"
+          "title": "Captain",
+          "type": "`$STRING`",
+          "short": "Captain of the crew"
         },
         {
           "name": "description",
-          "short": "Description of the crew",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the crew"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the crew",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the crew"
         },
         {
           "name": "members",
-          "short": "Members of the crew",
-          "type": "`$ARRAY`"
+          "title": "Members",
+          "type": "`$ARRAY`",
+          "short": "Members of the crew"
         },
         {
           "name": "name",
-          "short": "Name of the crew",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the crew"
         },
         {
           "name": "ship",
-          "short": "Name of the crew's ship",
-          "type": "`$STRING`"
+          "title": "Ship",
+          "type": "`$STRING`",
+          "short": "Name of the crew's ship"
         }
       ],
       "id": {
@@ -658,7 +686,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/crews",
@@ -667,14 +694,16 @@ class Config {
                   "lit": "crews"
                 }
               ],
-              "select": {},
+              "parts": [
+                "crews"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "crews"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -683,17 +712,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/crews/{id}",
@@ -705,19 +723,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "crews",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "crews",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -730,23 +760,27 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the dial's function",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the dial's function"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the dial",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the dial"
         },
         {
           "name": "name",
-          "short": "Name of the dial",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the dial"
         },
         {
           "name": "type",
-          "short": "Type of dial",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of dial"
         }
       ],
       "id": {
@@ -760,7 +794,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/dials",
@@ -769,14 +802,16 @@ class Config {
                   "lit": "dials"
                 }
               ],
-              "select": {},
+              "parts": [
+                "dials"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "dials"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -785,17 +820,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/dials/{id}",
@@ -807,19 +831,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "dials",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "dials",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -831,30 +867,35 @@ class Config {
     "episode": {
       "fields": [
         {
-          "format": "date",
           "name": "airDate",
+          "title": "Air Date",
+          "type": "`$STRING`",
           "short": "Air date of the episode",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the episode",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the episode"
         },
         {
           "name": "number",
-          "short": "Episode number",
-          "type": "`$INTEGER`"
+          "title": "Number",
+          "type": "`$INTEGER`",
+          "short": "Episode number"
         },
         {
           "name": "saga",
-          "short": "Saga this episode belongs to",
-          "type": "`$STRING`"
+          "title": "Saga",
+          "type": "`$STRING`",
+          "short": "Saga this episode belongs to"
         },
         {
           "name": "title",
-          "short": "Title of the episode",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Title of the episode"
         }
       ],
       "id": {
@@ -868,7 +909,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/episodes",
@@ -877,14 +917,16 @@ class Config {
                   "lit": "episodes"
                 }
               ],
-              "select": {},
+              "parts": [
+                "episodes"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "episodes"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -893,17 +935,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/episodes/{id}",
@@ -915,19 +946,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "episodes",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "episodes",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -940,24 +983,28 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the film",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the film"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the film",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the film"
         },
         {
-          "format": "date",
           "name": "releaseDate",
+          "title": "Release Date",
+          "type": "`$STRING`",
           "short": "Release date of the film",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "title",
-          "short": "Title of the film",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Title of the film"
         }
       ],
       "id": {
@@ -971,7 +1018,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/films",
@@ -980,14 +1026,16 @@ class Config {
                   "lit": "films"
                 }
               ],
-              "select": {},
+              "parts": [
+                "films"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "films"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -996,17 +1044,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/films/{id}",
@@ -1018,19 +1055,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "films",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "films",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1043,28 +1092,33 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the Devil Fruit's powers",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the Devil Fruit's powers"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the Devil Fruit",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the Devil Fruit"
         },
         {
           "name": "name",
-          "short": "Name of the Devil Fruit",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the Devil Fruit"
         },
         {
           "name": "type",
-          "short": "Type of Devil Fruit (Paramecia, Zoan, Logia)",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of Devil Fruit (Paramecia, Zoan, Logia)"
         },
         {
           "name": "user",
-          "short": "Current or known user of the fruit",
-          "type": "`$STRING`"
+          "title": "User",
+          "type": "`$STRING`",
+          "short": "Current or known user of the fruit"
         }
       ],
       "id": {
@@ -1078,7 +1132,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/fruits",
@@ -1087,14 +1140,16 @@ class Config {
                   "lit": "fruits"
                 }
               ],
-              "select": {},
+              "parts": [
+                "fruits"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "fruits"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1103,17 +1158,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/fruits/{id}",
@@ -1125,19 +1169,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "fruits",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "fruits",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1150,23 +1206,27 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the gear's abilities",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the gear's abilities"
         },
         {
           "name": "firstAppearance",
-          "short": "First appearance of this gear",
-          "type": "`$STRING`"
+          "title": "First Appearance",
+          "type": "`$STRING`",
+          "short": "First appearance of this gear"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the gear",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the gear"
         },
         {
           "name": "name",
-          "short": "Name of the gear form",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the gear form"
         }
       ],
       "id": {
@@ -1180,7 +1240,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/gears",
@@ -1189,14 +1248,16 @@ class Config {
                   "lit": "gears"
                 }
               ],
-              "select": {},
+              "parts": [
+                "gears"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "gears"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1205,17 +1266,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/gears/{id}",
@@ -1227,19 +1277,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "gears",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "gears",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1252,23 +1314,27 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the Haki type",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the Haki type"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the Haki type",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the Haki type"
         },
         {
           "name": "name",
-          "short": "Name of the Haki type",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the Haki type"
         },
         {
           "name": "users",
-          "short": "Known users of this Haki type",
-          "type": "`$ARRAY`"
+          "title": "Users",
+          "type": "`$ARRAY`",
+          "short": "Known users of this Haki type"
         }
       ],
       "id": {
@@ -1282,7 +1348,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/hakis",
@@ -1291,14 +1356,16 @@ class Config {
                   "lit": "hakis"
                 }
               ],
-              "select": {},
+              "parts": [
+                "hakis"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "hakis"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1307,17 +1374,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/hakis/{id}",
@@ -1329,19 +1385,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "hakis",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "hakis",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1354,28 +1422,33 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the location",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the location"
         },
         {
           "name": "firstAppearance",
-          "short": "First appearance of this location",
-          "type": "`$STRING`"
+          "title": "First Appearance",
+          "type": "`$STRING`",
+          "short": "First appearance of this location"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the location",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the location"
         },
         {
           "name": "name",
-          "short": "Name of the location",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the location"
         },
         {
           "name": "type",
-          "short": "Type of location (island, sea, etc.)",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of location (island, sea, etc.)"
         }
       ],
       "id": {
@@ -1389,7 +1462,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/locations",
@@ -1398,14 +1470,16 @@ class Config {
                   "lit": "locations"
                 }
               ],
-              "select": {},
+              "parts": [
+                "locations"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "locations"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1414,17 +1488,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/locations/{id}",
@@ -1436,19 +1499,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "locations",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "locations",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1461,28 +1536,33 @@ class Config {
       "fields": [
         {
           "name": "chapters",
-          "short": "Chapter IDs included in this saga",
-          "type": "`$ARRAY`"
+          "title": "Chapters",
+          "type": "`$ARRAY`",
+          "short": "Chapter IDs included in this saga"
         },
         {
           "name": "description",
-          "short": "Description of the saga",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the saga"
         },
         {
           "name": "episodes",
-          "short": "Episode IDs included in this saga",
-          "type": "`$ARRAY`"
+          "title": "Episodes",
+          "type": "`$ARRAY`",
+          "short": "Episode IDs included in this saga"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the saga",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the saga"
         },
         {
           "name": "name",
-          "short": "Name of the saga",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the saga"
         }
       ],
       "id": {
@@ -1496,7 +1576,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/sagas",
@@ -1505,14 +1584,16 @@ class Config {
                   "lit": "sagas"
                 }
               ],
-              "select": {},
+              "parts": [
+                "sagas"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "sagas"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1521,17 +1602,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/sagas/{id}",
@@ -1543,19 +1613,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "sagas",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "sagas",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1568,28 +1650,33 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the sword",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the sword"
         },
         {
           "name": "grade",
-          "short": "Grade of the sword",
-          "type": "`$STRING`"
+          "title": "Grade",
+          "type": "`$STRING`",
+          "short": "Grade of the sword"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the sword",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the sword"
         },
         {
           "name": "name",
-          "short": "Name of the sword",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the sword"
         },
         {
           "name": "owner",
-          "short": "Current owner of the sword",
-          "type": "`$STRING`"
+          "title": "Owner",
+          "type": "`$STRING`",
+          "short": "Current owner of the sword"
         }
       ],
       "id": {
@@ -1603,7 +1690,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/swords",
@@ -1612,14 +1698,16 @@ class Config {
                   "lit": "swords"
                 }
               ],
-              "select": {},
+              "parts": [
+                "swords"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "swords"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1628,17 +1716,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/swords/{id}",
@@ -1650,19 +1727,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "swords",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "swords",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1675,23 +1764,27 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Description of the technique",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Description of the technique"
         },
         {
           "name": "gear",
-          "short": "Associated gear form if applicable",
-          "type": "`$STRING`"
+          "title": "Gear",
+          "type": "`$STRING`",
+          "short": "Associated gear form if applicable"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the technique",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the technique"
         },
         {
           "name": "name",
-          "short": "Name of the technique",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the technique"
         }
       ],
       "id": {
@@ -1705,7 +1798,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/techniques",
@@ -1714,14 +1806,16 @@ class Config {
                   "lit": "techniques"
                 }
               ],
-              "select": {},
+              "parts": [
+                "techniques"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "techniques"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1730,17 +1824,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/techniques/{id}",
@@ -1752,19 +1835,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "techniques",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "techniques",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -1777,29 +1872,34 @@ class Config {
       "fields": [
         {
           "name": "chapters",
-          "short": "Chapter IDs included in this volume",
-          "type": "`$ARRAY`"
+          "title": "Chapters",
+          "type": "`$ARRAY`",
+          "short": "Chapter IDs included in this volume"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the volume",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the volume"
         },
         {
           "name": "number",
-          "short": "Volume number",
-          "type": "`$INTEGER`"
+          "title": "Number",
+          "type": "`$INTEGER`",
+          "short": "Volume number"
         },
         {
-          "format": "date",
           "name": "releaseDate",
+          "title": "Release Date",
+          "type": "`$STRING`",
           "short": "Release date of the volume",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "title",
-          "short": "Title of the volume",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Title of the volume"
         }
       ],
       "id": {
@@ -1813,7 +1913,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/volumes",
@@ -1822,14 +1921,16 @@ class Config {
                   "lit": "volumes"
                 }
               ],
-              "select": {},
+              "parts": [
+                "volumes"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "volumes"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -1838,17 +1939,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/volumes/{id}",
@@ -1860,19 +1950,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "volumes",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "volumes",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
