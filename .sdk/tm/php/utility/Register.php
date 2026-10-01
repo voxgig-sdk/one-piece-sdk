@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 OnePieceUtility::setRegistrar(function (OnePieceUtility $u): void {
     $u->clean = [OnePieceClean::class, 'call'];
+    $u->clean_add = [OnePieceClean::class, 'add'];
+    $u->clean_explain = [OnePieceDone::class, 'clean_explain'];
     $u->done = [OnePieceDone::class, 'call'];
     $u->make_error = [OnePieceMakeError::class, 'call'];
     $u->feature_add = [OnePieceFeatureAdd::class, 'call'];

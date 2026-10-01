@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 OnePieceUtility.registrar = ->(u) {
   u.clean = OnePieceUtilities::Clean
+  u.clean_add = OnePieceUtilities::CleanAdd
+  u.clean_explain = OnePieceUtilities::CleanExplain
   u.done = OnePieceUtilities::Done
   u.make_error = OnePieceUtilities::MakeError
   u.feature_add = OnePieceUtilities::FeatureAdd
