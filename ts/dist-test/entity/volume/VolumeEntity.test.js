@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Volume();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('volume hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.OnePieceSDK.test(offline).Volume().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.OnePieceSDK.test(offline).Volume()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.OnePieceSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Volume().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.OnePieceSDK.test().Volume().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.OnePieceSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Volume().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Volume().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.OnePieceSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Volume().list({ "id": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ONE_PIECE_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "chapters": { "a": true, "h": "Chapters", "n": "chapters", "r": false, "sh": "Chapter IDs included in this volume", "t": "`$ARRAY`", "key$": "chapters", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Unique identifier for the volume", "t": "`$INTEGER`", "key$": "id", "index$": 1 }, "number": { "a": true, "h": "Number", "n": "number", "r": false, "sh": "Volume number", "t": "`$INTEGER`", "key$": "number", "index$": 2 }, "releaseDate": { "a": true, "fo": "date", "h": "Release Date", "n": "releaseDate", "r": false, "sh": "Release date of the volume", "t": "`$STRING`", "key$": "releaseDate", "index$": 3 }, "title": { "a": true, "h": "Title", "n": "title", "r": false, "sh": "Title of the volume", "t": "`$STRING`", "key$": "title", "index$": 4 } }, "id": { "field": "id", "name": "id" }, "name": "volume", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /volumes", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/volumes", "q": {}, "r": {}, "s": [{ "lit": "volumes" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /volumes/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/volumes/{id}", "q": { "exist": ["id"] }, "r": {}, "s": [{ "lit": "volumes" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "volume", "name__orig": "volume", "Name": "Volume", "name_": "volume", "name-": "volume", "NAME": "VOLUME", "index$": 15 }, { "active": true, "entity": "volume", "key$": "BasicVolumeFlow", "kind": "basic", "name": "BasicVolumeFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "volume_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "volume_ref01", "srcdatavar": "volume_ref01_data", "suffix": "_dt0" }, "m": { "id": "volume01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-volume_ref01" } }], "index$": 1 }] }, 'Volume', { "GET /volumes": { "protocol": "http", "parameters": [] }, "GET /volumes/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "description": "The ID of the volume", "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "chapters": { "a": true, "h": "Chapters", "n": "chapters", "r": false, "sh": "Chapter IDs included in this volume", "t": "`$ARRAY`", "key$": "chapters", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Unique identifier for the volume", "t": "`$INTEGER`", "key$": "id", "index$": 1 }, "number": { "a": true, "h": "Number", "n": "number", "r": false, "sh": "Volume number", "t": "`$INTEGER`", "key$": "number", "index$": 2 }, "releaseDate": { "a": true, "fo": "date", "h": "Release Date", "n": "releaseDate", "r": false, "sh": "Release date of the volume", "t": "`$STRING`", "key$": "releaseDate", "index$": 3 }, "title": { "a": true, "h": "Title", "n": "title", "r": false, "sh": "Title of the volume", "t": "`$STRING`", "key$": "title", "index$": 4 } }, "id": { "field": "id", "name": "id" }, "name": "volume", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /volumes", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/volumes", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "volumes" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /volumes/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/volumes/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "volumes" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "volume", "name__orig": "volume", "Name": "Volume", "name_": "volume", "name-": "volume", "NAME": "VOLUME", "index$": 15 }, { "active": true, "entity": "volume", "key$": "BasicVolumeFlow", "kind": "basic", "name": "BasicVolumeFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "volume_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "volume_ref01", "srcdatavar": "volume_ref01_data", "suffix": "_dt0" }, "m": { "id": "volume01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-volume_ref01" } }], "index$": 1 }] }, 'Volume', { "GET /volumes": { "protocol": "http", "parameters": [] }, "GET /volumes/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "description": "The ID of the volume", "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(volume_ref01_data_dt0.id === volume_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

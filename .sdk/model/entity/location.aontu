@@ -60,6 +60,10 @@ main: kit: entity: location: {
           }
           m: "GET"
           o: "/locations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "locations"
@@ -98,6 +102,10 @@ main: kit: entity: location: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

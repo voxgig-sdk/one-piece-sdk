@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/one-piece-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/one-piece-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -251,8 +251,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -262,9 +262,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -537,7 +537,7 @@ $boat = $client->Boat()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Boat records (throws on error).
+// list() returns an array of Boat entities, one per record (throws on error).
 $boats = $client->Boat()->list();
 ```
 
@@ -572,7 +572,7 @@ $bow = $client->Bow()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Bow records (throws on error).
+// list() returns an array of Bow entities, one per record (throws on error).
 $bows = $client->Bow()->list();
 ```
 
@@ -608,7 +608,7 @@ $chapter = $client->Chapter()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Chapter records (throws on error).
+// list() returns an array of Chapter entities, one per record (throws on error).
 $chapters = $client->Chapter()->list();
 ```
 
@@ -646,7 +646,7 @@ $character = $client->Character()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Character records (throws on error).
+// list() returns an array of Character entities, one per record (throws on error).
 $characters = $client->Character()->list();
 ```
 
@@ -683,7 +683,7 @@ $crew = $client->Crew()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Crew records (throws on error).
+// list() returns an array of Crew entities, one per record (throws on error).
 $crews = $client->Crew()->list();
 ```
 
@@ -718,7 +718,7 @@ $dial = $client->Dial()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Dial records (throws on error).
+// list() returns an array of Dial entities, one per record (throws on error).
 $dials = $client->Dial()->list();
 ```
 
@@ -754,7 +754,7 @@ $episode = $client->Episode()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Episode records (throws on error).
+// list() returns an array of Episode entities, one per record (throws on error).
 $episodes = $client->Episode()->list();
 ```
 
@@ -789,7 +789,7 @@ $film = $client->Film()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Film records (throws on error).
+// list() returns an array of Film entities, one per record (throws on error).
 $films = $client->Film()->list();
 ```
 
@@ -825,7 +825,7 @@ $fruit = $client->Fruit()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Fruit records (throws on error).
+// list() returns an array of Fruit entities, one per record (throws on error).
 $fruits = $client->Fruit()->list();
 ```
 
@@ -860,7 +860,7 @@ $gear = $client->Gear()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Gear records (throws on error).
+// list() returns an array of Gear entities, one per record (throws on error).
 $gears = $client->Gear()->list();
 ```
 
@@ -895,7 +895,7 @@ $haki = $client->Haki()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Haki records (throws on error).
+// list() returns an array of Haki entities, one per record (throws on error).
 $hakis = $client->Haki()->list();
 ```
 
@@ -931,7 +931,7 @@ $location = $client->Location()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Location records (throws on error).
+// list() returns an array of Location entities, one per record (throws on error).
 $locations = $client->Location()->list();
 ```
 
@@ -967,7 +967,7 @@ $saga = $client->Saga()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Saga records (throws on error).
+// list() returns an array of Saga entities, one per record (throws on error).
 $sagas = $client->Saga()->list();
 ```
 
@@ -1003,7 +1003,7 @@ $sword = $client->Sword()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Sword records (throws on error).
+// list() returns an array of Sword entities, one per record (throws on error).
 $swords = $client->Sword()->list();
 ```
 
@@ -1038,7 +1038,7 @@ $technique = $client->Technique()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Technique records (throws on error).
+// list() returns an array of Technique entities, one per record (throws on error).
 $techniques = $client->Technique()->list();
 ```
 
@@ -1074,7 +1074,7 @@ $volume = $client->Volume()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Volume records (throws on error).
+// list() returns an array of Volume entities, one per record (throws on error).
 $volumes = $client->Volume()->list();
 ```
 

@@ -60,6 +60,10 @@ main: kit: entity: saga: {
           }
           m: "GET"
           o: "/sagas"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "sagas"
@@ -98,6 +102,10 @@ main: kit: entity: saga: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

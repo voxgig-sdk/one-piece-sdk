@@ -53,6 +53,10 @@ main: kit: entity: haki: {
           }
           m: "GET"
           o: "/hakis"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "hakis"
@@ -91,6 +95,10 @@ main: kit: entity: haki: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -53,6 +53,10 @@ main: kit: entity: bow: {
           }
           m: "GET"
           o: "/bows"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "bows"
@@ -91,6 +95,10 @@ main: kit: entity: bow: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

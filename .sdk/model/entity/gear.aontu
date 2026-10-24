@@ -53,6 +53,10 @@ main: kit: entity: gear: {
           }
           m: "GET"
           o: "/gears"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "gears"
@@ -91,6 +95,10 @@ main: kit: entity: gear: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

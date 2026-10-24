@@ -54,6 +54,10 @@ main: kit: entity: film: {
           }
           m: "GET"
           o: "/films"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "films"
@@ -92,6 +96,10 @@ main: kit: entity: film: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

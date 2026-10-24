@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { OnePieceSDK, BaseFeature, stdutil } from '../../..'
+import { OnePieceSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('SwordEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('sword hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of OnePieceSDK.test(offline).Sword().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of OnePieceSDK.test(offline).Sword()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = OnePieceSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Sword().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of OnePieceSDK.test().Sword().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new OnePieceSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Sword().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Sword().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = OnePieceSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Sword().list({"description":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.ONE_PIECE_TEST_LIVE
@@ -51,7 +109,7 @@ describe('SwordEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Description of the sword","t":"`$STRING`","key$":"description","index$":0},"grade":{"a":true,"h":"Grade","n":"grade","r":false,"sh":"Grade of the sword","t":"`$STRING`","key$":"grade","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the sword","t":"`$INTEGER`","key$":"id","index$":2},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the sword","t":"`$STRING`","key$":"name","index$":3},"owner":{"a":true,"h":"Owner","n":"owner","r":false,"sh":"Current owner of the sword","t":"`$STRING`","key$":"owner","index$":4}},"id":{"field":"id","name":"id"},"name":"sword","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /swords","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/swords","q":{},"r":{},"s":[{"lit":"swords"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /swords/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/swords/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"swords"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"sword","name__orig":"sword","Name":"Sword","name_":"sword","name-":"sword","NAME":"SWORD","index$":13}, {"active":true,"entity":"sword","key$":"BasicSwordFlow","kind":"basic","name":"BasicSwordFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"sword_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"sword_ref01","srcdatavar":"sword_ref01_data","suffix":"_dt0"},"m":{"id":"sword01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-sword_ref01"}}],"index$":1}]}, 'Sword', {"GET /swords":{"protocol":"http","parameters":[]},"GET /swords/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"The ID of the sword","index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Description of the sword","t":"`$STRING`","key$":"description","index$":0},"grade":{"a":true,"h":"Grade","n":"grade","r":false,"sh":"Grade of the sword","t":"`$STRING`","key$":"grade","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the sword","t":"`$INTEGER`","key$":"id","index$":2},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the sword","t":"`$STRING`","key$":"name","index$":3},"owner":{"a":true,"h":"Owner","n":"owner","r":false,"sh":"Current owner of the sword","t":"`$STRING`","key$":"owner","index$":4}},"id":{"field":"id","name":"id"},"name":"sword","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /swords","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/swords","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"swords"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /swords/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/swords/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"swords"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"sword","name__orig":"sword","Name":"Sword","name_":"sword","name-":"sword","NAME":"SWORD","index$":13}, {"active":true,"entity":"sword","key$":"BasicSwordFlow","kind":"basic","name":"BasicSwordFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"sword_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"sword_ref01","srcdatavar":"sword_ref01_data","suffix":"_dt0"},"m":{"id":"sword01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-sword_ref01"}}],"index$":1}]}, 'Sword', {"GET /swords":{"protocol":"http","parameters":[]},"GET /swords/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"The ID of the sword","index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('SwordEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

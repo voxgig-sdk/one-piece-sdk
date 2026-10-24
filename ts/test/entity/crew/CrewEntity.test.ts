@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { OnePieceSDK, BaseFeature, stdutil } from '../../..'
+import { OnePieceSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('CrewEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('crew hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of OnePieceSDK.test(offline).Crew().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of OnePieceSDK.test(offline).Crew()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = OnePieceSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Crew().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of OnePieceSDK.test().Crew().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new OnePieceSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Crew().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Crew().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = OnePieceSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Crew().list({"captain":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.ONE_PIECE_TEST_LIVE
@@ -51,7 +109,7 @@ describe('CrewEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"captain":{"a":true,"h":"Captain","n":"captain","r":false,"sh":"Captain of the crew","t":"`$STRING`","key$":"captain","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Description of the crew","t":"`$STRING`","key$":"description","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the crew","t":"`$INTEGER`","key$":"id","index$":2},"members":{"a":true,"h":"Members","n":"members","r":false,"sh":"Members of the crew","t":"`$ARRAY`","key$":"members","index$":3},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the crew","t":"`$STRING`","key$":"name","index$":4},"ship":{"a":true,"h":"Ship","n":"ship","r":false,"sh":"Name of the crew's ship","t":"`$STRING`","key$":"ship","index$":5}},"id":{"field":"id","name":"id"},"name":"crew","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /crews","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/crews","q":{},"r":{},"s":[{"lit":"crews"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /crews/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/crews/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"crews"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"crew","name__orig":"crew","Name":"Crew","name_":"crew","name-":"crew","NAME":"CREW","index$":4}, {"active":true,"entity":"crew","key$":"BasicCrewFlow","kind":"basic","name":"BasicCrewFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"crew_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"crew_ref01","srcdatavar":"crew_ref01_data","suffix":"_dt0"},"m":{"id":"crew01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-crew_ref01"}}],"index$":1}]}, 'Crew', {"GET /crews":{"protocol":"http","parameters":[]},"GET /crews/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"The ID of the crew","index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"captain":{"a":true,"h":"Captain","n":"captain","r":false,"sh":"Captain of the crew","t":"`$STRING`","key$":"captain","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Description of the crew","t":"`$STRING`","key$":"description","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the crew","t":"`$INTEGER`","key$":"id","index$":2},"members":{"a":true,"h":"Members","n":"members","r":false,"sh":"Members of the crew","t":"`$ARRAY`","key$":"members","index$":3},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the crew","t":"`$STRING`","key$":"name","index$":4},"ship":{"a":true,"h":"Ship","n":"ship","r":false,"sh":"Name of the crew's ship","t":"`$STRING`","key$":"ship","index$":5}},"id":{"field":"id","name":"id"},"name":"crew","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /crews","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/crews","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"crews"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /crews/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/crews/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"crews"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"crew","name__orig":"crew","Name":"Crew","name_":"crew","name-":"crew","NAME":"CREW","index$":4}, {"active":true,"entity":"crew","key$":"BasicCrewFlow","kind":"basic","name":"BasicCrewFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"crew_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"crew_ref01","srcdatavar":"crew_ref01_data","suffix":"_dt0"},"m":{"id":"crew01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-crew_ref01"}}],"index$":1}]}, 'Crew', {"GET /crews":{"protocol":"http","parameters":[]},"GET /crews/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"The ID of the crew","index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('CrewEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

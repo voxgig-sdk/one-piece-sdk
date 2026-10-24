@@ -22,6 +22,19 @@ import { OnePieceEntityBase } from './OnePieceEntityBase';
 import { Utility } from './utility/Utility';
 import { BaseFeature } from './feature/base/BaseFeature';
 declare const stdutil: Utility;
+type DirectResult = {
+    ok: false;
+    err: any;
+    status?: undefined;
+    headers?: undefined;
+    data?: undefined;
+} | {
+    ok: boolean;
+    status: number;
+    headers: any;
+    data: any;
+    err?: any;
+};
 declare class OnePieceSDK {
     _mode: string;
     _options: any;
@@ -32,32 +45,8 @@ declare class OnePieceSDK {
     options(): any;
     utility(): any;
     prepare(fetchargs?: any): Promise<any>;
-    direct(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
-    _rawRequest(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
+    direct(fetchargs?: any): Promise<DirectResult>;
+    _rawRequest(fetchargs?: any): Promise<DirectResult>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     Boat(entopts?: Record<string, any>): BoatEntity;
     Bow(entopts?: Record<string, any>): BowEntity;
@@ -85,3 +74,4 @@ declare class OnePieceSDK {
 }
 declare const SDK: typeof OnePieceSDK;
 export { stdutil, config, BaseFeature, OnePieceEntityBase, OnePieceSDK, SDK, };
+export type { DirectResult };

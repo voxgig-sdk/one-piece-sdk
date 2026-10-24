@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/one-piece-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/one-piece-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = OnePieceSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Boat records — iterate directly.
+  # list returns an Array of Boat entities, one per record; data_get reads the record.
   boats = client.Boat.list
   boats.each do |item|
-    puts "#{item["id"]} #{item["crew"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["crew"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -59,7 +60,7 @@ end
 begin
   # load returns the ENTITY — call data_get for the Boat record (raises on error).
   boat = client.Boat.load({ "id" => 1 })
-  puts boat
+  puts boat.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -143,10 +144,10 @@ client = OnePieceSDK.test({
   "entity" => { "boat" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-boat = client.Boat.list()
-puts boat
+# list returns an Array of Boat entities, one per mock record (raises on
+# error); data_get reads each record.
+boats = client.Boat.list()
+boats.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -245,8 +246,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -256,9 +257,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `OnePieceError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`OnePieceError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -530,8 +532,9 @@ boat = client.Boat.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Boat records (raises on error).
+# list returns an Array of Boat entities, one per record (raises on error).
 boats = client.Boat.list
+boats.each { |item| puts item.data_get }
 ```
 
 
@@ -565,8 +568,9 @@ bow = client.Bow.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Bow records (raises on error).
+# list returns an Array of Bow entities, one per record (raises on error).
 bows = client.Bow.list
+bows.each { |item| puts item.data_get }
 ```
 
 
@@ -601,8 +605,9 @@ chapter = client.Chapter.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Chapter records (raises on error).
+# list returns an Array of Chapter entities, one per record (raises on error).
 chapters = client.Chapter.list
+chapters.each { |item| puts item.data_get }
 ```
 
 
@@ -639,8 +644,9 @@ character = client.Character.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Character records (raises on error).
+# list returns an Array of Character entities, one per record (raises on error).
 characters = client.Character.list
+characters.each { |item| puts item.data_get }
 ```
 
 
@@ -676,8 +682,9 @@ crew = client.Crew.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Crew records (raises on error).
+# list returns an Array of Crew entities, one per record (raises on error).
 crews = client.Crew.list
+crews.each { |item| puts item.data_get }
 ```
 
 
@@ -711,8 +718,9 @@ dial = client.Dial.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Dial records (raises on error).
+# list returns an Array of Dial entities, one per record (raises on error).
 dials = client.Dial.list
+dials.each { |item| puts item.data_get }
 ```
 
 
@@ -747,8 +755,9 @@ episode = client.Episode.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Episode records (raises on error).
+# list returns an Array of Episode entities, one per record (raises on error).
 episodes = client.Episode.list
+episodes.each { |item| puts item.data_get }
 ```
 
 
@@ -782,8 +791,9 @@ film = client.Film.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Film records (raises on error).
+# list returns an Array of Film entities, one per record (raises on error).
 films = client.Film.list
+films.each { |item| puts item.data_get }
 ```
 
 
@@ -818,8 +828,9 @@ fruit = client.Fruit.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Fruit records (raises on error).
+# list returns an Array of Fruit entities, one per record (raises on error).
 fruits = client.Fruit.list
+fruits.each { |item| puts item.data_get }
 ```
 
 
@@ -853,8 +864,9 @@ gear = client.Gear.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Gear records (raises on error).
+# list returns an Array of Gear entities, one per record (raises on error).
 gears = client.Gear.list
+gears.each { |item| puts item.data_get }
 ```
 
 
@@ -888,8 +900,9 @@ haki = client.Haki.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Haki records (raises on error).
+# list returns an Array of Haki entities, one per record (raises on error).
 hakis = client.Haki.list
+hakis.each { |item| puts item.data_get }
 ```
 
 
@@ -924,8 +937,9 @@ location = client.Location.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Location records (raises on error).
+# list returns an Array of Location entities, one per record (raises on error).
 locations = client.Location.list
+locations.each { |item| puts item.data_get }
 ```
 
 
@@ -960,8 +974,9 @@ saga = client.Saga.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Saga records (raises on error).
+# list returns an Array of Saga entities, one per record (raises on error).
 sagas = client.Saga.list
+sagas.each { |item| puts item.data_get }
 ```
 
 
@@ -996,8 +1011,9 @@ sword = client.Sword.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Sword records (raises on error).
+# list returns an Array of Sword entities, one per record (raises on error).
 swords = client.Sword.list
+swords.each { |item| puts item.data_get }
 ```
 
 
@@ -1031,8 +1047,9 @@ technique = client.Technique.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Technique records (raises on error).
+# list returns an Array of Technique entities, one per record (raises on error).
 techniques = client.Technique.list
+techniques.each { |item| puts item.data_get }
 ```
 
 
@@ -1067,8 +1084,9 @@ volume = client.Volume.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Volume records (raises on error).
+# list returns an Array of Volume entities, one per record (raises on error).
 volumes = client.Volume.list
+volumes.each { |item| puts item.data_get }
 ```
 
 ## Features

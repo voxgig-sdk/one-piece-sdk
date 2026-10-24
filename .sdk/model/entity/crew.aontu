@@ -67,6 +67,10 @@ main: kit: entity: crew: {
           }
           m: "GET"
           o: "/crews"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "crews"
@@ -105,6 +109,10 @@ main: kit: entity: crew: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

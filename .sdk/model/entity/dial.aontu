@@ -53,6 +53,10 @@ main: kit: entity: dial: {
           }
           m: "GET"
           o: "/dials"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "dials"
@@ -91,6 +95,10 @@ main: kit: entity: dial: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

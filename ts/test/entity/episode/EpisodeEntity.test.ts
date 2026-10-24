@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { OnePieceSDK, BaseFeature, stdutil } from '../../..'
+import { OnePieceSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('EpisodeEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('episode hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of OnePieceSDK.test(offline).Episode().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of OnePieceSDK.test(offline).Episode()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = OnePieceSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Episode().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of OnePieceSDK.test().Episode().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new OnePieceSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Episode().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Episode().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = OnePieceSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Episode().list({"airDate":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.ONE_PIECE_TEST_LIVE
@@ -51,7 +109,7 @@ describe('EpisodeEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"airDate":{"a":true,"fo":"date","h":"Air Date","n":"airDate","r":false,"sh":"Air date of the episode","t":"`$STRING`","key$":"airDate","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the episode","t":"`$INTEGER`","key$":"id","index$":1},"number":{"a":true,"h":"Number","n":"number","r":false,"sh":"Episode number","t":"`$INTEGER`","key$":"number","index$":2},"saga":{"a":true,"h":"Saga","n":"saga","r":false,"sh":"Saga this episode belongs to","t":"`$STRING`","key$":"saga","index$":3},"title":{"a":true,"h":"Title","n":"title","r":false,"sh":"Title of the episode","t":"`$STRING`","key$":"title","index$":4}},"id":{"field":"id","name":"id"},"name":"episode","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /episodes","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/episodes","q":{},"r":{},"s":[{"lit":"episodes"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /episodes/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/episodes/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"episodes"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"episode","name__orig":"episode","Name":"Episode","name_":"episode","name-":"episode","NAME":"EPISODE","index$":6}, {"active":true,"entity":"episode","key$":"BasicEpisodeFlow","kind":"basic","name":"BasicEpisodeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"episode_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"episode_ref01","srcdatavar":"episode_ref01_data","suffix":"_dt0"},"m":{"id":"episode01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-episode_ref01"}}],"index$":1}]}, 'Episode', {"GET /episodes":{"protocol":"http","parameters":[]},"GET /episodes/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"The ID of the episode","index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"airDate":{"a":true,"fo":"date","h":"Air Date","n":"airDate","r":false,"sh":"Air date of the episode","t":"`$STRING`","key$":"airDate","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the episode","t":"`$INTEGER`","key$":"id","index$":1},"number":{"a":true,"h":"Number","n":"number","r":false,"sh":"Episode number","t":"`$INTEGER`","key$":"number","index$":2},"saga":{"a":true,"h":"Saga","n":"saga","r":false,"sh":"Saga this episode belongs to","t":"`$STRING`","key$":"saga","index$":3},"title":{"a":true,"h":"Title","n":"title","r":false,"sh":"Title of the episode","t":"`$STRING`","key$":"title","index$":4}},"id":{"field":"id","name":"id"},"name":"episode","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /episodes","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/episodes","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"episodes"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /episodes/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/episodes/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"episodes"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"episode","name__orig":"episode","Name":"Episode","name_":"episode","name-":"episode","NAME":"EPISODE","index$":6}, {"active":true,"entity":"episode","key$":"BasicEpisodeFlow","kind":"basic","name":"BasicEpisodeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"episode_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"episode_ref01","srcdatavar":"episode_ref01_data","suffix":"_dt0"},"m":{"id":"episode01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-episode_ref01"}}],"index$":1}]}, 'Episode', {"GET /episodes":{"protocol":"http","parameters":[]},"GET /episodes/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"The ID of the episode","index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('EpisodeEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

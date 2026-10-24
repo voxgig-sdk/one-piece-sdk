@@ -60,6 +60,10 @@ main: kit: entity: fruit: {
           }
           m: "GET"
           o: "/fruits"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "fruits"
@@ -98,6 +102,10 @@ main: kit: entity: fruit: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

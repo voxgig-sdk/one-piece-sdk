@@ -60,6 +60,10 @@ main: kit: entity: sword: {
           }
           m: "GET"
           o: "/swords"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "swords"
@@ -98,6 +102,10 @@ main: kit: entity: sword: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

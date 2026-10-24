@@ -60,6 +60,10 @@ main: kit: entity: boat: {
           }
           m: "GET"
           o: "/boats"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "boats"
@@ -98,6 +102,10 @@ main: kit: entity: boat: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

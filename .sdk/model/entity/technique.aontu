@@ -53,6 +53,10 @@ main: kit: entity: technique: {
           }
           m: "GET"
           o: "/techniques"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "techniques"
@@ -91,6 +95,10 @@ main: kit: entity: technique: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
